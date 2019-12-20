@@ -1,5 +1,5 @@
-import React from "react"
-import { IconProps } from "./types"
+import React from 'react'
+import { IconProps } from './types'
 
 export const InstagramIcon = (props: IconProps) => (
   <svg

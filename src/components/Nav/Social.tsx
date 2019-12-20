@@ -1,5 +1,5 @@
-import React from "react"
-import s from "styled-components"
+import React from 'react'
+import s from 'styled-components'
 import {
   FACEBOOK_ROUTE,
   INSTAGRAM_ROUTE,
@@ -7,7 +7,7 @@ import {
   GITHUB_ROUTE,
   TWITTER_ROUTE,
   CONTACT_ROUTE,
-} from "../../constants/routes"
+} from '../../constants/routes'
 import {
   FacebookIcon,
   LinkedInIcon,
@@ -15,7 +15,7 @@ import {
   TwitterIcon,
   InstagramIcon,
   MailIcon,
-} from "../shared"
+} from '../shared'
 
 const Wrapper = s.div<{}>`
   width: 100%;

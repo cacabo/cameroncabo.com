@@ -1,8 +1,8 @@
-import { Link } from "gatsby"
-import React from "react"
-import s from "styled-components"
-import { HOME_ROUTE } from "../../constants/routes"
-import Social from "./Social"
+import { Link } from 'gatsby'
+import React from 'react'
+import s from 'styled-components'
+import { HOME_ROUTE } from '../../constants/routes'
+import Social from './Social'
 
 const Wrapper = s.header`
   margin-bottom: 1.45rem;
