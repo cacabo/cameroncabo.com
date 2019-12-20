@@ -25,7 +25,7 @@ const Wrapper = s.div<{}>`
     display: inline-block;
     margin-right: 0.5rem;
     opacity: 0.5;
-      
+
     :hover,
     :active,
     :focus {
