@@ -16,6 +16,7 @@ import {
   InstagramIcon,
   MailIcon,
 } from '../shared'
+import { BLACK } from '../../constants/colors'
 
 const Wrapper = s.div<{}>`
   width: 100%;
@@ -25,6 +26,13 @@ const Wrapper = s.div<{}>`
     display: inline-block;
     margin-right: 0.5rem;
     opacity: 0.5;
+    color: ${BLACK} !important;
+    overflow: hidden;
+
+    svg {
+      margin-left: -5px;
+      transform: scale(0.64);
+    }
 
     :hover,
     :active,

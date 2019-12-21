@@ -2,7 +2,7 @@
 export const HOME_ROUTE = '/'
 export const FREELANCE_ROUTE = '/freelance'
 export const PROJECTS_ROUTE = '/projects'
-export const POSTS_ROUTE = '/posts'
+export const THOUGHTS_ROUTE = '/thoughts'
 export const DESIGN_ROUTE = '/design'
 
 // External routes

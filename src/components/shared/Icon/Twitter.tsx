@@ -1,7 +1,7 @@
 import React from 'react'
-import { IconProps } from './types'
+import { IIconProps } from './types'
 
-export const TwitterIcon = (props: IconProps) => (
+export const TwitterIcon = (props: IIconProps) => (
   <svg
     width={24}
     height={24}

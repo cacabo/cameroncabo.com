@@ -1,4 +1,4 @@
-export interface IconProps {
+export interface IIconProps {
   stroke?: string
   fill?: string
   width?: number
