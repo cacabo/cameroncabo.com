@@ -46,7 +46,7 @@ const Content = s.main`
 const Layout = ({ children }: { children: Children }): React.ReactElement => (
   <>
     <Nav />
-    <Body>
+    <Body id="top">
       <Content>{children}</Content>
       <Footer />
     </Body>

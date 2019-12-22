@@ -37,7 +37,7 @@ export default () => (
       const { edges: work } = data.allMarkdownRemark
       return (
         <>
-          <H2>Work</H2>
+          <H2 mb4>Work</H2>
           {work.map(
             ({
               node: {

@@ -12,7 +12,7 @@ import Work from './Work'
 
 export default () => (
   <>
-    <H1>Hi, I'm Cameron</H1>
+    <H1 mb4>Hi, I'm Cameron</H1>
     <Text>
       I want to leverage tech to help people learn more and live better. I study
       computer science and management in the{' '}
