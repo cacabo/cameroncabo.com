@@ -5,19 +5,20 @@ import { H2, InfoCard } from '../shared'
 export default () => (
   <StaticQuery
     query={graphql`
-      query EducationQuery {
+      query WorkQuery {
         allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/(education)/" } }
+          filter: { fileAbsolutePath: { regex: "/(work)/" } }
           sort: { order: ASC, fields: [frontmatter___order] }
         ) {
           edges {
             node {
               html
               frontmatter {
+                company
+                title
+                location
                 start
                 end
-                title
-                gpa
                 image {
                   childImageSharp {
                     fluid(maxHeight: 96) {
@@ -33,15 +34,15 @@ export default () => (
       }
     `}
     render={data => {
-      const { edges: edus } = data.allMarkdownRemark
+      const { edges: work } = data.allMarkdownRemark
       return (
         <>
-          <H2>Education</H2>
-          {edus.map(
+          <H2>Work</H2>
+          {work.map(
             ({
               node: {
                 html,
-                frontmatter: { start, end, title, gpa, image },
+                frontmatter: { company, title, location, start, end, image },
               },
             }) => {
               const { childImageSharp, publicURL } = image
@@ -49,9 +50,9 @@ export default () => (
                 (childImageSharp && childImageSharp.fluid) || undefined
               return (
                 <InfoCard
-                  key={title}
-                  title={title}
-                  subtitle={`${start} - ${end} • ${gpa} GPA`}
+                  key={`${title}-${company}`}
+                  title={`${title}, ${company}`}
+                  subtitle={`${start} - ${end} • ${location}`}
                   fluidImage={fluid}
                   imageUrl={publicURL}
                   body={html}

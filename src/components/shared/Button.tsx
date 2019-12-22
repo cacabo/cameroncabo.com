@@ -1,6 +1,6 @@
 import s from 'styled-components'
 import { Link } from 'gatsby'
-import { BLUE, SNOW, SKY, TEAL } from '../../constants/colors'
+import { BLUE, SNOW, SKY, TEAL, BORDER } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 
 export const Buttons = s.div`
@@ -30,7 +30,7 @@ export const Button = s(Link)`
   padding-right: 0.8rem;
   background: ${SNOW} none repeat scroll 0% 0%;
   font-weight: ${MEDIUM_FONT_WEIGHT};
-  box-shadow: rgba(15, 15, 15, 0.1) 0px 1px 2px, ${TEAL} 0px 0px 0px 1px inset;
+  box-shadow: ${BORDER} 0px 1px 2px, ${TEAL} 0px 0px 0px 1px inset;
 
   &:hover,
   &:focus,

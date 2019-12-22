@@ -8,6 +8,7 @@ import {
   THOUGHTS_ROUTE,
 } from '../../constants/routes'
 import Education from './Education'
+import Work from './Work'
 
 export default () => (
   <>
@@ -38,5 +39,6 @@ export default () => (
     </Buttons>
 
     <Education />
+    <Work />
   </>
 )

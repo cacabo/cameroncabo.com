@@ -5,12 +5,30 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, title }) {
+// TODO
+const IMAGE = 'https://ccabo.s3-us-west-1.amazonaws.com/solin-cover.png'
+
+type Meta =
+  | { name: string; content: any; property?: undefined }
+  | { property: string; content: any; name?: undefined }
+
+export interface ISEOProps {
+  description?: string
+  lang?: string
+  meta?: Meta[]
+  title?: string
+}
+
+function SEO({
+  description = '',
+  lang = 'en',
+  meta = [],
+  title = '',
+}: ISEOProps): ReactElement {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -40,6 +58,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          name: `author`,
+          content: `SOLIN Fitness <cameroncabo@gmail.com>`,
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -50,6 +72,22 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:url`,
+          content: `solinfitness.com`,
+        },
+        {
+          property: `og:image`,
+          content: IMAGE,
+        },
+        {
+          property: `og:image-alt`,
+          content: 'SOLIN logo',
+        },
+        {
+          name: `twitter:site`,
+          content: `solinfitness.com`,
         },
         {
           name: `twitter:card`,
@@ -67,22 +105,17 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `twitter:image`,
+          content: IMAGE,
+        },
+        {
+          name: `twitter:image-alt`,
+          content: 'SOLIN logo',
+        },
       ].concat(meta)}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO

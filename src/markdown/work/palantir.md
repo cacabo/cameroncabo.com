@@ -5,6 +5,7 @@ company: 'Palantir'
 title: 'Forward Deployed Software Engineer Intern'
 location: 'London, UK'
 image: '../../images/work/palantir.jpg'
+order: 0
 ---
 
 - Developed pipelines for running containerized optimizations on client software and analyzing results.
