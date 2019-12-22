@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 820 820" style="enable-background:new 0 0 820 820;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);}
+	.st1{clip-path:url(#SVGID_4_);fill:url(#SVGID_5_);}
+	.st2{clip-path:url(#SVGID_7_);}
+	.st3{fill:url(#SVGID_8_);}
+</style>
+<g>
+	<defs>
+		<circle id="SVGID_1_" cx="410" cy="410" r="410"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g class="st0">
+		<defs>
+			<path id="SVGID_3_" d="M659.7,820H160.3C72.1,820,0,747.9,0,659.7V160.3C0,72.1,72.1,0,160.3,0h499.4C747.9,0,820,72.1,820,160.3
+				v499.4C820,747.9,747.9,820,659.7,820z"/>
+		</defs>
+		<clipPath id="SVGID_4_">
+			<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+		</clipPath>
+		
+			<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="410" y1="-9.094947e-13" x2="410" y2="820" gradientTransform="matrix(1 0 0 -1 0 820)">
+			<stop  offset="0" style="stop-color:#FF3871"/>
+			<stop  offset="1" style="stop-color:#FF4C7C"/>
+		</linearGradient>
+		<rect class="st1" width="820" height="820"/>
+	</g>
+	<g class="st0">
+		<defs>
+			<path id="SVGID_6_" d="M659.7,820H160.3C72.1,820,0,747.9,0,659.7V160.3C0,72.1,72.1,0,160.3,0h499.4C747.9,0,820,72.1,820,160.3
+				v499.4C820,747.9,747.9,820,659.7,820z"/>
+		</defs>
+		<clipPath id="SVGID_7_">
+			<use xlink:href="#SVGID_6_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st2">
+			<g>
+				
+					<linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="410" y1="-9.094947e-13" x2="410" y2="471.0518" gradientTransform="matrix(1 0 0 -1 0 820)">
+					<stop  offset="0" style="stop-color:#4559FF;stop-opacity:0.85"/>
+					<stop  offset="1" style="stop-color:#5065FF"/>
+				</linearGradient>
+				<path class="st3" d="M820,407.3V820H0V407.3c100.8-100.8,251.9-50.9,404,0C559.1,459.2,715.2,512.1,820,407.3z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

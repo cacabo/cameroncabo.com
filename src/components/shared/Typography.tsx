@@ -16,7 +16,7 @@ interface IText {
   children?: Children
 }
 
-export const Text = s.p(
+export const Text = s.p<IText>(
   ({ sm, color, lighter, lightest, mb0, mb1, mb2, mb3, mb4 }: IText) => css`
     ${mb0 && `margin-bottom: 0;`}
     ${mb1 && `margin-bottom: 0.25rem;`}

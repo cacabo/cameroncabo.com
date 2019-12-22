@@ -1,8 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { H2, H4, Text } from '../shared'
+import { H2, InfoCard } from '../shared'
 
-// TODO images
 export default () => (
   <StaticQuery
     query={graphql`
@@ -19,6 +18,13 @@ export default () => (
                 end
                 title
                 gpa
+                image {
+                  childImageSharp {
+                    fluid(maxHeight: 96) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }
@@ -34,18 +40,24 @@ export default () => (
             ({
               node: {
                 html,
-                frontmatter: { start, end, title, gpa },
+                frontmatter: {
+                  start,
+                  end,
+                  title,
+                  gpa,
+                  image: {
+                    childImageSharp: { fluid },
+                  },
+                },
               },
             }) => (
-              <div key={title}>
-                <H4 key={title} mb1>
-                  {title}
-                </H4>
-                <Text sm lighter mb2>
-                  {start} - {end} / {gpa} GPA
-                </Text>
-                <div dangerouslySetInnerHTML={{ __html: html }} />
-              </div>
+              <InfoCard
+                key={title}
+                title={title}
+                subtitle={`${start} - ${end} • ${gpa} GPA`}
+                fluidImage={fluid}
+                body={html}
+              />
             ),
           )}
         </>

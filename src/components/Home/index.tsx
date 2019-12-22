@@ -33,8 +33,8 @@ export default () => (
     </Text>
 
     <Buttons>
-      <Button to={PROJECTS_ROUTE}>View my projects</Button>
-      <Button to={THOUGHTS_ROUTE}>Read some thoughts</Button>
+      <Button to={PROJECTS_ROUTE}>Projects</Button>
+      <Button to={THOUGHTS_ROUTE}>Thoughts</Button>
     </Buttons>
 
     <Education />
