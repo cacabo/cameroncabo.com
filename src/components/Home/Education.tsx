@@ -36,7 +36,9 @@ export default () => (
       const { edges: edus } = data.allMarkdownRemark
       return (
         <>
-          <H2 mb4>Education</H2>
+          <H2 mb4 mt4>
+            Education
+          </H2>
           {edus.map(
             ({
               node: {

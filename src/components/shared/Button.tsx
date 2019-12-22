@@ -4,7 +4,6 @@ import { BLUE, SNOW, SKY, TEAL, BORDER } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 
 export const Buttons = s.div`
-  margin-bottom: 1rem;
   width: 100%;
 
   a,
@@ -31,6 +30,7 @@ export const Button = s(Link)`
   background: ${SNOW} none repeat scroll 0% 0%;
   font-weight: ${MEDIUM_FONT_WEIGHT};
   box-shadow: ${BORDER} 0px 1px 2px, ${TEAL} 0px 0px 0px 1px inset;
+  margin-bottom: 1rem;
 
   &:hover,
   &:focus,

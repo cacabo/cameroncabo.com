@@ -27,6 +27,15 @@ const Content = s.div`
   }
 `
 
+export const Row = s.div<{}>`
+  width: 100%;
+  display: flex;
+`
+
+export const Flex = s.div<{}>`
+  flex: 1;
+`
+
 interface IInfoCard {
   title: string
   subtitle?: string
@@ -43,13 +52,13 @@ export const InfoCard = ({
   imageUrl,
 }: IInfoCard) => (
   <Card>
-    <div style={{ display: 'flex' }}>
-      <div style={{ flex: 1 }}>
+    <Row>
+      <Flex>
         <H4 mb1>{title}</H4>
         <Text lighter mb2 sm>
           {subtitle}
         </Text>
-      </div>
+      </Flex>
       {(fluidImage || imageUrl) && (
         <div
           style={{
@@ -69,7 +78,7 @@ export const InfoCard = ({
           )}
         </div>
       )}
-    </div>
+    </Row>
     <Content dangerouslySetInnerHTML={{ __html: body }} />
   </Card>
 )

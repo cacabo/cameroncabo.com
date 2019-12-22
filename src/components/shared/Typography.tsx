@@ -8,6 +8,11 @@ interface IText {
   mb2?: boolean
   mb3?: boolean
   mb4?: boolean
+  mt0?: boolean
+  mt1?: boolean
+  mt2?: boolean
+  mt3?: boolean
+  mt4?: boolean
   sm?: boolean
   color?: string
   lighter?: boolean
@@ -16,12 +21,32 @@ interface IText {
 }
 
 export const Text = s.p<IText>(
-  ({ sm, color, lighter, lightest, mb0, mb1, mb2, mb3, mb4 }: IText) => css`
+  ({
+    sm,
+    color,
+    lighter,
+    lightest,
+    mb0,
+    mb1,
+    mb2,
+    mb3,
+    mb4,
+    mt0,
+    mt1,
+    mt2,
+    mt3,
+    mt4,
+  }: IText) => css`
     ${mb0 && `margin-bottom: 0;`}
     ${mb1 && `margin-bottom: 0.25rem;`}
     ${mb2 && `margin-bottom: 0.5rem;`}
     ${mb3 && `margin-bottom: 0.75rem;`}
     ${mb4 && `margin-bottom: 1rem;`}
+    ${mt0 && `padding-top: 0;`}
+    ${mt1 && `padding-top: 0.25rem;`}
+    ${mt2 && `padding-top: 0.5rem;`}
+    ${mt3 && `padding-top: 0.75rem;`}
+    ${mt4 && `padding-top: 1rem;`}
     ${sm && `font-size: 80%;`}
     ${color && `color: ${color};`}
     ${lighter && `opacity: 0.8;`}

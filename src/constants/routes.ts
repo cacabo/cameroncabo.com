@@ -5,6 +5,9 @@ export const PROJECTS_ROUTE = '/projects'
 export const THOUGHTS_ROUTE = '/thoughts'
 export const DESIGN_ROUTE = '/design'
 
+// File routes
+export const RESUME_ROUTE = '/resume.pdf'
+
 // External routes
 export const CONTACT_ROUTE = 'mailto:cameroncabo@gmail.com'
 export const INSTAGRAM_ROUTE = 'https://www.instagram.com/cameroncabo'

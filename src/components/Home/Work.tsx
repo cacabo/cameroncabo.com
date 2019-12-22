@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { H2, InfoCard } from '../shared'
+import { H2, InfoCard, Button } from '../shared'
+import { RESUME_ROUTE } from '../../constants/routes'
 
 export default () => (
   <StaticQuery
@@ -37,7 +38,9 @@ export default () => (
       const { edges: work } = data.allMarkdownRemark
       return (
         <>
-          <H2 mb4>Work</H2>
+          <H2 mb4 mt4>
+            Work
+          </H2>
           {work.map(
             ({
               node: {
@@ -60,6 +63,9 @@ export default () => (
               )
             },
           )}
+          <Button as="a" href={RESUME_ROUTE} target="_BLANK">
+            View my resume &rarr;
+          </Button>
         </>
       )
     }}
