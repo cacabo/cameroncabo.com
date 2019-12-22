@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import s from 'styled-components'
-import { H1, Text, Row, Flex, Button, Buttons } from '../shared'
+import { H1, Text, FlexRow, Flex, Button, Buttons } from '../shared'
 import {
   GITHUB_ROUTE,
   INSTAGRAM_ROUTE,
@@ -22,13 +22,14 @@ const ImgWrapper = s.div<{}>`
   margin-right: calc(0.5rem + 2.5%);
 `
 
+// TODO mobile responsiveness
 export default () => (
   <StaticQuery
     query={graphql`
       query {
         file(relativePath: { eq: "me.jpg" }) {
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 256) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -36,7 +37,7 @@ export default () => (
       }
     `}
     render={data => (
-      <Row>
+      <FlexRow>
         <ImgWrapper>
           <Img
             fluid={data.file.childImageSharp.fluid}
@@ -67,7 +68,7 @@ export default () => (
             <Button to={THOUGHTS_ROUTE}>Thoughts</Button>
           </Buttons>
         </Flex>
-      </Row>
+      </FlexRow>
     )}
   />
 )

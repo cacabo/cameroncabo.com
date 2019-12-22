@@ -6,13 +6,16 @@ import Nav from './Nav'
 import './Layout.css'
 import Footer from './Footer'
 import { BLACK, TEAL } from '../constants/colors'
+import { SIDEBAR_WIDTH, minWidth, DESKTOP } from '../constants/measurements'
+import { Container } from './shared'
 
 const Body = s.div`
-  width: 80vw;
-  margin-left: 20vw;
-  maxWidth: 960px;
-  padding: 1rem 1rem 0 1rem;
-  paddingTop: 0;
+  margin-left: ${SIDEBAR_WIDTH};
+  padding-top: 1rem;
+
+  ${minWidth(DESKTOP)} {
+    margin-right: ${SIDEBAR_WIDTH};
+  }
 
   p a,
   li a {
@@ -47,8 +50,10 @@ const Layout = ({ children }: { children: Children }): React.ReactElement => (
   <>
     <Nav />
     <Body id="top">
-      <Content>{children}</Content>
-      <Footer />
+      <Container>
+        <Content>{children}</Content>
+        <Footer />
+      </Container>
     </Body>
   </>
 )

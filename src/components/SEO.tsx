@@ -1,15 +1,8 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React, { ReactElement } from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-// TODO
+// TODO metadata image
 const IMAGE = 'https://ccabo.s3-us-west-1.amazonaws.com/solin-cover.png'
 
 type Meta =
@@ -44,14 +37,14 @@ function SEO({
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const { title: siteTitle } = site.siteMetadata
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={title ? `${title} | ${siteTitle}` : siteTitle}
       meta={[
         {
           name: `description`,

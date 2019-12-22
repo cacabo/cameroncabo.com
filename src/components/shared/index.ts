@@ -1,4 +1,5 @@
 export * from './Button'
 export * from './Card'
 export * from './Icon'
+export * from './Grid'
 export * from './Typography'

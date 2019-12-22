@@ -39,6 +39,10 @@ const Wrapper = s.div<{}>`
     :focus {
       opacity: 0.8;
     }
+
+    :last-child {
+      margin-right: 0;
+    }
   }
 `
 

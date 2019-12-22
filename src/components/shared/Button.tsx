@@ -2,6 +2,7 @@ import s from 'styled-components'
 import { Link } from 'gatsby'
 import { BLUE, SNOW, SKY, TEAL, BORDER } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
+import { BORDER_RADIUS } from '../../constants/measurements'
 
 export const Buttons = s.div`
   width: 100%;
@@ -22,7 +23,7 @@ export const Button = s(Link)`
   justify-content: center;
   white-space: nowrap;
   height: 36px;
-  border-radius: 3px;
+  border-radius: ${BORDER_RADIUS};
   color: ${BLUE};
   line-height: 1;
   padding-left: 0.8rem;

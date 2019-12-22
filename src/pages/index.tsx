@@ -6,7 +6,7 @@ import Home from '../components/Home'
 // TODO favicon
 export default () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO />
     <Home />
   </Layout>
 )
