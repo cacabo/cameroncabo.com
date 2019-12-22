@@ -1,9 +1,10 @@
 import s from 'styled-components'
 import { Link } from 'gatsby'
-import { BLUE, BLACK, SNOW, SKY, TEAL } from '../../constants/colors'
+import { BLUE, SNOW, SKY, TEAL } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 
 export const Buttons = s.div`
+  margin-bottom: 1rem;
   width: 100%;
 
   a,

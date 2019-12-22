@@ -4,7 +4,11 @@ import { Children } from '../../types'
 import { TEAL, BLACK } from '../../constants/colors'
 
 interface IText {
-  noMargin?: boolean
+  mb0?: boolean
+  mb1?: boolean
+  mb2?: boolean
+  mb3?: boolean
+  mb4?: boolean
   sm?: boolean
   color?: string
   lighter?: boolean
@@ -13,8 +17,12 @@ interface IText {
 }
 
 export const Text = s.p(
-  ({ noMargin, sm, color, lighter, lightest }: IText) => css`
-    ${noMargin && `margin: 0;`}
+  ({ sm, color, lighter, lightest, mb0, mb1, mb2, mb3, mb4 }: IText) => css`
+    ${mb0 && `margin-bottom: 0;`}
+    ${mb1 && `margin-bottom: 0.25rem;`}
+    ${mb2 && `margin-bottom: 0.5rem;`}
+    ${mb3 && `margin-bottom: 0.75rem;`}
+    ${mb4 && `margin-bottom: 1rem;`}
     ${sm && `font-size: 80%;`}
     ${color && `color: ${color};`}
     ${lighter && `opacity: 0.8;`}
@@ -43,8 +51,17 @@ export const Text = s.p(
   `,
 )
 
-export const Title = ({ children, ...props }: IText) => (
-  <Text as="h1" {...props}>
+type TextType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
+
+const textGenerator = (type: TextType) => ({ children, ...props }: IText) => (
+  <Text as={type} {...props}>
     {children}
   </Text>
 )
+
+export const H1 = textGenerator('h1')
+export const H2 = textGenerator('h2')
+export const H3 = textGenerator('h3')
+export const H4 = textGenerator('h4')
+export const H5 = textGenerator('h5')
+export const H6 = textGenerator('h6')

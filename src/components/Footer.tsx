@@ -10,7 +10,7 @@ const Footer = s.footer`
 
 export default (): React.ReactElement => (
   <Footer>
-    <Text sm noMargin lightest>
+    <Text sm mb0 lightest>
       Cameron Cabo &copy; {new Date().getFullYear()}
     </Text>
   </Footer>

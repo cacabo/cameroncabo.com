@@ -18,6 +18,8 @@ const Content = s.main`
   min-height: calc(100vh - 64px);
 `
 
+// TODO spacing
+// TODO mobile responsiveness
 const Layout = ({ children }: { children: Children }): React.ReactElement => (
   <>
     <Nav />
