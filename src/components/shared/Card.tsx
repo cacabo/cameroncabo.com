@@ -1,22 +1,40 @@
 import React from 'react'
-import s from 'styled-components'
+import s, { css } from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { H4, Text } from './Typography'
 import { FlexRow, Flex } from './Grid'
-import { BORDER } from '../../constants/colors'
+import { BORDER, BLACK_ALPHA, TRANSPARENT } from '../../constants/colors'
 import { BORDER_RADIUS, PHONE, maxWidth } from '../../constants/measurements'
 
-export const Card = s.div<{}>`
-  border: 1px solid ${BORDER};
-  border-radius: ${BORDER_RADIUS};
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: ${BORDER} 0px 1px 2px;
+interface ICard {
+  shade0?: boolean
+  shade1?: boolean
+  shade2?: boolean
+  shade3?: boolean
+  shade4?: boolean
+}
 
-  ${maxWidth(PHONE)} {
-    padding: 0.5rem;
-  }
-`
+export const Card = s.div<ICard>(
+  ({ shade0, shade2, shade3, shade4 }) => css`
+    border: 1px solid ${BORDER};
+    border-radius: ${BORDER_RADIUS};
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: ${shade0
+      ? '0'
+      : shade2
+      ? `${BLACK_ALPHA(0.2)} 0px 1px 4px`
+      : shade3
+      ? `${BLACK_ALPHA(0.3)} 0px 2px 6px`
+      : shade4
+      ? `${BLACK_ALPHA(0.4)} 0px 3px 8px`
+      : `${BLACK_ALPHA(0.1)} 0px 1px 2px;`};
+
+    ${maxWidth(PHONE)} {
+      padding: 0.5rem;
+    }
+  `,
+)
 
 const Content = s.div`
   li {

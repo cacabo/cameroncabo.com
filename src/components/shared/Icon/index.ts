@@ -1,3 +1,4 @@
+export * from './ExternalLink'
 export * from './Facebook'
 export * from './GitHub'
 export * from './Instagram'

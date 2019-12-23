@@ -3,6 +3,7 @@ export const WHITE = '#ffffff'
 export const BLACK = '#000000'
 export const BLACK_ALPHA = (a: number) => `rgba(0, 0, 0, ${a})`
 export const BORDER = BLACK_ALPHA(0.1)
+export const TRANSPARENT = 'transparent'
 
 // Colors
 export const SNOW = '#f2f8ff'

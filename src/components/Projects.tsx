@@ -1,18 +1,17 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { H2, Button } from '../shared'
-import { PROJECTS_ROUTE } from '../../constants/routes'
-import ProjectPreview from '../ProjectPreview'
+import { H1, Button, HR } from './shared'
+import { HOME_ROUTE } from '../constants/routes'
+import ProjectPreview from './ProjectPreview'
 
 export default () => (
   <StaticQuery
     query={graphql`
-      query ProjectsQuery {
+      query RecentProjectsQuery {
         allMarkdownRemark(
           filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
           sort: { order: ASC, fields: [frontmatter___order] }
-          limit: 2
         ) {
           edges {
             node {
@@ -22,6 +21,8 @@ export default () => (
                 description
                 path
                 technologies
+                start
+                end
                 color
                 image {
                   childImageSharp {
@@ -40,9 +41,7 @@ export default () => (
       const { edges } = data.allMarkdownRemark
       return (
         <>
-          <H2 mb4 mt4>
-            Recent Projects
-          </H2>
+          <H1>Projects</H1>
           {edges.map(({ node: { frontmatter } }) => {
             const {
               title,
@@ -52,7 +51,8 @@ export default () => (
             } = frontmatter
             return <ProjectPreview key={title} fluid={fluid} {...frontmatter} />
           })}
-          <Button to={PROJECTS_ROUTE}>View all projects &rarr;</Button>
+          <HR />
+          <Button to={HOME_ROUTE}>&larr; Back to home</Button>
         </>
       )
     }}

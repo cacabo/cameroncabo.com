@@ -1,6 +1,7 @@
 import React from 'react'
 import s, { css } from 'styled-components'
 import { Children } from '../../types'
+import { BORDER } from '../../constants/colors'
 
 interface IText {
   mb0?: boolean
@@ -54,6 +55,8 @@ export const Text = s.p<IText>(
   `,
 )
 
+export const P = Text
+
 type TextType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
 
 const textGenerator = (type: TextType) => ({ children, ...props }: IText) => (
@@ -68,3 +71,8 @@ export const H3 = textGenerator('h3')
 export const H4 = textGenerator('h4')
 export const H5 = textGenerator('h5')
 export const H6 = textGenerator('h6')
+
+export const HR = s.hr`
+  background: ${BORDER};
+  height: 2px;
+`

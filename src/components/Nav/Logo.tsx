@@ -16,8 +16,8 @@ const CircleLink = s(Link)<{}>`
   color: ${BLACK};
   line-height: ${SIZE};
   font-weight: ${MEDIUM_FONT_WEIGHT};
-	display:table;
-	width: auto;
+	display: table;
+	width: calc(${SIZE} + 4px);
 `
 
 const LogoText = s.span<{}>`
