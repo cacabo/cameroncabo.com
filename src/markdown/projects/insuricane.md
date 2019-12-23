@@ -9,7 +9,7 @@ start: 'September 2018'
 end: 'September 2018'
 image: '../../images/projects/insuricane.png'
 color: '#404040'
-order: 2
+order: 4
 ---
 
 Built alongside Andrew Cui, Jacob Beckerman, and Jimmy Xue (all fellow M&T class of 2020) exploring the social impact space.

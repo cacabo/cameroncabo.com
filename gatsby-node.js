@@ -1,4 +1,4 @@
-const path = require(`path`)
+const path = require('path')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
@@ -27,11 +27,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    const { path } = node.frontmatter
-    if (!path) return
+    const { frontmatter } = node
+    const { path: mdPath } = frontmatter
+    if (!mdPath) return
 
     createPage({
-      path,
+      path: mdPath,
       component: blogPostTemplate,
       context: {}, // additional data can be passed via context
     })

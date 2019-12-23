@@ -9,6 +9,7 @@ start: 'February 2018'
 end: 'March 2019'
 image: '../../images/projects/nalda.png'
 color: '#66ccff'
+order: 3
 ---
 
 ### History
