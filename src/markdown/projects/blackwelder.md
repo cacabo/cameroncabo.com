@@ -8,5 +8,6 @@ start: null
 end: null
 image: '../../images/projects/blackwelder.png'
 color: '#636363'
+tags: ['freelance', 'web']
 order: 9
 ---

@@ -8,6 +8,7 @@ start: 'April 2018'
 end: 'April 2018'
 image: '../../images/projects/globle.png'
 color: '#83c9c6'
+tags: ['class', 'web']
 order: 0
 ---
 

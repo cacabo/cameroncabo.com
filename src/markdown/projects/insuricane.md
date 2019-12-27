@@ -9,6 +9,7 @@ start: 'September 2018'
 end: 'September 2018'
 image: '../../images/projects/insuricane.png'
 color: '#404040'
+tags: ['hackathon', 'web']
 order: 4
 ---
 

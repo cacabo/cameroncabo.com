@@ -9,5 +9,6 @@ start: null
 end: null
 image: '../../images/projects/youthhack.png'
 color: '#f4cc00'
+tags: ['club', 'web']
 order: 8
 ---

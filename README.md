@@ -13,5 +13,7 @@ Personal website built with Gatsby and TypeScript.
 - [ ] CIS 197 website project
 - [ ] Penn Basics project
 - [ ] Penn Clubs project
-- [ ] GigFitter project
+- [x] GigFitter project
 - [ ] Favicon as SVG or PNG (transparent background)
+- [x] Add tags to projects
+- [ ] Projects filter by tags

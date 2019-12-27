@@ -9,7 +9,8 @@ start: 'September 2017'
 end: 'December 2017'
 image: '../../images/projects/love-sylvie.png'
 color: '#aca0bb'
+tags: ['freelance', 'web']
 order: 6
 ---
 
-Working for an MBA on her direct-to-consumer perfume startup. I helped her build out an MVP with Rails. She later decided to pivot to using Shopify once she had the product and was ready to sell.
+Worked with a Wharton MBA on her direct-to-consumer perfume startup. I helped her build out an MVP with Rails. She later decided to pivot to using Shopify once she had the product and was ready to sell.

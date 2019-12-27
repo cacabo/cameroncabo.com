@@ -9,6 +9,7 @@ start: 'February 2018'
 end: 'March 2019'
 image: '../../images/projects/nalda.png'
 color: '#66ccff'
+tags: ['freelance', 'web', 'mobile']
 order: 3
 ---
 

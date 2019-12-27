@@ -7,6 +7,7 @@ start: 'November 2017'
 end: 'December 2017'
 image: '../../images/projects/facebook-clone.png'
 color: '#2465c1'
+tags: ['class', 'web']
 order: 10
 ---
 

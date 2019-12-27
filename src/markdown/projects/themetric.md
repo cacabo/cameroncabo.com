@@ -9,6 +9,7 @@ start: 'July 2017'
 end: 'Present'
 image: '../../images/projects/the-metric.png'
 color: '#008cff'
+tags: ['club', 'web']
 order: 2
 ---
 

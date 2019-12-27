@@ -9,6 +9,7 @@ start: 'April 2018'
 end: 'June 2018'
 image: '../../images/projects/flourish.png'
 color: '#39b988'
+tags: ['freelance', 'web', 'mobile']
 order: 5
 ---
 

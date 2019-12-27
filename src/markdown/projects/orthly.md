@@ -8,6 +8,7 @@ start: 'November 2018'
 end: 'November 2018'
 image: '../../images/projects/orthly.png'
 color: '#6fdbbb'
+tags: ['freelance', 'web']
 order: 1
 ---
 

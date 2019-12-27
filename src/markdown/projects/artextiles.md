@@ -9,5 +9,6 @@ start: null
 end: null
 image: '../../images/projects/ar-textiles.png'
 color: '#247bc1'
+tags: ['freelance', 'web']
 order: 7
 ---

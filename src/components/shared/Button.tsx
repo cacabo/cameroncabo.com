@@ -13,7 +13,14 @@ export const Buttons = s.div`
   }
 `
 
-export const Button = s(Link)`
+interface IButton {
+  color?: string
+  background?: string
+  hoverBackground?: string
+  border?: string
+}
+
+export const Button = s(Link)<IButton>`
   text-decoration: none;
   user-select: none;
   transition: background 120ms ease-in 0s;
@@ -24,18 +31,19 @@ export const Button = s(Link)`
   white-space: nowrap;
   height: 36px;
   border-radius: ${BORDER_RADIUS};
-  color: ${BLUE};
+  color: ${props => props.color || BLUE};
   line-height: 1;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
-  background: ${SNOW} none repeat scroll 0% 0%;
+  background: ${props => props.background || SNOW} none repeat scroll 0% 0%;
   font-weight: ${MEDIUM_FONT_WEIGHT};
-  box-shadow: ${BORDER} 0px 1px 2px, ${TEAL} 0px 0px 0px 1px inset;
+  box-shadow: ${BORDER} 0px 1px 2px, ${props =>
+  props.border || TEAL} 0px 0px 0px 1px inset;
   margin-bottom: 1rem;
 
   &:hover,
   &:focus,
   &:active {
-    background: ${SKY};
+    background: ${props => props.hoverBackground || props.background || SKY};
   }
 `

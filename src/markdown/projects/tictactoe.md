@@ -8,6 +8,7 @@ end: 'May 2017'
 repo: 'https://github.com/cacabo/tictactoe'
 image: '../../images/projects/tic-tac-toe.png'
 color: '#404040'
+tags: ['learning', 'web']
 order: 12
 ---
 
