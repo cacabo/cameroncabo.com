@@ -1,6 +1,6 @@
 ---
 title: 'Flourish'
-description: 'Micro donation platform enabling millenials to make more impactful contributions.'
+description: 'Mobile-first micro donation platform enabling millenials to make more impactful contributions with their spare money.'
 link: 'https://flourishchange.com/'
 path: '/projects/flourish'
 repo: null

@@ -2,7 +2,8 @@ const path = require('path')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
-  const blogPostTemplate = path.resolve(`src/templates/ProjectTemplate.tsx`)
+  const projectTemplate = path.resolve(`src/templates/ProjectTemplate.tsx`)
+  const thoughtTemplate = path.resolve(`src/templates/ThoughtTemplate.tsx`)
   const result = await graphql(`
     {
       allMarkdownRemark(
@@ -31,9 +32,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const { path: mdPath } = frontmatter
     if (!mdPath) return
 
+    let template = thoughtTemplate
+    if (mdPath.startsWith('/projects/')) {
+      template = projectTemplate
+    }
+
     createPage({
       path: mdPath,
-      component: blogPostTemplate,
+      component: template,
       context: {}, // additional data can be passed via context
     })
   })

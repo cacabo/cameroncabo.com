@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
 import { Children } from '../../types'
 import { BORDER } from '../../constants/colors'
+
+/**
+ * NOTE these are generic styles for ALL text
+ *
+ * To add specific styles to a specific text field (for example, `h1` tags, that
+ * should be done in the `Layout.css` file)
+ */
 
 interface IText {
   mb0?: boolean
@@ -20,6 +27,7 @@ interface IText {
   lightest?: boolean
   dangerouslySetInnerHTML?: any
   children?: Children
+  style?: CSSProperties
 }
 
 export const Text = s.p<IText>(
@@ -39,7 +47,6 @@ export const Text = s.p<IText>(
     mt3,
     mt4,
   }: IText) => css`
-    line-height: 1.45;
     ${mb0 && `margin-bottom: 0;`}
     ${mb1 && `margin-bottom: 0.25rem;`}
     ${mb2 && `margin-bottom: 0.5rem;`}

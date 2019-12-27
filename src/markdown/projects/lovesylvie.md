@@ -1,6 +1,6 @@
 ---
 title: 'Love Sylvie'
-description: 'Landing and referral page for a perfume startup focused on building an online brand.'
+description: 'Landing page and referral page for a perfume startup focused on building a unique D2C online brand.'
 link: 'http://www.lovesylvie.com'
 path: '/projects/love-sylvie'
 repo: 'https://github.com/cacabo/lovesylvie'

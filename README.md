@@ -21,7 +21,11 @@ Personal website built with Gatsby and TypeScript.
 - [ ] Projects filter by tags
 - [ ] Link to next project / other project from projects page
 - [ ] Link to next post / other posts from post page
-- [ ] Add color to project preview
+- [x] Add color to project preview
 - [ ] Add "collaborators" to projects
-- [ ] Forward from `/posts/...` to `/thoughts/...` on 404 page
-- [ ] Fix line height of h tags
+- [x] Forward from `/posts/...` to `/thoughts/...` on 404 page
+- [x] Fix line height of h tags
+- [ ] Change underline color for projects
+- [ ] Make technologies an array for projects
+- [ ] Add thoughts on gig economy and equality
+- [ ] Add thoughts on semesterly focus

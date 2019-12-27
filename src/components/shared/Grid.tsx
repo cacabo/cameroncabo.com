@@ -106,16 +106,14 @@ const ColWrapper = s.div<IColProps>`
   overflow-y: ${({ overflowY }) => overflowY || 'visible'};
   overflow-x: visible;
 
-  ${maxWidth(PHONE)} {
-    ${({ sm }) =>
-      sm &&
-      `
-      width: ${percent(sm)};
-      flex: none;
-    `}
+  ${({ sm }) =>
+    sm &&
+    `
+    width: ${percent(sm)};
+    flex: none;
+  `}
 
-    ${({ offsetSm }) => offsetSm && `margin-left: ${percent(offsetSm)};`}
-  }
+  ${({ offsetSm }) => offsetSm && `margin-left: ${percent(offsetSm)};`}
 
   ${minWidth(PHONE)} {
     ${({ md }) =>

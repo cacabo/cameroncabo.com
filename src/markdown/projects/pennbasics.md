@@ -4,7 +4,7 @@ description: 'Aims to be the one-stop spot for the basics of living at Penn. Agg
 path: '/projects/penn-basics'
 link: 'https://pennbasics.com/'
 repo: 'https://github.com/pennlabs/pennbasics/'
-technologies: 'Next, React'
+technologies: 'React, MongoDB'
 start: 'October 2017'
 end: 'Present'
 image: '../../images/projects/penn-basics.png'
