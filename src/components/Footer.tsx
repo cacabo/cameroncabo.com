@@ -29,7 +29,7 @@ export default (): React.ReactElement => (
       </a>
     </Text>
     <Text sm mb0 lightest>
-      Cameron Cabo &copy; {new Date().getFullYear()}.
+      Cameron Cabo &copy; {new Date().getFullYear()}
     </Text>
   </Footer>
 )

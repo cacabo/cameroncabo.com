@@ -1,6 +1,6 @@
 export const SIDEBAR_WIDTH = '198px'
 
-export const HEADER_HEIGHT = '54px'
+export const HEADER_HEIGHT = '50px'
 export const HEADER_Z_INDEX = 1000
 
 export const MARGIN = '0.5rem'

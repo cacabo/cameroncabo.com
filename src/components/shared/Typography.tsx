@@ -14,7 +14,6 @@ interface IText {
   mt2?: boolean
   mt3?: boolean
   mt4?: boolean
-  lg?: boolean
   sm?: boolean
   color?: string
   lighter?: boolean
@@ -24,7 +23,6 @@ interface IText {
 
 export const Text = s.p<IText>(
   ({
-    lg,
     sm,
     color,
     lighter,
@@ -40,6 +38,7 @@ export const Text = s.p<IText>(
     mt3,
     mt4,
   }: IText) => css`
+    line-height: 1.45;
     ${mb0 && `margin-bottom: 0;`}
     ${mb1 && `margin-bottom: 0.25rem;`}
     ${mb2 && `margin-bottom: 0.5rem;`}
@@ -50,8 +49,7 @@ export const Text = s.p<IText>(
     ${mt2 && `padding-top: 0.5rem;`}
     ${mt3 && `padding-top: 0.75rem;`}
     ${mt4 && `padding-top: 1rem;`}
-    ${lg && `font-size: 125%; line-height: 1.375;`}
-    ${sm && `font-size: 80%; line-height: 0.88;`}
+    ${sm && `font-size: 80%; line-height: 1.16;`}
     ${color && `color: ${color};`}
     ${lighter && `opacity: 0.8;`}
     ${lightest && `opacity: 0.64;`}

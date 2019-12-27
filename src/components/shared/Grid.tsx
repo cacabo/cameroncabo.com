@@ -212,9 +212,22 @@ export const ThinContainer = ({
   </Container>
 )
 
-export const FlexRow = s.div<{}>`
+export const FlexRow = s.div<{ centerOnMobile?: boolean }>`
   width: 100%;
   display: flex;
+
+  ${props =>
+    props.centerOnMobile &&
+    `
+    ${maxWidth(PHONE)} {
+      display: block;
+      text-align: center;
+
+      > div {
+        display: inline-block;
+      }
+    }
+  `}
 `
 
 export const Flex = s.div<{}>`

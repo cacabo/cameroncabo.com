@@ -17,8 +17,13 @@ import {
   MailIcon,
 } from '../shared'
 import { BLACK } from '../../constants/colors'
+import {
+  maxWidth,
+  PHONE,
+  SHORT_ANIMATION_DURATION,
+} from '../../constants/measurements'
 
-const Wrapper = s.div<{}>`
+const Wrapper = s.div<{ active: boolean }>`
   width: 100%;
   text-align: left;
 
@@ -44,10 +49,25 @@ const Wrapper = s.div<{}>`
       margin-right: 0;
     }
   }
+
+  ${maxWidth(PHONE)} {
+    margin: 2vh 0 1vh 0;
+    transition: opacity ${SHORT_ANIMATION_DURATION + 200}ms ease;
+    opacity: ${props => (props.active ? 1 : 0)};
+
+    a {
+      margin-right: 1rem;
+
+      svg {
+        margin-left: 0px;
+        transform: scale(1);
+      }
+    }
+  }
 `
 
-export default () => (
-  <Wrapper>
+export default ({ active }) => (
+  <Wrapper active={active}>
     <a href={FACEBOOK_ROUTE} target="_BLANK">
       <FacebookIcon />
     </a>

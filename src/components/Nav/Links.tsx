@@ -10,6 +10,19 @@ import {
   CONTACT_ROUTE,
 } from '../../constants/routes'
 import { BLACK } from '../../constants/colors'
+import {
+  PHONE,
+  maxWidth,
+  SHORT_ANIMATION_DURATION,
+} from '../../constants/measurements'
+
+const Wrapper = s.div<{ active?: boolean }>`
+  ${maxWidth(PHONE)} {
+    margin-top: 1vh;
+    transition: opacity ${SHORT_ANIMATION_DURATION + 100}ms ease;
+    opacity: ${props => (props.active ? 1 : 0)};
+  }
+`
 
 const StyledLink = s(Link)<{}>`
   width: 100%;
@@ -24,6 +37,11 @@ const StyledLink = s(Link)<{}>`
   &:active {
       opacity: 1;
   }
+
+  ${maxWidth(PHONE)} {
+    margin: 1vh 0;
+    font-size: 125%;
+  }
 `
 
 const map = {
@@ -34,8 +52,8 @@ const map = {
   Design: DESIGN_ROUTE,
 }
 
-export default () => (
-  <div>
+export default ({ active }) => (
+  <Wrapper active={active}>
     {Object.keys(map).map(name => {
       const route = map[name]
       return (
@@ -47,5 +65,5 @@ export default () => (
     <StyledLink as="a" href={CONTACT_ROUTE}>
       Contact
     </StyledLink>
-  </div>
+  </Wrapper>
 )

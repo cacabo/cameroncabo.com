@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from 'styled-components'
 
-import { BORDER } from '../../constants/colors'
+import { BORDER, WHITE } from '../../constants/colors'
 import Logo from './Logo'
 import Links from './Links'
 import Social from './Social'
-import { SIDEBAR_WIDTH } from '../../constants/measurements'
+import {
+  SIDEBAR_WIDTH,
+  maxWidth,
+  PHONE,
+  SHORT_ANIMATION_DURATION,
+  HEADER_HEIGHT,
+  HEADER_Z_INDEX,
+} from '../../constants/measurements'
+import Bars from './Bars'
+import { Shade } from '../shared'
 
-const Wrapper = s.header`
+const Wrapper = s.header<{ active?: boolean }>`
   position: fixed;
   height: 100vh;
   width: ${SIDEBAR_WIDTH};
@@ -20,15 +29,52 @@ const Wrapper = s.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: ${HEADER_Z_INDEX};
+
+  ${maxWidth(PHONE)} {
+    height: auto;
+    max-height: 100vh;
+    width: 100vw;
+    border-right: 0;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    background: ${WHITE};
+    border-bottom: 1px solid ${BORDER};
+    display: block;
+    overflow: hidden;
+    transition: max-height ${SHORT_ANIMATION_DURATION}ms ease;
+
+    ${props => !props.active && `max-height: ${HEADER_HEIGHT};`}
+  }
 `
 
 // TODO mobile responsiveness
-const Header = () => (
-  <Wrapper>
-    <Logo />
-    <Links />
-    <Social />
-  </Wrapper>
-)
+// TODO add bars
+const Header = () => {
+  const [active, setActive] = useState<boolean>(false)
+  const [isNewlyMounted, setIsNewlyMounted] = useState<boolean>(true)
+
+  const toggle = () => {
+    if (isNewlyMounted) setIsNewlyMounted(false)
+    setActive(!active)
+  }
+
+  return (
+    <>
+      <Wrapper active={active}>
+        <Logo />
+        <Bars handleClick={toggle} />
+        <Links active={active} />
+        <Social active={active} />
+      </Wrapper>
+      <Shade
+        onClick={toggle}
+        show={active}
+        zIndex={HEADER_Z_INDEX - 1}
+        isNewlyMounted={isNewlyMounted}
+      />
+    </>
+  )
+}
 
 export default Header

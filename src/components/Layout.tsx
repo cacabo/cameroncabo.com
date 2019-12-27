@@ -6,7 +6,14 @@ import Nav from './Nav'
 import './Layout.css'
 import Footer from './Footer'
 import { BLACK, TEAL } from '../constants/colors'
-import { SIDEBAR_WIDTH, minWidth, DESKTOP } from '../constants/measurements'
+import {
+  SIDEBAR_WIDTH,
+  minWidth,
+  DESKTOP,
+  maxWidth,
+  PHONE,
+  HEADER_HEIGHT,
+} from '../constants/measurements'
 import { Container } from './shared'
 
 const Body = s.div`
@@ -15,6 +22,12 @@ const Body = s.div`
 
   ${minWidth(DESKTOP)} {
     margin-right: ${SIDEBAR_WIDTH};
+  }
+
+  ${maxWidth(PHONE)} {
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: ${HEADER_HEIGHT};
   }
 
   p,

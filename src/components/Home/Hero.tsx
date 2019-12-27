@@ -9,7 +9,13 @@ import {
   PROJECTS_ROUTE,
   THOUGHTS_ROUTE,
 } from '../../constants/routes'
-import { minWidth, DESKTOP, WIDESCREEN } from '../../constants/measurements'
+import {
+  minWidth,
+  DESKTOP,
+  WIDESCREEN,
+  maxWidth,
+  PHONE,
+} from '../../constants/measurements'
 
 const Wrapper = s.div<{}>`
   ${minWidth(DESKTOP)} {
@@ -31,6 +37,11 @@ const ImgWrapper = s.div<{}>`
   height: ${IMG_SIZE};
   overflow: hidden;
   margin-right: calc(0.5rem + 2.5%);
+
+  ${maxWidth(PHONE)} {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
 `
 
 // TODO mobile responsiveness
@@ -53,7 +64,7 @@ export default () => {
 
   return (
     <Wrapper>
-      <FlexRow>
+      <FlexRow centerOnMobile>
         <ImgWrapper>
           <Img fluid={fluid} style={{ width: IMG_SIZE, height: IMG_SIZE }} />
         </ImgWrapper>
