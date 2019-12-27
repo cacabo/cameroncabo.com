@@ -18,6 +18,8 @@ import { BORDER } from '../constants/colors'
 import { BORDER_RADIUS_LG } from '../constants/measurements'
 import { Tag } from '../components/shared/Tag'
 
+// TODO better mobile responsiveness
+
 class ColorGenerator {
   private static isHex = (c: string): boolean => c[0] === '#'
 
@@ -90,7 +92,6 @@ const Overview = s.div<{ background: string }>`
   background: ${props => props.background};
   width: calc(100% + 1rem);
   padding: 0.5rem;
-  margin-top: -0.5rem;
   margin-left: -0.5rem;
   margin-bottom: 1.5rem;
   border-radius: ${BORDER_RADIUS_LG};

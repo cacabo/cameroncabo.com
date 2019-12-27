@@ -28,7 +28,7 @@ export default ({
 }: IProjectPreivew) => (
   <Row margin={MARGIN} style={{ marginBottom: '1rem' }}>
     <Col sm={12} md={5} margin={MARGIN}>
-      <Card shade3 style={{ padding: 0, borderColor: color, borderWidth: 4 }}>
+      <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }}>
         <Link to={path}>
           <Img fluid={fluid} />
         </Link>

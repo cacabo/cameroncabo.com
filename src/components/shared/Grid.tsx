@@ -7,6 +7,9 @@ import {
   PHONE,
   TABLET,
   DESKTOP,
+  MARGIN,
+  MARGIN_LG,
+  WIDESCREEN,
 } from '../../constants/measurements'
 
 const percent = (numCols: number): string => (numCols / 12) * 100 + '%'
@@ -35,6 +38,11 @@ export const Container = s.div<IContainerTagProps>`
   ${minWidth(DESKTOP)} {
     padding-right: calc(0.5rem + 5%);
     padding-left: calc(0.5rem + 5%);
+  }
+
+  ${minWidth(WIDESCREEN)} {
+    padding-right: calc(0.5rem + 10%);
+    padding-left: calc(0.5rem + 10%);
   }
 `
 
@@ -211,4 +219,29 @@ export const FlexRow = s.div<{}>`
 
 export const Flex = s.div<{}>`
   flex: 1;
+`
+
+export const Masonry = s.div<{}>`
+  column-count: 2;
+  column-gap: ${MARGIN_LG};
+
+  ${maxWidth(PHONE)} {
+    column-count: 1;
+  }
+
+  ${minWidth(WIDESCREEN)} {
+    column-count: 3;
+  }
+
+  > div {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: ${MARGIN_LG};
+  }
+`
+
+export const BR = s.br`
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: block;
 `

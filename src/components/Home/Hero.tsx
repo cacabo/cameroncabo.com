@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import s from 'styled-components'
 import { H1, Text, FlexRow, Flex, Button, Buttons } from '../shared'
@@ -9,6 +9,17 @@ import {
   PROJECTS_ROUTE,
   THOUGHTS_ROUTE,
 } from '../../constants/routes'
+import { minWidth, DESKTOP, WIDESCREEN } from '../../constants/measurements'
+
+const Wrapper = s.div<{}>`
+  ${minWidth(DESKTOP)} {
+    padding: 5vh 0;
+  }
+
+  ${minWidth(WIDESCREEN)} {
+    padding: 10vh, 0;
+  }
+`
 
 const IMG_SIZE = '10rem'
 
@@ -23,9 +34,9 @@ const ImgWrapper = s.div<{}>`
 `
 
 // TODO mobile responsiveness
-export default () => (
-  <StaticQuery
-    query={graphql`
+export default () => {
+  const data = useStaticQuery(
+    graphql`
       query {
         file(relativePath: { eq: "me.jpg" }) {
           childImageSharp {
@@ -35,14 +46,16 @@ export default () => (
           }
         }
       }
-    `}
-    render={data => (
+    `,
+  )
+
+  const { fluid } = data.file.childImageSharp
+
+  return (
+    <Wrapper>
       <FlexRow>
         <ImgWrapper>
-          <Img
-            fluid={data.file.childImageSharp.fluid}
-            style={{ width: IMG_SIZE, height: IMG_SIZE }}
-          />
+          <Img fluid={fluid} style={{ width: IMG_SIZE, height: IMG_SIZE }} />
         </ImgWrapper>
         <Flex>
           <H1 mb4>Hi, I'm Cameron</H1>
@@ -69,6 +82,6 @@ export default () => (
           </Buttons>
         </Flex>
       </FlexRow>
-    )}
-  />
-)
+    </Wrapper>
+  )
+}
