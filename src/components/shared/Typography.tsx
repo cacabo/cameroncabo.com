@@ -56,8 +56,6 @@ export const Text = s.p<IText>(
   `,
 )
 
-export const P = Text
-
 type TextType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
 
 const textGenerator = (type: TextType) => ({ children, ...props }: IText) => (
@@ -66,6 +64,7 @@ const textGenerator = (type: TextType) => ({ children, ...props }: IText) => (
   </Text>
 )
 
+export const P = textGenerator('p')
 export const H1 = textGenerator('h1')
 export const H2 = textGenerator('h2')
 export const H3 = textGenerator('h3')

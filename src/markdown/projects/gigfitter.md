@@ -9,7 +9,7 @@ end: 'Present'
 image: '../../images/projects/gig-fitter.png'
 color: 'rgb(13, 95, 248)'
 tags: ['class', 'web']
-order: 0
+order: -1
 ---
 
 ### Overview

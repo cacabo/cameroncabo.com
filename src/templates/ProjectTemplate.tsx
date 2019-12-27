@@ -15,7 +15,7 @@ import {
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
 import { BORDER } from '../constants/colors'
-import { BORDER_RADIUS_LG } from '../constants/measurements'
+import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
 import { Tag } from '../components/shared/Tag'
 
 // TODO better mobile responsiveness
@@ -95,6 +95,12 @@ const Overview = s.div<{ background: string }>`
   margin-left: -0.5rem;
   margin-bottom: 1.5rem;
   border-radius: ${BORDER_RADIUS_LG};
+
+  ${maxWidth(PHONE)} {
+    border-radius: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 `
 
 const ImgWrapper = s.div<{ color: string }>`

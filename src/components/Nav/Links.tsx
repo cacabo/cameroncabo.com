@@ -14,11 +14,12 @@ import {
   PHONE,
   maxWidth,
   SHORT_ANIMATION_DURATION,
+  MARGIN_LG,
 } from '../../constants/measurements'
 
 const Wrapper = s.div<{ active?: boolean }>`
   ${maxWidth(PHONE)} {
-    margin-top: 1vh;
+    margin: ${MARGIN_LG} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 100}ms ease;
     opacity: ${props => (props.active ? 1 : 0)};
   }

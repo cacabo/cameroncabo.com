@@ -2,14 +2,13 @@
 title: 'Globle'
 description: 'Search engine implementation for CIS 555: Internet and Web Systems. Set of services to crawl, index, rank, query, and visualize assets across the web.'
 path: '/projects/globle'
-link: null
 technologies: 'Java, jQuery, AWS, S3, Apache Spark, MySQL, DynamoDB'
 start: 'April 2018'
 end: 'April 2018'
 image: '../../images/projects/globle.png'
 color: '#83c9c6'
 tags: ['class', 'web']
-order: 0
+order: 2
 ---
 
 Globle was a group project I build out at the end of my Junior year at UPenn. The major components were a web crawler, page indexer, page ranker, and API/web interface. We additionally built out an autocomplete engine for keeping track of the most common queries submitted by users.

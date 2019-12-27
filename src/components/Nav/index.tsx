@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import s from 'styled-components'
 
-import { BORDER, WHITE } from '../../constants/colors'
+import { BORDER, WHITE, BLACK_ALPHA } from '../../constants/colors'
 import Logo from './Logo'
 import Links from './Links'
 import Social from './Social'
@@ -12,6 +12,7 @@ import {
   SHORT_ANIMATION_DURATION,
   HEADER_HEIGHT,
   HEADER_Z_INDEX,
+  MARGIN,
 } from '../../constants/measurements'
 import Bars from './Bars'
 import { Shade } from '../shared'
@@ -36,13 +37,13 @@ const Wrapper = s.header<{ active?: boolean }>`
     max-height: 100vh;
     width: 100vw;
     border-right: 0;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+    padding: 0.4rem ${MARGIN};
     background: ${WHITE};
     border-bottom: 1px solid ${BORDER};
     display: block;
     overflow: hidden;
     transition: max-height ${SHORT_ANIMATION_DURATION}ms ease;
+    box-shadow: 0 1px 3px ${BLACK_ALPHA(0.15)};
 
     ${props => !props.active && `max-height: ${HEADER_HEIGHT};`}
   }

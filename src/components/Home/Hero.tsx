@@ -39,12 +39,11 @@ const ImgWrapper = s.div<{}>`
   margin-right: calc(0.5rem + 2.5%);
 
   ${maxWidth(PHONE)} {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
   }
 `
 
-// TODO mobile responsiveness
 export default () => {
   const data = useStaticQuery(
     graphql`
