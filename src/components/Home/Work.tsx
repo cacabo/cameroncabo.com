@@ -1,11 +1,11 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import { H2, InfoCard, Button } from '../shared'
+import { graphql, useStaticQuery } from 'gatsby'
+import { H3, InfoCard, Button } from '../shared'
 import { RESUME_ROUTE } from '../../constants/routes'
 
-export default () => (
-  <StaticQuery
-    query={graphql`
+export default () => {
+  const data = useStaticQuery(
+    graphql`
       query WorkQuery {
         allMarkdownRemark(
           filter: { fileAbsolutePath: { regex: "/(work)/" } }
@@ -33,41 +33,39 @@ export default () => (
           }
         }
       }
-    `}
-    render={data => {
-      const { edges: work } = data.allMarkdownRemark
-      return (
-        <>
-          <H2 mb4 mt4>
-            Work
-          </H2>
-          {work.map(
-            ({
-              node: {
-                html,
-                frontmatter: { company, title, location, start, end, image },
-              },
-            }) => {
-              const { childImageSharp, publicURL } = image
-              const fluid =
-                (childImageSharp && childImageSharp.fluid) || undefined
-              return (
-                <InfoCard
-                  key={`${title}-${company}`}
-                  title={`${title}, ${company}`}
-                  subtitle={`${start} - ${end} • ${location}`}
-                  fluidImage={fluid}
-                  imageUrl={publicURL}
-                  body={html}
-                />
-              )
-            },
-          )}
-          <Button as="a" href={RESUME_ROUTE} target="_BLANK">
-            View my resume &rarr;
-          </Button>
-        </>
-      )
-    }}
-  />
-)
+    `,
+  )
+
+  const { edges } = data.allMarkdownRemark
+  return (
+    <>
+      <H3 mb4 mt4>
+        Work
+      </H3>
+      {edges.map(
+        ({
+          node: {
+            html,
+            frontmatter: { company, title, location, start, end, image },
+          },
+        }) => {
+          const { childImageSharp, publicURL } = image
+          const fluid = (childImageSharp && childImageSharp.fluid) || undefined
+          return (
+            <InfoCard
+              key={`${title}-${company}`}
+              title={`${title}, ${company}`}
+              subtitle={`${start} - ${end} • ${location}`}
+              fluidImage={fluid}
+              imageUrl={publicURL}
+              body={html}
+            />
+          )
+        },
+      )}
+      <Button as="a" href={RESUME_ROUTE} target="_BLANK">
+        View my resume &rarr;
+      </Button>
+    </>
+  )
+}

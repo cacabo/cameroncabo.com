@@ -1,13 +1,13 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
-import { H2, Button } from '../shared'
+import { H3, Button } from '../shared'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 import ProjectPreview from '../ProjectPreview'
 
-export default () => (
-  <StaticQuery
-    query={graphql`
+export default () => {
+  const data = useStaticQuery(
+    graphql`
       query ProjectsQuery {
         allMarkdownRemark(
           filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
@@ -35,26 +35,25 @@ export default () => (
           }
         }
       }
-    `}
-    render={data => {
-      const { edges } = data.allMarkdownRemark
-      return (
-        <>
-          <H2 mb4 mt4>
-            Recent Projects
-          </H2>
-          {edges.map(({ node: { frontmatter } }) => {
-            const {
-              title,
-              image: {
-                childImageSharp: { fluid },
-              },
-            } = frontmatter
-            return <ProjectPreview key={title} fluid={fluid} {...frontmatter} />
-          })}
-          <Button to={PROJECTS_ROUTE}>View all projects &rarr;</Button>
-        </>
-      )
-    }}
-  />
-)
+    `,
+  )
+
+  const { edges } = data.allMarkdownRemark
+  return (
+    <>
+      <H3 mb4 mt4>
+        Recent Projects
+      </H3>
+      {edges.map(({ node: { frontmatter } }) => {
+        const {
+          title,
+          image: {
+            childImageSharp: { fluid },
+          },
+        } = frontmatter
+        return <ProjectPreview key={title} fluid={fluid} {...frontmatter} />
+      })}
+      <Button to={PROJECTS_ROUTE}>View all projects &rarr;</Button>
+    </>
+  )
+}

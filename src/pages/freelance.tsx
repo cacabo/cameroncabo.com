@@ -5,30 +5,47 @@ import {
   P,
   Buttons,
   Button,
-  Col,
-  Row,
   BR,
   Card,
+  Callout,
 } from '../components/shared'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { PROJECTS_ROUTE, CONTACT_ROUTE, HOME_ROUTE } from '../constants/routes'
-import { MARGIN } from '../constants/measurements'
 
 export default () => (
   <Layout>
     <SEO title="Freelance" />
-    <H1>Let's build something</H1>
+
+    <Callout backgroundImage="/images/freelance-backing.svg">
+      <BR />
+      <H1>Let's build something</H1>
+      <P>
+        I'm a web developer passionate for beautiful, well-planned, well-built,
+        and well-used products. Whatever you are imagining, drawing up,
+        building, or growing, I'd love to hear about it. Scroll through my work
+        and take the time to reach out—it can go a long way.
+      </P>
+      <Buttons>
+        <Button to={PROJECTS_ROUTE}>View my work</Button>
+        <Button to={CONTACT_ROUTE}>Contact me</Button>
+      </Buttons>
+      <BR />
+    </Callout>
+
+    <BR />
+
+    <H3>What I do best</H3>
+
     <P>
-      I'm a web developer passionate for beautiful, well-planned, well-built,
-      and well-used products. Whatever you are imagining, drawing up, building,
-      or growing, I'd love to hear about it. Scroll through my work and take the
-      time to reach out—it can go a long way.
+      I build sleek, user-centric websites. All of my work keeps to similar
+      practices allowing for rapid prototyping.
     </P>
-    <Buttons>
-      <Button to={PROJECTS_ROUTE}>View my work</Button>
-      <Button to={CONTACT_ROUTE}>Contact me</Button>
-    </Buttons>
+
+    <P>
+      Each website is completely personalized in content, structure, and design
+      in order to best accomplish what the site sets out to.
+    </P>
 
     <BR />
 
@@ -50,20 +67,6 @@ export default () => (
         products.
       </P>
     </Card>
-
-    <BR />
-
-    <H3>What I do best</H3>
-
-    <P>
-      I build sleek, user-centric websites. All of my work keeps to similar
-      practices allowing for rapid prototyping.
-    </P>
-
-    <P>
-      Each website is completely personalized in content, structure, and design
-      in order to best accomplish what the site sets out to.
-    </P>
 
     <BR />
 

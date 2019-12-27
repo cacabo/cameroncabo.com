@@ -18,6 +18,7 @@ interface IText {
   color?: string
   lighter?: boolean
   lightest?: boolean
+  dangerouslySetInnerHTML?: any
   children?: Children
 }
 

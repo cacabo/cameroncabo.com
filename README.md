@@ -24,3 +24,4 @@ Personal website built with Gatsby and TypeScript.
 - [ ] Add color to project preview
 - [ ] Add "collaborators" to projects
 - [ ] Forward from `/posts/...` to `/thoughts/...` on 404 page
+- [ ] Fix line height of h tags

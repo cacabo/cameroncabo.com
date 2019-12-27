@@ -1,13 +1,13 @@
 import React from 'react'
-import { Card, H2, H4, Row, Col, Text, Button } from '../shared'
+import { Card, H3, H4, Row, Col, Text, Button } from '../shared'
 import { MARGIN } from '../../constants/measurements'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 
 export default () => (
   <div>
-    <H2 mb4 mt4>
+    <H3 mb4 mt4>
       Technologies
-    </H2>
+    </H3>
 
     <Row margin={MARGIN}>
       <Col margin={MARGIN} sm={12} md={6}>

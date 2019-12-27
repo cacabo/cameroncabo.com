@@ -1,5 +1,15 @@
 import React from 'react'
-import { Card, H3, P, H2, Masonry, H1, BR, Button } from '../components/shared'
+import {
+  Card,
+  H3,
+  P,
+  H2,
+  Masonry,
+  H1,
+  BR,
+  Button,
+  Callout,
+} from '../components/shared'
 import { FluidObject } from 'gatsby-image'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -78,7 +88,7 @@ export default () => {
     <Layout>
       <SEO title="Design" />
 
-      <Card shade0 backgroundImage="url(/images/art-backing.svg)">
+      <Callout backgroundImage="/images/art-backing.svg">
         <BR />
         <H1 mb4>Design and creativity are in everything</H1>
         <P mb0>
@@ -87,7 +97,7 @@ export default () => {
           to all the work I do.
         </P>
         <BR />
-      </Card>
+      </Callout>
 
       <BR />
 
