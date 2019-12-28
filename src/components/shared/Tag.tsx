@@ -6,6 +6,7 @@ import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 interface ITag {
   color?: string
   background?: string
+  sm?: boolean
 }
 
 export const Tag = s.span<ITag>`
@@ -15,4 +16,5 @@ export const Tag = s.span<ITag>`
   padding: 2px 6px;
   margin-right: 8px;
   font-weight: ${MEDIUM_FONT_WEIGHT};
+  ${props => props.sm && `font-size: 80%;`}
 `

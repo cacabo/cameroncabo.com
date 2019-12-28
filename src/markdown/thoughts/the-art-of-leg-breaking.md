@@ -3,7 +3,7 @@ createdAt: '2017-08-20 22:55:48'
 updatedAt: '2017-09-02 03:58:10'
 title: 'The art of leg breaking—dealing with expected and unexpected change'
 path: '/thoughts/the-art-of-leg-breaking'
-subtile: "I wouldn't recommend it, though I did learn from it"
+subtitle: "I wouldn't recommend it, though I did learn from it"
 image: '../../images/thoughts/connor-and-bridge.jpg'
 caption: 'My friend Connor and I moodily perched above the Benjamin Franklin Bridge.'
 topics: ['thoughts']

@@ -25,15 +25,13 @@ Returning to the quote, not everyone is or wants to be an active Medium user. Th
 
 Yes, I want to write pieces which reflect on experiences and look ahead, though so too do I want to write about what I've worked on, on new technologies and trends, and on whatever else I find interesting. Further, I want to be able to organize my thoughts in a way not restricted by a generalized platform which is for a far wider audience. Last of all, I want my thoughts and writing to be directly connected to my other experiences, projects, and work. In this sense, Medium is not (entirely) for me. For the posts which I do fit Medium's platform, I'll be sure to cross-post with my Medium account.
 
-> If you think you are building a personal brand, you will not have the career you want because you will not be authentic.
-> Sheryl Sandberg
+> If you think you are building a personal brand, you will not have the career you want because you will not be authentic. <br /> _Sheryl Sandberg_
 
 [Adam Grant and Sheryl Sandberg's talk at Penn](http://www.thedp.com/article/2017/04/sheryl-sandberg-adam-grant-option-b) gave each attendant much to consider. They discussed topics ranging from grief, to gender inequality, to the search for success and meaning. The above quote, in particular, made me reconsider the way I presented myself, my projects, and my learning and growth.
 
 Sandberg stresses a key difference between one's personal brand and one's personal image—the latter natural and real, the former forced and deceptive. In looking at my website in this context, I realized I was more so constructing a personal brand than uplifting my personal image. Thus, in building the second iteration of my website, I worked towards more modest and straightforward graphics, typefaces, and layouts which focused on information, concepts, and learning above all else.
 
-> "Keep in mind that, above all, motivation and purpose are key."
-> Joshua Davidson, CEO & Founder of Chop Dawg
+> "Keep in mind that, above all, motivation and purpose are key." <br /> _Joshua Davidson, CEO & Founder of Chop Dawg_
 
 This quote goes without saying, though it was in context of this talk during a [YouthHack](http://youthhack.net) Sunday Session that it proved so impactful.
 

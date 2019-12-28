@@ -1,11 +1,11 @@
 ---
-createdAt: '2019-4-21 18:00:00'
-updatedAt: '2019-4-21 18:00:00'
+createdAt: '2019-04-21 18:00:00'
+updatedAt: '2019-04-21 18:00:00'
 title: 'The Ethics and Macroeconomics of Automation'
 path: '/thoughts/the-ethics-and-macroeconomics-of-automation'
-image: '../../images/thoughts/automation.jpg'
-caption: 'If you haven't watched Ex Machina, watch it twice.'
 subtitle: 'Finding purpose, work, and flow with our machine friends'
+image: '../../images/thoughts/automation.jpg'
+caption: "If you haven't watched Ex Machina, watch it twice."
 topics: ['thoughts', 'technology', 'ethics']
 ---
 

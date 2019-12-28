@@ -7,14 +7,13 @@ import ProjectPreview from './ProjectPreview'
 
 export default () => {
   const data = useStaticQuery(graphql`
-    query RecentProjectsQuery {
+    query AllProjectsQuery {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
         sort: { order: ASC, fields: [frontmatter___order] }
       ) {
         edges {
           node {
-            html
             frontmatter {
               title
               description

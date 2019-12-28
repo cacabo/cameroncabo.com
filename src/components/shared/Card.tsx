@@ -4,7 +4,12 @@ import Img, { FluidObject } from 'gatsby-image'
 import { H4, Text } from './Typography'
 import { FlexRow, Flex } from './Grid'
 import { BORDER, BLACK_ALPHA, TRANSPARENT } from '../../constants/colors'
-import { BORDER_RADIUS, PHONE, maxWidth } from '../../constants/measurements'
+import {
+  BORDER_RADIUS,
+  PHONE,
+  maxWidth,
+  SHORT_ANIMATION_DURATION,
+} from '../../constants/measurements'
 import { Children } from '../../types'
 
 interface ICard {
@@ -13,13 +18,14 @@ interface ICard {
   shade2?: boolean
   shade3?: boolean
   shade4?: boolean
+  hoverable?: boolean
   pad0?: boolean
   backgroundImage?: string
   style?: CSSProperties
 }
 
 const CardWrapper = s.div<ICard>(
-  ({ shade0, shade2, shade3, shade4, backgroundImage }) => css`
+  ({ shade0, shade2, shade3, shade4, backgroundImage, hoverable }) => css`
     border: 1px solid ${BORDER};
     border-radius: ${BORDER_RADIUS};
     margin-bottom: 1rem;
@@ -34,13 +40,23 @@ const CardWrapper = s.div<ICard>(
       shade0
         ? 'none'
         : shade2
-        ? `${BLACK_ALPHA(0.2)} 0px 1px 4px`
+        ? `${BLACK_ALPHA(0.2)} 0 1px 4px`
         : shade3
-        ? `${BLACK_ALPHA(0.3)} 0px 2px 6px`
+        ? `${BLACK_ALPHA(0.3)} 0 2px 6px`
         : shade4
-        ? `${BLACK_ALPHA(0.4)} 0px 3px 8px`
-        : `${BLACK_ALPHA(0.1)} 0px 1px 2px;`
+        ? `${BLACK_ALPHA(0.4)} 0 3px 8px`
+        : `${BLACK_ALPHA(0.1)} 0 1px 2px;`
     };
+
+    ${hoverable &&
+      `
+      transition: all ${SHORT_ANIMATION_DURATION}ms ease;
+
+      :hover {
+        box-shadow: ${BLACK_ALPHA(0.4)} 0 2px 12px;
+        transform: translateY(-2px);
+      }
+    `}
   `,
 )
 
@@ -66,7 +82,7 @@ export const Card = ({
   ...rest
 }: ICardContent & ICard) => (
   <CardWrapper {...rest}>
-    {fluid && <Img fluid={fluid} />}
+    {fluid && <CardImg fluid={fluid} />}
     <CardBody pad0={pad0}>{children}</CardBody>
   </CardWrapper>
 )
@@ -84,6 +100,10 @@ const Content = s.div`
       margin-bottom: 0;
     }
   }
+`
+
+const CardImg = s(Img)<{}>`
+  border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
 `
 
 const SIZE = '48px'

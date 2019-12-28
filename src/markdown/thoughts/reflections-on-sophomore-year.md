@@ -9,7 +9,7 @@ subtitle: 'Reconciling consistency and cyclicity'
 topics: ['thoughts']
 ---
 
-I think I speak for a lot of people when I say that this year was _quick_. By that, I mean truly scarily and excitingly quick. To give some context, I recently completed my sophomore year at Penn. Many people are quick to remind me that I am now halfway done with college (for the record, there's no need to remind me or any of my peers--we are well aware that college is zooming by).
+I think I speak for a lot of people when I say that this year was _quick_. By that, I mean truly scarily and excitingly quick. To give some context, I recently completed my sophomore year at Penn. Many people are quick to remind me that I am now halfway done with college (for the record, there's no need to remind me or any of my peers—we are well aware that college is zooming by).
 
 Time is an incredibly valuable resource, but so too are things that you can derive directly in exchange for time. We complete time-based transactions daily, be they for percentage points on tests, better grades on assignments, learning, money, mentorship, a more relaxed mind, a healthier body, a stronger friendship...
 
