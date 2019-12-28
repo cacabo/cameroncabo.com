@@ -21,7 +21,7 @@ Personal website built with Gatsby and TypeScript.
 - [x] Add color to project preview
 - [x] Forward from `/posts/...` to `/thoughts/...` on 404 page
 - [x] Fix line height of h tags
-- [ ] Favicon as SVG or PNG (transparent background)
+- [x] Favicon as SVG or PNG (transparent background)
 - [ ] Projects filter by tags
 - [ ] Filter by tags for thoughts
 - [ ] Projects filter by technology

@@ -27,8 +27,12 @@ export default () => (
         and take the time to reach out—it can go a long way.
       </P>
       <Buttons>
-        <Button to={PROJECTS_ROUTE}>View my work</Button>
-        <Button to={CONTACT_ROUTE}>Contact me</Button>
+        <Button style={{ marginBottom: 0 }} to={PROJECTS_ROUTE}>
+          View my work
+        </Button>
+        <Button style={{ marginBottom: 0 }} to={CONTACT_ROUTE}>
+          Contact me
+        </Button>
       </Buttons>
       <BR />
     </Callout>
