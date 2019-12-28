@@ -13,4 +13,8 @@ collaborators: ['Victor Chien', 'Caroline Okun', 'Prateek Agarwal']
 order: 11
 ---
 
-I went on to be a Project Manager for the course.
+As a team, we didn't have the bandwidth to scale this project after building it out for the class. Nonetheless, we learned a great deal about building a fullstack JS project and working in a group to deliver it on a timeline leveraging agile methodologies.
+
+In past year, we have seen friends at [The Signal](https://thesign.al/) build out [RealTalk@Penn](https://realtalkpenn.com/) which is a more curated version of what we aimed to build out. The project has solid momentum, and hopefully over time will accomplish the same end goal of making knowledge more accessible to all students at Penn.
+
+The next semester I was a Project Manager for this course and helped lead other groups in building out their own projects.

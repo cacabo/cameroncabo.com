@@ -16,18 +16,18 @@ Personal website built with Gatsby and TypeScript.
   - [ ] Get a better photo
 - [x] GigFitter project
 - [x] Add "collaborators" to projects
-- [ ] Favicon as SVG or PNG (transparent background)
+- [x] Make technologies an array for projects
 - [x] Add tags to projects
+- [x] Add color to project preview
+- [x] Forward from `/posts/...` to `/thoughts/...` on 404 page
+- [x] Fix line height of h tags
+- [ ] Favicon as SVG or PNG (transparent background)
 - [ ] Projects filter by tags
 - [ ] Filter by tags for thoughts
 - [ ] Projects filter by technology
 - [ ] Link to next project / other project from projects page
 - [ ] Link to next post / other posts from post page
-- [x] Add color to project preview
-- [x] Forward from `/posts/...` to `/thoughts/...` on 404 page
-- [x] Fix line height of h tags
 - [ ] Change underline color on links for projects
-- [ ] Make technologies an array for projects
 - [ ] Add thoughts on gig economy and equality
 - [ ] Add thoughts on semesterly focus
 - [ ] General metadata image
