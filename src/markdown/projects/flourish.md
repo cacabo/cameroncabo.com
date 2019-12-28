@@ -10,6 +10,11 @@ end: 'June 2018'
 image: '../../images/projects/flourish.png'
 color: '#39b988'
 tags: ['freelance', 'web', 'mobile']
+collaborators:
+  [
+    '<a href="https://www.linkedin.com/in/braden-fineberg/" target="_BLANK">Braden Fineberg</a>',
+    '<a href="https://www.linkedin.com/in/adamrip/" target="_BLANK">Adam Ripley</a>',
+  ]
 order: 5
 ---
 

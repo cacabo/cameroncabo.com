@@ -15,7 +15,7 @@ import {
   Buttons,
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
-import { BORDER } from '../constants/colors'
+import { BORDER, BLACK } from '../constants/colors'
 import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
 
@@ -59,6 +59,7 @@ export default function Template({ data }) {
     description,
     link,
     technologies,
+    collaborators,
     start,
     end,
     color,
@@ -99,6 +100,23 @@ export default function Template({ data }) {
                   <strong>Technologies</strong>
                 </td>
                 <td>{technologies.join(', ')}</td>
+              </tr>
+            )}
+            {collaborators && (
+              <tr>
+                <td>
+                  <strong>Collaborators</strong>
+                </td>
+                <td>
+                  <P style={{ margin: 0, color: BLACK }}>
+                    {collaborators.map((c: string, idx: number) => (
+                      <React.Fragment key={c}>
+                        <span dangerouslySetInnerHTML={{ __html: c }} />
+                        {idx !== collaborators.length - 1 && ', '}
+                      </React.Fragment>
+                    ))}
+                  </P>
+                </td>
               </tr>
             )}
             {tags && (
@@ -158,6 +176,7 @@ export const pageQuery = graphql`
         path
         link
         technologies
+        collaborators
         start
         end
         color

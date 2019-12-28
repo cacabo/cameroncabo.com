@@ -10,5 +10,6 @@ end: null
 image: '../../images/projects/youthhack.png'
 color: '#f4cc00'
 tags: ['club', 'web']
+collaborators: ['Amit Gupta', 'David Ongchoco', 'Jonathan Mak']
 order: 8
 ---

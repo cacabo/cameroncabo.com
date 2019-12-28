@@ -9,6 +9,7 @@ end: 'May 2018'
 image: '../../images/projects/penn-qa.png'
 color: '#a8263d'
 tags: ['class', 'web']
+collaborators: ['Victor Chien', 'Caroline Okun', 'Prateek Agarwal']
 order: 11
 ---
 

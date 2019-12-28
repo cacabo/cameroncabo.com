@@ -10,6 +10,13 @@ end: 'Present'
 image: '../../images/projects/penn-basics.png'
 color: '#42A5F5'
 tags: ['project', 'web', 'penn labs']
+collaborators:
+  [
+    '<a href="https://pennlabs.org/" target="_BLANK">Penn Labs</a>',
+    '<a href="https://www.linkedin.com/in/peter-baile-chen-ba7847153/" target="_BLANK">Peter Baile Chen</a>',
+    '<a href="https://www.linkedin.com/in/phillip-hilliard-994235bb/" target="_BLANK">Phillip Hilliard</a>',
+    'Nihar Patil',
+  ]
 order: -2
 ---
 

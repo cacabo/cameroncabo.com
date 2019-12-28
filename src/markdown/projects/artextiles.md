@@ -9,6 +9,7 @@ start: 'April 2018'
 end: 'July 2018'
 image: '../../images/projects/ar-textiles.png'
 color: '#247bc1'
+collaborators: ['AR Textiles']
 tags: ['freelance', 'web']
 order: 7
 ---

@@ -8,6 +8,11 @@ start: 'November 2017'
 end: 'December 2017'
 image: '../../images/projects/facebook-clone.png'
 color: '#2465c1'
+collaborators:
+  [
+    '<a href="https://www.linkedin.com/in/terrence-jo-23a43a13a/" target="_BLANK">Terry Jo</a>',
+    '<a href="https://www.linkedin.com/in/victorchien8872/" target="_BLANK">Victor Chien</a>',
+  ]
 tags: ['class', 'web']
 order: 10
 ---

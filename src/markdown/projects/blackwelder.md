@@ -8,6 +8,10 @@ start: null
 end: null
 image: '../../images/projects/blackwelder.png'
 color: '#636363'
+collaborators:
+  [
+    '<a href="https://www.linkedin.com/in/louise-tanski/" target="_BLANK">Louise Tanski</a>',
+  ]
 tags: ['freelance', 'web']
 order: 9
 ---

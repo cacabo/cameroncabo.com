@@ -9,6 +9,11 @@ end: 'April 2018'
 image: '../../images/projects/globle.png'
 color: '#83c9c6'
 tags: ['class', 'web']
+collaborators: [
+  '<a href="https://www.linkedin.com/in/niharpatil/" target="_BLANK">Nihar Patil</a>',
+  '<a href="https://www.linkedin.com/in/somilgo/" target="_BLANK">Somil Govani</a>',
+  '<a href="https://www.linkedin.com/in/vibhav-jagwani-a12797135/" target="_BLANK">Vibhav Jagwani</a>',
+]
 order: 2
 ---
 

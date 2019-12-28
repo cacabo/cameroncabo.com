@@ -10,6 +10,7 @@ end: 'Present'
 image: '../../images/projects/penn-clubs.png'
 color: '#19508e'
 tags: ['project', 'web', 'penn labs']
+collaborators: ['<a href="https://pennlabs.org/" target="_BLANK">Penn Labs</a>']
 order: -3
 ---
 

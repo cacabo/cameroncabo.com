@@ -10,6 +10,13 @@ end: 'Present'
 image: '../../images/projects/the-metric.png'
 color: '#008cff'
 tags: ['club', 'web']
+collaborators:
+  [
+    '<a href="https://www.linkedin.com/in/thabo-dhlamini-2063b5137/" target="_BLANK">Thabo Dhlamini</a>',
+    '<a href="https://www.linkedin.com/in/jasonks/" target="_BLANK">Jason Kim</a>',
+    '<a href="https://www.linkedin.com/in/justin-iannacone-2020/" target="_BLANK">Justin Iannacone</a>',
+    '<a href="https://www.linkedin.com/in/maximyu/" target="_BLANK">Max Yulis</a>',
+  ]
 order: 2
 ---
 

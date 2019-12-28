@@ -19,6 +19,11 @@ end: 'March 2019'
 image: '../../images/projects/nalda.png'
 color: '#66ccff'
 tags: ['freelance', 'web', 'mobile']
+collaborators: [
+  '<a href="https://www.linkedin.com/in/samuel-c-joo-67082b95/" target="_BLANK">Sam Joo</a>',
+  '<a href="https://edward.kim/" target="_BLANK">Edward Kim</a>',
+  '<a href="https://www.linkedin.com/in/adamrip/" target="_BLANK">Adam Ripley</a>',
+]
 order: 3
 ---
 

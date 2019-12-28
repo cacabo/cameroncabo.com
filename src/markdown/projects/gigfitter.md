@@ -9,6 +9,12 @@ end: 'Present'
 image: '../../images/projects/gig-fitter.png'
 color: 'rgb(13, 95, 248)'
 tags: ['class', 'web']
+collaborators:
+  [
+    '<a href="https://www.linkedin.com/in/jordan-lei-782890130/" target="_BLANK">Jordan Lei</a>',
+    '<a href="https://www.linkedin.com/in/jeffreyxchen/" target="_BLANK">Jeffrey Chen</a>',
+    '<a href="https://www.linkedin.com/in/minjae-kwon-30895066/" target="_BLANK">Minjae Kwon</a>',
+  ]
 order: -1
 ---
 
