@@ -4,7 +4,7 @@ description: "An online publication with the mission to measure what's happening
 link: 'https://www.themetric.org/'
 path: '/projects/the-metric'
 repo: 'https://github.com/cacabo/themetric'
-technologies: 'Ruby on Rails, ERB, Ruby, jQuery'
+technologies: ['Ruby on Rails', 'ERB', 'jQuery']
 start: 'July 2017'
 end: 'Present'
 image: '../../images/projects/the-metric.png'

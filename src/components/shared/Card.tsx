@@ -9,6 +9,7 @@ import {
   PHONE,
   maxWidth,
   SHORT_ANIMATION_DURATION,
+  LONG_ANIMATION_DURATION,
 } from '../../constants/measurements'
 import { Children } from '../../types'
 
@@ -50,7 +51,8 @@ const CardWrapper = s.div<ICard>(
 
     ${hoverable &&
       `
-      transition: all ${SHORT_ANIMATION_DURATION}ms ease;
+      transition: box-shadow ${SHORT_ANIMATION_DURATION}ms ease;
+      transition: transform ${LONG_ANIMATION_DURATION}ms ease;
 
       :hover {
         box-shadow: ${BLACK_ALPHA(0.4)} 0 2px 12px;

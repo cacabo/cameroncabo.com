@@ -1,6 +1,6 @@
 ---
-createdAt: '2017-08-20 22:55:48'
-updatedAt: '2017-09-02 03:58:10'
+createdAt: '2017-08-20T22:55+08:00'
+updatedAt: '2017-09-02T03:58+08:00'
 title: 'The art of leg breaking—dealing with expected and unexpected change'
 path: '/thoughts/the-art-of-leg-breaking'
 subtitle: "I wouldn't recommend it, though I did learn from it"

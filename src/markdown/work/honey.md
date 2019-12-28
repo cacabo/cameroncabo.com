@@ -10,4 +10,4 @@ order: 3
 
 - Wrote middleware and REST API endpoints for web and mobile e-commerce platforms.
 - Worked within an agile engineering team to build out new production features.
-- Technologies: JavaScript, Git, Node, Express, React Native, React, Jest, jQuery.
+- **Tech:** JavaScript, Git, Node, Express, React Native, React, Jest, jQuery.

@@ -4,7 +4,7 @@ description: 'Central source of info about student orgs on campus. Aims to make 
 path: '/projects/penn-clubs'
 link: 'https://pennclubs.com/'
 repo: 'https://github.com/pennlabs/clubs/'
-technologies: 'Next, React'
+technologies: ['Next', 'React']
 start: 'August 2019'
 end: 'Present'
 image: '../../images/projects/penn-clubs.png'

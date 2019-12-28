@@ -4,7 +4,7 @@ description: 'Mobile-first micro donation platform enabling millenials to make m
 link: 'https://flourishchange.com/'
 path: '/projects/flourish'
 repo: null
-technologies: 'Node, React, Redux'
+technologies: ['Node', 'React', 'Redux', 'React Native']
 start: 'April 2018'
 end: 'June 2018'
 image: '../../images/projects/flourish.png'

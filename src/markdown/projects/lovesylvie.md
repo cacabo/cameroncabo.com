@@ -4,7 +4,7 @@ description: 'Landing page and referral page for a perfume startup focused on bu
 link: 'http://www.lovesylvie.com'
 path: '/projects/love-sylvie'
 repo: 'https://github.com/cacabo/lovesylvie'
-technologies: 'Rails, ERB, Ruby'
+technologies: ['Ruby on Rails', 'ERB']
 start: 'September 2017'
 end: 'December 2017'
 image: '../../images/projects/love-sylvie.png'

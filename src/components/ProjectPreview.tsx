@@ -33,7 +33,7 @@ interface IProjectPreivew {
   color: string
   title: string
   description: string
-  technologies: string
+  technologies: string[]
   start: string
   end: string
 }
@@ -71,7 +71,7 @@ export default ({
           </P>
           <P mb2>{description}</P>
           <P mb2>
-            <strong>Technologies:</strong> {technologies}
+            <strong>Technologies:</strong> {technologies.join(', ')}
           </P>
           <Button {...colorProps} to={path} style={{ marginBottom: 0 }}>
             Read more

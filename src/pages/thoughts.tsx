@@ -1,9 +1,12 @@
 import React from 'react'
-import { Card, H3, P, H1, Row, Col, Masonry, Tag } from '../components/shared'
+import { useStaticQuery, graphql } from 'gatsby'
+
+import { H1, Masonry, Button } from '../components/shared'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import { BLACK } from '../constants/colors'
+import ThoughtPreview from '../components/ThoughtPreview'
+import { HOME_ROUTE } from '../constants/routes'
+import Timestamp from '../components/Timestamp'
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -16,6 +19,8 @@ export default () => {
           node {
             frontmatter {
               title
+              createdAt(fromNow: true)
+              updatedAt(fromNow: true)
               path
               topics
               subtitle
@@ -39,43 +44,11 @@ export default () => {
       <SEO title="Thoughts" />
       <H1>Thoughts</H1>
       <Masonry>
-        {edges.map(
-          ({
-            node: {
-              frontmatter: { title, path, subtitle, image, topics },
-            },
-          }) => (
-            <Link
-              to={path}
-              style={{
-                textDecoration: 'none',
-                display: 'inline-block',
-                width: '100%',
-                cursor: 'pointer',
-              }}
-            >
-              <Card
-                key={title}
-                fluid={image && image.childImageSharp.fluid}
-                hoverable
-              >
-                <H3 mb2 style={{ color: BLACK }}>
-                  {title}
-                </H3>
-                <P mb2 style={{ color: BLACK }} lighter>
-                  {subtitle}
-                </P>
-                {topics &&
-                  topics.map((t: string) => (
-                    <Tag sm key={t}>
-                      {t}
-                    </Tag>
-                  ))}
-              </Card>
-            </Link>
-          ),
-        )}
+        {edges.map(({ node: { frontmatter } }) => (
+          <ThoughtPreview {...frontmatter} />
+        ))}
       </Masonry>
+      <Button to={HOME_ROUTE}>&larr; Back to home</Button>
     </Layout>
   )
 }

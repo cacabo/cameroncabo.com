@@ -1,6 +1,6 @@
 import s, { css } from 'styled-components'
 import { fadeIn, fadeOut } from './animations'
-import { LONG_ANIMATION_DURATION } from '../../constants/measurements'
+import { SHORT_ANIMATION_DURATION } from '../../constants/measurements'
 import { BLACK_ALPHA } from '../../constants/colors'
 
 interface IShadeProps {
@@ -22,13 +22,13 @@ export const Shade = s.div<IShadeProps>(
 
     overflow-x: hidden;
     overflow-y: hidden;
-    background: ${BLACK_ALPHA(0.5)};
+    background: ${BLACK_ALPHA(0.75)};
     z-index: ${zIndex};
     text-align: center;
 
     animation-name: ${isNewlyMounted ? '' : show ? fadeIn : fadeOut};
 
-    animation-duration: ${LONG_ANIMATION_DURATION}ms;
+    animation-duration: ${SHORT_ANIMATION_DURATION}ms;
     max-height: ${show ? '100vh' : '0vh'};
     opacity: ${show ? '1' : '0'};
   `,

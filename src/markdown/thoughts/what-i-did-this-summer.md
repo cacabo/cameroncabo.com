@@ -1,6 +1,6 @@
 ---
-createdAt: '2018-08-6 8:56:30'
-updatedAt: '2018-08-6 8:56:30'
+createdAt: '2018-08-06T08:56+08:00'
+updatedAt: '2018-08-06T08:56+08:00'
 title: 'What I did this summer'
 path: '/thoughts/what-i-did-this-summer'
 image: '../../images/thoughts/summer.jpg'
@@ -65,7 +65,7 @@ I find myself happiest after an unplanned, dynamic, and draining weekend explori
 
 There's a lot more to what makes humans happy and purposeful than computers, skyscrapers, and networks.
 
-> All I got is a little bit of space and time drawing shapes and lines of the world we made > _Mac Miller on Small Worlds_
+> All I got is a little bit of space and time drawing shapes and lines of the world we made <br /> _Mac Miller on Small Worlds_
 
 #### I learned an incredible amount from the people around me, and I am incredibly energized for year 3 at Penn.
 
@@ -73,6 +73,6 @@ My fellow PayPal interns are now some of my best friends. I'm excited to keep in
 
 I'm really fortunate to have the opportunity to lead the life I'm leading. This summer was an incredible mix of fun, travel, uncertainty, and belonging. Always keep in mind that when you look back on your experiences, you largely remember the triggers, transitions, peaks, and troughs the most. I'm fortunate to say that I have a lot of those.
 
-Life is moving absurdly quickly--one moment I'm in Philly, the next LA, the next San Jose; one moment I'm building an incremental improvement on one of the world's largest fintech platforms, the next I'm scrapping together a company of my own, the next I'm navigating a dirt road high above Lake Tahoe, the next I'm studying harder than seemingly ever before to glean the most possible from my time at Penn...
+Life is moving absurdly quickly—one moment I'm in Philly, the next LA, the next San Jose; one moment I'm building an incremental improvement on one of the world's largest fintech platforms, the next I'm scrapping together a company of my own, the next I'm navigating a dirt road high above Lake Tahoe, the next I'm studying harder than seemingly ever before to glean the most possible from my time at Penn...
 
-I choose the word “absurdly” because I struggle to wrap my head around the progress and dynamism around me every day. I go to bed with my head spinning and wake up at once charged, confused, and passionate. I'm pretty troubled by many things going on in the world at large from the [environment](https://www.nature.com/articles/d41586-018-06876-2), to [Pittsburgh](https://en.wikipedia.org/wiki/Pittsburgh_synagogue_shooting), to [the border](https://www.nbcnews.com/news/us-news/sent-trump-soldiers-arrive-border-migrant-caravan-pushes-north-n930751), to [Syria](https://www.theguardian.com/world/2018/nov/03/idlib-jeremy-hunt-syria-russia-turkey), to [Brazil](https://www.washingtonpost.com/business/2018/11/02/democracy-is-danger-all-over-world-brazil-is-just-latest-example/?noredirect=on&utm_term=.a1131b9a6533). It's easy to feel powerless in light of things like this. And yet every day is a day to grow, learn, and hopefully have an impact on others or at least put yourself in a better position to have impact further down the line.
+I choose the word "absurdly" because I struggle to wrap my head around the progress and dynamism around me every day. I go to bed with my head spinning and wake up at once charged, confused, and passionate. I'm pretty troubled by many things going on in the world at large from the [environment](https://www.nature.com/articles/d41586-018-06876-2), to [Pittsburgh](https://en.wikipedia.org/wiki/Pittsburgh_synagogue_shooting), to [the border](https://www.nbcnews.com/news/us-news/sent-trump-soldiers-arrive-border-migrant-caravan-pushes-north-n930751), to [Syria](https://www.theguardian.com/world/2018/nov/03/idlib-jeremy-hunt-syria-russia-turkey), to [Brazil](https://www.washingtonpost.com/business/2018/11/02/democracy-is-danger-all-over-world-brazil-is-just-latest-example/?noredirect=on&utm_term=.a1131b9a6533). It's easy to feel powerless in light of things like this. And yet every day is a day to grow, learn, and hopefully have an impact on others or at least put yourself in a better position to have impact further down the line.

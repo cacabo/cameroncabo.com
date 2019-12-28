@@ -49,8 +49,6 @@ const Wrapper = s.header<{ active?: boolean }>`
   }
 `
 
-// TODO mobile responsiveness
-// TODO add bars
 const Header = () => {
   const [active, setActive] = useState<boolean>(false)
   const [isNewlyMounted, setIsNewlyMounted] = useState<boolean>(true)

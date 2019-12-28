@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -6,16 +6,15 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { Button, H1, HR, P, Callout, Tag, BR } from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
+import Timestamp from '../components/Timestamp'
 
-// TODO other links like GitHub
 export default function Template({ data }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
+  const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const {
     createdAt,
     updatedAt,
     title,
-    path,
     subtitle,
     topics,
     caption,
@@ -37,6 +36,8 @@ export default function Template({ data }) {
         </P>
       )}
 
+      <Timestamp createdAt={createdAt} updatedAt={updatedAt} />
+
       {image && (
         <Callout style={{ padding: 0 }}>
           <Img
@@ -50,8 +51,6 @@ export default function Template({ data }) {
           {caption}
         </P>
       )}
-
-      {/* TODO other content */}
 
       <div
         className="blog-post-content"
@@ -68,10 +67,9 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
-        createdAt
-        updatedAt
+        createdAt(fromNow: true)
+        updatedAt(fromNow: true)
         title
-        path
         subtitle
         topics
         caption

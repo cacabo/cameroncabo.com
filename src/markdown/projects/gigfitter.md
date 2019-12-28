@@ -3,7 +3,7 @@ title: 'GigFitter'
 description: 'Helping gig economy workers find the jobs and times that work best for them.'
 path: '/projects/gigfitter'
 link: 'https://www.gigfitter.com'
-technologies: 'TypeScript, Gatsby'
+technologies: ['TypeScript', 'Gatsby']
 start: 'September 2019'
 end: 'Present'
 image: '../../images/projects/gig-fitter.png'

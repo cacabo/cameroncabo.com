@@ -13,3 +13,4 @@ order: 2
 - Exercised \$100K budget to dynamically introduce incentives at checkout.
 - Markedly improved conversion rates through targeted A/B tests.
 - Re-architected and consolidated modal components used throughout the checkout app for better device compatibility and a more consistent UI.
+- **Tech:** JavaScript, Java

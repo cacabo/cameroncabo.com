@@ -4,7 +4,16 @@ description: 'Web app for curated listings, articles, and videos for exploring c
 link: 'https://nalda.herokuapp.com'
 path: '/projects/nalda'
 repo: 'https://github.com/adamripley98/nalda'
-technologies: 'Node, React, Redux, Google Maps API, Amazon S3, Passport, MongoDB'
+technologies:
+  [
+    'Node',
+    'React',
+    'Redux',
+    'Google Maps API',
+    'Amazon S3',
+    'Passport',
+    'MongoDB',
+  ]
 start: 'February 2018'
 end: 'March 2019'
 image: '../../images/projects/nalda.png'

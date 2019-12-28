@@ -1,6 +1,6 @@
 ---
-createdAt: '2017-05-30 15:21:36'
-updatedAt: '2017-06-06 20:40:03'
+createdAt: '2017-05-30T15:21+08:00'
+updatedAt: '2017-06-06T20:40+08:00'
 title: 'Building the blog—the thought process'
 path: '/thoughts/building-the-blog-the-thought-process'
 subtitle: 'Building a platform I can contribute to and learn from'

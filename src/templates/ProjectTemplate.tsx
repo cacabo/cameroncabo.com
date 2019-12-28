@@ -19,7 +19,7 @@ import { BORDER } from '../constants/colors'
 import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
 
-// TODO better mobile responsiveness
+// TODO why are `technologies` not showing up?
 
 const Overview = s.div<{ background: string }>`
   background: ${props => props.background};
@@ -51,9 +51,8 @@ const ImgWrapper = s.div<{ color: string }>`
   }
 `
 
-// TODO other links like GitHub
 export default function Template({ data }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
+  const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const {
     title,
@@ -94,12 +93,14 @@ export default function Template({ data }) {
               </td>
               <td>{start === end ? start : `${start} - ${end}`}</td>
             </tr>
-            <tr>
-              <td>
-                <strong>Technologies</strong>
-              </td>
-              <td>{technologies}</td>
-            </tr>
+            {technologies && (
+              <tr>
+                <td>
+                  <strong>Technologies</strong>
+                </td>
+                <td>{technologies.join(', ')}</td>
+              </tr>
+            )}
             {tags && (
               <tr>
                 <td>

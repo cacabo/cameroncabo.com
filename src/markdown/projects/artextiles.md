@@ -4,7 +4,7 @@ description: 'Website for a Textiles Company operating out of the US and CA.'
 link: 'http://artextiles.us'
 path: '/projects/ar-textiles'
 repo: 'https://github.com/cacabo/artextiles'
-technologies: 'HTML, CSS, JavaScript'
+technologies: ['HTML', 'CSS', 'JavaScript']
 start: 'April 2018'
 end: 'July 2018'
 image: '../../images/projects/ar-textiles.png'

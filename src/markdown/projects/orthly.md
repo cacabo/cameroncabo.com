@@ -3,7 +3,7 @@ title: 'Orthly'
 description: 'Assisted in building a landing page for Orthly: a company who provides invisible aligners to patients for a fraction of the cost of traditional methods like braces or Invisalign.'
 path: '/projects/orthly'
 link: 'https://orthly.com'
-technologies: 'React, Gatsby, Netlify, TypeScript'
+technologies: ['React', 'Gatsby', 'Netlify', 'TypeScript']
 start: 'November 2018'
 end: 'November 2018'
 image: '../../images/projects/orthly.png'
