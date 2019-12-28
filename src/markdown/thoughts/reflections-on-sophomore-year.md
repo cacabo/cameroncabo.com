@@ -1,6 +1,6 @@
 ---
-createdAt: '2018-06-23T13:40+08:00'
-updatedAt: '2018-06-23T13:40+08:00'
+createdAt: '2018-06-23T13:40-08:00'
+updatedAt: '2018-06-23T13:40-08:00'
 title: 'Reflections on sophomore year'
 path: '/thoughts/reflections-on-sophomore-year'
 image: '../../images/thoughts/adam.png'

@@ -1,6 +1,6 @@
 ---
-createdAt: '2018-08-06T08:56+08:00'
-updatedAt: '2018-08-06T08:56+08:00'
+createdAt: '2018-08-06T08:56-08:00'
+updatedAt: '2018-08-06T08:56-08:00'
 title: 'What I did this summer'
 path: '/thoughts/what-i-did-this-summer'
 image: '../../images/thoughts/summer.jpg'

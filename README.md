@@ -28,8 +28,11 @@ Personal website built with Gatsby and TypeScript.
 - [ ] Link to next project / other project from projects page
 - [ ] Link to next post / other posts from post page
 - [ ] Change underline color on links for projects
-- [ ] Add thoughts on gig economy and equality
-- [ ] Add thoughts on semesterly focus
 - [ ] General metadata image
 - [ ] Project metadata image
 - [ ] Thoughts metadata image
+
+### Thoughts
+
+- [x] Gig economy and equality
+- [ ] Add thoughts on semesterly focus
