@@ -26,10 +26,9 @@ const Wrapper = s.header<{ active?: boolean }>`
   border-right: 1px solid ${BORDER};
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   z-index: ${HEADER_Z_INDEX};
 
   ${maxWidth(PHONE)} {

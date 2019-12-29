@@ -26,6 +26,8 @@ import {
 const Wrapper = s.div<{ active: boolean }>`
   width: 100%;
   text-align: left;
+  position: absolute;
+  bottom: 0;
 
   a {
     display: inline-block;
@@ -51,6 +53,7 @@ const Wrapper = s.div<{ active: boolean }>`
   }
 
   ${maxWidth(PHONE)} {
+    position: relative;
     margin: 2vh 0 1vh 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 200}ms ease;
     opacity: ${props => (props.active ? 1 : 0)};

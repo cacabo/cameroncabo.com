@@ -10,9 +10,12 @@ const MOBILE_SIZE = '2rem'
 const Logo = s.img<{}>`
   width: ${SIZE};
   margin-bottom: 0;
+  position: absolute;
+  top: 1rem;
 
   ${maxWidth(PHONE)} {
     width: ${MOBILE_SIZE};
+    position: relative;
   }
 `
 
