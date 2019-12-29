@@ -56,6 +56,7 @@
     "dev": "yarn develop",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "serve": "gatsby serve",
+    "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },
   "repository": {

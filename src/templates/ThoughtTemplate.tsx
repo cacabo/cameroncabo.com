@@ -18,10 +18,10 @@ export default function Template({ data }) {
     subtitle,
     topics,
     caption,
-    image = {},
+    image,
   } = frontmatter
 
-  const { fluid } = image.childImageSharp
+  const { fluid } = (image && image.childImageSharp) || {}
   const src: string | undefined = (fluid && fluid.src) || undefined
 
   return (
