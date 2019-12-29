@@ -75,6 +75,8 @@ _Disclaimer: this is an adapted version of my final paper for URBS 452: Communit
 
 ---
 
+<div class="bibliography">
+
 <sup>1</sup> [aws.amazon.com/](https://aws.amazon.com/)
 
 <sup>2</sup> [vox.com/the-goods/2019/8/6/20757593/uber-lyft-traffic-congestion-pricing](https://www.vox.com/the-goods/2019/8/6/20757593/uber-lyft-traffic-congestion-pricing)
@@ -142,3 +144,5 @@ _Disclaimer: this is an adapted version of my final paper for URBS 452: Communit
 <sup>33</sup> [blog.lyft.com/posts/2018/6/6/how-lyft-works-with-public-transit-agencies-across-the-country-to-eliminate-transportation-barriers](https://blog.lyft.com/posts/2018/6/6/how-lyft-works-with-public-transit-agencies-across-the-country-to-eliminate-transportation-barriers)
 
 <sup>34</sup> [stratechery.com/2013/strategy-credit/](https://stratechery.com/2013/strategy-credit/)
+
+</div>

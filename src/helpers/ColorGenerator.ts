@@ -70,7 +70,7 @@ export default class ColorGenerator {
   public getColorProps = () => ({
     border: this.getWithAlpha(0.375),
     background: this.getWithAlpha(0.125),
-    hoverBackground: this.getWithAlpha(0.1875),
+    hoverbackground: this.getWithAlpha(0.1875),
     color: this.getDarker(),
   })
 }

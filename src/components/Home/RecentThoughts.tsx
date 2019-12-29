@@ -15,21 +15,7 @@ export default () => {
       ) {
         edges {
           node {
-            frontmatter {
-              title
-              createdAt(fromNow: true)
-              updatedAt(fromNow: true)
-              path
-              topics
-              subtitle
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 848) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
+            ...PartialThought
           }
         }
       }
@@ -44,7 +30,7 @@ export default () => {
       </H3>
       <Row margin={MARGIN}>
         {edges.map(({ node: { frontmatter } }) => (
-          <Col sm={12} md={6} margin={MARGIN}>
+          <Col sm={12} md={6} margin={MARGIN} key={frontmatter.title}>
             <ThoughtPreview {...frontmatter} />
           </Col>
         ))}

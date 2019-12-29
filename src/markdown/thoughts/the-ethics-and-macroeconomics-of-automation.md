@@ -47,6 +47,8 @@ _Disclaimer: this was written for EAS 203: Engineering Ethics at the University 
 
 ---
 
+<div class="bibliography">
+
 <sup>1</sup> Jacobs, Julian D. “Utilitarianism and the Market Economy.” Brown Political Review, Brown Political Review, 12 Apr. 2017, brownpoliticalreview.org/2017/04/utilitarianism-market-economy/..
 
 <sup>2</sup> Denise, Malcolm L. “Automation and unemployment: a management viewpoint.” The Annals of the American Academy of Political and Social Science 340, no. 1 (1962): 90-99.
@@ -86,3 +88,5 @@ _Disclaimer: this was written for EAS 203: Engineering Ethics at the University 
 <sup>19</sup> John Danaher, “Will life be worth living in a world without work?”
 
 <sup>20</sup> Morris, David Z. “Bill Gates Says Robots Should Be Taxed Like Workers.” Fortune. Accessed April 21, 2019\. http://fortune.com/2017/02/18/bill-gates-robot-taxes-automation/.
+
+</div>

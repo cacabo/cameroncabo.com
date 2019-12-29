@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
+import s from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -7,6 +8,18 @@ import SEO from '../components/SEO'
 import { Button, H1, HR, P, Callout, Tag, BR } from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
 import Timestamp from '../components/Timestamp'
+
+const Content = s.div<{}>`
+  .bibliography {
+    font-size: 80%;
+    margin-bottom: 1.5rem;
+
+    p {
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+  }
+`
 
 export default function Template({ data }) {
   const { markdownRemark } = data
@@ -55,7 +68,7 @@ export default function Template({ data }) {
         </P>
       )}
 
-      <div
+      <Content
         className="blog-post-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
@@ -68,23 +81,7 @@ export default function Template({ data }) {
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        createdAt(fromNow: true)
-        updatedAt(fromNow: true)
-        title
-        subtitle
-        topics
-        caption
-        image {
-          childImageSharp {
-            fluid(maxWidth: 1248) {
-              src
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
+      ...Thought
     }
   }
 `

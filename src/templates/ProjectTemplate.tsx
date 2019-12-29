@@ -168,28 +168,7 @@ export default function Template({ data }) {
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        title
-        repo
-        description
-        path
-        link
-        technologies
-        collaborators
-        start
-        end
-        color
-        tags
-        image {
-          childImageSharp {
-            fluid(maxWidth: 1248) {
-              src
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
+      ...Project
     }
   }
 `

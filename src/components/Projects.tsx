@@ -14,23 +14,7 @@ export default () => {
       ) {
         edges {
           node {
-            frontmatter {
-              title
-              description
-              path
-              technologies
-              start
-              tags
-              end
-              color
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 484) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
+            ...PartialProject
           }
         }
       }
