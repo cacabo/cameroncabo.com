@@ -22,15 +22,15 @@ Personal website built with Gatsby and TypeScript.
 - [x] Forward from `/posts/...` to `/thoughts/...` on 404 page
 - [x] Fix line height of h tags
 - [x] Favicon as SVG or PNG (transparent background)
-- [ ] Projects filter by tags
-- [ ] Filter by tags for thoughts
-- [ ] Projects filter by technology
+- [x] General metadata image
+- [x] Project metadata image
+- [x] Thoughts metadata image
+- [ ] Filter project by tags
+- [ ] Filter thoughts by tags
+- [ ] Filter project by technology
 - [ ] Link to next project / other project from projects page
 - [ ] Link to next post / other posts from post page
 - [ ] Change underline color on links for projects
-- [ ] General metadata image
-- [ ] Project metadata image
-- [ ] Thoughts metadata image
 
 ### Thoughts
 

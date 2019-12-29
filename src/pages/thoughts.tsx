@@ -1,12 +1,11 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { H1, Masonry, Button } from '../components/shared'
+import { H1, Masonry, Button, BR } from '../components/shared'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import ThoughtPreview from '../components/ThoughtPreview'
 import { HOME_ROUTE } from '../constants/routes'
-import Timestamp from '../components/Timestamp'
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -37,11 +36,13 @@ export default () => {
       }
     }
   `)
-  const { edges } = data.allMarkdownRemark
 
+  const { edges } = data.allMarkdownRemark
   return (
     <Layout>
       <SEO title="Thoughts" />
+
+      <BR />
       <H1>Thoughts</H1>
       <Masonry>
         {edges.map(({ node: { frontmatter } }) => (

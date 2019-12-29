@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import s from 'styled-components'
-import { H1, Text, FlexRow, Flex, Button, Buttons } from '../shared'
+import { H1, Text, FlexRow, Flex, Button, Buttons, BR } from '../shared'
 import {
   GITHUB_ROUTE,
   INSTAGRAM_ROUTE,
@@ -39,7 +39,6 @@ const ImgWrapper = s.div<{}>`
   margin-right: calc(0.5rem + 2.5%);
 
   ${maxWidth(PHONE)} {
-    margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
 `
@@ -63,6 +62,7 @@ export default () => {
 
   return (
     <Wrapper>
+      <BR />
       <FlexRow centerOnMobile>
         <ImgWrapper>
           <Img fluid={fluid} style={{ width: IMG_SIZE, height: IMG_SIZE }} />
@@ -92,6 +92,7 @@ export default () => {
           </Buttons>
         </Flex>
       </FlexRow>
+      <BR />
     </Wrapper>
   )
 }

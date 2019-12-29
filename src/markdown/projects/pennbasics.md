@@ -9,7 +9,7 @@ start: 'October 2017'
 end: 'Present'
 image: '../../images/projects/penn-basics.png'
 color: '#42A5F5'
-tags: ['project', 'web', 'penn labs']
+tags: ['project', 'web', 'penn labs', 'club']
 collaborators:
   [
     '<a href="https://pennlabs.org/" target="_BLANK">Penn Labs</a>',

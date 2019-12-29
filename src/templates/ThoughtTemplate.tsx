@@ -18,12 +18,15 @@ export default function Template({ data }) {
     subtitle,
     topics,
     caption,
-    image,
+    image = {},
   } = frontmatter
+
+  const { fluid } = image.childImageSharp
+  const src: string | undefined = (fluid && fluid.src) || undefined
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title} image={src} />
       <BR />
       <H1 mb2>{title}</H1>
       {subtitle && <P style={{ fontSize: '120%' }}>{subtitle}</P>}
@@ -38,11 +41,11 @@ export default function Template({ data }) {
 
       <Timestamp createdAt={createdAt} updatedAt={updatedAt} />
 
-      {image && (
+      {fluid && (
         <Callout style={{ padding: 0 }}>
           <Img
             style={{ marginBottom: caption ? '0.5rem' : '1.5rem' }}
-            fluid={image.childImageSharp.fluid}
+            fluid={fluid}
           />
         </Callout>
       )}
@@ -76,6 +79,7 @@ export const pageQuery = graphql`
         image {
           childImageSharp {
             fluid(maxWidth: 1248) {
+              src
               ...GatsbyImageSharpFluid
             }
           }

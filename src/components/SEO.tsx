@@ -3,7 +3,8 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 // TODO metadata image
-const IMAGE = 'https://ccabo.s3-us-west-1.amazonaws.com/solin-cover.png'
+const URL = 'https://www.cameroncabo.com'
+const IMAGE = '/images/cover.png'
 
 type Meta =
   | { name: string; content: any; property?: undefined }
@@ -14,12 +15,16 @@ export interface ISEOProps {
   lang?: string
   meta?: Meta[]
   title?: string
+  caption?: string
+  image?: string
 }
 
 function SEO({
   description = '',
   lang = 'en',
   meta = [],
+  image,
+  caption = '',
   title = '',
 }: ISEOProps): ReactElement {
   const { site } = useStaticQuery(
@@ -38,6 +43,8 @@ function SEO({
 
   const metaDescription = description || site.siteMetadata.description
   const { title: siteTitle } = site.siteMetadata
+  const metaTitle = title || siteTitle
+  const metaImage = `${URL}${image || IMAGE}`
 
   return (
     <Helmet
@@ -52,11 +59,11 @@ function SEO({
         },
         {
           name: `author`,
-          content: `SOLIN Fitness <cameroncabo@gmail.com>`,
+          content: `Cameron Cabo <cameroncabo@gmail.com>`,
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -68,19 +75,19 @@ function SEO({
         },
         {
           property: `og:url`,
-          content: `solinfitness.com`,
+          content: `cameroncabo.com`,
         },
         {
           property: `og:image`,
-          content: IMAGE,
+          content: metaImage,
         },
         {
           property: `og:image-alt`,
-          content: 'SOLIN logo',
+          content: caption,
         },
         {
           name: `twitter:site`,
-          content: `solinfitness.com`,
+          content: `cameroncabo.com`,
         },
         {
           name: `twitter:card`,
@@ -88,11 +95,11 @@ function SEO({
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: `cameroncabo`,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
@@ -100,11 +107,11 @@ function SEO({
         },
         {
           name: `twitter:image`,
-          content: IMAGE,
+          content: metaImage,
         },
         {
           name: `twitter:image-alt`,
-          content: 'SOLIN logo',
+          content: caption,
         },
       ].concat(meta)}
     />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { H1, Button, HR } from './shared'
+import { H1, Button, HR, BR } from './shared'
 import { HOME_ROUTE } from '../constants/routes'
 import ProjectPreview from './ProjectPreview'
 
@@ -20,6 +20,7 @@ export default () => {
               path
               technologies
               start
+              tags
               end
               color
               image {
@@ -39,6 +40,7 @@ export default () => {
   const { edges } = data.allMarkdownRemark
   return (
     <>
+      <BR />
       <H1>Projects</H1>
       {edges.map(({ node: { frontmatter } }) => {
         const {

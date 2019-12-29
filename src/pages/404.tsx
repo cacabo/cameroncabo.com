@@ -4,7 +4,7 @@ import { navigate } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { HOME_ROUTE, CONTACT_ROUTE } from '../constants/routes'
-import { Button, H1, P } from '../components/shared'
+import { Button, H1, P, BR } from '../components/shared'
 
 const NotFoundPage = () => {
   useEffect(() => {
@@ -18,6 +18,8 @@ const NotFoundPage = () => {
   return (
     <Layout>
       <SEO title="404 Not found" />
+
+      <BR />
       <H1 mb4>404: Not Found</H1>
       <P mb2>
         The page you are looking for was either moved or does not exist.

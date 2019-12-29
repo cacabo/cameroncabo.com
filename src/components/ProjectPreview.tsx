@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Img, { FluidObject } from 'gatsby-image'
 import s from 'styled-components'
 
-import { Row, Col, Card, H3, P, Button } from './shared'
+import { Row, Col, Card, H3, P, Button, Tag } from './shared'
 import {
   MARGIN,
   BORDER_RADIUS_LG,
@@ -33,6 +33,7 @@ interface IProjectPreivew {
   color: string
   title: string
   description: string
+  tags?: string[]
   technologies: string[]
   start: string
   end: string
@@ -43,6 +44,7 @@ export default ({
   fluid,
   color,
   title,
+  tags,
   description,
   technologies,
   start,
@@ -71,8 +73,17 @@ export default ({
           </P>
           <P mb2>{description}</P>
           <P mb2>
-            <strong>Technologies:</strong> {technologies.join(', ')}
+            <strong>Tech:</strong> {technologies.join(', ')}
           </P>
+          {tags && (
+            <div style={{ marginBottom: '1rem' }}>
+              {tags.map((t: string) => (
+                <Tag key={t} {...colorProps}>
+                  {t}
+                </Tag>
+              ))}
+            </div>
+          )}
           <Button {...colorProps} to={path} style={{ marginBottom: 0 }}>
             Read more
           </Button>

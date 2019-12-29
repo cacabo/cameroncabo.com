@@ -19,8 +19,6 @@ import { BORDER, BLACK } from '../constants/colors'
 import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
 
-// TODO why are `technologies` not showing up?
-
 const Overview = s.div<{ background: string }>`
   background: ${props => props.background};
   width: calc(100% + 1rem);
@@ -70,13 +68,15 @@ export default function Template({ data }) {
     },
   } = frontmatter
 
+  const { src } = fluid
+
   const cg = new ColorGenerator(color)
   const colorProps = cg.getColorProps()
   const colorBg = cg.getBackgroundColor()
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title} image={src} />
       <Overview background={colorBg}>
         <H1 mb4>{title}</H1>
         <P mb4>{description}</P>
@@ -184,6 +184,7 @@ export const pageQuery = graphql`
         image {
           childImageSharp {
             fluid(maxWidth: 1248) {
+              src
               ...GatsbyImageSharpFluid
             }
           }
