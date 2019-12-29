@@ -25,6 +25,7 @@ Personal website built with Gatsby and TypeScript.
 - [x] General metadata image
 - [x] Project metadata image
 - [x] Thoughts metadata image
+- [x] Use logo instead of text and fix height
 - [ ] Filter project by tags
 - [ ] Filter thoughts by tags
 - [ ] Filter project by technology

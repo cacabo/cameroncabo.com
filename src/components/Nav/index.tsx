@@ -37,7 +37,7 @@ const Wrapper = s.header<{ active?: boolean }>`
     max-height: 100vh;
     width: 100vw;
     border-right: 0;
-    padding: 0.4rem ${MARGIN};
+    padding: 0.5rem ${MARGIN};
     background: ${WHITE};
     border-bottom: 1px solid ${BORDER};
     display: block;
