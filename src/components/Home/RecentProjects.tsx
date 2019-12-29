@@ -31,13 +31,8 @@ export default () => {
         Recent Projects
       </H3>
       {edges.map(({ node: { frontmatter } }) => {
-        const {
-          title,
-          image: {
-            childImageSharp: { fluid },
-          },
-        } = frontmatter
-        return <ProjectPreview key={title} fluid={fluid} {...frontmatter} />
+        const { title } = frontmatter
+        return <ProjectPreview key={title} {...frontmatter} />
       })}
       <Button to={PROJECTS_ROUTE}>View all projects &rarr;</Button>
     </>

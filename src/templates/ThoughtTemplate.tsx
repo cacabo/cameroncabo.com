@@ -1,13 +1,26 @@
 import React from 'react'
-import s from 'styled-components'
 import { graphql } from 'gatsby'
+import s from 'styled-components'
 import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { Button, H1, HR, P, Callout, Tag, BR } from '../components/shared'
+import {
+  Button,
+  H1,
+  HR,
+  P,
+  Callout,
+  Tag,
+  BR,
+  Row,
+  Col,
+  H3,
+} from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
 import Timestamp from '../components/Timestamp'
+import ThoughtPreview from '../components/ThoughtPreview'
+import { MARGIN } from '../constants/measurements'
 
 const Content = s.div<{}>`
   .bibliography {
@@ -21,7 +34,7 @@ const Content = s.div<{}>`
   }
 `
 
-export default function Template({ data }) {
+export default function Template({ data, pageContext }) {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const {
@@ -33,6 +46,14 @@ export default function Template({ data }) {
     caption,
     image,
   } = frontmatter
+  const {
+    prev: {
+      node: { frontmatter: prevData },
+    },
+    next: {
+      node: { frontmatter: nextData },
+    },
+  } = pageContext
 
   const { fluid } = (image && image.childImageSharp) || {}
   const src: string | undefined = (fluid && fluid.src) || undefined
@@ -72,7 +93,19 @@ export default function Template({ data }) {
         className="blog-post-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
       <HR />
+      <H3>More Thoughts</H3>
+      <Row margin={MARGIN}>
+        <Col sm={12} md={6} margin={MARGIN}>
+          <ThoughtPreview {...prevData} />
+        </Col>
+        <Col sm={12} md={6} margin={MARGIN}>
+          <ThoughtPreview {...nextData} />
+        </Col>
+      </Row>
+      <HR />
+
       <Button to={THOUGHTS_ROUTE}>&larr; Back to all thoughts</Button>
     </Layout>
   )

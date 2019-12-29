@@ -27,35 +27,38 @@ export default ({
   image,
   updatedAt,
   createdAt,
-}: IThoughtPreview): ReactElement => (
-  <Link
-    to={path}
-    style={{
-      textDecoration: 'none',
-      display: 'inline-block',
-      width: '100%',
-      cursor: 'pointer',
-    }}
-  >
-    <Card key={title} fluid={image && image.childImageSharp.fluid} hoverable>
-      <H3 mb2 style={{ color: BLACK }}>
-        {title}
-      </H3>
-      <P mb2 style={{ color: BLACK }} lighter>
-        {subtitle}
-      </P>
-      <div style={{ marginBottom: '1rem' }}>
-        {topics &&
-          topics.map((t: string) => (
-            <Tag sm key={t}>
-              {t}
-            </Tag>
-          ))}
-      </div>
-      <Timestamp
-        {...{ updatedAt, createdAt }}
-        style={{ color: BLACK, marginBottom: 0 }}
-      />
-    </Card>
-  </Link>
-)
+}: IThoughtPreview): ReactElement => {
+  const fluid = image && image.childImageSharp.fluid
+  return (
+    <Link
+      to={path}
+      style={{
+        textDecoration: 'none',
+        display: 'inline-block',
+        width: '100%',
+        cursor: 'pointer',
+      }}
+    >
+      <Card key={title} fluid={fluid} hoverable>
+        <H3 mb2 style={{ color: BLACK }}>
+          {title}
+        </H3>
+        <P mb2 style={{ color: BLACK }} lighter>
+          {subtitle}
+        </P>
+        <div style={{ marginBottom: '1rem' }}>
+          {topics &&
+            topics.map((t: string) => (
+              <Tag sm key={t}>
+                {t}
+              </Tag>
+            ))}
+        </div>
+        <Timestamp
+          {...{ updatedAt, createdAt }}
+          style={{ color: BLACK, marginBottom: 0 }}
+        />
+      </Card>
+    </Link>
+  )
+}

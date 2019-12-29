@@ -27,13 +27,8 @@ export default () => {
       <BR />
       <H1>Projects</H1>
       {edges.map(({ node: { frontmatter } }) => {
-        const {
-          title,
-          image: {
-            childImageSharp: { fluid },
-          },
-        } = frontmatter
-        return <ProjectPreview key={title} fluid={fluid} {...frontmatter} />
+        const { title } = frontmatter
+        return <ProjectPreview key={title} {...frontmatter} />
       })}
       <HR />
       <Button to={HOME_ROUTE}>&larr; Back to home</Button>

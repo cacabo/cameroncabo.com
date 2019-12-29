@@ -7,10 +7,11 @@ export const PartialProject = graphql`
       description
       path
       technologies
+      tags
       color
       image {
         childImageSharp {
-          fluid(maxWidth: 484) {
+          fluid(maxWidth: 720) {
             ...GatsbyImageSharpFluid
           }
         }

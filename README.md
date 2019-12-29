@@ -27,11 +27,11 @@ Personal website built with Gatsby and TypeScript.
 - [x] Thoughts metadata image
 - [x] Use logo instead of text and fix height
 - [x] Fix disallowed props via styled components, other console errors
+- [x] Link to next project / other project from projects page
+- [x] Link to next post / other posts from post page
 - [ ] Filter project by tags
 - [ ] Filter thoughts by tags
 - [ ] Filter project by technology
-- [ ] Link to next project / other project from projects page
-- [ ] Link to next post / other posts from post page
 - [ ] Change underline color on links for projects
 
 ### Thoughts

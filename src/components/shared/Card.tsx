@@ -74,17 +74,20 @@ const CardBody = s.div<{ pad0?: boolean }>`
 
 interface ICardContent {
   children: Children
+  src?: string
   fluid?: FluidObject
 }
 
 export const Card = ({
   fluid,
+  src,
   children,
   pad0,
   ...rest
 }: ICardContent & ICard) => (
   <CardWrapper {...rest}>
     {fluid && <CardImg fluid={fluid} />}
+    {src && <CardImg as="img" src={src} />}
     <CardBody pad0={pad0}>{children}</CardBody>
   </CardWrapper>
 )

@@ -27,9 +27,21 @@ const Wrapper = s.div<{ background: string }>`
   }
 `
 
+const Image = s.img<{}>`
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+`
+
 interface IProjectPreivew {
   path: string
-  fluid: FluidObject
+  src?: string
+  image?: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
   color: string
   title: string
   description: string
@@ -41,7 +53,7 @@ interface IProjectPreivew {
 
 export default ({
   path,
-  fluid,
+  image,
   color,
   title,
   tags,
@@ -60,7 +72,7 @@ export default ({
         <Col sm={12} lg={5} margin={MARGIN}>
           <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }}>
             <Link to={path}>
-              <Img fluid={fluid} />
+              {image && <Img fluid={image.childImageSharp.fluid} />}
             </Link>
           </Card>
         </Col>

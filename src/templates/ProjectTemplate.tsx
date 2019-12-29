@@ -13,11 +13,13 @@ import {
   Tag,
   HR,
   Buttons,
+  H3,
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
 import { BORDER, BLACK } from '../constants/colors'
 import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
+import ProjectPreview from '../components/ProjectPreview'
 
 const Overview = s.div<{ background: string }>`
   background: ${props => props.background};
@@ -49,7 +51,7 @@ const ImgWrapper = s.div<{ color: string }>`
   }
 `
 
-export default function Template({ data }) {
+export default function Template({ data, pageContext }) {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const {
@@ -67,6 +69,14 @@ export default function Template({ data }) {
       childImageSharp: { fluid },
     },
   } = frontmatter
+  const {
+    prev: {
+      node: { frontmatter: prevData },
+    },
+    next: {
+      node: { frontmatter: nextData },
+    },
+  } = pageContext
 
   const { src } = fluid
 
@@ -157,6 +167,18 @@ export default function Template({ data }) {
         className="blog-post-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <HR />
+
+      <H3>More Projects</H3>
+      <ProjectPreview
+        {...prevData}
+        fluid={prevData.image.childImageSharp.fluid}
+      />
+      <ProjectPreview
+        {...nextData}
+        fluid={nextData.image.childImageSharp.fluid}
+      />
+
       <HR />
       <Button {...colorProps} to={PROJECTS_ROUTE}>
         &larr; Back to all projects
