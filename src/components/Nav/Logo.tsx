@@ -16,6 +16,7 @@ const Logo = s.img<{}>`
   ${maxWidth(PHONE)} {
     width: ${MOBILE_SIZE};
     position: relative;
+    top: 0;
   }
 `
 

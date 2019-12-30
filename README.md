@@ -29,6 +29,7 @@ Personal website built with Gatsby and TypeScript.
 - [x] Fix disallowed props via styled components, other console errors
 - [x] Link to next project / other project from projects page
 - [x] Link to next post / other posts from post page
+- [ ] Add analytics
 - [ ] Filter project by tags
 - [ ] Filter thoughts by tags
 - [ ] Filter project by technology
