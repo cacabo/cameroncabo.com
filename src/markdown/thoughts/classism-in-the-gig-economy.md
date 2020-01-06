@@ -4,7 +4,7 @@ updatedAt: '2019-12-28T14:45-08:00'
 title: 'Classism in the Gig Economy'
 subtitle: "Rideshare companies aren't dropping us off where we want"
 path: '/thoughts/classism-in-the-gig-economy'
-topics": ['thoughts', 'class']
+topics: ['thoughts', 'class']
 ---
 
 The rise of gig economy companies since their founding starting in the mid-2000’s has shifted how many people work, commute, and consume. These companies leverage advances in tech in the software world like mobile and cloud computing to disrupt processes and infrastructure in the physical world. They bring scale and efficiency to services like taxying, food delivery, and lodging via commodification of resources like cars, homes, and labor. While these platforms democratize resources, it is not yet clear if they increase true democratic opportunity in the places they operate. These systems often widen gaps between entry-level workers and platform builders. By design, they can displace more sustainable business models. We must explore alternative forms of ownership and incentive structures within the gig economy to work towards a more equal and sustainable future.

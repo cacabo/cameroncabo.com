@@ -34,6 +34,7 @@ Personal website built with Gatsby and TypeScript.
 - [ ] Filter thoughts by tags
 - [ ] Filter project by technology
 - [ ] Change underline color on links for projects
+- [ ] Increase text size, margin on larger screens
 
 ### Thoughts
 
