@@ -244,10 +244,9 @@ export const Masonry = s.div<{}>`
     column-count: 3;
   }
 
-  > div {
+  > * {
     display: inline-block;
     width: 100%;
-    margin-bottom: ${MARGIN_LG};
   }
 `
 

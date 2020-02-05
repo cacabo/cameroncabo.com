@@ -3,7 +3,7 @@ import s, { css } from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { H4, Text } from './Typography'
 import { FlexRow, Flex } from './Grid'
-import { BORDER, BLACK_ALPHA, TRANSPARENT } from '../../constants/colors'
+import { BORDER, BLACK_ALPHA } from '../../constants/colors'
 import {
   BORDER_RADIUS,
   PHONE,
@@ -25,8 +25,27 @@ interface ICard {
   style?: CSSProperties
 }
 
+const getBoxShadow = ({
+  shade0,
+  shade1,
+  shade2,
+  shade3,
+  shade4,
+}: Partial<ICard>) =>
+  shade0
+    ? `${BLACK_ALPHA(0)} 0 0 0`
+    : shade1
+    ? `${BLACK_ALPHA(0.1)} 0 1px 2px;`
+    : shade2
+    ? `${BLACK_ALPHA(0.2)} 0 1px 4px`
+    : shade3
+    ? `${BLACK_ALPHA(0.3)} 0 2px 6px`
+    : shade4
+    ? `${BLACK_ALPHA(0.4)} 0 3px 8px`
+    : `${BLACK_ALPHA(0)} 0 0 0`
+
 const CardWrapper = s.div<ICard>(
-  ({ shade0, shade2, shade3, shade4, backgroundImage, hoverable }) => css`
+  ({ backgroundImage, hoverable, ...shades }) => css`
     border: 1px solid ${BORDER};
     border-radius: ${BORDER_RADIUS};
     margin-bottom: 1rem;
@@ -37,25 +56,15 @@ const CardWrapper = s.div<ICard>(
       background-size: cover;
       background-repeat: no-repeat;
     `}
-    box-shadow: ${
-      shade0
-        ? 'none'
-        : shade2
-        ? `${BLACK_ALPHA(0.2)} 0 1px 4px`
-        : shade3
-        ? `${BLACK_ALPHA(0.3)} 0 2px 6px`
-        : shade4
-        ? `${BLACK_ALPHA(0.4)} 0 3px 8px`
-        : `${BLACK_ALPHA(0.1)} 0 1px 2px;`
-    };
+    box-shadow: ${getBoxShadow({ ...shades })};
 
     ${hoverable &&
       `
-      transition: box-shadow ${SHORT_ANIMATION_DURATION}ms ease;
-      transition: transform ${LONG_ANIMATION_DURATION}ms ease;
+      transition: box-shadow ${SHORT_ANIMATION_DURATION}ms ease,
+                  transform ${LONG_ANIMATION_DURATION}ms ease;
 
       :hover {
-        box-shadow: ${BLACK_ALPHA(0.4)} 0 2px 12px;
+        box-shadow: ${BLACK_ALPHA(0.4)} 0 2px 24px;
         transform: translateY(-2px);
       }
     `}

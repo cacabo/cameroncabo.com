@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { BR, H1, Masonry, Button } from './shared'
+import { BR, H1, Button } from './shared'
 import ThoughtPreview from './ThoughtPreview'
 import { HOME_ROUTE } from '../constants/routes'
 
@@ -25,11 +25,9 @@ export default () => {
     <>
       <BR />
       <H1>Thoughts</H1>
-      <Masonry>
-        {edges.map(({ node: { frontmatter } }) => (
-          <ThoughtPreview {...frontmatter} />
-        ))}
-      </Masonry>
+      {edges.map(({ node: { frontmatter } }) => (
+        <ThoughtPreview key={frontmatter.title} {...frontmatter} />
+      ))}
       <Button to={HOME_ROUTE}>&larr; Back to home</Button>
     </>
   )

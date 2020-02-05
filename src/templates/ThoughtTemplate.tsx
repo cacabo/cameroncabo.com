@@ -96,14 +96,10 @@ export default function Template({ data, pageContext }) {
 
       <HR />
       <H3>More Thoughts</H3>
-      <Row margin={MARGIN}>
-        <Col sm={12} md={6} margin={MARGIN}>
-          <ThoughtPreview {...prevData} />
-        </Col>
-        <Col sm={12} md={6} margin={MARGIN}>
-          <ThoughtPreview {...nextData} />
-        </Col>
-      </Row>
+
+      <ThoughtPreview {...prevData} />
+      <ThoughtPreview {...nextData} />
+
       <HR />
 
       <Button to={THOUGHTS_ROUTE}>&larr; Back to all thoughts</Button>
