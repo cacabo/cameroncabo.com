@@ -2,18 +2,28 @@ import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
 import { HOME_ROUTE } from '../../constants/routes'
-import { maxWidth, PHONE } from '../../constants/measurements'
+import { maxWidth, M2, M1, M6, M5, TABLET } from '../../constants/measurements'
 
-const SIZE = '2.5rem'
-const MOBILE_SIZE = '2rem'
+const SIZE = M6
+const MOBILE_SIZE = M6
+
+const StyledLink = s(Link)`
+  position: absolute;
+  left: ${M2};
+  top: ${M1};
+
+  ${maxWidth(TABLET)} {
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+`
 
 const Logo = s.img<{}>`
   width: ${SIZE};
   margin-bottom: 0;
-  position: absolute;
-  top: 1rem;
 
-  ${maxWidth(PHONE)} {
+  ${maxWidth(TABLET)} {
     width: ${MOBILE_SIZE};
     position: relative;
     top: 0;
@@ -21,7 +31,7 @@ const Logo = s.img<{}>`
 `
 
 export default (): React.ReactElement => (
-  <Link to={HOME_ROUTE}>
+  <StyledLink to={HOME_ROUTE}>
     <Logo src="/images/logo.svg" />
-  </Link>
+  </StyledLink>
 )

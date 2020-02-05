@@ -1,7 +1,12 @@
 import React, { ReactElement } from 'react'
 import s from 'styled-components'
 
-import { minWidth, PHONE } from '../../constants/measurements'
+import {
+  minWidth,
+  TABLET,
+  M1,
+  MOBILE_HEADER_HEIGHT,
+} from '../../constants/measurements'
 import { BLACK } from '../../constants/colors'
 
 const Wrapper = s.div`
@@ -9,13 +14,14 @@ const Wrapper = s.div`
   cursor: pointer;
   position: absolute;
   right: 0;
-  top: 0.5rem;
+  top: calc(${MOBILE_HEADER_HEIGHT} / 2);
+  transform: translateY(-50%);
 
   &:hover {
     opacity: 0.5;
   }
 
-  ${minWidth(PHONE)} {
+  ${minWidth(TABLET)} {
     display: none;
   }
 `

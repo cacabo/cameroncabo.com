@@ -5,22 +5,32 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import {
-  Button,
-  H1,
-  HR,
-  P,
-  Callout,
-  Tag,
-  BR,
-  Row,
-  Col,
-  H3,
-} from '../components/shared'
+import { Button, H1, HR, P, Callout, Tag, BR, H3 } from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
 import Timestamp from '../components/Timestamp'
 import ThoughtPreview from '../components/ThoughtPreview'
-import { MARGIN } from '../constants/measurements'
+import {
+  M1,
+  M3,
+  minWidth,
+  PHONE,
+  TABLET,
+  DESKTOP,
+} from '../constants/measurements'
+
+const Wrapper = s.div<{}>`
+  ${minWidth(PHONE)} {
+    padding: 0 5%;
+  }
+
+  ${minWidth(TABLET)} {
+    padding: 0 10%;
+  }
+
+  ${minWidth(DESKTOP)} {
+    padding: 0 15%;
+  }
+`
 
 const Content = s.div<{}>`
   .bibliography {
@@ -62,37 +72,39 @@ export default function Template({ data, pageContext }) {
     <Layout>
       <SEO title={title} image={src} />
       <BR />
-      <H1 mb2>{title}</H1>
-      {subtitle && <P style={{ fontSize: '120%' }}>{subtitle}</P>}
 
-      {topics && (
-        <P>
-          {topics.map((t: string) => (
-            <Tag key={t}>{t}</Tag>
-          ))}
-        </P>
-      )}
+      <Wrapper>
+        <H1 mb2>{title}</H1>
+        {subtitle && <P style={{ fontSize: '120%' }}>{subtitle}</P>}
 
-      <Timestamp createdAt={createdAt} updatedAt={updatedAt} />
+        {topics && (
+          <P>
+            {topics.map((t: string) => (
+              <Tag key={t}>{t}</Tag>
+            ))}
+          </P>
+        )}
+
+        <Timestamp createdAt={createdAt} updatedAt={updatedAt} />
+      </Wrapper>
 
       {fluid && (
         <Callout style={{ padding: 0 }}>
-          <Img
-            style={{ marginBottom: caption ? '0.5rem' : '1.5rem' }}
-            fluid={fluid}
-          />
+          <Img style={{ marginBottom: caption ? M1 : M3 }} fluid={fluid} />
         </Callout>
       )}
       {caption && (
-        <P lighter sm>
+        <P lightest sm>
           {caption}
         </P>
       )}
 
-      <Content
-        className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <Wrapper>
+        <Content
+          className="blog-post-content"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </Wrapper>
 
       <HR />
       <H3>More Thoughts</H3>

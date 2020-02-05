@@ -4,18 +4,20 @@ import {
   PHONE,
   BORDER_RADIUS,
   DESKTOP,
+  M2,
 } from '../../constants/measurements'
 
+const OFFSET = M2
+
 export const Callout = s.div<{ backgroundImage?: string }>`
-  ${props =>
-    props.backgroundImage &&
-    `background-image: url("${props.backgroundImage}");`}
+  ${({ backgroundImage }) =>
+    backgroundImage && `background-image: url("${backgroundImage}");`}
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 0.5rem;
-  margin: 0 -0.5rem;
-  width: calc(100% + 1rem);
+  padding: ${OFFSET};
+  margin: 0 -${OFFSET};
+  width: calc(100% + ${OFFSET} + ${OFFSET});
 
   ${minWidth(PHONE)} {
     border-radius: ${BORDER_RADIUS};

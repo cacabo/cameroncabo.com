@@ -8,11 +8,13 @@ import Timestamp from './Timestamp'
 import { M2, BORDER_RADIUS, maxWidth, TABLET } from '../constants/measurements'
 
 const StyledImg = s(Img)`
-  width: 25%;
+  width: 12rem;
+  max-width: 50%;
   object-fit: cover;
   border-radius: ${BORDER_RADIUS} 0 0 ${BORDER_RADIUS};
 
   ${maxWidth(TABLET)} {
+    max-width: none;
     width: 100%;
     height: auto;
   }

@@ -5,7 +5,8 @@ import s from 'styled-components'
 
 import { Row, Col, Card, H3, P, Button, Tag } from './shared'
 import {
-  MARGIN,
+  M1,
+  M2,
   BORDER_RADIUS_LG,
   PHONE,
   maxWidth,
@@ -68,15 +69,15 @@ export default ({
 
   return (
     <Wrapper background={colorBg}>
-      <Row margin={MARGIN}>
-        <Col sm={12} lg={5} margin={MARGIN}>
+      <Row margin={M1}>
+        <Col sm={12} lg={5} margin={M1}>
           <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }}>
             <Link to={path}>
               {image && <Img fluid={image.childImageSharp.fluid} />}
             </Link>
           </Card>
         </Col>
-        <Col sm={12} lg={7} margin={MARGIN}>
+        <Col sm={12} lg={7} margin={M1}>
           <H3 key={title} mb2>
             <Link to={path}>{title}</Link>
           </H3>
@@ -88,7 +89,7 @@ export default ({
             <strong>Tech:</strong> {technologies.join(', ')}
           </P>
           {tags && (
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: M2 }}>
               {tags.map((t: string) => (
                 <Tag key={t} {...colorProps}>
                   {t}

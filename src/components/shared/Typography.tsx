@@ -59,8 +59,8 @@ export const Text = s.p<IText>(
     ${mt4 && `padding-top: 1rem;`}
     ${sm && `font-size: 80%; line-height: 1.16;`}
     ${color && `color: ${color};`}
-    ${lighter && `opacity: 0.8;`}
-    ${lightest && `opacity: 0.64;`}
+    ${lighter && `opacity: 0.75;`}
+    ${lightest && `opacity: 0.5;`}
   `,
 )
 

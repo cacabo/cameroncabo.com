@@ -6,28 +6,15 @@ import Nav from './Nav'
 import './Layout.css'
 import Footer from './Footer'
 import { BLACK, TEAL } from '../constants/colors'
-import {
-  SIDEBAR_WIDTH,
-  minWidth,
-  DESKTOP,
-  maxWidth,
-  PHONE,
-  HEADER_HEIGHT,
-} from '../constants/measurements'
-import { Container } from './shared'
+import { maxWidth, PHONE, HEADER_HEIGHT } from '../constants/measurements'
+import { WideContainer } from './shared'
 
 const Body = s.div`
-  margin-left: ${SIDEBAR_WIDTH};
   padding-top: 1rem;
-
-  ${minWidth(DESKTOP)} {
-    margin-right: ${SIDEBAR_WIDTH};
-  }
 
   ${maxWidth(PHONE)} {
     margin-left: 0;
     margin-right: 0;
-    padding-top: ${HEADER_HEIGHT};
   }
 
   p,
@@ -62,17 +49,17 @@ const Body = s.div`
 `
 
 const Content = s.main`
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - ${HEADER_HEIGHT});
 `
 
 const Layout = ({ children }: { children: Children }): React.ReactElement => (
   <>
     <Nav />
     <Body id="top">
-      <Container>
+      <WideContainer>
         <Content>{children}</Content>
         <Footer />
-      </Container>
+      </WideContainer>
     </Body>
   </>
 )

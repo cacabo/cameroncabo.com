@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, H3, H4, Row, Col, Text, Button } from '../shared'
-import { MARGIN } from '../../constants/measurements'
+import { M1 } from '../../constants/measurements'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 
 export default () => (
@@ -9,8 +9,8 @@ export default () => (
       Technologies
     </H3>
 
-    <Row margin={MARGIN}>
-      <Col margin={MARGIN} sm={12} md={6}>
+    <Row margin={M1}>
+      <Col margin={M1} sm={12} md={6}>
         <Card>
           <H4 mb2>General Purpose</H4>
           <Text>JavaScript, TypeScript, Python, Java, Ruby, C, Haskell.</Text>
@@ -24,7 +24,7 @@ export default () => (
         </Card>
       </Col>
 
-      <Col margin={MARGIN} sm={12} md={6}>
+      <Col margin={M1} sm={12} md={6}>
         <Card>
           <H4 mb2>APIs</H4>
           <Text>

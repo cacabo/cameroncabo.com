@@ -7,8 +7,7 @@ import {
   PHONE,
   TABLET,
   DESKTOP,
-  MARGIN,
-  MARGIN_LG,
+  M2,
   WIDESCREEN,
 } from '../../constants/measurements'
 
@@ -184,6 +183,19 @@ interface IContainerProps {
   foreground?: string
 }
 
+export const WideContainer = ({
+  children,
+  ...props
+}: IContainerProps): ReactElement => (
+  <Container {...props}>
+    <Row>
+      <Col sm={12} md={10} offsetMd={1} lg={8} offsetLg={2}>
+        {children}
+      </Col>
+    </Row>
+  </Container>
+)
+
 export const MediumContainer = ({
   children,
   ...props
@@ -234,7 +246,7 @@ export const Flex = s.div<{}>`
 
 export const Masonry = s.div<{}>`
   column-count: 2;
-  column-gap: ${MARGIN_LG};
+  column-gap: ${M2};
 
   ${maxWidth(PHONE)} {
     column-count: 1;

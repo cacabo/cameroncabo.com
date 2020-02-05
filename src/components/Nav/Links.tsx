@@ -11,37 +11,38 @@ import {
 } from '../../constants/routes'
 import { BLACK } from '../../constants/colors'
 import {
-  PHONE,
   maxWidth,
   SHORT_ANIMATION_DURATION,
-  MARGIN_LG,
+  M2,
+  M1,
+  TABLET,
 } from '../../constants/measurements'
 
 const Wrapper = s.div<{ active?: boolean }>`
-  ${maxWidth(PHONE)} {
-    margin: ${MARGIN_LG} 0;
+  ${maxWidth(TABLET)} {
+    margin: ${M2} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 100}ms ease;
     opacity: ${props => (props.active ? 1 : 0)};
   }
 `
 
 const StyledLink = s(Link)<{}>`
-  width: 100%;
   display: inline-block;
   text-decoration: none !important;
   color: ${BLACK};
   opacity: 0.5;
-  margin: 0.5vh 0;
+  margin: 0 calc(${M1} + 0.5vw);
 
   &:hover,
   &:focus,
   &:active {
-      opacity: 1;
+    opacity: 1;
   }
 
-  ${maxWidth(PHONE)} {
+  ${maxWidth(TABLET)} {
     margin: 1vh 0;
     font-size: 125%;
+    width: 100%;
   }
 `
 

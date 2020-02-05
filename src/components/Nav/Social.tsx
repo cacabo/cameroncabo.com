@@ -21,15 +21,16 @@ import {
   maxWidth,
   PHONE,
   SHORT_ANIMATION_DURATION,
+  M2,
 } from '../../constants/measurements'
 
 const Wrapper = s.div<{ active: boolean }>`
-  width: 100%;
-  text-align: left;
   position: absolute;
-  bottom: 0;
+  right: ${M2};
 
   a {
+    vertical-align: middle;
+    line-height: 1;
     display: inline-block;
     margin-right: 0.5rem;
     opacity: 0.5;
@@ -53,8 +54,9 @@ const Wrapper = s.div<{ active: boolean }>`
   }
 
   ${maxWidth(PHONE)} {
+    right: 0;
     position: relative;
-    margin: 2vh 0 1vh 0;
+    margin: 4vh 0 ${M2} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 200}ms ease;
     opacity: ${props => (props.active ? 1 : 0)};
 
