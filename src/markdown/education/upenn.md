@@ -7,4 +7,6 @@ image: '../../images/education/penn.jpg'
 order: 0
 ---
 
-Pursuing a BSE in Computer Science from the School of Engineering and Applied Sciences and a BS in Economics in Management of Entrepreneurship from the Wharton School of Business.
+- Pursuing BSE in Computer Science from the School of Engineering and Applied Sciences (SEAS).
+- Pursuing MSE in Computer Science from SEAS via submatriculation program.
+- Pursuing BS in Economics, concentration in Management of Entrepreneurship, from the Wharton School of Business.
