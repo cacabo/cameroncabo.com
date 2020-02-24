@@ -15,7 +15,7 @@ import {
   TABLET,
   MOBILE_HEADER_HEIGHT,
 } from '../../constants/measurements'
-import Bars from './Bars'
+import { Bars } from './Bars'
 import { Shade } from '../shared'
 
 const Space = s.div`
