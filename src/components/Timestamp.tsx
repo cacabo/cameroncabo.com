@@ -4,12 +4,14 @@ import { P } from './shared'
 interface ITimestamp {
   createdAt?: string
   updatedAt?: string
+  timeToRead?: number
   style?: CSSProperties
 }
 
-export default ({
+export const Timestamp = ({
   createdAt,
   updatedAt,
+  timeToRead,
   style,
 }: ITimestamp): ReactElement | null => {
   if (!createdAt) return null
@@ -20,6 +22,8 @@ export default ({
   return (
     <P sm lightest style={style}>
       {text}
+      {timeToRead && <>&nbsp;&#183;&nbsp;</>}
+      {timeToRead && `${timeToRead} min read`}
     </P>
   )
 }

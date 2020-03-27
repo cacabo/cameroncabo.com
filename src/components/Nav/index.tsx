@@ -33,14 +33,13 @@ const Wrapper = s.header<{ active?: boolean }>`
   width: 100%;
   left: 0;
   top: 0;
-  border-bottom: 1px solid ${BORDER};
   padding: ${M1} ${M2};
   display: flex;
   flex-direction: row;
   justify-content: center;
   z-index: ${HEADER_Z_INDEX};
   background: ${WHITE};
-  box-shadow: 0 1px 3px ${BLACK_ALPHA(0.15)};
+  box-shadow: 0 0 4px ${BLACK_ALPHA(0.25)};
   align-items: center;
   height: ${HEADER_HEIGHT};
 

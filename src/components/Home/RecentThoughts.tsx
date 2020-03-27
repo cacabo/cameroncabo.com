@@ -1,8 +1,8 @@
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import { H3, Button } from '../shared'
 import { THOUGHTS_ROUTE } from '../../constants/routes'
-import { useStaticQuery, graphql } from 'gatsby'
-import ThoughtPreview from '../ThoughtPreview'
+import { ThoughtPreview } from '../ThoughtPreview'
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -28,8 +28,12 @@ export default () => {
         Recent Thoughts
       </H3>
 
-      {edges.map(({ node: { frontmatter } }) => (
-        <ThoughtPreview {...frontmatter} key={frontmatter.title} />
+      {edges.map(({ node: { frontmatter, timeToRead } }) => (
+        <ThoughtPreview
+          {...frontmatter}
+          timeToRead={timeToRead}
+          key={frontmatter.title}
+        />
       ))}
 
       <Button to={THOUGHTS_ROUTE}>View thoughts &rarr;</Button>

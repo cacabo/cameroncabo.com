@@ -2,10 +2,30 @@ import React, { ReactElement } from 'react'
 import { Link } from 'gatsby'
 import s from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
+
 import { Card, H3, P, Tag, Row, Col } from './shared'
 import { BLACK } from '../constants/colors'
-import Timestamp from './Timestamp'
-import { M2, BORDER_RADIUS, maxWidth, TABLET } from '../constants/measurements'
+import { Timestamp } from './Timestamp'
+import {
+  M2,
+  BORDER_RADIUS,
+  maxWidth,
+  TABLET,
+  minWidth,
+  M1,
+} from '../constants/measurements'
+
+const StyledLink = s(Link)`
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  ${minWidth(TABLET)} {
+    margin-bottom: calc(1rem + 1.25vh);
+  }
+`
 
 const StyledImg = s(Img)`
   width: 12rem;
@@ -27,6 +47,7 @@ interface IThoughtPreview {
   topics?: string[]
   updatedAt?: string
   createdAt?: string
+  timeToRead?: number
   image?: {
     childImageSharp: {
       fluid: FluidObject
@@ -34,38 +55,31 @@ interface IThoughtPreview {
   }
 }
 
-export default ({
+export const ThoughtPreview = ({
   path,
   title,
   subtitle,
   topics,
   image,
+  timeToRead,
   updatedAt,
   createdAt,
 }: IThoughtPreview): ReactElement => {
   const fluid = image && image.childImageSharp.fluid
   return (
-    <Link
-      to={path}
-      style={{
-        textDecoration: 'none',
-        display: 'inline-block',
-        width: '100%',
-        cursor: 'pointer',
-      }}
-    >
-      <Card key={title} hoverable shade1 pad0>
+    <StyledLink to={path}>
+      <Card key={title} hoverable shade1 pad0 mb0>
         <Row>
           {fluid && <StyledImg fluid={fluid} />}
           <Col>
             <div style={{ padding: M2 }}>
-              <H3 mb2 style={{ color: BLACK }}>
+              <H3 mb1 style={{ color: BLACK }}>
                 {title}
               </H3>
-              <P mb2 style={{ color: BLACK }} lighter>
+              <P mb4 style={{ color: BLACK }} lighter>
                 {subtitle}
               </P>
-              <div style={{ marginBottom: '1rem' }}>
+              <div style={{ marginBottom: M1 }}>
                 {topics &&
                   topics.map((t: string) => (
                     <Tag sm key={t}>
@@ -74,13 +88,15 @@ export default ({
                   ))}
               </div>
               <Timestamp
-                {...{ updatedAt, createdAt }}
+                updatedAt={updatedAt}
+                createdAt={createdAt}
+                timeToRead={timeToRead}
                 style={{ color: BLACK, marginBottom: 0 }}
               />
             </div>
           </Col>
         </Row>
       </Card>
-    </Link>
+    </StyledLink>
   )
 }

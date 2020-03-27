@@ -31,7 +31,7 @@ If you want to learn more, get involved, or have something built, check out [our
 
 #### I worked on a fantastic team to bring Nalda to production.
 
-![Nalda screenshot](../../images/projects/nalda.png")
+![Nalda screenshot](../../images/thoughts/nalda.png")
 
 Nadla, is [Riplo's](https://www.riplo.io) first large-scale client. Nalda is a food, drink, and event discovery platform for college campuses. At the moment, we are focusing on creating a beautiful web experience for Penn, though more locations, features, and a mobile app are in the near-term pipeline.
 

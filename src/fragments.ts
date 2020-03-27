@@ -49,10 +49,10 @@ export const Project = graphql`
 
 export const PartialThought = graphql`
   fragment PartialThought on MarkdownRemark {
+    timeToRead
     frontmatter {
       title
-      createdAt(fromNow: true)
-      updatedAt(fromNow: true)
+      createdAt(formatString: "MMM D, YYYY")
       path
       topics
       subtitle
@@ -70,9 +70,10 @@ export const PartialThought = graphql`
 export const Thought = graphql`
   fragment Thought on MarkdownRemark {
     html
+    timeToRead
     frontmatter {
-      createdAt(fromNow: true)
-      updatedAt(fromNow: true)
+      createdAt(formatString: "MMM D, YYYY")
+      updatedAt(formatString: "MMM D, YYYY")
       title
       subtitle
       topics

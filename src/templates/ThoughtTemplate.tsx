@@ -5,10 +5,20 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { Button, H1, HR, P, Callout, Tag, BR, H3 } from '../components/shared'
+import {
+  Button,
+  H1,
+  HR,
+  P,
+  Callout,
+  Tag,
+  BR,
+  H3,
+  H5,
+} from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
-import Timestamp from '../components/Timestamp'
-import ThoughtPreview from '../components/ThoughtPreview'
+import { Timestamp } from '../components/Timestamp'
+import { ThoughtPreview } from '../components/ThoughtPreview'
 import {
   M1,
   M3,
@@ -46,7 +56,7 @@ const Content = s.div<{}>`
 
 export default function Template({ data, pageContext }) {
   const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
+  const { frontmatter, html, timeToRead } = markdownRemark
   const {
     createdAt,
     updatedAt,
@@ -85,7 +95,11 @@ export default function Template({ data, pageContext }) {
           </P>
         )}
 
-        <Timestamp createdAt={createdAt} updatedAt={updatedAt} />
+        <Timestamp
+          createdAt={createdAt}
+          updatedAt={updatedAt}
+          timeToRead={timeToRead}
+        />
       </Wrapper>
 
       {fluid && (
@@ -107,7 +121,7 @@ export default function Template({ data, pageContext }) {
       </Wrapper>
 
       <HR />
-      <H3>More Thoughts</H3>
+      <H5>More Thoughts</H5>
 
       <ThoughtPreview {...prevData} />
       <ThoughtPreview {...nextData} />

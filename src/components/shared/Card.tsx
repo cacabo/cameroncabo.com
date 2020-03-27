@@ -21,6 +21,7 @@ interface ICard {
   shade4?: boolean
   hoverable?: boolean
   pad0?: boolean
+  mb0?: boolean
   backgroundImage?: string
   style?: CSSProperties
 }
@@ -45,10 +46,10 @@ const getBoxShadow = ({
     : `${BLACK_ALPHA(0)} 0 0 0`
 
 const CardWrapper = s.div<ICard>(
-  ({ backgroundImage, hoverable, ...shades }) => css`
+  ({ backgroundImage, hoverable, mb0, ...shades }) => css`
     border: 1px solid ${BORDER};
     border-radius: ${BORDER_RADIUS};
-    margin-bottom: 1rem;
+    margin-bottom: ${mb0 ? '0' : '1rem'};
     ${backgroundImage &&
       `
       background-image: ${backgroundImage};
@@ -92,9 +93,10 @@ export const Card = ({
   src,
   children,
   pad0,
+  mb0,
   ...rest
 }: ICardContent & ICard) => (
-  <CardWrapper {...rest}>
+  <CardWrapper {...rest} mb0={mb0}>
     {fluid && <CardImg fluid={fluid} />}
     {src && <CardImg as="img" src={src} />}
     <CardBody pad0={pad0}>{children}</CardBody>

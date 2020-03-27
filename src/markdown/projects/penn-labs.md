@@ -3,6 +3,7 @@ title: 'Penn Labs Website'
 description: 'Website showcasing our products, teams, blog posts, and history.'
 path: '/projects/penn-labs'
 link: 'https://pennlabs.org/'
+repo: 'https://github.com/pennlabs/website'
 technologies: ['TypeScript', 'Gatsby']
 start: 'February 2020'
 end: 'Present'

@@ -267,3 +267,8 @@ export const BR = s.br`
   margin-bottom: 1.5rem;
   display: block;
 `
+
+export const Center = s.div<{}>`
+  text-align: center;
+  width: 100%;
+`
