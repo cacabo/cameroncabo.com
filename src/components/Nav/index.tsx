@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import s from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import s, { css } from 'styled-components'
 
 import { BORDER, WHITE, BLACK_ALPHA } from '../../constants/colors'
 import Logo from './Logo'
@@ -13,74 +13,160 @@ import {
   M1,
   M2,
   TABLET,
-  MOBILE_HEADER_HEIGHT,
 } from '../../constants/measurements'
 import { Bars } from './Bars'
 import { Shade } from '../shared'
 
-const Space = s.div`
-  display: block;
-  width: 100%;
-  height: ${HEADER_HEIGHT};
+const getScrollTop = () =>
+  window.pageYOffset !== undefined
+    ? window.pageYOffset
+    : (((document.documentElement ||
+        document.body.parentNode ||
+        document.body) as unknown) as { scrollTop: number }).scrollTop || 0
 
-  ${maxWidth(TABLET)} {
-    height: ${MOBILE_HEADER_HEIGHT};
-  }
-`
+interface IWrapperProps {
+  active?: boolean
+  fixed?: boolean
+  shouldShowFixed?: boolean
+}
 
-const Wrapper = s.header<{ active?: boolean }>`
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  padding: ${M1} ${M2};
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  z-index: ${HEADER_Z_INDEX};
-  background: ${WHITE};
-  box-shadow: 0 0 4px ${BLACK_ALPHA(0.25)};
-  align-items: center;
-  height: ${HEADER_HEIGHT};
+const Wrapper = s.header<IWrapperProps>(
+  ({ fixed, shouldShowFixed, active }) => css`
+    position: ${fixed ? 'fixed' : 'relative'};
+    width: 100%;
+    left: 0;
+    top: ${fixed ? (shouldShowFixed ? '0' : `-4rem`) : '0'};
+    transition: all ${SHORT_ANIMATION_DURATION}ms ease;
+    padding: ${M1} ${M2};
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: ${HEADER_Z_INDEX};
+    background: ${WHITE};
+    box-shadow: 0 0 4px ${BLACK_ALPHA(0.25)};
+    align-items: center;
+    height: ${HEADER_HEIGHT};
 
-  ${maxWidth(TABLET)} {
-    height: auto;
-    max-height: 100vh;
-    width: 100vw;
-    border-right: 0;
-    border-bottom: 1px solid ${BORDER};
-    display: block;
-    overflow: hidden;
-    transition: max-height ${SHORT_ANIMATION_DURATION}ms ease;
+    ${maxWidth(TABLET)} {
+      height: auto;
+      max-height: 100vh;
+      width: 100vw;
+      border-right: 0;
+      border-bottom: 1px solid ${BORDER};
+      display: block;
+      overflow: hidden;
 
-    ${props => !props.active && `max-height: ${HEADER_HEIGHT};`}
-  }
-`
+      ${!active && `max-height: ${HEADER_HEIGHT};`}
+    }
+  `,
+)
 
-const Header = () => {
-  const [active, setActive] = useState<boolean>(false)
-  const [isNewlyMounted, setIsNewlyMounted] = useState<boolean>(true)
+interface IHeaderProps {
+  fixed?: boolean
+}
+
+interface IFixedState {
+  prevScrollTop: number
+  shouldShowFixed: boolean
+}
+
+interface IActiveState {
+  isNewlyMounted: boolean
+  isActive: boolean
+}
+
+const Header = ({ fixed }: IHeaderProps): React.ReactElement => {
+  const [{ prevScrollTop, shouldShowFixed }, setFixedState] = useState<
+    IFixedState
+  >({
+    prevScrollTop: 0,
+    shouldShowFixed: false,
+  })
+  const [{ isActive, isNewlyMounted }, setActiveState] = useState<IActiveState>(
+    {
+      isNewlyMounted: true,
+      isActive: false,
+    },
+  )
+
+  useEffect(() => {
+    if (!fixed) {
+      return
+    }
+
+    const handleScroll = (): void => {
+      if (isActive) {
+        return
+      }
+
+      const scrollTop = getScrollTop()
+      const diff = scrollTop - prevScrollTop
+
+      if (shouldShowFixed && scrollTop < 200 && diff < -50) {
+        return setFixedState({
+          prevScrollTop: scrollTop,
+          shouldShowFixed: false,
+        })
+      }
+
+      if (!shouldShowFixed && diff < -50 && scrollTop > 200) {
+        return setFixedState({
+          prevScrollTop: scrollTop,
+          shouldShowFixed: true,
+        })
+      }
+
+      if (shouldShowFixed && diff > 10) {
+        return setFixedState({
+          prevScrollTop: scrollTop,
+          shouldShowFixed: false,
+        })
+      }
+
+      if (diff > 50 || diff < -50) {
+        return setFixedState({
+          prevScrollTop: scrollTop,
+          shouldShowFixed,
+        })
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  })
 
   const toggle = () => {
-    if (isNewlyMounted) setIsNewlyMounted(false)
-    setActive(!active)
+    if (isNewlyMounted) {
+      return setActiveState({ isNewlyMounted: false, isActive: !isActive })
+    }
+
+    return setActiveState({
+      isNewlyMounted,
+      isActive: !isActive,
+    })
   }
 
   return (
     <>
-      <Wrapper active={active}>
+      <Wrapper
+        active={isActive}
+        fixed={fixed}
+        shouldShowFixed={shouldShowFixed}
+      >
         <Logo />
         <Bars handleClick={toggle} />
-        <Links active={active} />
-        <Social active={active} />
+        <Links active={isActive} />
+        <Social active={isActive} />
       </Wrapper>
       <Shade
         onClick={toggle}
-        show={active}
+        show={isActive}
         zIndex={HEADER_Z_INDEX - 1}
         isNewlyMounted={isNewlyMounted}
       />
-      <Space />
     </>
   )
 }

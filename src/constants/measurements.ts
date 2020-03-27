@@ -20,7 +20,7 @@ export const TABLET: TScreenWidth = '848px'
 export const PHONE: TScreenWidth = '584px'
 
 export const MOBILE_HEADER_HEIGHT = '58px'
-export const HEADER_HEIGHT = `calc(${M6} + ${M2} + 1px)`
+export const HEADER_HEIGHT = '3.2rem'
 export const HEADER_Z_INDEX = 1000
 
 type TMediaQuery = string

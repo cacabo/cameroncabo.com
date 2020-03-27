@@ -2,10 +2,10 @@ import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
 import { HOME_ROUTE } from '../../constants/routes'
-import { maxWidth, M2, M1, M6, M5, TABLET } from '../../constants/measurements'
+import { maxWidth, M2, M1, M6, M4, TABLET } from '../../constants/measurements'
 
 const SIZE = M6
-const MOBILE_SIZE = M6
+const MOBILE_SIZE = M4
 
 const StyledLink = s(Link)`
   position: absolute;
@@ -26,7 +26,7 @@ const Logo = s.img<{}>`
   ${maxWidth(TABLET)} {
     width: ${MOBILE_SIZE};
     position: relative;
-    top: 0;
+    top: ${M1};
   }
 `
 

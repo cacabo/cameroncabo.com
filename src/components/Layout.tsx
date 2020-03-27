@@ -55,6 +55,7 @@ const Content = s.main`
 const Layout = ({ children }: { children: Children }): React.ReactElement => (
   <>
     <Nav />
+    <Nav fixed />
     <Body id="top">
       <WideContainer>
         <Content>{children}</Content>
