@@ -58,7 +58,7 @@ const Wrapper = s.div<{ active: boolean }>`
     position: relative;
     margin: 4vh 0 ${M2} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 200}ms ease;
-    opacity: ${props => (props.active ? 1 : 0)};
+    opacity: ${(props): number => (props.active ? 1 : 0)};
 
     a {
       margin-right: 1rem;
@@ -71,21 +71,25 @@ const Wrapper = s.div<{ active: boolean }>`
   }
 `
 
-export default ({ active }) => (
+interface ISocialProps {
+  active: boolean
+}
+
+export const Social = ({ active }: ISocialProps): React.ReactElement => (
   <Wrapper active={active}>
-    <a href={FACEBOOK_ROUTE} target="_BLANK">
+    <a href={FACEBOOK_ROUTE} target="_BLANK" rel="noopener noreferrer">
       <FacebookIcon />
     </a>
-    <a href={LINKEDIN_ROUTE} target="_BLANK">
+    <a href={LINKEDIN_ROUTE} target="_BLANK" rel="noopener noreferrer">
       <LinkedInIcon />
     </a>
-    <a href={GITHUB_ROUTE} target="_BLANK">
+    <a href={GITHUB_ROUTE} target="_BLANK" rel="noopener noreferrer">
       <GitHubIcon />
     </a>
-    <a href={TWITTER_ROUTE} target="_BLANK">
+    <a href={TWITTER_ROUTE} target="_BLANK" rel="noopener noreferrer">
       <TwitterIcon />
     </a>
-    <a href={INSTAGRAM_ROUTE} target="_BLANK">
+    <a href={INSTAGRAM_ROUTE} target="_BLANK" rel="noopener noreferrer">
       <InstagramIcon />
     </a>
     <a href={CONTACT_ROUTE}>

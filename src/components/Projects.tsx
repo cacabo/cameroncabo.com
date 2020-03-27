@@ -3,9 +3,16 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { H1, Button, HR, BR } from './shared'
 import { HOME_ROUTE } from '../constants/routes'
-import ProjectPreview from './ProjectPreview'
+import { ProjectPreview } from './ProjectPreview'
+import { IProjectPreview } from '../types'
 
-export default () => {
+interface IProjectNode {
+  node: {
+    frontmatter: IProjectPreview
+  }
+}
+
+const Projects = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query AllProjectsQuery {
       allMarkdownRemark(
@@ -26,7 +33,7 @@ export default () => {
     <>
       <BR />
       <H1>Projects</H1>
-      {edges.map(({ node: { frontmatter } }) => {
+      {(edges as IProjectNode[]).map(({ node: { frontmatter } }) => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />
       })}
@@ -35,3 +42,5 @@ export default () => {
     </>
   )
 }
+
+export default Projects

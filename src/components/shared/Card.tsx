@@ -32,7 +32,7 @@ const getBoxShadow = ({
   shade2,
   shade3,
   shade4,
-}: Partial<ICard>) =>
+}: Partial<ICard>): string =>
   shade0
     ? `${BLACK_ALPHA(0)} 0 0 0`
     : shade1
@@ -50,16 +50,19 @@ const CardWrapper = s.div<ICard>(
     border: 1px solid ${BORDER};
     border-radius: ${BORDER_RADIUS};
     margin-bottom: ${mb0 ? '0' : '1rem'};
-    ${backgroundImage &&
+    ${
+      backgroundImage &&
       `
       background-image: ${backgroundImage};
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-    `}
+    `
+    }
     box-shadow: ${getBoxShadow({ ...shades })};
 
-    ${hoverable &&
+    ${
+      hoverable &&
       `
       transition: box-shadow ${SHORT_ANIMATION_DURATION}ms ease,
                   transform ${LONG_ANIMATION_DURATION}ms ease;
@@ -68,7 +71,8 @@ const CardWrapper = s.div<ICard>(
         box-shadow: ${BLACK_ALPHA(0.4)} 0 2px 24px;
         transform: translateY(-2px);
       }
-    `}
+    `
+    }
   `,
 )
 
@@ -79,7 +83,7 @@ const CardBody = s.div<{ pad0?: boolean }>`
     padding: 0.5rem;
   }
 
-  ${props => props.pad0 && 'padding: 0 !important;'}
+  ${(props): string => (props.pad0 ? 'padding: 0 !important;' : '')}
 `
 
 interface ICardContent {
@@ -95,7 +99,7 @@ export const Card = ({
   pad0,
   mb0,
   ...rest
-}: ICardContent & ICard) => (
+}: ICardContent & ICard): React.ReactElement => (
   <CardWrapper {...rest} mb0={mb0}>
     {fluid && <CardImg fluid={fluid} />}
     {src && <CardImg as="img" src={src} />}
@@ -138,7 +142,7 @@ export const InfoCard = ({
   subtitle,
   body,
   imageUrl,
-}: IInfoCard) => (
+}: IInfoCard): React.ReactElement => (
   <Card>
     <FlexRow>
       <Flex>

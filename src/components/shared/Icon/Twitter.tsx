@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import React from 'react'
 import { IIconProps } from './types'
 
-export const TwitterIcon = (props: IIconProps) => (
+export const TwitterIcon = (props: IIconProps): React.ReactElement => (
   <svg
     width={24}
     height={24}

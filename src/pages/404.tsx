@@ -6,7 +6,7 @@ import SEO from '../components/SEO'
 import { HOME_ROUTE, CONTACT_ROUTE } from '../constants/routes'
 import { Button, H1, P, BR, Center } from '../components/shared'
 
-const NotFoundPage = () => {
+const NotFoundPage = (): React.ReactElement => {
   useEffect(() => {
     // Redirect from `/posts/...` to `/thoughts/...` to accommodate legacy links
     if (typeof window === 'undefined') return

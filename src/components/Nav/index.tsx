@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import s, { css } from 'styled-components'
 
 import { BORDER, WHITE, BLACK_ALPHA } from '../../constants/colors'
-import Logo from './Logo'
-import Links from './Links'
-import Social from './Social'
+import { Logo } from './Logo'
+import { Links } from './Links'
+import { Social } from './Social'
 import {
   maxWidth,
   SHORT_ANIMATION_DURATION,
@@ -17,7 +17,7 @@ import {
 import { Bars } from './Bars'
 import { Shade } from '../shared'
 
-const getScrollTop = () =>
+const getScrollTop = (): number =>
   window.pageYOffset !== undefined
     ? window.pageYOffset
     : (((document.documentElement ||
@@ -35,7 +35,7 @@ const Wrapper = s.header<IWrapperProps>(
     position: ${fixed ? 'fixed' : 'relative'};
     width: 100%;
     left: 0;
-    top: ${fixed ? (shouldShowFixed ? '0' : `-4rem`) : '0'};
+    top: ${fixed ? (shouldShowFixed ? '0' : '-4rem') : '0'};
     transition: all ${SHORT_ANIMATION_DURATION}ms ease;
     padding: ${M1} ${M2};
     display: flex;
@@ -75,7 +75,7 @@ interface IActiveState {
   isActive: boolean
 }
 
-const Header = ({ fixed }: IHeaderProps): React.ReactElement => {
+export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
   const [{ prevScrollTop, shouldShowFixed }, setFixedState] = useState<
     IFixedState
   >({
@@ -133,12 +133,12 @@ const Header = ({ fixed }: IHeaderProps): React.ReactElement => {
 
     window.addEventListener('scroll', handleScroll)
 
-    return () => {
+    return (): void => {
       window.removeEventListener('scroll', handleScroll)
     }
   })
 
-  const toggle = () => {
+  const toggle = (): void => {
     if (isNewlyMounted) {
       return setActiveState({ isNewlyMounted: false, isActive: !isActive })
     }
@@ -170,5 +170,3 @@ const Header = ({ fixed }: IHeaderProps): React.ReactElement => {
     </>
   )
 }
-
-export default Header

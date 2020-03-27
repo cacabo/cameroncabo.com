@@ -19,10 +19,10 @@ import { PROJECTS_ROUTE } from '../constants/routes'
 import { BORDER, BLACK } from '../constants/colors'
 import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
-import ProjectPreview from '../components/ProjectPreview'
+import { ProjectPreview } from '../components/ProjectPreview'
 
 const Overview = s.div<{ background: string }>`
-  background: ${props => props.background};
+  background: ${(props): string => props.background};
   width: calc(100% + 1rem);
   padding: 0.5rem;
   margin-left: -0.5rem;
@@ -39,7 +39,7 @@ const Overview = s.div<{ background: string }>`
 const ImgWrapper = s.div<{ color: string }>`
   border-width: 6px;
   border-style: solid;
-  border-color: ${props => props.color};
+  border-color: ${(props): string => props.color};
   border-radius: ${BORDER_RADIUS_LG};
 
   img,
@@ -51,7 +51,7 @@ const ImgWrapper = s.div<{ color: string }>`
   }
 `
 
-export default function Template({ data, pageContext }) {
+const ProjectTemplate = ({ data, pageContext }): React.ReactElement => {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const {
@@ -194,3 +194,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default ProjectTemplate

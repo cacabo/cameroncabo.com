@@ -2,12 +2,13 @@ import React from 'react'
 import s from 'styled-components'
 
 import { Children } from '../types'
-import Nav from './Nav'
-import './Layout.css'
-import Footer from './Footer'
+import { Nav } from './Nav'
+import { Footer } from './Footer'
 import { BLACK, TEAL } from '../constants/colors'
 import { maxWidth, PHONE, HEADER_HEIGHT } from '../constants/measurements'
 import { WideContainer } from './shared'
+
+import './Layout.css'
 
 const Body = s.div`
   padding-top: 1rem;

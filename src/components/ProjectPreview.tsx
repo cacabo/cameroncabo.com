@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
 import s from 'styled-components'
 
 import { Row, Col, Card, H3, P, Button, Tag } from './shared'
@@ -12,9 +12,10 @@ import {
   maxWidth,
 } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
+import { IProjectPreview } from '../types'
 
 const Wrapper = s.div<{ background: string }>`
-  background: ${props => props.background};
+  background: ${(props): string => props.background};
   width: calc(100% + 1rem);
   padding: 0.5rem;
   margin-left: -0.5rem;
@@ -28,31 +29,7 @@ const Wrapper = s.div<{ background: string }>`
   }
 `
 
-const Image = s.img<{}>`
-  margin: 0;
-  padding: 0;
-  display: block;
-  width: 100%;
-`
-
-interface IProjectPreivew {
-  path: string
-  src?: string
-  image?: {
-    childImageSharp: {
-      fluid: FluidObject
-    }
-  }
-  color: string
-  title: string
-  description: string
-  tags?: string[]
-  technologies: string[]
-  start: string
-  end: string
-}
-
-export default ({
+export const ProjectPreview = ({
   path,
   image,
   color,
@@ -62,7 +39,7 @@ export default ({
   technologies,
   start,
   end,
-}: IProjectPreivew) => {
+}: IProjectPreview): React.ReactElement => {
   const cg = new ColorGenerator(color)
   const colorProps = cg.getColorProps()
   const colorBg = cg.getBackgroundColor()

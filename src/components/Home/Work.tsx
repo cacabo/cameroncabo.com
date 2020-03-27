@@ -2,8 +2,16 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { H3, InfoCard, Button } from '../shared'
 import { RESUME_ROUTE } from '../../constants/routes'
+import { IWorkFrontmatter } from '../../types'
 
-export default () => {
+interface IWorkNode {
+  node: {
+    frontmatter: IWorkFrontmatter
+    html: string
+  }
+}
+
+export const Work = (): React.ReactElement => {
   const data = useStaticQuery(
     graphql`
       query WorkQuery {
@@ -42,7 +50,7 @@ export default () => {
       <H3 mb4 mt4>
         Work
       </H3>
-      {edges.map(
+      {(edges as IWorkNode[]).map(
         ({
           node: {
             html,

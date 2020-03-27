@@ -3,9 +3,11 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Projects from '../components/Projects'
 
-export default () => (
+const ProjectsPage = (): React.ReactElement => (
   <Layout>
     <SEO title="Projects" />
     <Projects />
   </Layout>
 )
+
+export default ProjectsPage

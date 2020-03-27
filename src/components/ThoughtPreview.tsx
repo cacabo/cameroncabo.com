@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react'
 import { Link } from 'gatsby'
 import s from 'styled-components'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
 
+import { IThoughtPreview } from '../types'
 import { Card, H3, P, Tag, Row, Col } from './shared'
 import { BLACK } from '../constants/colors'
 import { Timestamp } from './Timestamp'
@@ -39,21 +40,6 @@ const StyledImg = s(Img)`
     height: auto;
   }
 `
-
-interface IThoughtPreview {
-  path: string
-  title: string
-  subtitle?: string
-  topics?: string[]
-  updatedAt?: string
-  createdAt?: string
-  timeToRead?: number
-  image?: {
-    childImageSharp: {
-      fluid: FluidObject
-    }
-  }
-}
 
 export const ThoughtPreview = ({
   path,

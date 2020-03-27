@@ -22,7 +22,7 @@ const Wrapper = s.div<{ active?: boolean }>`
   ${maxWidth(TABLET)} {
     margin: ${M2} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 100}ms ease;
-    opacity: ${props => (props.active ? 1 : 0)};
+    opacity: ${(props): number => (props.active ? 1 : 0)};
   }
 `
 
@@ -46,7 +46,7 @@ const StyledLink = s(Link)<{}>`
   }
 `
 
-const map = {
+const map: Record<string, string> = {
   Home: HOME_ROUTE,
   Freelance: FREELANCE_ROUTE,
   Projects: PROJECTS_ROUTE,
@@ -54,16 +54,22 @@ const map = {
   Design: DESIGN_ROUTE,
 }
 
-export default ({ active }) => (
+interface ILinksProps {
+  active: boolean
+}
+
+export const Links = ({ active }: ILinksProps): React.ReactElement => (
   <Wrapper active={active}>
-    {Object.keys(map).map(name => {
-      const route = map[name]
-      return (
-        <StyledLink to={route} key={route}>
-          {name}
-        </StyledLink>
-      )
-    })}
+    {Object.keys(map).map(
+      (name): React.ReactElement => {
+        const route = map[name]
+        return (
+          <StyledLink to={route} key={route}>
+            {name}
+          </StyledLink>
+        )
+      },
+    )}
     <StyledLink as="a" href={CONTACT_ROUTE}>
       Contact
     </StyledLink>

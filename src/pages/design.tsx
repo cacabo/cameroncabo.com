@@ -16,7 +16,7 @@ import SEO from '../components/SEO'
 import { graphql, useStaticQuery } from 'gatsby'
 import { HOME_ROUTE } from '../constants/routes'
 
-export default () => {
+const DesignPage = (): React.ReactElement => {
   const { allArtJson, allDesignJson } = useStaticQuery(
     graphql`
       {
@@ -92,9 +92,9 @@ export default () => {
         <BR />
         <H1 mb4>Design and creativity are in everything</H1>
         <P mb0>
-          I have always loved to make things. Though I don't draw and paint as
-          much as I used to, I try to bring a creative and design-driven mindset
-          to all the work I do.
+          I have always loved to make things. Though I don&apos;t draw and paint
+          as much as I used to, I try to bring a creative and design-driven
+          mindset to all the work I do.
         </P>
         <BR />
       </Callout>
@@ -137,3 +137,5 @@ export default () => {
     </Layout>
   )
 }
+
+export default DesignPage

@@ -5,17 +5,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import {
-  Button,
-  H1,
-  HR,
-  P,
-  Callout,
-  Tag,
-  BR,
-  H3,
-  H5,
-} from '../components/shared'
+import { Button, H1, HR, P, Callout, Tag, BR, H5 } from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
 import { Timestamp } from '../components/Timestamp'
 import { ThoughtPreview } from '../components/ThoughtPreview'
@@ -54,7 +44,7 @@ const Content = s.div<{}>`
   }
 `
 
-export default function Template({ data, pageContext }) {
+const ThoughtTemplate = ({ data, pageContext }): React.ReactElement => {
   const { markdownRemark } = data
   const { frontmatter, html, timeToRead } = markdownRemark
   const {
@@ -140,3 +130,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default ThoughtTemplate

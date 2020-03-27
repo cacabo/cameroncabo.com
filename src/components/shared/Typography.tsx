@@ -47,26 +47,29 @@ export const Text = s.p<IText>(
     mt3,
     mt4,
   }: IText) => css`
-    ${mb0 && `margin-bottom: 0;`}
-    ${mb1 && `margin-bottom: 0.25rem;`}
-    ${mb2 && `margin-bottom: 0.5rem;`}
-    ${mb3 && `margin-bottom: 0.75rem;`}
-    ${mb4 && `margin-bottom: 1rem;`}
-    ${mt0 && `padding-top: 0;`}
-    ${mt1 && `padding-top: 0.25rem;`}
-    ${mt2 && `padding-top: 0.5rem;`}
-    ${mt3 && `padding-top: 0.75rem;`}
-    ${mt4 && `padding-top: 1rem;`}
-    ${sm && `font-size: 80%; line-height: 1.16;`}
+    ${mb0 && 'margin-bottom: 0;'}
+    ${mb1 && 'margin-bottom: 0.25rem;'}
+    ${mb2 && 'margin-bottom: 0.5rem;'}
+    ${mb3 && 'margin-bottom: 0.75rem;'}
+    ${mb4 && 'margin-bottom: 1rem;'}
+    ${mt0 && 'padding-top: 0;'}
+    ${mt1 && 'padding-top: 0.25rem;'}
+    ${mt2 && 'padding-top: 0.5rem;'}
+    ${mt3 && 'padding-top: 0.75rem;'}
+    ${mt4 && 'padding-top: 1rem;'}
+    ${sm && 'font-size: 80%; line-height: 1.16;'}
     ${color && `color: ${color};`}
-    ${lighter && `opacity: 0.75;`}
-    ${lightest && `opacity: 0.5;`}
+    ${lighter && 'opacity: 0.75;'}
+    ${lightest && 'opacity: 0.5;'}
   `,
 )
 
 type TextType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
 
-const textGenerator = (type: TextType) => ({ children, ...props }: IText) => (
+const textGenerator = (type: TextType) => ({
+  children,
+  ...props
+}: IText): React.ReactElement => (
   <Text as={type} {...props}>
     {children}
   </Text>

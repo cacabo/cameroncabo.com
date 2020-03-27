@@ -13,24 +13,24 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { PROJECTS_ROUTE, CONTACT_ROUTE, HOME_ROUTE } from '../constants/routes'
 
-export default () => (
+const FreelancePage = (): React.ReactElement => (
   <Layout>
     <SEO title="Freelance" />
 
     <Callout backgroundImage="/images/freelance-backing.svg">
       <BR />
-      <H1>Let's build something</H1>
+      <H1>Let&apos;s build something</H1>
       <P>
-        I'm a web developer passionate for beautiful, well-planned, well-built,
-        and well-used products. Whatever you are imagining, drawing up,
-        building, or growing, I'd love to hear about it. Scroll through my work
-        and take the time to reach out—it can go a long way.
+        I&apos;m a web developer passionate for beautiful, well-planned,
+        well-built, and well-used products. Whatever you are imagining, drawing
+        up, building, or growing, I&apos;d love to hear about it. Scroll through
+        my work and take the time to reach out—it can go a long way.
       </P>
       <Buttons>
-        <Button style={{ marginBottom: 0 }} to={PROJECTS_ROUTE}>
+        <Button mb0 to={PROJECTS_ROUTE}>
           View my work
         </Button>
-        <Button style={{ marginBottom: 0 }} to={CONTACT_ROUTE}>
+        <Button mb0 to={CONTACT_ROUTE}>
           Contact me
         </Button>
       </Buttons>
@@ -93,3 +93,5 @@ export default () => (
     </Buttons>
   </Layout>
 )
+
+export default FreelancePage

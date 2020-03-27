@@ -3,8 +3,16 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { BR, H1, Button } from './shared'
 import { ThoughtPreview } from './ThoughtPreview'
 import { HOME_ROUTE } from '../constants/routes'
+import { IThoughtPreviewFrontmatter } from '../types'
 
-export default () => {
+interface IThoughtPreviewNode {
+  node: {
+    frontmatter: IThoughtPreviewFrontmatter
+    timeToRead?: number
+  }
+}
+
+export const Thoughts = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -25,13 +33,15 @@ export default () => {
     <>
       <BR />
       <H1>Thoughts</H1>
-      {edges.map(({ node: { frontmatter, timeToRead } }) => (
-        <ThoughtPreview
-          key={frontmatter.title}
-          timeToRead={timeToRead}
-          {...frontmatter}
-        />
-      ))}
+      {(edges as IThoughtPreviewNode[]).map(
+        ({ node: { frontmatter, timeToRead } }) => (
+          <ThoughtPreview
+            key={frontmatter.title}
+            timeToRead={timeToRead}
+            {...frontmatter}
+          />
+        ),
+      )}
       <Button to={HOME_ROUTE}>&larr; Back to home</Button>
     </>
   )

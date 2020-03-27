@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { H3, InfoCard } from '../shared'
 
-export default () => {
+export const Education = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query EducationQuery {
       allMarkdownRemark(

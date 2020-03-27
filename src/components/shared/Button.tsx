@@ -20,10 +20,11 @@ interface IButton {
   hoverbackground?: string
   border?: string
   style?: CSSProperties
+  mb0?: boolean
 }
 
 export const Button = s(Link)<IButton>(
-  ({ color, background, hoverbackground, border }) => css`
+  ({ color, background, hoverbackground, border, mb0 }) => css`
     text-decoration: none;
     user-select: none;
     transition: background 120ms ease-in 0s;
@@ -41,7 +42,7 @@ export const Button = s(Link)<IButton>(
     background: ${background || SNOW} none repeat scroll 0% 0%;
     font-weight: ${MEDIUM_FONT_WEIGHT};
     box-shadow: ${BORDER} 0px 1px 2px, ${border || TEAL} 0px 0px 0px 1px inset;
-    margin-bottom: 1rem;
+    margin-bottom: ${mb0 ? '0' : '1rem'};
 
     &:hover,
     &:focus,

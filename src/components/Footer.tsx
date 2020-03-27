@@ -2,7 +2,7 @@ import React from 'react'
 import s from 'styled-components'
 import { Text } from './shared'
 
-const Footer = s.footer`
+const FooterTag = s.footer`
   width: 100%;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -11,7 +11,7 @@ const Footer = s.footer`
 `
 
 // Scroll to the top of the page
-const handleClick = (event: React.MouseEvent) => {
+const handleClick = (event: React.MouseEvent): void => {
   if (typeof window === 'undefined') return
   event.preventDefault()
   window.scroll({
@@ -21,8 +21,8 @@ const handleClick = (event: React.MouseEvent) => {
   })
 }
 
-export default (): React.ReactElement => (
-  <Footer>
+export const Footer = (): React.ReactElement => (
+  <FooterTag>
     <Text sm mb0 lightest>
       <a href="#top" onClick={handleClick}>
         Back to top &uarr;
@@ -31,5 +31,5 @@ export default (): React.ReactElement => (
     <Text sm mb0 lightest>
       Cameron Cabo &copy; {new Date().getFullYear()}
     </Text>
-  </Footer>
+  </FooterTag>
 )

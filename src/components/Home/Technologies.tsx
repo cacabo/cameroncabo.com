@@ -3,7 +3,7 @@ import { Card, H3, H4, Row, Col, Text, Button } from '../shared'
 import { M1 } from '../../constants/measurements'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 
-export default () => (
+export const Technologies = (): React.ReactElement => (
   <div>
     <H3 mb4 mt4>
       Technologies

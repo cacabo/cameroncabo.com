@@ -18,11 +18,12 @@ end: 'September 2018'
 image: '../../images/projects/insuricane.png'
 color: '#404040'
 tags: ['hackathon', 'web']
-collaborators: [
-  '<a href="https://www.linkedin.com/in/jacob-beckerman-aa018b114/" target="_BLANK">Jacob Beckerman</a>',
-  '<a href="https://www.linkedin.com/in/jxue/" target="_BLANK">Jimmy Xue</a>',
-  '<a href="https://www.linkedin.com/in/andrew-cui/" target="_BLANK">Andrew Cui</a>',
-]
+collaborators:
+  [
+    '<a href="https://www.linkedin.com/in/jacob-beckerman-aa018b114/" target="_BLANK">Jacob Beckerman</a>',
+    '<a href="https://www.linkedin.com/in/jxue/" target="_BLANK">Jimmy Xue</a>',
+    '<a href="https://www.linkedin.com/in/andrew-cui/" target="_BLANK">Andrew Cui</a>',
+  ]
 order: 4
 ---
 

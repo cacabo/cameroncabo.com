@@ -1,5 +1,12 @@
+interface IColorProps {
+  border: string
+  background: string
+  hoverbackground: string
+  color: string
+}
+
 export default class ColorGenerator {
-  private static isHex = (c: string): boolean => c[0] === '#'
+  private static isHex = (c: string): boolean => c.startsWith('#')
 
   private static hexToDecimal = (hex: string): number =>
     Number.parseInt(hex, 16)
@@ -18,7 +25,7 @@ export default class ColorGenerator {
     const components = contents
       .split(',')
       .map((component: string) => component.trim())
-    return components.map(numString => Number.parseInt(numString, 10))
+    return components.map((numString): number => Number.parseInt(numString, 10))
   }
 
   private static colorToString = (
@@ -26,7 +33,7 @@ export default class ColorGenerator {
     g: number,
     b: number,
     a?: number,
-  ) => {
+  ): string => {
     if (!a) {
       return `rgb(${r}, ${g}, ${b})`
     }
@@ -34,7 +41,7 @@ export default class ColorGenerator {
     return `rgba(${r}, ${g}, ${b}, ${a})`
   }
 
-  private static darken = (color: number) => Math.min(color - 64, 255)
+  private static darken = (color: number): number => Math.min(color - 64, 255)
 
   private static parseRgb = (color: string): number[] =>
     ColorGenerator.isHex(color)
@@ -52,22 +59,20 @@ export default class ColorGenerator {
     this.b = b
   }
 
-  public getDarker = (alpha?: number): string => {
-    return ColorGenerator.colorToString(
+  public getDarker = (alpha?: number): string =>
+    ColorGenerator.colorToString(
       ColorGenerator.darken(this.r),
       ColorGenerator.darken(this.g),
       ColorGenerator.darken(this.b),
       alpha,
     )
-  }
 
-  public getWithAlpha = (alpha: number): string => {
-    return ColorGenerator.colorToString(this.r, this.g, this.b, alpha)
-  }
+  public getWithAlpha = (alpha: number): string =>
+    ColorGenerator.colorToString(this.r, this.g, this.b, alpha)
 
   public getBackgroundColor = (): string => this.getWithAlpha(0.15)
 
-  public getColorProps = () => ({
+  public getColorProps = (): IColorProps => ({
     border: this.getWithAlpha(0.375),
     background: this.getWithAlpha(0.125),
     hoverbackground: this.getWithAlpha(0.1875),

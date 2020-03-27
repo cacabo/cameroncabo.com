@@ -22,7 +22,7 @@ export const Container = s.div<IContainerTagProps>`
   padding-left: 0.5rem;
   width: 100%;
   display: block;
-  background: ${({ background }) => background || 'transparent'};
+  background: ${({ background }): string => background || 'transparent'};
 
   ${minWidth(PHONE)} {
     padding-right: calc(0.5rem + 1.25%);
@@ -53,13 +53,14 @@ export const Spacer = s.div<ISpacerProps>`
   display: block;
   width: 100%;
   height: 1rem;
-  ${({ hiddenOnMobile }) =>
-    hiddenOnMobile &&
-    `
+  ${({ hiddenOnMobile }): string =>
+    hiddenOnMobile
+      ? `
     ${maxWidth(PHONE)} {
       display: none;
     }
-  `}
+  `
+      : ''}
 `
 
 interface IRowProps {
@@ -73,15 +74,17 @@ export const Row = s.div<IRowProps>`
   width: 100%;
   flex-wrap: wrap;
 
-  ${({ alwaysFlex }) => !alwaysFlex && `${maxWidth(PHONE)} { display: block; }`}
+  ${({ alwaysFlex }): string =>
+    alwaysFlex ? '' : `${maxWidth(PHONE)} { display: block; }`}
 
-  ${({ margin }) =>
-    margin &&
-    `
+  ${({ margin }): string =>
+    margin
+      ? `
     margin-left: -${margin};
     margin-right: -${margin};
     width: calc(100% + ${margin} + ${margin});
-  `}
+  `
+      : ''}
 `
 
 export interface IColProps {
@@ -100,63 +103,45 @@ export interface IColProps {
 }
 
 const ColWrapper = s.div<IColProps>`
-  flex: ${({ width }) => (width ? 'none' : 1)};
-  width: ${({ width }) => width || 'auto'};
-  overflow-y: ${({ overflowY }) => overflowY || 'visible'};
+  flex: ${({ width }): string => (width ? 'none' : '1')};
+  width: ${({ width }): string => width || 'auto'};
+  overflow-y: ${({ overflowY }): string => overflowY || 'visible'};
   overflow-x: visible;
 
-  ${({ sm }) =>
-    sm &&
-    `
-    width: ${percent(sm)};
-    flex: none;
-  `}
-
-  ${({ offsetSm }) => offsetSm && `margin-left: ${percent(offsetSm)};`}
-
+  ${({ sm }): string => (sm ? `width: ${percent(sm)}; flex: none;` : '')}
+  ${({ offsetSm }): string =>
+    offsetSm || offsetSm === 0 ? `margin-left: ${percent(offsetSm)};` : ''}
   ${minWidth(PHONE)} {
-    ${({ md }) =>
-      md &&
-      `
-      width: ${percent(md)}
-      flex: none;
-    `}
-
-    ${({ offsetMd }) => offsetMd && `margin-left: ${percent(offsetMd)};`}
+    ${({ md }): string => (md ? `width: ${percent(md)}; flex: none;` : '')}
+    ${({ offsetMd }): string =>
+      offsetMd || offsetMd === 0 ? `margin-left: ${percent(offsetMd)};` : ''}
   }
 
   ${minWidth(TABLET)} {
-    ${({ lg }) =>
-      lg &&
-      `
-      width: ${percent(lg)}
-      flex: none;
-    `}
+    ${({ lg }): string => (lg ? `width: ${percent(lg)}; flex: none;` : '')}
 
-    ${({ offsetLg }) =>
-      offsetLg &&
-      `
-      margin-left: ${percent(offsetLg)};
-    `}
+    ${({ offsetLg }): string =>
+      offsetLg || offsetLg === 0 ? `margin-left: ${percent(offsetLg)};` : ''}
   }
 
-  ${({ flex }) => flex && `display: flex;`}
+  ${({ flex }): string => (flex && 'display: flex;') || ''}
 `
 
 const ColContainer = s.div<IColProps>`
-  background: ${({ background }) => background || 'transparent'};
+  background: ${({ background }): string => background || 'transparent'};
   overflow-x: visible;
   position: relative;
 
-  ${({ margin }) =>
-    margin &&
-    `
-    margin-left: ${margin};
-    margin-right: ${margin};
-  `}
+  ${({ margin }): string =>
+    margin ? `margin-left: ${margin}; margin-right: ${margin};` : ''}
 `
 
-export const Col = ({ margin, children, background, ...other }: IColProps) => (
+export const Col = ({
+  margin,
+  children,
+  background,
+  ...other
+}: IColProps): React.ReactElement => (
   <ColWrapper {...other}>
     <ColContainer margin={margin} background={background}>
       {children}
@@ -170,7 +155,7 @@ export interface IColSpaceProps {
 
 export const ColSpace = s(Col)<IColSpaceProps>`
   flex: none;
-  width: ${({ width }) => width || '1rem'};
+  width: ${({ width }): string => width || '1rem'};
 
   ${maxWidth(PHONE)} {
     display: none;
@@ -226,9 +211,9 @@ export const FlexRow = s.div<{ centerOnMobile?: boolean }>`
   width: 100%;
   display: flex;
 
-  ${props =>
-    props.centerOnMobile &&
-    `
+  ${(props): string =>
+    props.centerOnMobile
+      ? `
     ${maxWidth(PHONE)} {
       display: block;
       text-align: center;
@@ -237,7 +222,8 @@ export const FlexRow = s.div<{ centerOnMobile?: boolean }>`
         display: inline-block;
       }
     }
-  `}
+  `
+      : ''}
 `
 
 export const Flex = s.div<{}>`

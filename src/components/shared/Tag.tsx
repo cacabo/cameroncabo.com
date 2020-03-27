@@ -10,11 +10,11 @@ interface ITag {
 }
 
 export const Tag = s.span<ITag>`
-  color: ${props => props.color || BLUE};
-  background: ${props => props.background || SKY};
+  color: ${(props): string => props.color || BLUE};
+  background: ${(props): string => props.background || SKY};
   border-radius: ${BORDER_RADIUS};
   padding: 2px 6px;
   margin-right: 8px;
   font-weight: ${MEDIUM_FONT_WEIGHT};
-  ${props => props.sm && `font-size: 80%;`}
+  ${(props): string => (props.sm ? 'font-size: 80%;' : '')}
 `

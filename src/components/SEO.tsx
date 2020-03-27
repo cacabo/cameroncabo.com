@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -19,14 +19,14 @@ export interface ISEOProps {
   image?: string
 }
 
-function SEO({
+const SEO = ({
   description = '',
   lang = 'en',
   meta = [],
   image,
   caption = '',
   title = '',
-}: ISEOProps): ReactElement {
+}: ISEOProps): React.ReactElement => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -54,63 +54,63 @@ function SEO({
       title={title ? `${title} | ${siteTitle}` : siteTitle}
       meta={[
         {
-          name: `description`,
+          name: 'description',
           content: metaDescription,
         },
         {
-          name: `author`,
-          content: `Cameron Cabo <cameroncabo@gmail.com>`,
+          name: 'author',
+          content: 'Cameron Cabo <cameroncabo@gmail.com>',
         },
         {
-          property: `og:title`,
+          property: 'og:title',
           content: metaTitle,
         },
         {
-          property: `og:description`,
+          property: 'og:description',
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website',
         },
         {
-          property: `og:url`,
-          content: `cameroncabo.com`,
+          property: 'og:url',
+          content: 'cameroncabo.com',
         },
         {
-          property: `og:image`,
+          property: 'og:image',
           content: metaImage,
         },
         {
-          property: `og:image-alt`,
+          property: 'og:image-alt',
           content: caption,
         },
         {
-          name: `twitter:site`,
-          content: `cameroncabo.com`,
+          name: 'twitter:site',
+          content: 'cameroncabo.com',
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: 'twitter:card',
+          content: 'summary',
         },
         {
-          name: `twitter:creator`,
-          content: `cameroncabo`,
+          name: 'twitter:creator',
+          content: 'cameroncabo',
         },
         {
-          name: `twitter:title`,
+          name: 'twitter:title',
           content: metaTitle,
         },
         {
-          name: `twitter:description`,
+          name: 'twitter:description',
           content: metaDescription,
         },
         {
-          name: `twitter:image`,
+          name: 'twitter:image',
           content: metaImage,
         },
         {
-          name: `twitter:image-alt`,
+          name: 'twitter:image-alt',
           content: caption,
         },
       ].concat(meta)}

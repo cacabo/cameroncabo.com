@@ -1,7 +1,7 @@
 import React from 'react'
 import { IIconProps } from './types'
 
-export const LinkedInIcon = (props: IIconProps) => (
+export const LinkedInIcon = (props: IIconProps): React.ReactElement => (
   <svg
     width={24}
     height={24}

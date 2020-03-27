@@ -19,7 +19,7 @@ const StyledLink = s(Link)`
   }
 `
 
-const Logo = s.img<{}>`
+const LogoImg = s.img<{}>`
   width: ${SIZE};
   margin-bottom: 0;
 
@@ -30,8 +30,8 @@ const Logo = s.img<{}>`
   }
 `
 
-export default (): React.ReactElement => (
+export const Logo = (): React.ReactElement => (
   <StyledLink to={HOME_ROUTE}>
-    <Logo src="/images/logo.svg" />
+    <LogoImg src="/images/logo.svg" alt="Cameron Cabo" />
   </StyledLink>
 )

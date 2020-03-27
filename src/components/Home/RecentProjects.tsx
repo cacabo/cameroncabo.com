@@ -3,9 +3,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { H3, Button } from '../shared'
 import { PROJECTS_ROUTE } from '../../constants/routes'
-import ProjectPreview from '../ProjectPreview'
+import { ProjectPreview } from '../ProjectPreview'
 
-export default () => {
+export const RecentProjects = (): React.ReactElement => {
   const data = useStaticQuery(
     graphql`
       query ProjectsQuery {

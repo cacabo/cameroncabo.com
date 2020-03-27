@@ -10,8 +10,8 @@ import {
 const OFFSET = M2
 
 export const Callout = s.div<{ backgroundImage?: string }>`
-  ${({ backgroundImage }) =>
-    backgroundImage && `background-image: url("${backgroundImage}");`}
+  ${({ backgroundImage }): string =>
+    backgroundImage ? `background-image: url("${backgroundImage}");` : ''}
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
