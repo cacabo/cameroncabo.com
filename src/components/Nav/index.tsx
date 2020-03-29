@@ -16,6 +16,7 @@ import {
 } from '../../constants/measurements'
 import { Bars } from './Bars'
 import { Shade } from '../shared'
+import { isOnMobile } from '../../helpers/misc'
 
 const getScrollTop = (): number =>
   window.pageYOffset !== undefined
@@ -155,7 +156,18 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
     })
   }
 
-  const tabIndex: number | undefined = fixed ? -1 : undefined
+  const isMobile = isOnMobile()
+  const logoTabIndex: number | undefined = fixed ? -1 : undefined
+  const barsTabIndex: number | undefined = fixed
+    ? -1
+    : !isMobile
+    ? -1
+    : undefined
+  const tabIndex: number | undefined = fixed
+    ? -1
+    : isMobile && !isActive
+    ? -1
+    : undefined
 
   return (
     <>
@@ -165,8 +177,8 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
         shouldShowFixed={shouldShowFixed}
         tabIndex={tabIndex}
       >
-        <Logo />
-        <Bars handleClick={toggle} tabIndex={tabIndex} />
+        <Logo tabIndex={logoTabIndex} />
+        <Bars handleClick={toggle} tabIndex={barsTabIndex} />
         <Links active={isActive} tabIndex={tabIndex} />
         <Social active={isActive} tabIndex={tabIndex} />
       </Wrapper>

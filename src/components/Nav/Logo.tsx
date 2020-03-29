@@ -46,8 +46,12 @@ const LogoImg = s.img<{}>`
   }
 `
 
-export const Logo = (): React.ReactElement => (
-  <StyledLink to={HOME_ROUTE}>
+interface ILogoProps {
+  tabIndex?: number | undefined
+}
+
+export const Logo = ({ tabIndex }: ILogoProps): React.ReactElement => (
+  <StyledLink to={HOME_ROUTE} tabIndex={tabIndex}>
     <LogoImg src="/images/logo.svg" alt="Cameron Cabo" />
   </StyledLink>
 )

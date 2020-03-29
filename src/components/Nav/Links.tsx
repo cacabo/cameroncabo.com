@@ -9,7 +9,7 @@ import {
   DESIGN_ROUTE,
   CONTACT_ROUTE,
 } from '../../constants/routes'
-import { BLACK, OUTLINE } from '../../constants/colors'
+import { BLACK } from '../../constants/colors'
 import {
   maxWidth,
   SHORT_ANIMATION_DURATION,

@@ -16,6 +16,7 @@ type TScreenWidth = string
 
 export const WIDESCREEN: TScreenWidth = '1440px'
 export const DESKTOP: TScreenWidth = '1024px'
+export const TABLET_WIDTH = 848
 export const TABLET: TScreenWidth = '848px'
 export const PHONE: TScreenWidth = '584px'
 
