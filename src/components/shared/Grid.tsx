@@ -248,10 +248,13 @@ export const Masonry = s.div<{}>`
   }
 `
 
-export const BR = s.br`
+export const BR = s.br<{ hiddenOnMobile?: boolean }>`
   width: 100%;
   margin-bottom: 1.5rem;
   display: block;
+
+  ${(props): string =>
+    props.hiddenOnMobile ? `${maxWidth(PHONE)} { display: none; }` : ''}
 `
 
 export const Center = s.div<{}>`

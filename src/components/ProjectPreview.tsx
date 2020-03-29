@@ -10,6 +10,8 @@ import {
   BORDER_RADIUS_LG,
   PHONE,
   maxWidth,
+  minWidth,
+  DESKTOP,
 } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
 import { IProjectPreview } from '../types'
@@ -21,6 +23,12 @@ const Wrapper = s.div<{ background: string }>`
   margin-left: -0.5rem;
   margin-bottom: 1.5rem;
   border-radius: ${BORDER_RADIUS_LG};
+
+  ${minWidth(DESKTOP)} {
+    width: calc(100% + ${M2} + ${M2});
+    padding: ${M2};
+    margin-left: -${M2};
+  }
 
   ${maxWidth(PHONE)} {
     border-radius: 0;

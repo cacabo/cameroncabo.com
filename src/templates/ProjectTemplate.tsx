@@ -17,9 +17,18 @@ import {
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
 import { BORDER, BLACK } from '../constants/colors'
-import { BORDER_RADIUS_LG, PHONE, maxWidth } from '../constants/measurements'
+import {
+  BORDER_RADIUS_LG,
+  PHONE,
+  maxWidth,
+  minWidth,
+  DESKTOP,
+  M2,
+  WIDESCREEN,
+} from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
 import { ProjectPreview } from '../components/ProjectPreview'
+import { IProjectPreview, IProjectFrontmatter } from '../types'
 
 const Overview = s.div<{ background: string }>`
   background: ${(props): string => props.background};
@@ -28,6 +37,18 @@ const Overview = s.div<{ background: string }>`
   margin-left: -0.5rem;
   margin-bottom: 1.5rem;
   border-radius: ${BORDER_RADIUS_LG};
+
+  ${minWidth(DESKTOP)} {
+    padding: ${M2};
+    margin-left: -${M2};
+    width: calc(100% + ${M2} + ${M2});
+  }
+
+  ${minWidth(WIDESCREEN)} {
+    padding: calc(${M2} + 1.25vw);
+    margin-left: calc(-${M2} - 1.25vw);
+    width: calc(100% + ${M2} + ${M2} + 2.5vw);
+  }
 
   ${maxWidth(PHONE)} {
     border-radius: 0;
@@ -51,7 +72,31 @@ const ImgWrapper = s.div<{ color: string }>`
   }
 `
 
-const ProjectTemplate = ({ data, pageContext }): React.ReactElement => {
+interface IProjectTemplateProps {
+  data: {
+    markdownRemark: {
+      frontmatter: IProjectFrontmatter
+      html: string
+    }
+  }
+  pageContext: {
+    prev: {
+      node: {
+        frontmatter: IProjectPreview
+      }
+    }
+    next: {
+      node: {
+        frontmatter: IProjectPreview
+      }
+    }
+  }
+}
+
+const ProjectTemplate = ({
+  data,
+  pageContext,
+}: IProjectTemplateProps): React.ReactElement => {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const {
@@ -170,14 +215,8 @@ const ProjectTemplate = ({ data, pageContext }): React.ReactElement => {
       <HR />
 
       <H3>More Projects</H3>
-      <ProjectPreview
-        {...prevData}
-        fluid={prevData.image.childImageSharp.fluid}
-      />
-      <ProjectPreview
-        {...nextData}
-        fluid={nextData.image.childImageSharp.fluid}
-      />
+      <ProjectPreview {...prevData} />
+      <ProjectPreview {...nextData} />
 
       <HR />
       <Button {...colorProps} to={PROJECTS_ROUTE}>

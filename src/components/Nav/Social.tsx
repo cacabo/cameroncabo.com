@@ -16,7 +16,7 @@ import {
   InstagramIcon,
   MailIcon,
 } from '../shared'
-import { BLACK, OUTLINE } from '../../constants/colors'
+import { BLACK } from '../../constants/colors'
 import {
   maxWidth,
   SHORT_ANIMATION_DURATION,

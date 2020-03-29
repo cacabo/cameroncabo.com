@@ -8,7 +8,6 @@ import {
   MOBILE_HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
 } from '../../constants/measurements'
-import { OUTLINE } from '../../constants/colors'
 import {
   SPACE_KEY_CODE,
   ENTER_KEY_CODE,

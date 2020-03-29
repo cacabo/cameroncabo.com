@@ -95,14 +95,17 @@ const ThoughtTemplate = ({
   return (
     <Layout>
       <SEO title={title} image={src} showSiteTitle={false} />
-      <BR />
-
+      <BR hiddenOnMobile />
       <Wrapper>
         <H1 mb2>{title}</H1>
-        {subtitle && <P style={{ fontSize: '120%' }}>{subtitle}</P>}
+        {subtitle && (
+          <P style={{ fontSize: '120%' }} lighter mb4>
+            {subtitle}
+          </P>
+        )}
 
         {topics && (
-          <P>
+          <P mb2>
             {topics.map((t: string) => (
               <Tag key={t}>{t}</Tag>
             ))}

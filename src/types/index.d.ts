@@ -64,8 +64,26 @@ export interface IProjectPreview {
   color: string
   title: string
   description: string
-  tags?: string[]
+  tags: string[]
   technologies: string[]
   start: string
   end: string
+}
+
+export interface IProjectFrontmatter {
+  title: string
+  description: string
+  link: string
+  technologies: string[]
+  collaborators: string[]
+  start: string
+  end: string
+  color: string
+  repo: string
+  tags: string[]
+  image: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
 }
