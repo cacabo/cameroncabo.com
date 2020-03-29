@@ -2,7 +2,6 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-// TODO metadata image (does this work?)
 const URL = 'https://www.cameroncabo.com'
 const SITE = 'cameroncabo.com'
 const IMAGE = '/images/cover.png'

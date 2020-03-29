@@ -83,6 +83,7 @@ interface IActiveState {
 }
 
 export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
+  const [onMobile, setOnMobile] = useState<boolean>(isOnMobile())
   const [{ prevScrollTop, shouldShowFixed }, setFixedState] = useState<
     IFixedState
   >({
@@ -97,6 +98,20 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
   )
 
   useEffect(() => {
+    // Check that tab indices are correct even if the screen is resized
+    const handleResize = (): void => {
+      setOnMobile(isOnMobile())
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return (): void => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+
+  useEffect(() => {
+    // Handle appearance of fixed nav based on how user scrolls
     if (!fixed) {
       return
     }
@@ -156,16 +171,15 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
     })
   }
 
-  const isMobile = isOnMobile()
   const logoTabIndex: number | undefined = fixed ? -1 : undefined
   const barsTabIndex: number | undefined = fixed
     ? -1
-    : !isMobile
+    : !onMobile
     ? -1
     : undefined
   const tabIndex: number | undefined = fixed
     ? -1
-    : isMobile && !isActive
+    : onMobile && !isActive
     ? -1
     : undefined
 
