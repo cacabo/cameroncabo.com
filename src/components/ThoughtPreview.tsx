@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Link } from 'gatsby'
 import s from 'styled-components'
+import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
 
 import { IThoughtPreview } from '../types'
@@ -28,16 +29,27 @@ const StyledLink = s(Link)`
   }
 `
 
-const StyledImg = s(Img)`
+const StyledBackgroundImg = s(BackgroundImage)`
   width: 12rem;
   max-width: 50%;
-  object-fit: cover;
   border-radius: ${BORDER_RADIUS} 0 0 ${BORDER_RADIUS};
+  overflow: hidden;
 
   ${maxWidth(TABLET)} {
+    display: none;
+  }
+`
+
+const StyledImg = s(Img)`
+  display: none;
+
+  ${maxWidth(TABLET)} {
+    border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
+    display: block;
     max-width: none;
     width: 100%;
     height: auto;
+    overflow: hidden;
   }
 `
 
@@ -57,6 +69,7 @@ export const ThoughtPreview = ({
       <Card key={title} hoverable shade1 pad0 mb0>
         <Row>
           {fluid && <StyledImg fluid={fluid} />}
+          {fluid && <StyledBackgroundImg fluid={fluid} />}
           <Col>
             <div style={{ padding: M2 }}>
               <H3 mb1 style={{ color: BLACK }}>

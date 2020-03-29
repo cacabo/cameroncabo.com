@@ -16,7 +16,11 @@ import {
 } from '../../constants/measurements'
 import { Bars } from './Bars'
 import { Shade } from '../shared'
-import { isOnMobile } from '../../helpers/misc'
+import {
+  isOnMobile,
+  disableBodyScroll,
+  enableBodyScroll,
+} from '../../helpers/misc'
 
 const getScrollTop = (): number =>
   window.pageYOffset !== undefined
@@ -109,6 +113,15 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
       window.removeEventListener('resize', handleResize)
     }
   })
+
+  useEffect(() => {
+    // Disable scroll on body when the navbar is active
+    if (isActive) {
+      disableBodyScroll()
+    } else {
+      enableBodyScroll()
+    }
+  }, [isActive])
 
   useEffect(() => {
     // Handle appearance of fixed nav based on how user scrolls
