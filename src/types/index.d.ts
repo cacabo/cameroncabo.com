@@ -3,6 +3,24 @@ import { FluidObject } from 'gatsby-image'
 
 export type Children = React.ReactNode | React.ReactNodeArray
 
+export interface IThought {
+  html: string
+  timeToRead: number
+  frontmatter: {
+    createdAt: string
+    updatedAt: string
+    title: string
+    subtitle: string
+    topics?: string[]
+    caption: string
+    image?: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
+  }
+}
+
 export interface IThoughtPreviewFrontmatter {
   path: string
   title: string

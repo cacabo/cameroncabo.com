@@ -4,11 +4,17 @@ import s from 'styled-components'
 import { Children } from '../types'
 import { Nav } from './Nav'
 import { Footer } from './Footer'
-import { BLACK, TEAL } from '../constants/colors'
-import { maxWidth, PHONE, HEADER_HEIGHT } from '../constants/measurements'
+import { BLACK, BLUE, SKY, TEAL } from '../constants/colors'
+import {
+  maxWidth,
+  PHONE,
+  HEADER_HEIGHT,
+  SHORT_ANIMATION_DURATION,
+} from '../constants/measurements'
 import { WideContainer } from './shared'
 
 import './Layout.css'
+import { OUTLINE_STYLES } from '../constants/misc'
 
 const Body = s.div`
   padding-top: 1rem;
@@ -29,21 +35,22 @@ const Body = s.div`
     a {
       color: ${BLACK};
       text-decoration: none !important;
-      -o-transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
-      -webkit-box-shadow: inset 0 -4px 0 $teal;
-      -webkit-transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
-      border-bottom: 2px solid ${TEAL};
-      box-shadow: inset 0 -4px 0 ${TEAL};
-      color: $black !important;
       overflow-wrap: break-word;
-      transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
       word-break: break-word;
       word-wrap: break-word;
 
+      background: ${SKY};
+      border-bottom: 1px solid ${BLUE};
+      transition: background ${SHORT_ANIMATION_DURATION}ms ease;
+  
       &:active,
       &:focus,
       &:hover {
-        background-color: ${TEAL};
+        background: ${TEAL};
+      }
+
+      &:focus {
+        ${OUTLINE_STYLES}
       }
     }
   }

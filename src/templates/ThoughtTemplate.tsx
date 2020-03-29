@@ -17,6 +17,7 @@ import {
   TABLET,
   DESKTOP,
 } from '../constants/measurements'
+import { IThoughtPreviewFrontmatter, IThought } from '../types'
 
 const Wrapper = s.div<{}>`
   ${minWidth(PHONE)} {
@@ -44,7 +45,30 @@ const Content = s.div<{}>`
   }
 `
 
-const ThoughtTemplate = ({ data, pageContext }): React.ReactElement => {
+interface IThoughtTemplateProps {
+  data: {
+    markdownRemark: IThought
+  }
+  pageContext: {
+    prev: {
+      node: {
+        frontmatter: IThoughtPreviewFrontmatter
+        timeToRead: number
+      }
+    }
+    next: {
+      node: {
+        frontmatter: IThoughtPreviewFrontmatter
+        timeToRead: number
+      }
+    }
+  }
+}
+
+const ThoughtTemplate = ({
+  data,
+  pageContext,
+}: IThoughtTemplateProps): React.ReactElement => {
   const { markdownRemark } = data
   const { frontmatter, html, timeToRead } = markdownRemark
   const {
@@ -58,10 +82,10 @@ const ThoughtTemplate = ({ data, pageContext }): React.ReactElement => {
   } = frontmatter
   const {
     prev: {
-      node: { frontmatter: prevData },
+      node: { frontmatter: prevData, timeToRead: prevTimeToRead },
     },
     next: {
-      node: { frontmatter: nextData },
+      node: { frontmatter: nextData, timeToRead: nextTimeToRead },
     },
   } = pageContext
 
@@ -70,7 +94,7 @@ const ThoughtTemplate = ({ data, pageContext }): React.ReactElement => {
 
   return (
     <Layout>
-      <SEO title={title} image={src} />
+      <SEO title={title} image={src} showSiteTitle={false} />
       <BR />
 
       <Wrapper>
@@ -113,8 +137,8 @@ const ThoughtTemplate = ({ data, pageContext }): React.ReactElement => {
       <HR />
       <H5>More Thoughts</H5>
 
-      <ThoughtPreview {...prevData} />
-      <ThoughtPreview {...nextData} />
+      <ThoughtPreview {...prevData} timeToRead={prevTimeToRead} />
+      <ThoughtPreview {...nextData} timeToRead={nextTimeToRead} />
 
       <HR />
 

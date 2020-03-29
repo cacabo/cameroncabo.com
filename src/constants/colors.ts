@@ -10,3 +10,5 @@ export const SNOW = '#f2f8ff'
 export const SKY = '#ebf4ff'
 export const TEAL = '#b4e7f8'
 export const BLUE = '#17718f'
+
+export const OUTLINE = TEAL

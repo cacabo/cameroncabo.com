@@ -8,6 +8,12 @@ import {
   MOBILE_HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
 } from '../../constants/measurements'
+import { OUTLINE } from '../../constants/colors'
+import {
+  SPACE_KEY_CODE,
+  ENTER_KEY_CODE,
+  OUTLINE_STYLES,
+} from '../../constants/misc'
 
 const Wrapper = s.div`
   margin-right: 1rem;
@@ -32,14 +38,33 @@ const Wrapper = s.div`
     margin: 0;
     display: inline-block;
   }
+
+  &:focus {
+    ${OUTLINE_STYLES}
+    border-radius: 2px;
+  }
 `
 
 interface IBars {
+  tabIndex?: number
   handleClick: () => void
 }
 
-export const Bars = ({ handleClick }: IBars): ReactElement => (
-  <Wrapper onClick={handleClick}>
-    <MenuIcon />
-  </Wrapper>
-)
+export const Bars = ({ tabIndex, handleClick }: IBars): ReactElement => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (event.keyCode === SPACE_KEY_CODE || event.keyCode === ENTER_KEY_CODE) {
+      event.preventDefault()
+      handleClick()
+    }
+  }
+
+  return (
+    <Wrapper
+      tabIndex={tabIndex || 0}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
+      <MenuIcon />
+    </Wrapper>
+  )
+}

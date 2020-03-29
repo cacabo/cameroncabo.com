@@ -2,8 +2,9 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-// TODO metadata image
+// TODO metadata image (does this work?)
 const URL = 'https://www.cameroncabo.com'
+const SITE = 'cameroncabo.com'
 const IMAGE = '/images/cover.png'
 
 type Meta =
@@ -17,6 +18,7 @@ export interface ISEOProps {
   title?: string
   caption?: string
   image?: string
+  showSiteTitle?: boolean
 }
 
 const SEO = ({
@@ -26,6 +28,7 @@ const SEO = ({
   image,
   caption = '',
   title = '',
+  showSiteTitle = true,
 }: ISEOProps): React.ReactElement => {
   const { site } = useStaticQuery(
     graphql`
@@ -51,7 +54,9 @@ const SEO = ({
       htmlAttributes={{
         lang,
       }}
-      title={title ? `${title} | ${siteTitle}` : siteTitle}
+      title={
+        !showSiteTitle ? title : title ? `${title} | ${siteTitle}` : siteTitle
+      }
       meta={[
         {
           name: 'description',
@@ -75,7 +80,7 @@ const SEO = ({
         },
         {
           property: 'og:url',
-          content: 'cameroncabo.com',
+          content: SITE,
         },
         {
           property: 'og:image',
@@ -87,7 +92,7 @@ const SEO = ({
         },
         {
           name: 'twitter:site',
-          content: 'cameroncabo.com',
+          content: SITE,
         },
         {
           name: 'twitter:card',

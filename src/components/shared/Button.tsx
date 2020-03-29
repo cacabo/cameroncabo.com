@@ -4,6 +4,7 @@ import { BLUE, SNOW, SKY, TEAL, BORDER } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 import { BORDER_RADIUS } from '../../constants/measurements'
 import { CSSProperties } from 'react'
+import { OUTLINE_STYLES } from '../../constants/misc'
 
 export const Buttons = s.div`
   width: 100%;
@@ -48,6 +49,10 @@ export const Button = s(Link)<IButton>(
     &:focus,
     &:active {
       background: ${hoverbackground || background || SKY};
+    }
+
+    &:focus {
+      ${OUTLINE_STYLES}
     }
   `,
 )

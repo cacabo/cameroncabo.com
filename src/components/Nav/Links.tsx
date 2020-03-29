@@ -9,7 +9,7 @@ import {
   DESIGN_ROUTE,
   CONTACT_ROUTE,
 } from '../../constants/routes'
-import { BLACK } from '../../constants/colors'
+import { BLACK, OUTLINE } from '../../constants/colors'
 import {
   maxWidth,
   SHORT_ANIMATION_DURATION,
@@ -17,6 +17,7 @@ import {
   M1,
   TABLET,
 } from '../../constants/measurements'
+import { OUTLINE_STYLES } from '../../constants/misc'
 
 const Wrapper = s.div<{ active?: boolean }>`
   ${maxWidth(TABLET)} {
@@ -44,6 +45,11 @@ const StyledLink = s(Link)<{}>`
     font-size: 125%;
     width: 100%;
   }
+
+  &:focus {
+    ${OUTLINE_STYLES};
+    border-radius: 2px;
+  }
 `
 
 const map: Record<string, string> = {
@@ -56,21 +62,25 @@ const map: Record<string, string> = {
 
 interface ILinksProps {
   active: boolean
+  tabIndex?: number
 }
 
-export const Links = ({ active }: ILinksProps): React.ReactElement => (
+export const Links = ({
+  tabIndex,
+  active,
+}: ILinksProps): React.ReactElement => (
   <Wrapper active={active}>
     {Object.keys(map).map(
       (name): React.ReactElement => {
         const route = map[name]
         return (
-          <StyledLink to={route} key={route}>
+          <StyledLink to={route} key={route} tabIndex={tabIndex}>
             {name}
           </StyledLink>
         )
       },
     )}
-    <StyledLink as="a" href={CONTACT_ROUTE}>
+    <StyledLink as="a" href={CONTACT_ROUTE} tabIndex={tabIndex}>
       Contact
     </StyledLink>
   </Wrapper>

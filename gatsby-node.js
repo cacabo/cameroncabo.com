@@ -11,6 +11,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // NOTE this has duplicate code: https://github.com/gatsbyjs/gatsby/issues/12155
   const thoughts = await graphql(`
     fragment PartialThought on MarkdownRemark {
+      timeToRead
       frontmatter {
         title
         createdAt(fromNow: true)

@@ -16,13 +16,14 @@ import {
   InstagramIcon,
   MailIcon,
 } from '../shared'
-import { BLACK } from '../../constants/colors'
+import { BLACK, OUTLINE } from '../../constants/colors'
 import {
   maxWidth,
-  PHONE,
   SHORT_ANIMATION_DURATION,
   M2,
+  TABLET,
 } from '../../constants/measurements'
+import { OUTLINE_STYLES } from '../../constants/misc'
 
 const Wrapper = s.div<{ active: boolean }>`
   position: absolute;
@@ -33,12 +34,12 @@ const Wrapper = s.div<{ active: boolean }>`
     line-height: 1;
     display: inline-block;
     margin-right: 0.5rem;
+    margin-left: -5px;
     opacity: 0.5;
     color: ${BLACK} !important;
     overflow: hidden;
 
     svg {
-      margin-left: -5px;
       transform: scale(0.64);
     }
 
@@ -51,10 +52,15 @@ const Wrapper = s.div<{ active: boolean }>`
     :last-child {
       margin-right: 0;
     }
+
+    :focus {
+      ${OUTLINE_STYLES}
+      border-radius: 2px;
+    }
   }
 
-  ${maxWidth(PHONE)} {
-    right: 0;
+  ${maxWidth(TABLET)} {
+    left: 0;
     position: relative;
     margin: 4vh 0 ${M2} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 200}ms ease;
@@ -73,26 +79,55 @@ const Wrapper = s.div<{ active: boolean }>`
 
 interface ISocialProps {
   active: boolean
+  tabIndex?: number
 }
 
-export const Social = ({ active }: ISocialProps): React.ReactElement => (
+export const Social = ({
+  tabIndex,
+  active,
+}: ISocialProps): React.ReactElement => (
   <Wrapper active={active}>
-    <a href={FACEBOOK_ROUTE} target="_BLANK" rel="noopener noreferrer">
+    <a
+      href={FACEBOOK_ROUTE}
+      target="_BLANK"
+      rel="noopener noreferrer"
+      tabIndex={tabIndex}
+    >
       <FacebookIcon />
     </a>
-    <a href={LINKEDIN_ROUTE} target="_BLANK" rel="noopener noreferrer">
+    <a
+      href={LINKEDIN_ROUTE}
+      target="_BLANK"
+      rel="noopener noreferrer"
+      tabIndex={tabIndex}
+    >
       <LinkedInIcon />
     </a>
-    <a href={GITHUB_ROUTE} target="_BLANK" rel="noopener noreferrer">
+    <a
+      href={GITHUB_ROUTE}
+      target="_BLANK"
+      rel="noopener noreferrer"
+      tabIndex={tabIndex}
+    >
       <GitHubIcon />
     </a>
-    <a href={TWITTER_ROUTE} target="_BLANK" rel="noopener noreferrer">
+    <a
+      href={TWITTER_ROUTE}
+      target="_BLANK"
+      rel="noopener noreferrer"
+      tabIndex={tabIndex}
+    >
       <TwitterIcon />
     </a>
-    <a href={INSTAGRAM_ROUTE} target="_BLANK" rel="noopener noreferrer">
+    <a
+      href={INSTAGRAM_ROUTE}
+      target="_BLANK"
+      rel="noopener noreferrer"
+      tabIndex={tabIndex}
+    >
       <InstagramIcon />
     </a>
-    <a href={CONTACT_ROUTE}>
+    <a href={CONTACT_ROUTE} tabIndex={tabIndex}>
       <MailIcon />
     </a>
   </Wrapper>

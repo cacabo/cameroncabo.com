@@ -32,7 +32,7 @@ interface IWrapperProps {
 
 const Wrapper = s.header<IWrapperProps>(
   ({ fixed, shouldShowFixed, active }) => css`
-    position: ${fixed ? 'fixed' : 'relative'};
+    position: ${fixed ? 'fixed' : 'absolute'};
     width: 100%;
     left: 0;
     top: ${fixed ? (shouldShowFixed ? '0' : '-4rem') : '0'};
@@ -60,6 +60,12 @@ const Wrapper = s.header<IWrapperProps>(
     }
   `,
 )
+
+const NavSpace = s.div`
+  width: 100%;
+  display: block;
+  height: ${HEADER_HEIGHT};
+`
 
 interface IHeaderProps {
   fixed?: boolean
@@ -149,18 +155,22 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
     })
   }
 
+  const tabIndex: number | undefined = fixed ? -1 : undefined
+
   return (
     <>
       <Wrapper
         active={isActive}
         fixed={fixed}
         shouldShowFixed={shouldShowFixed}
+        tabIndex={tabIndex}
       >
         <Logo />
-        <Bars handleClick={toggle} />
-        <Links active={isActive} />
-        <Social active={isActive} />
+        <Bars handleClick={toggle} tabIndex={tabIndex} />
+        <Links active={isActive} tabIndex={tabIndex} />
+        <Social active={isActive} tabIndex={tabIndex} />
       </Wrapper>
+      {!fixed && <NavSpace tabIndex={-1} />}
       <Shade
         onClick={toggle}
         show={isActive}
