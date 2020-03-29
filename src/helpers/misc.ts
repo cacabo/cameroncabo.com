@@ -4,7 +4,7 @@ import { TABLET_WIDTH } from '../constants/measurements'
  * Check if the current screen "is on mobile"...that is merits hamburger menu
  */
 export const isOnMobile = (): boolean =>
-  window && window.innerWidth < TABLET_WIDTH
+  typeof window !== 'undefined' && window && window.innerWidth < TABLET_WIDTH
 
 /**
  * Fix current body position so it can't scroll
