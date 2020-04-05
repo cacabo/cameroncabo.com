@@ -7,6 +7,8 @@ import {
   TABLET,
   MOBILE_HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
+  maxWidth,
+  M1,
 } from '../../constants/measurements'
 import {
   SPACE_KEY_CODE,
@@ -26,6 +28,10 @@ const Wrapper = s.div`
 
   &:hover {
     opacity: 0.5;
+  }
+
+  ${maxWidth(TABLET)} {
+    top: calc(${MOBILE_HEADER_HEIGHT} / 2 - ${M1} + 1px);
   }
 
   ${minWidth(TABLET)} {
