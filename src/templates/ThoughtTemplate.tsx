@@ -20,6 +20,9 @@ import {
 import { IThoughtPreviewFrontmatter, IThought } from '../types'
 
 const Wrapper = s.div<{}>`
+  width: 100vw;
+  overflow-x: hidden !important;
+
   ${minWidth(PHONE)} {
     padding: 0 5%;
   }

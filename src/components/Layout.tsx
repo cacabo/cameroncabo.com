@@ -18,6 +18,8 @@ import { OUTLINE_STYLES } from '../constants/misc'
 
 const Body = s.div`
   padding-top: 1rem;
+  width: 100vw;
+  overflow-x: hidden;
 
   ${maxWidth(PHONE)} {
     margin-left: 0;
