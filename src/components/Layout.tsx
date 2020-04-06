@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from 'styled-components'
 
 import { Children } from '../types'
@@ -62,17 +62,21 @@ const Content = s.main`
   min-height: calc(100vh - ${HEADER_HEIGHT});
 `
 
-const Layout = ({ children }: { children: Children }): React.ReactElement => (
-  <>
-    <Nav />
-    <Nav fixed />
-    <Body id="top">
-      <WideContainer>
-        <Content>{children}</Content>
-        <Footer />
-      </WideContainer>
-    </Body>
-  </>
-)
+const Layout = ({ children }: { children: Children }): React.ReactElement => {
+  const [shouldHideBody, setShouldHideBody] = useState<boolean>(false)
+
+  return (
+    <>
+      <Nav setShouldHideBody={setShouldHideBody} />
+      <Nav setShouldHideBody={setShouldHideBody} fixed />
+      <Body id="top" aria-hidden={shouldHideBody}>
+        <WideContainer>
+          <Content>{children}</Content>
+          <Footer />
+        </WideContainer>
+      </Body>
+    </>
+  )
+}
 
 export default Layout

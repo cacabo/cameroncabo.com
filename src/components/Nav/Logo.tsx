@@ -14,12 +14,6 @@ const StyledLink = s(Link)`
   left: ${M2};
   top: ${M1};
 
-  ${maxWidth(TABLET)} {
-    top: 0;
-    left: 0;
-    position: relative;
-  }
-
   &:focus {
     outline: 0;
 
@@ -29,7 +23,12 @@ const StyledLink = s(Link)`
   }
 
   ${maxWidth(TABLET)} {
+    margin-top: ${M1};
+    display: block;
     height: ${MOBILE_SIZE};
+    position: relative;
+    top: 0;
+    left: 0;
   }
 `
 
@@ -42,7 +41,6 @@ const LogoImg = s.img<{}>`
   ${maxWidth(TABLET)} {
     height: ${MOBILE_SIZE};
     position: relative;
-    top: ${M1};
   }
 `
 
@@ -52,6 +50,6 @@ interface ILogoProps {
 
 export const Logo = ({ tabIndex }: ILogoProps): React.ReactElement => (
   <StyledLink to={HOME_ROUTE} tabIndex={tabIndex}>
-    <LogoImg src="/images/logo.svg" alt="Cameron Cabo" />
+    <LogoImg src="/images/logo.svg" alt="Cameron Cabo" role="img" />
   </StyledLink>
 )

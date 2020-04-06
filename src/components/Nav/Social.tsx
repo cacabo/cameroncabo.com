@@ -86,12 +86,13 @@ export const Social = ({
   tabIndex,
   active,
 }: ISocialProps): React.ReactElement => (
-  <Wrapper active={active}>
+  <Wrapper active={active} role="menu">
     <a
       href={FACEBOOK_ROUTE}
       target="_BLANK"
       rel="noopener noreferrer"
       tabIndex={tabIndex}
+      role="menuitem"
     >
       <FacebookIcon />
     </a>
@@ -100,6 +101,7 @@ export const Social = ({
       target="_BLANK"
       rel="noopener noreferrer"
       tabIndex={tabIndex}
+      role="menuitem"
     >
       <LinkedInIcon />
     </a>
@@ -108,6 +110,7 @@ export const Social = ({
       target="_BLANK"
       rel="noopener noreferrer"
       tabIndex={tabIndex}
+      role="menuitem"
     >
       <GitHubIcon />
     </a>
@@ -116,6 +119,7 @@ export const Social = ({
       target="_BLANK"
       rel="noopener noreferrer"
       tabIndex={tabIndex}
+      role="menuitem"
     >
       <TwitterIcon />
     </a>

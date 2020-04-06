@@ -69,18 +69,23 @@ export const Links = ({
   tabIndex,
   active,
 }: ILinksProps): React.ReactElement => (
-  <Wrapper active={active}>
+  <Wrapper active={active} role="menu">
     {Object.keys(map).map(
       (name): React.ReactElement => {
         const route = map[name]
         return (
-          <StyledLink to={route} key={route} tabIndex={tabIndex}>
+          <StyledLink
+            to={route}
+            key={route}
+            tabIndex={tabIndex}
+            role="menuitem"
+          >
             {name}
           </StyledLink>
         )
       },
     )}
-    <StyledLink as="a" href={CONTACT_ROUTE} tabIndex={tabIndex}>
+    <StyledLink as="a" href={CONTACT_ROUTE} tabIndex={tabIndex} role="menuitem">
       Contact
     </StyledLink>
   </Wrapper>

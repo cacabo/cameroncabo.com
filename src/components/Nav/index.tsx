@@ -51,6 +51,7 @@ const Wrapper = s.header<IWrapperProps>(
     box-shadow: 0 0 4px ${BLACK_ALPHA(0.25)};
     align-items: center;
     height: ${HEADER_HEIGHT};
+    outline: 0 !important;
 
     ${maxWidth(TABLET)} {
       height: auto;
@@ -74,6 +75,11 @@ const NavSpace = s.div`
 
 interface IHeaderProps {
   fixed?: boolean
+
+  /**
+   * For aria reasons, hide the body if the nav is active
+   */
+  setShouldHideBody: (shouldHideBody: boolean) => void
 }
 
 interface IFixedState {
@@ -86,7 +92,10 @@ interface IActiveState {
   isActive: boolean
 }
 
-export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
+export const Nav = ({
+  fixed,
+  setShouldHideBody,
+}: IHeaderProps): React.ReactElement => {
   const [onMobile, setOnMobile] = useState<boolean>(isOnMobile())
   const [{ prevScrollTop, shouldShowFixed }, setFixedState] = useState<
     IFixedState
@@ -178,6 +187,8 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
       return setActiveState({ isNewlyMounted: false, isActive: !isActive })
     }
 
+    setShouldHideBody(isActive)
+
     return setActiveState({
       isNewlyMounted,
       isActive: !isActive,
@@ -196,6 +207,8 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
     ? -1
     : undefined
 
+  const shadeId = `shade-${fixed ? 'fixed' : 'relative'}`
+
   return (
     <>
       <Wrapper
@@ -203,18 +216,22 @@ export const Nav = ({ fixed }: IHeaderProps): React.ReactElement => {
         fixed={fixed}
         shouldShowFixed={shouldShowFixed}
         tabIndex={tabIndex}
+        aria-hidden={!fixed}
+        aria-owns={shadeId}
+        role="navigation"
       >
         <Logo tabIndex={logoTabIndex} />
         <Bars handleClick={toggle} tabIndex={barsTabIndex} />
         <Links active={isActive} tabIndex={tabIndex} />
         <Social active={isActive} tabIndex={tabIndex} />
       </Wrapper>
-      {!fixed && <NavSpace tabIndex={-1} />}
+      {!fixed && <NavSpace tabIndex={-1} aria-hidden />}
       <Shade
         onClick={toggle}
         show={isActive}
         zIndex={HEADER_Z_INDEX - 1}
         isNewlyMounted={isNewlyMounted}
+        id={shadeId}
       />
     </>
   )

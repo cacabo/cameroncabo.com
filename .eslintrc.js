@@ -8,6 +8,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -17,7 +18,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'react-hooks', 'prefer-arrow'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'prefer-arrow', 'jsx-a11y'],
   settings: {
     react: {
       version: 'detect',
