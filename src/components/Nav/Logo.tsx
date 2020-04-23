@@ -13,6 +13,7 @@ const StyledLink = s(Link)`
   height: ${SIZE};
   left: ${M2};
   top: ${M1};
+  font-size: 100% !important;
 
   &:focus {
     outline: 0;
@@ -49,7 +50,7 @@ interface ILogoProps {
 }
 
 export const Logo = ({ tabIndex }: ILogoProps): React.ReactElement => (
-  <StyledLink to={HOME_ROUTE} tabIndex={tabIndex}>
-    <LogoImg src="/images/logo.svg" alt="Cameron Cabo" role="img" />
+  <StyledLink to={HOME_ROUTE} tabIndex={tabIndex} aria-label="Home">
+    <LogoImg src="/images/logo.svg" alt="Cameron Cabo" />
   </StyledLink>
 )

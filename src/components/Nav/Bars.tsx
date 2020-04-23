@@ -8,8 +8,6 @@ import {
   MOBILE_HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
   maxWidth,
-  M1,
-  PHONE,
 } from '../../constants/measurements'
 import {
   SPACE_KEY_CODE,
@@ -33,10 +31,6 @@ const Wrapper = s.div`
 
   ${maxWidth(TABLET)} {
     top: calc(${MOBILE_HEADER_HEIGHT} / 2 - 1px);
-  }
-
-  ${maxWidth(PHONE)} {
-    top: calc(${MOBILE_HEADER_HEIGHT} / 2 - ${M1} + 1px);
   }
 
   ${minWidth(TABLET)} {
@@ -73,7 +67,7 @@ export const Bars = ({ tabIndex, handleClick }: IBars): ReactElement => {
       tabIndex={tabIndex || 0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      role="menu"
+      role="button"
     >
       <MenuIcon />
     </Wrapper>

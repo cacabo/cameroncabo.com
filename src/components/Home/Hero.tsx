@@ -100,7 +100,6 @@ export const Hero = (): React.ReactElement => {
           </Buttons>
         </Flex>
       </FlexRow>
-      <BR />
     </Wrapper>
   )
 }

@@ -1,6 +1,25 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { H3, InfoCard } from '../shared'
+import { FluidObject } from 'gatsby-image'
+
+interface IEducationNode {
+  node: {
+    html: string
+    frontmatter: {
+      start: string
+      end: string
+      title: string
+      gpa: number
+      image: {
+        childImageSharp: {
+          fluid: FluidObject
+        }
+        publicURL?: string
+      }
+    }
+  }
+}
 
 export const Education = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
@@ -32,7 +51,7 @@ export const Education = (): React.ReactElement => {
     }
   `)
 
-  const { edges } = data.allMarkdownRemark
+  const edges = data.allMarkdownRemark.edges as IEducationNode[]
   return (
     <>
       <H3 mb4 mt4>

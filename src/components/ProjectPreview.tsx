@@ -57,7 +57,7 @@ export const ProjectPreview = ({
       <Row margin={M1}>
         <Col sm={12} lg={5} margin={M1}>
           <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }}>
-            <Link to={path}>
+            <Link to={path} aria-label={`View ${title} project`}>
               {image && <Img fluid={image.childImageSharp.fluid} />}
             </Link>
           </Card>

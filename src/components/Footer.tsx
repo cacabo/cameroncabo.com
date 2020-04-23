@@ -1,13 +1,19 @@
 import React from 'react'
 import s from 'styled-components'
 import { Text } from './shared'
+import { M1, minWidth, TABLET, M2 } from '../constants/measurements'
 
 const FooterTag = s.footer`
   width: 100%;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: ${M1};
+  margin-bottom: ${M1};
   display: flex;
   justify-content: space-between;
+
+  ${minWidth(TABLET)} {
+    margin-top: ${M2};
+    margin-bottom: ${M2};
+  }
 `
 
 // Scroll to the top of the page

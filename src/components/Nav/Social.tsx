@@ -93,6 +93,7 @@ export const Social = ({
       rel="noopener noreferrer"
       tabIndex={tabIndex}
       role="menuitem"
+      aria-label="Facebook"
     >
       <FacebookIcon />
     </a>
@@ -102,6 +103,7 @@ export const Social = ({
       rel="noopener noreferrer"
       tabIndex={tabIndex}
       role="menuitem"
+      aria-label="LinkedIn"
     >
       <LinkedInIcon />
     </a>
@@ -111,6 +113,7 @@ export const Social = ({
       rel="noopener noreferrer"
       tabIndex={tabIndex}
       role="menuitem"
+      aria-label="GitHub"
     >
       <GitHubIcon />
     </a>
@@ -120,6 +123,7 @@ export const Social = ({
       rel="noopener noreferrer"
       tabIndex={tabIndex}
       role="menuitem"
+      aria-label="Twitter"
     >
       <TwitterIcon />
     </a>
@@ -128,6 +132,7 @@ export const Social = ({
       target="_BLANK"
       rel="noopener noreferrer"
       tabIndex={tabIndex}
+      aria-label="Instagram"
     >
       <InstagramIcon />
     </a>
