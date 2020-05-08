@@ -12,6 +12,7 @@ color: '#247bc1'
 collaborators: ['AR Textiles']
 tags: ['freelance', 'web']
 order: 7
+status: 'Steady state'
 ---
 
 Sourced client via a friend of a friend. The aim was to modernize their brand and better direct web traffic into sales over email and phone.

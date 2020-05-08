@@ -15,6 +15,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/kristendumbeck/" target="_BLANK">Kristen Dumbeck</a>',
   ]
 order: 6
+status: "Active, I'm not involved"
 ---
 
 Worked with a Wharton MBA on her direct-to-consumer perfume startup. I helped her build out an MVP with Rails. She later decided to pivot to using Shopify once she had the product and was ready to sell.

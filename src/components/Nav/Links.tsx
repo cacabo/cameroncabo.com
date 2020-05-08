@@ -33,6 +33,7 @@ const StyledLink = s(Link)<{}>`
   color: ${BLACK};
   opacity: 0.5;
   margin: 0 calc(${M1} + 0.5vw);
+  padding: 0 4px;
 
   &:hover,
   &:focus,
@@ -44,6 +45,7 @@ const StyledLink = s(Link)<{}>`
     margin: 1vh 0;
     font-size: 125%;
     width: 100%;
+    padding: 0;
   }
 
   &:focus {

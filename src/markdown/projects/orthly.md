@@ -14,6 +14,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/danielmhanover/" target="_BLANK">Daniel Hanover</a>',
   ]
 order: 0
+status: "Active, I'm not involved"
 ---
 
 Orthly has recently rebranded to [Dandy](https://www.meetdandy.com/) (and with it, has built out a new website!) but it was great to help them out as they iterated on their product and started scaling out their operations. This is a competitive space where brand, marketing, and UX are where players have to differentiate—once you've picked one product you can't really switch to a competitor.

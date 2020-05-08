@@ -16,6 +16,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/vibhav-jagwani-a12797135/" target="_BLANK">Vibhav Jagwani</a>',
   ]
 order: 2
+status: 'Dead'
 ---
 
 Globle was a group project I build out at the end of my Junior year at UPenn. The major components were a web crawler, page indexer, page ranker, and API/web interface. We additionally built out an autocomplete engine for keeping track of the most common queries submitted by users.

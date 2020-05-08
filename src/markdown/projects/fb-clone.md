@@ -15,6 +15,7 @@ collaborators:
   ]
 tags: ['class', 'web']
 order: 10
+status: 'Dead'
 ---
 
 ### Overview

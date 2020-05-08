@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
 import { Children } from '../../types'
 import { BORDER } from '../../constants/colors'
+import { BOLD_FONT_WEIGHT } from '../../constants/fonts'
 
 /**
  * NOTE these are generic styles for ALL text
@@ -22,6 +23,7 @@ interface IText {
   mt3?: boolean
   mt4?: boolean
   sm?: boolean
+  bold?: boolean
   color?: string
   lighter?: boolean
   lightest?: boolean
@@ -36,6 +38,7 @@ export const Text = s.p<IText>(
     color,
     lighter,
     lightest,
+    bold,
     mb0,
     mb1,
     mb2,
@@ -47,6 +50,7 @@ export const Text = s.p<IText>(
     mt3,
     mt4,
   }: IText) => css`
+    ${bold && `font-weight: ${BOLD_FONT_WEIGHT};`}
     ${mb0 && 'margin-bottom: 0;'}
     ${mb1 && 'margin-bottom: 0.25rem;'}
     ${mb2 && 'margin-bottom: 0.5rem;'}

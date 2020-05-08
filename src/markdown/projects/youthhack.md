@@ -12,4 +12,5 @@ color: '#f4cc00'
 tags: ['club', 'web']
 collaborators: ['Amit Gupta', 'David Ongchoco', 'Jonathan Mak']
 order: 8
+status: 'Dead'
 ---

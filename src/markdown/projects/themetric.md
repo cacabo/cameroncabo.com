@@ -18,6 +18,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/maximyu/" target="_BLANK">Max Yulis</a>',
   ]
 order: 2
+status: 'Active'
 ---
 
 It's been an incredible journey to build the tech behind The Metric. Under some fantastic leadership from people like Thabo Dhlamini, Jason Kim, and many, many others we've brought some fantastic, unique student perspectives to the web.

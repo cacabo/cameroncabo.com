@@ -9,6 +9,8 @@ export const PartialProject = graphql`
       technologies
       tags
       color
+      start
+      end
       image {
         childImageSharp {
           fluid(maxWidth: 720) {
@@ -35,6 +37,7 @@ export const Project = graphql`
       end
       color
       tags
+      status
       image {
         childImageSharp {
           fluid(maxWidth: 1248) {

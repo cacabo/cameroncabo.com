@@ -26,6 +26,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/adamrip/" target="_BLANK">Adam Ripley</a>',
   ]
 order: 3
+status: 'Dead'
 ---
 
 ### History

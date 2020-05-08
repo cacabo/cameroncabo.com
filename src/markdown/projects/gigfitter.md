@@ -2,10 +2,9 @@
 title: 'GigFitter'
 description: 'Helping gig economy workers find the jobs and times that work best for them.'
 path: '/projects/gigfitter'
-link: 'https://www.gigfitter.com'
-technologies: ['TypeScript', 'Gatsby']
+technologies: ['TypeScript', 'Gatsby', 'Node', 'Flask', 'Postgres']
 start: 'September 2019'
-end: 'Present'
+end: 'May 2020'
 image: '../../images/projects/gig-fitter.png'
 color: 'rgb(13, 95, 248)'
 tags: ['class', 'web']
@@ -16,6 +15,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/minjae-kwon-30895066/" target="_BLANK">Minjae Kwon</a>',
   ]
 order: -1
+status: 'Dead'
 ---
 
 ### Overview

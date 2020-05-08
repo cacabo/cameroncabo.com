@@ -25,6 +25,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/andrew-cui/" target="_BLANK">Andrew Cui</a>',
   ]
 order: 4
+status: 'Dead'
 ---
 
 Built alongside Andrew Cui, Jacob Beckerman, and Jimmy Xue (all fellow M&T class of 2020) exploring the social impact space.

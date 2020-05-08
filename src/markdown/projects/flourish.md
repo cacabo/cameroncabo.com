@@ -16,6 +16,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/adamrip/" target="_BLANK">Adam Ripley</a>',
   ]
 order: 5
+status: "Active, I'm not involved"
 ---
 
 My friend Adam Ripley and I helped founder Braden Fineberg and his team in building out an MVP. You can think of Flourish as Acorns but for investing in causes you care about rather than your savings account.

@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import s from 'styled-components'
 
-import { Row, Col, Card, H3, P, Button, Tag } from './shared'
+import { Row, Col, Card, H3, P, Button, Tag, UnstyledLink } from './shared'
 import {
   M1,
   M2,
@@ -12,9 +12,18 @@ import {
   maxWidth,
   minWidth,
   DESKTOP,
+  TABLET,
 } from '../constants/measurements'
 import ColorGenerator from '../helpers/ColorGenerator'
 import { IProjectPreview } from '../types'
+
+const StyledImg = s(Img)`
+  img {
+    ${minWidth(TABLET)} {
+      margin-bottom: 0;
+    }
+  }
+`
 
 const Wrapper = s.div<{ background: string }>`
   background: ${(props): string => props.background};
@@ -56,15 +65,15 @@ export const ProjectPreview = ({
     <Wrapper background={colorBg}>
       <Row margin={M1}>
         <Col sm={12} lg={5} margin={M1}>
-          <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }}>
+          <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }} mb0>
             <Link to={path} aria-label={`View ${title} project`}>
-              {image && <Img fluid={image.childImageSharp.fluid} />}
+              {image && <StyledImg fluid={image.childImageSharp.fluid} />}
             </Link>
           </Card>
         </Col>
         <Col sm={12} lg={7} margin={M1}>
           <H3 key={title} mb2>
-            <Link to={path}>{title}</Link>
+            <UnstyledLink to={path}>{title}</UnstyledLink>
           </H3>
           <P sm mb4 lighter>
             {start === end ? start : `${start} - ${end}`}
@@ -83,7 +92,7 @@ export const ProjectPreview = ({
             </div>
           )}
           <Button {...colorProps} to={path} style={{ marginBottom: 0 }}>
-            Read more
+            Read more &rarr;
           </Button>
         </Col>
       </Row>

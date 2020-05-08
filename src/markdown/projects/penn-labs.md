@@ -17,6 +17,7 @@ collaborators:
     '<a href="https://www.linkedin.com/in/annalinwang/" target="_BLANK">Anna Wang</a> on illustrations',
   ]
 order: -2
+status: 'Active'
 ---
 
 ### Overview

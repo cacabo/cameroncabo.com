@@ -81,6 +81,7 @@ export interface IProjectFrontmatter {
   color: string
   repo: string
   tags: string[]
+  status?: string
   image: {
     childImageSharp: {
       fluid: FluidObject

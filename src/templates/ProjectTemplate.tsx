@@ -16,7 +16,7 @@ import {
   H3,
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
-import { BORDER, BLACK } from '../constants/colors'
+import { BORDER } from '../constants/colors'
 import {
   BORDER_RADIUS_LG,
   PHONE,
@@ -110,6 +110,7 @@ const ProjectTemplate = ({
     color,
     repo,
     tags,
+    status,
     image: {
       childImageSharp: { fluid },
     },
@@ -137,7 +138,6 @@ const ProjectTemplate = ({
         <P mb4>{description}</P>
         <table
           style={{
-            fontSize: '80%',
             borderTop: `1px solid ${BORDER}`,
             marginBottom: '1rem',
           }}
@@ -145,25 +145,53 @@ const ProjectTemplate = ({
           <tbody>
             <tr>
               <td>
-                <strong>Timespan</strong>
+                <P sm bold mb0>
+                  Timespan
+                </P>
               </td>
-              <td>{start === end ? start : `${start} - ${end}`}</td>
+              <td>
+                <P sm mb0>
+                  {start === end ? start : `${start} - ${end}`}
+                </P>
+              </td>
             </tr>
-            {technologies && (
+            {status && (
               <tr>
                 <td>
-                  <strong>Technologies</strong>
+                  <P sm bold mb0>
+                    Status
+                  </P>
                 </td>
-                <td>{technologies.join(', ')}</td>
+                <td>
+                  <P sm mb0>
+                    {status}
+                  </P>
+                </td>
+              </tr>
+            )}
+            {technologies && technologies.length && (
+              <tr>
+                <td>
+                  <P sm bold mb0>
+                    Technologies
+                  </P>
+                </td>
+                <td>
+                  <P sm mb0>
+                    {technologies.join(', ')}
+                  </P>
+                </td>
               </tr>
             )}
             {collaborators && (
               <tr>
                 <td>
-                  <strong>Collaborators</strong>
+                  <P sm bold mb0>
+                    Collaborators
+                  </P>
                 </td>
                 <td>
-                  <P style={{ margin: 0, color: BLACK }}>
+                  <P mb0 sm>
                     {collaborators.map((c: string, idx: number) => (
                       <React.Fragment key={c}>
                         <span dangerouslySetInnerHTML={{ __html: c }} />
@@ -177,14 +205,18 @@ const ProjectTemplate = ({
             {tags && (
               <tr>
                 <td>
-                  <strong>Tags</strong>
+                  <P sm bold mb0>
+                    Tags
+                  </P>
                 </td>
                 <td>
-                  {tags.map((t: string) => (
-                    <Tag key={t} {...colorProps}>
-                      {t}
-                    </Tag>
-                  ))}
+                  {tags.map(
+                    (t: string): React.ReactElement => (
+                      <Tag key={t} {...colorProps} sm>
+                        {t}
+                      </Tag>
+                    ),
+                  )}
                 </td>
               </tr>
             )}
@@ -193,13 +225,18 @@ const ProjectTemplate = ({
         <Buttons>
           {link && (
             <Button as="a" href={link} target="_BLANK" {...colorProps}>
-              View project{' '}
-              <ExternalLinkIcon style={{ transform: 'scale(0.8)' }} />
+              View project
+              <ExternalLinkIcon
+                style={{ marginLeft: '6px', transform: 'scale(0.8)' }}
+              />
             </Button>
           )}
           {repo && (
             <Button as="a" href={repo} target="_BLANK" {...colorProps}>
-              View repo <ExternalLinkIcon style={{ transform: 'scale(0.8)' }} />
+              View repo
+              <ExternalLinkIcon
+                style={{ marginLeft: '6px', transform: 'scale(0.8)' }}
+              />
             </Button>
           )}
         </Buttons>

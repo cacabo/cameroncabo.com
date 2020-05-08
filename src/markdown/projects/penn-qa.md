@@ -11,6 +11,7 @@ color: '#a8263d'
 tags: ['class', 'web']
 collaborators: ['Victor Chien', 'Caroline Okun', 'Prateek Agarwal']
 order: 11
+status: 'Dead'
 ---
 
 As a team, we didn't have the bandwidth to scale this project after building it out for the class. Nonetheless, we learned a great deal about building a fullstack JS project and working in a group to deliver it on a timeline leveraging agile methodologies.
