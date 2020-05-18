@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { BR, H1, Button } from './shared'
+import { BR, Button } from './shared'
 import { ThoughtPreview } from './ThoughtPreview'
 import { HOME_ROUTE } from '../constants/routes'
 import { IThoughtPreviewFrontmatter } from '../types'
@@ -32,7 +32,6 @@ export const Thoughts = (): React.ReactElement => {
   return (
     <>
       <BR />
-      <H1>Thoughts</H1>
       {(edges as IThoughtPreviewNode[]).map(
         ({ node: { frontmatter, timeToRead } }) => (
           <ThoughtPreview

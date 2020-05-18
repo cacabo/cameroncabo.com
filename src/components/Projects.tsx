@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { H1, Button, HR, BR } from './shared'
+import { Button, HR, BR } from './shared'
 import { HOME_ROUTE } from '../constants/routes'
 import { ProjectPreview } from './ProjectPreview'
 import { IProjectPreview } from '../types'
@@ -32,7 +32,6 @@ const Projects = (): React.ReactElement => {
   return (
     <>
       <BR />
-      <H1>Projects</H1>
       {(edges as IProjectNode[]).map(({ node: { frontmatter } }) => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />
