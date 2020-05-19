@@ -19,9 +19,16 @@ import { IProjectPreview } from '../types'
 
 const StyledImg = s(Img)`
   img {
-    ${minWidth(TABLET)} {
-      margin-bottom: 0;
-    }
+    margin-bottom: 0;
+  }
+`
+
+const ImgCard = s(Card)<{ color: string }>`
+  border-color: ${(props): string => props.color};
+  border-width: 4px;
+
+  ${maxWidth(TABLET)} {
+    margin-bottom: ${M2};
   }
 `
 
@@ -65,11 +72,11 @@ export const ProjectPreview = ({
     <Wrapper background={colorBg}>
       <Row margin={M1}>
         <Col sm={12} lg={5} margin={M1}>
-          <Card pad0 shade3 style={{ borderColor: color, borderWidth: 4 }} mb0>
+          <ImgCard pad0 shade3 color={color} mb0>
             <Link to={path} aria-label={`View ${title} project`}>
               {image && <StyledImg fluid={image.childImageSharp.fluid} />}
             </Link>
-          </Card>
+          </ImgCard>
         </Col>
         <Col sm={12} lg={7} margin={M1}>
           <H3 key={title} mb2>
