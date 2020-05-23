@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { H3, InfoCard } from '../shared'
+import { H3, InfoCard, HR } from '../shared'
 import { FluidObject } from 'gatsby-image'
 
 interface IEducationNode {
@@ -57,6 +57,7 @@ export const Education = (): React.ReactElement => {
       <H3 mb4 mt4>
         Education
       </H3>
+      <HR />
       {edges.map(
         ({
           node: {

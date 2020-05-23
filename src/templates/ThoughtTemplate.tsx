@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { Button, H1, HR, P, Callout, Tag, BR, H5 } from '../components/shared'
+import { Button, H1, HR, P, Callout, Tag, BR, H3 } from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
 import { Timestamp } from '../components/Timestamp'
 import { ThoughtPreview } from '../components/ThoughtPreview'
@@ -32,18 +32,18 @@ const Wrapper = s.div<{}>`
   }
 
   ${minWidth(DESKTOP)} {
-    padding: 0 15%;
+    padding: 0 12.5%;
   }
 `
 
 const Content = s.div<{}>`
   .bibliography {
-    font-size: 80%;
     margin-bottom: 1.5rem;
 
     p {
       line-height: 1.25;
-      margin-bottom: 0.5rem;
+      font-size: 80%;
+      margin-bottom: ${M1};
     }
   }
 `
@@ -140,13 +140,15 @@ const ThoughtTemplate = ({
         />
       </Wrapper>
 
+      <BR />
+
+      <H3 mb4 mt4>
+        More Thoughts
+      </H3>
       <HR />
-      <H5>More Thoughts</H5>
 
       <ThoughtPreview {...prevData} timeToRead={prevTimeToRead} />
       <ThoughtPreview {...nextData} timeToRead={nextTimeToRead} />
-
-      <HR />
 
       <Button to={THOUGHTS_ROUTE}>&larr; Back to all thoughts</Button>
     </Layout>

@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
-import { H4, Text } from './Typography'
+import { H4, Text, P } from './Typography'
 import { FlexRow, Flex } from './Grid'
 import { BORDER, BLACK_ALPHA } from '../../constants/colors'
 import {
@@ -10,6 +10,10 @@ import {
   maxWidth,
   SHORT_ANIMATION_DURATION,
   LONG_ANIMATION_DURATION,
+  M4,
+  M2,
+  TABLET,
+  minWidth,
 } from '../../constants/measurements'
 import { Children } from '../../types'
 
@@ -126,7 +130,7 @@ const CardImg = s(Img)<{}>`
   border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
 `
 
-const SIZE = '48px'
+const SIZE = '52px'
 
 interface IInfoCard {
   title: string
@@ -136,6 +140,24 @@ interface IInfoCard {
   imageUrl?: string
 }
 
+const InfoCardWrapper = s.div<{}>`
+  margin-bottom: ${M4};
+
+  ${minWidth(TABLET)} {
+    margin-bottom: calc(${M4} + 1.25vh);
+  }
+`
+
+const InfoCardImageWrapper = s.div<{}>`
+  min-width: ${SIZE};
+  height: ${SIZE};
+  margin-right: ${M4};
+
+  ${maxWidth(TABLET)} {
+    margin-right: ${M2};
+  }
+`
+
 export const InfoCard = ({
   title,
   fluidImage,
@@ -143,22 +165,10 @@ export const InfoCard = ({
   body,
   imageUrl,
 }: IInfoCard): React.ReactElement => (
-  <Card>
+  <InfoCardWrapper>
     <FlexRow>
-      <Flex>
-        <H4 mb2>{title}</H4>
-        <Text lighter mb2 sm>
-          {subtitle}
-        </Text>
-      </Flex>
       {(fluidImage || imageUrl) && (
-        <div
-          style={{
-            minWidth: SIZE,
-            height: SIZE,
-            marginLeft: '0.5rem',
-          }}
-        >
+        <InfoCardImageWrapper>
           {fluidImage ? (
             <Img fluid={fluidImage} />
           ) : (
@@ -168,9 +178,17 @@ export const InfoCard = ({
               alt={title}
             />
           )}
-        </div>
+        </InfoCardImageWrapper>
       )}
+      <Flex>
+        <P mb2 bold>
+          {title}
+        </P>
+        <P lighter mb4 sm>
+          {subtitle}
+        </P>
+        <Content dangerouslySetInnerHTML={{ __html: body }} />
+      </Flex>
     </FlexRow>
-    <Content dangerouslySetInnerHTML={{ __html: body }} />
-  </Card>
+  </InfoCardWrapper>
 )

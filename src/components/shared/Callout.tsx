@@ -36,7 +36,7 @@ export const Callout = s.div<ICalloutProps>`
 
   ${minWidth(WIDESCREEN)} {
     width: calc(100% + ${M2} + ${M2} + 2.5vw);
-    padding: ${M2} + 1.25vw;
+    padding: ${M2} calc(${M2} + 1.25vw);
     margin-left: calc(-${M2} - 1.25vw);
   }
 `
