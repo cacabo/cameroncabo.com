@@ -16,7 +16,7 @@ export const Work = (): React.ReactElement => {
     graphql`
       query WorkQuery {
         allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/(work)/" } }
+          filter: { fileAbsolutePath: { regex: "/(work/)/" } }
           sort: { order: ASC, fields: [frontmatter___order] }
         ) {
           edges {
@@ -58,7 +58,7 @@ export const Work = (): React.ReactElement => {
             frontmatter: { company, title, location, start, end, image },
           },
         }) => {
-          const { childImageSharp, publicURL } = image
+          const { childImageSharp, publicURL } = image || {}
           const fluid = (childImageSharp && childImageSharp.fluid) || undefined
           return (
             <InfoCard

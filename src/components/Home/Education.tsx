@@ -65,7 +65,7 @@ export const Education = (): React.ReactElement => {
             frontmatter: { start, end, title, gpa, image },
           },
         }) => {
-          const { childImageSharp, publicURL } = image
+          const { childImageSharp, publicURL } = image || {}
           const fluid = (childImageSharp && childImageSharp.fluid) || undefined
           return (
             <InfoCard
