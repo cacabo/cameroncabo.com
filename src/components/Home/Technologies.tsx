@@ -1,5 +1,6 @@
 import React from 'react'
-import { P, H3, Row, Col, Text, Button, HR } from '../shared'
+
+import { P, H3, Row, Col, Button, HR } from '../shared'
 import { M1 } from '../../constants/measurements'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 
@@ -15,41 +16,39 @@ export const Technologies = (): React.ReactElement => (
         <P bold mb2>
           General Purpose
         </P>
-        <Text>JavaScript, TypeScript, Python, Java, Ruby, C, Haskell.</Text>
+        <P>JavaScript, TypeScript, Python, Java, Ruby, C, Haskell.</P>
         <P bold mb2>
           Web
         </P>
-        <Text>
+        <P>
           React (Gatsby, Next), Redux, HTML, CSS (SCSS, styled-components), ERB,
           Handlebars, Angular, EJS, jQuery.
-        </Text>
+        </P>
         <P bold mb2>
           Mobile
         </P>
-        <Text>React Native, Android.</Text>
+        <P>React Native, Android.</P>
       </Col>
 
       <Col margin={M1} sm={12} md={6}>
         <P bold mb2>
           APIs
         </P>
-        <Text>
+        <P>
           Node, Express, Passport, Ruby on Rails, GraphQL, Java Spark,
           Serverless.
-        </Text>
+        </P>
         <P bold mb2>
           Databases & Deployment
         </P>
-        <Text>
+        <P>
           Postgres, MongoDB, AWS (DynamoDB), Google Cloud Platform, Firebase,
           Heroku, Netlify.
-        </Text>
+        </P>
         <P bold mb2>
           Data
         </P>
-        <Text>
-          Map Reduce, SQL, Spark, Jupyter Notebook, Pandas, Numpy, Storm.
-        </Text>
+        <P>Map Reduce, SQL, Spark, Jupyter Notebook, Pandas, Numpy, Storm.</P>
       </Col>
     </Row>
     <Button to={PROJECTS_ROUTE}>See my projects &rarr;</Button>

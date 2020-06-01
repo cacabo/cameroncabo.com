@@ -3,8 +3,10 @@ createdAt: '2017-05-30T15:21-08:00'
 updatedAt: '2017-06-06T20:40-08:00'
 title: 'Building the blog—the thought process'
 path: '/thoughts/building-the-blog-the-thought-process'
+image: '../../images/thoughts/doodles.jpg'
+caption: 'Some doodles'
 subtitle: 'Building a platform I can contribute to and learn from'
-topics": ['thoughts']
+topics: ['thoughts']
 ---
 
 I took a lot of time over the past few weeks building a product I hope to use for the next many years of my life--what you are engaging with right now is a revamped personal website and integrated personal blog. To begin this new blog, I thought it best to delve into the philosophy and motivations surrounding it.

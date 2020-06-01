@@ -1,7 +1,8 @@
 const path = require('path')
 
-const getPrev = (arr, idx) => (idx === 0 ? arr[arr.length - 1] : arr[idx - 1])
-const getNext = (arr, idx) => (idx === arr.length - 1 ? arr[0] : arr[idx + 1])
+const getPrev = (arr, idx) => (idx === 0 ? undefined : arr[idx - 1])
+const getNext = (arr, idx) =>
+  idx === arr.length - 1 ? undefined : arr[idx + 1]
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions

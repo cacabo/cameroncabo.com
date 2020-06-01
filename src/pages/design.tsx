@@ -105,12 +105,11 @@ const DesignPage = (): React.ReactElement => {
       <Masonry>
         {artData.map(({ title, medium, fluid, date }) => (
           <Card key={title} fluid={fluid}>
-            <H3 mb2>{title}</H3>
-            <P mb2 lighter>
-              {medium}
+            <P black bold mb1>
+              {title}
             </P>
-            <P mb0 sm lightest>
-              {date}
+            <P sm mb0 lightest>
+              {medium}, {date}
             </P>
           </Card>
         ))}
@@ -122,8 +121,15 @@ const DesignPage = (): React.ReactElement => {
       <Masonry>
         {designData.map(({ title, description, fluid, date }) => (
           <Card key={title} fluid={fluid}>
-            <H3 mb2>{title}</H3>
-            <P mb2 lighter dangerouslySetInnerHTML={{ __html: description }} />
+            <P bold black mb1>
+              {title}
+            </P>
+            <P
+              sm
+              mb4
+              lighter
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
             <P mb0 sm lightest>
               {date}
             </P>

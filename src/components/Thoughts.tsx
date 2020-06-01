@@ -1,8 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { BR, Button } from './shared'
+import { BR, Button, HR, P } from './shared'
 import { ThoughtPreview } from './ThoughtPreview'
-import { HOME_ROUTE } from '../constants/routes'
+import { HOME_ROUTE, RSS_ROUTE } from '../constants/routes'
 import { IThoughtPreviewFrontmatter } from '../types'
 
 interface IThoughtPreviewNode {
@@ -41,6 +41,10 @@ export const Thoughts = (): React.ReactElement => {
           />
         ),
       )}
+      <HR />
+      <P>
+        Subscribe via <a href={RSS_ROUTE}>RSS.</a>
+      </P>
       <Button to={HOME_ROUTE}>&larr; Back to home</Button>
     </>
   )

@@ -1,17 +1,11 @@
 import React from 'react'
-import {
-  H1,
-  H3,
-  P,
-  Buttons,
-  Button,
-  BR,
-  Card,
-  Callout,
-} from '../components/shared'
+
+import { H1, H3, P, Buttons, Button, BR, Callout } from '../components/shared'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { PROJECTS_ROUTE, CONTACT_ROUTE, HOME_ROUTE } from '../constants/routes'
+import { BORDER } from '../constants/colors'
+import { BORDER_RADIUS_LG } from '../constants/measurements'
 
 const FreelancePage = (): React.ReactElement => (
   <Layout>
@@ -19,12 +13,12 @@ const FreelancePage = (): React.ReactElement => (
 
     <Callout backgroundImage="/images/freelance-backing.svg">
       <BR />
-      <H1>Let&apos;s build something</H1>
+      <H1>{"Let's build something"}</H1>
       <P>
-        I&apos;m a web developer passionate for beautiful, well-planned,
-        well-built, and well-used products. Whatever you are imagining, drawing
-        up, building, or growing, I&apos;d love to hear about it. Scroll through
-        my work and take the time to reach out—it can go a long way.
+        {`I'm a web developer passionate for beautiful, well-planned,
+        well-built, and well-used products. Whatever you are imagining,
+        building, or growing, I'd love to hear about it. Scroll through my
+        work and take the time to reach out—it can go a long way.`}
       </P>
       <Buttons>
         <Button mb0 to={PROJECTS_ROUTE}>
@@ -53,7 +47,9 @@ const FreelancePage = (): React.ReactElement => (
 
     <BR />
 
-    <Card>
+    <Callout
+      style={{ border: `2px solid ${BORDER}`, borderRadius: BORDER_RADIUS_LG }}
+    >
       <H3 mb2>Your timeline, your vision</H3>
       <P lighter>
         Every project is personalized to your budget, timeframe, and
@@ -67,29 +63,32 @@ const FreelancePage = (): React.ReactElement => (
 
       <H3 mb2>Flexible, modern tech</H3>
       <P lighter mb0>
-        I stress mobile-first development and responsively built, cross-platform
-        products.
+        Mobile-first, responsive development, cross-platform products.
       </P>
-    </Card>
+    </Callout>
 
     <BR />
 
     <H3>Compensation</H3>
 
     <P>
-      Set projects are paid based on completion, more fluid projects are paid
-      hourly. Further, you only pay for the work that I put directly into
+      Set projects where we can come up with a well-scoped set of requirements
+      are paid based on completion of milestones. More fluid projects are paid
+      hourly so we have flexibility in terms of what we build to meet your
+      needs. Further, you only pay for the work that I put directly into
       product: hours spent on learning and preliminary research are on me.
     </P>
 
     <P>
-      If you work for a non-profit, or similar organization, send me an email
-      and we can go from there.
+      If you work for a non-profit or a similarly mission-driven organization,
+      send me an email and we can go from there.
     </P>
 
     <Buttons>
       <Button to={HOME_ROUTE}>&larr; Back to home</Button>
-      <Button to={CONTACT_ROUTE}>Contact me</Button>
+      <Button as="a" href={CONTACT_ROUTE}>
+        Contact me
+      </Button>
     </Buttons>
   </Layout>
 )

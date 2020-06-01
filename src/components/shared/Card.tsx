@@ -1,7 +1,8 @@
 import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
-import { H4, Text, P } from './Typography'
+
+import { P } from './Typography'
 import { FlexRow, Flex } from './Grid'
 import { BORDER, BLACK_ALPHA } from '../../constants/colors'
 import {
@@ -131,6 +132,7 @@ const CardImg = s(Img)<{}>`
 `
 
 const SIZE = '52px'
+const MOBILE_SIZE = '42px'
 
 interface IInfoCard {
   title: string
@@ -149,13 +151,26 @@ const InfoCardWrapper = s.div<{}>`
 `
 
 const InfoCardImageWrapper = s.div<{}>`
-  width: auto;
-  min-width: ${SIZE};
-  height: ${SIZE};
+  width: ${SIZE};
+  height: auto;
   margin-right: ${M4};
 
   ${maxWidth(TABLET)} {
     margin-right: ${M2};
+  }
+
+  ${maxWidth(PHONE)} {
+    width: ${MOBILE_SIZE};
+  }
+`
+
+const InfoCardImage = s.img<{}>`
+  width: ${SIZE};
+  height: auto;
+  margin-bottom: 0;
+
+  ${maxWidth(PHONE)} {
+    width: ${MOBILE_SIZE};
   }
 `
 
@@ -171,21 +186,17 @@ export const InfoCard = ({
       {(fluidImage || imageUrl) && (
         <InfoCardImageWrapper>
           {fluidImage ? (
-            <Img fluid={fluidImage} style={{ width: SIZE, maxHeight: SIZE }} />
+            <InfoCardImage as={Img} fluid={fluidImage} />
           ) : (
-            <img
-              style={{ width: SIZE, maxHeight: SIZE }}
-              src={imageUrl}
-              alt={title}
-            />
+            <InfoCardImage src={imageUrl} alt={title} />
           )}
         </InfoCardImageWrapper>
       )}
       <Flex>
-        <P mb2 bold>
+        <P mb1 bold>
           {title}
         </P>
-        <P lighter mb4 sm>
+        <P lightest mb4 sm>
           {subtitle}
         </P>
         {body && <Content dangerouslySetInnerHTML={{ __html: body }} />}

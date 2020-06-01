@@ -18,6 +18,7 @@ import {
   DESKTOP,
 } from '../constants/measurements'
 import { IThoughtPreviewFrontmatter, IThought } from '../types'
+import { GRAY_2 } from '../constants/colors'
 
 const Wrapper = s.div<{}>`
   width: 100%;
@@ -37,6 +38,12 @@ const Wrapper = s.div<{}>`
 `
 
 const Content = s.div<{}>`
+  .caption {
+    font-size: 80%;
+    margin-top: -1.05rem;
+    color: ${GRAY_2};
+  }
+
   .bibliography {
     margin-bottom: 1.5rem;
 
@@ -83,13 +90,15 @@ const ThoughtTemplate = ({
     caption,
     image,
   } = frontmatter
+
+  // Use default params in case there is no prev or next post
   const {
     prev: {
-      node: { frontmatter: prevData, timeToRead: prevTimeToRead },
-    },
+      node: { frontmatter: prevData, timeToRead: prevTimeToRead } = {},
+    } = {},
     next: {
-      node: { frontmatter: nextData, timeToRead: nextTimeToRead },
-    },
+      node: { frontmatter: nextData, timeToRead: nextTimeToRead } = {},
+    } = {},
   } = pageContext
 
   const { fluid } = (image && image.childImageSharp) || {}
@@ -108,7 +117,7 @@ const ThoughtTemplate = ({
         )}
 
         {topics && (
-          <P mb2>
+          <P sm mb2>
             {topics.map((t: string) => (
               <Tag key={t}>{t}</Tag>
             ))}
@@ -127,13 +136,13 @@ const ThoughtTemplate = ({
           <Img style={{ marginBottom: caption ? M1 : M3 }} fluid={fluid} />
         </Callout>
       )}
-      {caption && (
-        <P lightest sm>
-          {caption}
-        </P>
-      )}
 
       <Wrapper>
+        {caption && (
+          <P lightest sm>
+            {caption}
+          </P>
+        )}
         <Content
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
@@ -142,13 +151,20 @@ const ThoughtTemplate = ({
 
       <BR />
 
-      <H3 mb4 mt4>
-        More Thoughts
-      </H3>
-      <HR />
+      {(prevData || nextData) && (
+        <>
+          <HR />
 
-      <ThoughtPreview {...prevData} timeToRead={prevTimeToRead} />
-      <ThoughtPreview {...nextData} timeToRead={nextTimeToRead} />
+          {prevData && (
+            <ThoughtPreview {...prevData} timeToRead={prevTimeToRead} />
+          )}
+          {nextData && (
+            <ThoughtPreview {...nextData} timeToRead={nextTimeToRead} />
+          )}
+
+          <BR />
+        </>
+      )}
 
       <Button to={THOUGHTS_ROUTE}>&larr; Back to all thoughts</Button>
     </Layout>

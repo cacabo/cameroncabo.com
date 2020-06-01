@@ -7,6 +7,7 @@ import {
   GITHUB_ROUTE,
   TWITTER_ROUTE,
   CONTACT_ROUTE,
+  RSS_ROUTE,
 } from '../../constants/routes'
 import {
   FacebookIcon,
@@ -15,6 +16,7 @@ import {
   TwitterIcon,
   InstagramIcon,
   MailIcon,
+  RSSIcon,
 } from '../shared'
 import { BLACK } from '../../constants/colors'
 import {
@@ -138,6 +140,9 @@ export const Social = ({
     </a>
     <a href={CONTACT_ROUTE} tabIndex={tabIndex}>
       <MailIcon />
+    </a>
+    <a href={RSS_ROUTE} tabIndex={tabIndex}>
+      <RSSIcon />
     </a>
   </Wrapper>
 )

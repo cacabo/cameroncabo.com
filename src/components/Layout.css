@@ -182,7 +182,7 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
+  font-size: 1.2em;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -347,7 +347,7 @@ table {
   padding-top: 0;
   margin-bottom: 1.45rem;
   font-size: 1rem;
-  line-height: 1.45rem;
+  line-height: 1.45;
   border-collapse: collapse;
   width: 100%;
 }
@@ -477,15 +477,15 @@ li > p {
 }
 code {
   font-size: 0.85rem;
-  line-height: 1.45rem;
+  line-height: 1.45;
 }
 kbd {
   font-size: 0.85rem;
-  line-height: 1.45rem;
+  line-height: 1.45;
 }
 samp {
   font-size: 0.85rem;
-  line-height: 1.45rem;
+  line-height: 1.45;
 }
 abbr {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -515,6 +515,7 @@ th {
   padding-right: 0.96667rem;
   padding-top: 0.725rem;
   padding-bottom: calc(0.725rem - 1px);
+  vertical-align: top;
 }
 th:first-child,
 td:first-child {
@@ -536,7 +537,7 @@ code {
 }
 pre code {
   background: none;
-  line-height: 1.42;
+  line-height: 1.45;
 }
 code:before,
 code:after,

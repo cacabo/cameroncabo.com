@@ -5,34 +5,57 @@ import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
 
 import { IThoughtPreview } from '../types'
-import { Card, H3, P, Tag, Row, Col } from './shared'
-import { BLACK } from '../constants/colors'
+import { P, Tag, Row, Col } from './shared'
 import { Timestamp } from './Timestamp'
 import {
   M2,
-  BORDER_RADIUS,
+  BORDER_RADIUS_LG,
   maxWidth,
   TABLET,
   minWidth,
   M1,
+  PHONE,
+  M4,
 } from '../constants/measurements'
 
-const StyledLink = s(Link)`
-  text-decoration: none;
-  display: inline-block;
+const Content = s.div<{ hasImage: boolean }>`
+  ${(props): string =>
+    props.hasImage
+      ? `
+    padding-top: ${M2};
+    padding-bottom: ${M2};
+    padding-left: ${M2};
+
+    ${minWidth(TABLET)} {
+      padding-left: calc(1.25vw + ${M2});
+    }
+
+    ${maxWidth(PHONE)} {
+      padding: ${M2} 0 0 0;
+    }
+  `
+      : ''}
+`
+
+const StyledLink = s(Link)<{}>`
   width: 100%;
-  cursor: pointer;
-  margin-bottom: 1rem;
+  display: block;
+  text-decoration: none;
+  margin-bottom: ${M2};
 
   ${minWidth(TABLET)} {
-    margin-bottom: calc(1rem + 1.25vh);
+    margin-bottom: calc(${M2} + 1.25vh);
+  }
+
+  ${maxWidth(PHONE)} {
+    margin-bottom: ${M4};
   }
 `
 
 const StyledBackgroundImg = s(BackgroundImage)`
   width: 12rem;
   max-width: 50%;
-  border-radius: ${BORDER_RADIUS} 0 0 ${BORDER_RADIUS};
+  border-radius: ${BORDER_RADIUS_LG};
   overflow: hidden;
 
   ${maxWidth(TABLET)} {
@@ -44,7 +67,7 @@ const StyledImg = s(Img)`
   display: none;
 
   ${maxWidth(TABLET)} {
-    border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
+    border-radius: ${BORDER_RADIUS_LG};
     display: block;
     max-width: none;
     width: 100%;
@@ -66,36 +89,38 @@ export const ThoughtPreview = ({
   const fluid = image && image.childImageSharp.fluid
   return (
     <StyledLink to={path}>
-      <Card key={title} hoverable shade1 pad0 mb0>
-        <Row>
-          {fluid && <StyledImg fluid={fluid} />}
-          {fluid && <StyledBackgroundImg fluid={fluid} />}
-          <Col>
-            <div style={{ padding: M2 }}>
-              <H3 mb1 style={{ color: BLACK }}>
-                {title}
-              </H3>
-              <P mb4 style={{ color: BLACK }} lighter>
-                {subtitle}
-              </P>
-              <div style={{ marginBottom: M1 }}>
-                {topics &&
-                  topics.map((t: string) => (
-                    <Tag sm key={t}>
-                      {t}
-                    </Tag>
-                  ))}
-              </div>
-              <Timestamp
-                updatedAt={updatedAt}
-                createdAt={createdAt}
-                timeToRead={timeToRead}
-                style={{ color: BLACK, marginBottom: 0 }}
-              />
+      <Row>
+        {fluid && (
+          <>
+            <StyledImg fluid={fluid} />
+            <StyledBackgroundImg fluid={fluid} />
+          </>
+        )}
+        <Col>
+          <Content hasImage={Boolean(fluid)}>
+            <P mb1 bold black>
+              {title}
+            </P>
+            <P mb4 lighter>
+              {subtitle}
+            </P>
+            <div style={{ marginBottom: M1 }}>
+              {topics &&
+                topics.map((t: string) => (
+                  <Tag sm key={t}>
+                    {t}
+                  </Tag>
+                ))}
             </div>
-          </Col>
-        </Row>
-      </Card>
+            <Timestamp
+              updatedAt={updatedAt}
+              createdAt={createdAt}
+              timeToRead={timeToRead}
+              style={{ marginBottom: 0 }}
+            />
+          </Content>
+        </Col>
+      </Row>
     </StyledLink>
   )
 }

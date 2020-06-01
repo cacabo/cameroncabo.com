@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
 import { Children } from '../../types'
-import { BORDER } from '../../constants/colors'
+import { BORDER, GRAY_1, GRAY_2, WHITE, BLACK } from '../../constants/colors'
 import { BOLD_FONT_WEIGHT } from '../../constants/fonts'
 
 /**
@@ -30,11 +30,15 @@ interface IText {
   dangerouslySetInnerHTML?: any
   children?: Children
   style?: CSSProperties
+  black?: boolean
+  white?: boolean
 }
 
-export const Text = s.p<IText>(
+const Text = s.p<IText>(
   ({
     sm,
+    white,
+    black,
     color,
     lighter,
     lightest,
@@ -50,21 +54,27 @@ export const Text = s.p<IText>(
     mt3,
     mt4,
   }: IText) => css`
-    ${bold && `font-weight: ${BOLD_FONT_WEIGHT};`}
     ${mb0 && 'margin-bottom: 0;'}
     ${mb1 && 'margin-bottom: 0.25rem;'}
     ${mb2 && 'margin-bottom: 0.5rem;'}
     ${mb3 && 'margin-bottom: 0.75rem;'}
     ${mb4 && 'margin-bottom: 1rem;'}
+
     ${mt0 && 'padding-top: 0;'}
     ${mt1 && 'padding-top: 0.25rem;'}
     ${mt2 && 'padding-top: 0.5rem;'}
     ${mt3 && 'padding-top: 0.75rem;'}
     ${mt4 && 'padding-top: 1rem;'}
-    ${sm && 'font-size: 80%; line-height: 1.16;'}
+
+    ${lighter && `color: ${GRAY_1};`}
+    ${lightest && `color: ${GRAY_2};`}
+
     ${color && `color: ${color};`}
-    ${lighter && 'opacity: 0.75;'}
-    ${lightest && 'opacity: 0.5;'}
+    ${white && `color: ${WHITE};`}
+    ${black && `color: ${BLACK};`}
+
+    ${sm && 'font-size: 80%;'}
+    ${bold && `font-weight: ${BOLD_FONT_WEIGHT};`}
   `,
 )
 

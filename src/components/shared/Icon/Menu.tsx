@@ -14,6 +14,7 @@ export const MenuIcon = (props: IIconProps): React.ReactElement => (
     className="prefix__feather prefix__feather-menu"
     {...props}
   >
+    <title>Menu</title>
     <path d="M3 12h18M3 6h18M3 18h18" />
   </svg>
 )

@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import s from 'styled-components'
-import { H1, Text, FlexRow, Flex, Button, Buttons, BR } from '../shared'
+
+import { H1, P, FlexRow, Flex, Button, Buttons, BR } from '../shared'
 import {
   GITHUB_ROUTE,
   INSTAGRAM_ROUTE,
@@ -69,7 +70,7 @@ export const Hero = (): React.ReactElement => {
         </ImgWrapper>
         <Flex>
           <H1 mb4>Hi, I&apos;m Cameron</H1>
-          <Text>
+          <P>
             I want to leverage tech to help people learn more and live better. I
             studied computer science and management in the{' '}
             <a
@@ -93,7 +94,7 @@ export const Hero = (): React.ReactElement => {
             <a href={INSTAGRAM_ROUTE} target="_BLANK" rel="noopener noreferrer">
               and going to new places.
             </a>
-          </Text>
+          </P>
           <Buttons>
             <Button to={PROJECTS_ROUTE}>Projects</Button>
             <Button to={THOUGHTS_ROUTE}>Thoughts</Button>

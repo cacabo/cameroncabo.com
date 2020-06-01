@@ -4,6 +4,7 @@ export const FREELANCE_ROUTE = '/freelance'
 export const PROJECTS_ROUTE = '/projects'
 export const THOUGHTS_ROUTE = '/thoughts'
 export const DESIGN_ROUTE = '/design'
+export const RSS_ROUTE = '/rss.xml'
 
 // File routes
 export const RESUME_ROUTE = '/resume.pdf'
