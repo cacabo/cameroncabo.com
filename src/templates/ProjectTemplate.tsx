@@ -14,6 +14,7 @@ import {
   HR,
   Buttons,
   H3,
+  BR,
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
 import { BORDER } from '../constants/colors'
@@ -116,12 +117,8 @@ const ProjectTemplate = ({
     },
   } = frontmatter
   const {
-    prev: {
-      node: { frontmatter: prevData },
-    },
-    next: {
-      node: { frontmatter: nextData },
-    },
+    prev: { node: { frontmatter: prevData } = {} } = {},
+    next: { node: { frontmatter: nextData } = {} } = {},
   } = pageContext
 
   const { src } = fluid
@@ -249,13 +246,14 @@ const ProjectTemplate = ({
         className="blog-post-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
+      <BR />
       <HR />
 
-      <H3>More Projects</H3>
-      <ProjectPreview {...prevData} />
-      <ProjectPreview {...nextData} />
+      {prevData && <ProjectPreview {...prevData} />}
+      {nextData && <ProjectPreview {...nextData} />}
 
-      <HR />
+      <BR />
       <Button {...colorProps} to={PROJECTS_ROUTE}>
         &larr; Back to all projects
       </Button>
