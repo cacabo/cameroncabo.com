@@ -71,15 +71,15 @@ export const Hero = (): React.ReactElement => {
           <H1 mb4>Hi, I&apos;m Cameron</H1>
           <Text>
             I want to leverage tech to help people learn more and live better. I
-            study computer science and management in the{' '}
+            studied computer science and management in the{' '}
             <a
               href="https://fisher.wharton.upenn.edu/"
               target="_BLANK"
               rel="noopener noreferrer"
             >
-              M&T program at UPenn,
+              M&T program at UPenn.
             </a>{' '}
-            and spend my free time{' '}
+            I spend my free time{' '}
             <a
               href="https://www.riplo.io"
               target="_BLANK"

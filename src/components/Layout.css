@@ -460,7 +460,8 @@ li > ol {
 li > ul {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
-  margin-top: calc(1.45rem / 2);
+  /* margin-top: calc(1.45rem / 2); */
+  margin-top: 0;
 }
 blockquote *:last-child {
   margin-bottom: 0;

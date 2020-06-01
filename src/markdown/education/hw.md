@@ -4,6 +4,7 @@ end: '2016'
 title: 'Harvard-Westlake School'
 gpa: 3.94
 image: '../../images/education/hw.png'
+location: 'Studio City, CA'
 order: 1
 ---
 

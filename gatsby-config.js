@@ -3,6 +3,7 @@ module.exports = {
     title: `Cameron Cabo`,
     description: `Driven learner, developer, and product builder`,
     author: `Cameron Cabo <cameroncabo@gmail.com>`,
+    siteUrl: 'https://www.cameroncabo.com',
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -74,6 +75,72 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-105075968-1',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) =>
+              allMarkdownRemark.edges.map(({ node: { frontmatter, html } }) =>
+                Object.assign({}, frontmatter, {
+                  description: frontmatter.subtitle,
+                  date: frontmatter.createdAt,
+                  url: site.siteMetadata.siteUrl + frontmatter.path,
+                  guid: site.siteMetadata.siteUrl + frontmatter.path,
+                  custom_elements: [{ 'content:encoded': html }],
+                }),
+              ),
+            // TODO what is fields?
+            query: `
+              {
+                allMarkdownRemark(
+                  filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
+                  sort: { order: DESC, fields: [frontmatter___createdAt] }
+                ) {
+                  edges {
+                    node {
+                      html
+                      frontmatter {
+                        title
+                        createdAt
+                        path
+                        topics
+                        subtitle
+                        image {
+                          childImageSharp {
+                            fluid(maxWidth: 848) {
+                              base64
+                              aspectRatio
+                              src
+                              srcSet
+                              sizes
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: "Cameron Cabo's Thoughts",
+          },
+        ],
       },
     },
   ],

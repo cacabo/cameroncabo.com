@@ -2,11 +2,12 @@
 start: '2016'
 end: '2020'
 title: 'University of Pennsylvania, Jerome Fisher Program in Management and Technology (M&T)'
-gpa: 3.93
+gpa: 3.94
 image: '../../images/education/penn.jpg'
+location: 'Philadelphia, PA'
 order: 0
 ---
 
-- Pursuing BSE in Computer Science from the School of Engineering and Applied Sciences (SEAS).
-- Pursuing MSE in Computer Science from SEAS via submatriculation program.
-- Pursuing BS in Economics, concentration in Management of Entrepreneurship, from the Wharton School of Business.
+- BSE, MSE in Computer Science from the School of Engineering and Applied Sciences (SEAS). Concentration in Data Science.
+- BS in Economics from the Wharton School of Business. Concentration in Management of Entrepreneurship.
+- Graduated Summa Cum Laude.

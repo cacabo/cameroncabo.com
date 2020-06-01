@@ -149,6 +149,7 @@ const InfoCardWrapper = s.div<{}>`
 `
 
 const InfoCardImageWrapper = s.div<{}>`
+  width: auto;
   min-width: ${SIZE};
   height: ${SIZE};
   margin-right: ${M4};
@@ -170,7 +171,7 @@ export const InfoCard = ({
       {(fluidImage || imageUrl) && (
         <InfoCardImageWrapper>
           {fluidImage ? (
-            <Img fluid={fluidImage} />
+            <Img fluid={fluidImage} style={{ width: SIZE, maxHeight: SIZE }} />
           ) : (
             <img
               style={{ width: SIZE, maxHeight: SIZE }}
@@ -187,7 +188,7 @@ export const InfoCard = ({
         <P lighter mb4 sm>
           {subtitle}
         </P>
-        <Content dangerouslySetInnerHTML={{ __html: body }} />
+        {body && <Content dangerouslySetInnerHTML={{ __html: body }} />}
       </Flex>
     </FlexRow>
   </InfoCardWrapper>

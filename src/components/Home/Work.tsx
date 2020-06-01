@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+
 import { H3, InfoCard, Button, HR } from '../shared'
 import { RESUME_ROUTE } from '../../constants/routes'
 import { IWorkFrontmatter } from '../../types'

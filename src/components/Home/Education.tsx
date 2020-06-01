@@ -11,6 +11,7 @@ interface IEducationNode {
       end: string
       title: string
       gpa: number
+      location: string
       image: {
         childImageSharp: {
           fluid: FluidObject
@@ -36,6 +37,7 @@ export const Education = (): React.ReactElement => {
               end
               title
               gpa
+              location
               image {
                 childImageSharp {
                   fluid(maxHeight: 96) {
@@ -62,16 +64,26 @@ export const Education = (): React.ReactElement => {
         ({
           node: {
             html,
-            frontmatter: { start, end, title, gpa, image },
+            frontmatter: { start, end, title, gpa, image, location },
           },
         }) => {
           const { childImageSharp, publicURL } = image || {}
           const fluid = (childImageSharp && childImageSharp.fluid) || undefined
+
+          // Allow certain fields to be missing
+          const subtitle = [
+            start && end && `${start} - ${end}`,
+            location,
+            gpa && `${gpa} GPA`,
+          ]
+            .filter(Boolean)
+            .join(' • ')
+
           return (
             <InfoCard
               key={title}
               title={title}
-              subtitle={`${start} - ${end} • ${gpa} GPA`}
+              subtitle={subtitle}
               fluidImage={fluid}
               imageUrl={publicURL}
               body={html}
