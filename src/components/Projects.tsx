@@ -7,9 +7,7 @@ import { ProjectPreview } from './ProjectPreview'
 import { IProjectPreview } from '../types'
 
 interface IProjectNode {
-  node: {
-    frontmatter: IProjectPreview
-  }
+  frontmatter: IProjectPreview
 }
 
 const Projects = (): React.ReactElement => {
@@ -19,20 +17,18 @@ const Projects = (): React.ReactElement => {
         filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
         sort: { order: ASC, fields: [frontmatter___order] }
       ) {
-        edges {
-          node {
-            ...PartialProject
-          }
+        nodes {
+          ...PartialProject
         }
       }
     }
   `)
 
-  const { edges } = data.allMarkdownRemark
+  const { nodes } = data.allMarkdownRemark
   return (
     <>
       <BR />
-      {(edges as IProjectNode[]).map(({ node: { frontmatter } }) => {
+      {(nodes as IProjectNode[]).map(({ frontmatter }) => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />
       })}

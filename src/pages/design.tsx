@@ -16,37 +16,69 @@ import SEO from '../components/SEO'
 import { graphql, useStaticQuery } from 'gatsby'
 import { HOME_ROUTE } from '../constants/routes'
 
+interface IArtNode {
+  title: string
+  medium: string
+  date: string
+  image: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
+}
+
+interface IArt {
+  title: string
+  medium: string
+  date: string
+  fluid: FluidObject
+}
+
+interface IDesignNode {
+  title: string
+  description: string
+  date: string
+  image: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
+}
+
+interface IDesign {
+  title: string
+  description: string
+  date: string
+  fluid: FluidObject
+}
+
 const DesignPage = (): React.ReactElement => {
   const { allArtJson, allDesignJson } = useStaticQuery(
     graphql`
       {
         allArtJson {
-          edges {
-            node {
-              medium
-              title
-              date
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 848) {
-                    ...GatsbyImageSharpFluid
-                  }
+          nodes {
+            medium
+            title
+            date
+            image {
+              childImageSharp {
+                fluid(maxWidth: 848) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
           }
         }
         allDesignJson {
-          edges {
-            node {
-              description
-              title
-              date
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 848) {
-                    ...GatsbyImageSharpFluid
-                  }
+          nodes {
+            description
+            title
+            date
+            image {
+              childImageSharp {
+                fluid(maxWidth: 848) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -56,33 +88,23 @@ const DesignPage = (): React.ReactElement => {
     `,
   )
 
-  interface IArt {
-    title: string
-    medium: string
-    date: string
-    fluid: FluidObject
-  }
+  const artData: IArt[] = (allArtJson.nodes as IArtNode[]).map(
+    (node): IArt => ({
+      title: node.title,
+      medium: node.medium,
+      fluid: node.image.childImageSharp.fluid,
+      date: node.date,
+    }),
+  )
 
-  const artData: IArt[] = allArtJson.edges.map(({ node }) => ({
-    title: node.title,
-    medium: node.medium,
-    fluid: node.image.childImageSharp.fluid,
-    date: node.date,
-  }))
-
-  interface IDesign {
-    title: string
-    description: string
-    date: string
-    fluid: FluidObject
-  }
-
-  const designData: IDesign[] = allDesignJson.edges.map(({ node }) => ({
-    title: node.title,
-    description: node.description,
-    fluid: node.image.childImageSharp.fluid,
-    date: node.date,
-  }))
+  const designData: IDesign[] = (allDesignJson.nodes as IDesignNode[]).map(
+    (node): IDesign => ({
+      title: node.title,
+      description: node.description,
+      fluid: node.image.childImageSharp.fluid,
+      date: node.date,
+    }),
+  )
 
   return (
     <Layout>

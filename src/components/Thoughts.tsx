@@ -6,10 +6,8 @@ import { HOME_ROUTE, RSS_ROUTE } from '../constants/routes'
 import { IThoughtPreviewFrontmatter } from '../types'
 
 interface IThoughtPreviewNode {
-  node: {
-    frontmatter: IThoughtPreviewFrontmatter
-    timeToRead?: number
-  }
+  frontmatter: IThoughtPreviewFrontmatter
+  timeToRead?: number
 }
 
 export const Thoughts = (): React.ReactElement => {
@@ -19,28 +17,24 @@ export const Thoughts = (): React.ReactElement => {
         filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
         sort: { order: DESC, fields: [frontmatter___createdAt] }
       ) {
-        edges {
-          node {
-            ...PartialThought
-          }
+        nodes {
+          ...PartialThought
         }
       }
     }
   `)
 
-  const { edges } = data.allMarkdownRemark
+  const { nodes } = data.allMarkdownRemark
   return (
     <>
       <BR />
-      {(edges as IThoughtPreviewNode[]).map(
-        ({ node: { frontmatter, timeToRead } }) => (
-          <ThoughtPreview
-            key={frontmatter.title}
-            timeToRead={timeToRead}
-            {...frontmatter}
-          />
-        ),
-      )}
+      {(nodes as IThoughtPreviewNode[]).map(({ frontmatter, timeToRead }) => (
+        <ThoughtPreview
+          key={frontmatter.title}
+          timeToRead={timeToRead}
+          {...frontmatter}
+        />
+      ))}
       <HR />
       <P>
         Subscribe via <a href={RSS_ROUTE}>RSS.</a>

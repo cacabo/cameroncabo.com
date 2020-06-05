@@ -4,6 +4,11 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { H3, Button, HR } from '../shared'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 import { ProjectPreview } from '../ProjectPreview'
+import { IProjectPreview } from '../../types'
+
+interface IProjectNode {
+  frontmatter: IProjectPreview
+}
 
 export const RecentProjects = (): React.ReactElement => {
   const data = useStaticQuery(
@@ -14,17 +19,15 @@ export const RecentProjects = (): React.ReactElement => {
           sort: { order: ASC, fields: [frontmatter___order] }
           limit: 2
         ) {
-          edges {
-            node {
-              ...PartialProject
-            }
+          nodes {
+            ...PartialProject
           }
         }
       }
     `,
   )
 
-  const { edges } = data.allMarkdownRemark
+  const { nodes } = data.allMarkdownRemark
   return (
     <>
       <H3 mb4 mt4>
@@ -32,7 +35,7 @@ export const RecentProjects = (): React.ReactElement => {
       </H3>
       <HR />
 
-      {edges.map(({ node: { frontmatter } }) => {
+      {(nodes as IProjectNode[]).map(({ frontmatter }) => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />
       })}

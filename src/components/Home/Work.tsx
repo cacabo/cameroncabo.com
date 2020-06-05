@@ -6,10 +6,8 @@ import { RESUME_ROUTE } from '../../constants/routes'
 import { IWorkFrontmatter } from '../../types'
 
 interface IWorkNode {
-  node: {
-    frontmatter: IWorkFrontmatter
-    html: string
-  }
+  frontmatter: IWorkFrontmatter
+  html: string
 }
 
 export const Work = (): React.ReactElement => {
@@ -20,23 +18,21 @@ export const Work = (): React.ReactElement => {
           filter: { fileAbsolutePath: { regex: "/(work/)/" } }
           sort: { order: ASC, fields: [frontmatter___order] }
         ) {
-          edges {
-            node {
-              html
-              frontmatter {
-                company
-                title
-                location
-                start
-                end
-                image {
-                  childImageSharp {
-                    fluid(maxHeight: 96) {
-                      ...GatsbyImageSharpFluid
-                    }
+          nodes {
+            html
+            frontmatter {
+              company
+              title
+              location
+              start
+              end
+              image {
+                childImageSharp {
+                  fluid(maxHeight: 96) {
+                    ...GatsbyImageSharpFluid
                   }
-                  publicURL
                 }
+                publicURL
               }
             }
           }
@@ -45,19 +41,18 @@ export const Work = (): React.ReactElement => {
     `,
   )
 
-  const { edges } = data.allMarkdownRemark
+  const { nodes } = data.allMarkdownRemark
+
   return (
     <>
       <H3 mb4 mt4>
         Work
       </H3>
       <HR />
-      {(edges as IWorkNode[]).map(
+      {(nodes as IWorkNode[]).map(
         ({
-          node: {
-            html,
-            frontmatter: { company, title, location, start, end, image },
-          },
+          html,
+          frontmatter: { company, title, location, start, end, image },
         }) => {
           const { childImageSharp, publicURL } = image || {}
           const fluid = (childImageSharp && childImageSharp.fluid) || undefined

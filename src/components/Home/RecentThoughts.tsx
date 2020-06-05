@@ -6,10 +6,8 @@ import { THOUGHTS_ROUTE } from '../../constants/routes'
 import { ThoughtPreview } from '../ThoughtPreview'
 
 interface IThoughtPreviewNode {
-  node: {
-    frontmatter: IThoughtPreviewFrontmatter
-    timeToRead?: number
-  }
+  frontmatter: IThoughtPreviewFrontmatter
+  timeToRead?: number
 }
 
 export const RecentThoughts = (): React.ReactElement => {
@@ -20,15 +18,13 @@ export const RecentThoughts = (): React.ReactElement => {
         sort: { order: DESC, fields: [frontmatter___createdAt] }
         limit: 2
       ) {
-        edges {
-          node {
-            ...PartialThought
-          }
+        nodes {
+          ...PartialThought
         }
       }
     }
   `)
-  const { edges } = data.allMarkdownRemark
+  const { nodes } = data.allMarkdownRemark
 
   return (
     <>
@@ -37,15 +33,13 @@ export const RecentThoughts = (): React.ReactElement => {
       </H3>
       <HR />
 
-      {(edges as IThoughtPreviewNode[]).map(
-        ({ node: { frontmatter, timeToRead } }) => (
-          <ThoughtPreview
-            {...frontmatter}
-            timeToRead={timeToRead}
-            key={frontmatter.title}
-          />
-        ),
-      )}
+      {(nodes as IThoughtPreviewNode[]).map(({ frontmatter, timeToRead }) => (
+        <ThoughtPreview
+          {...frontmatter}
+          timeToRead={timeToRead}
+          key={frontmatter.title}
+        />
+      ))}
 
       <Button to={THOUGHTS_ROUTE}>View thoughts &rarr;</Button>
     </>

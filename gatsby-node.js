@@ -39,10 +39,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
         sort: { order: DESC, fields: [frontmatter___createdAt] }
       ) {
-        edges {
-          node {
-            ...PartialThought
-          }
+        nodes {
+          ...PartialThought
         }
       }
     }
@@ -76,10 +74,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
         sort: { order: DESC, fields: [frontmatter___order] }
       ) {
-        edges {
-          node {
-            ...PartialProject
-          }
+        nodes {
+          ...PartialProject
         }
       }
     }
@@ -94,14 +90,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  const { edges: thoughtsEdges } = thoughts.data.allMarkdownRemark
-  thoughtsEdges.forEach(({ node }, idx) => {
-    const { frontmatter } = node
+  const { nodes: thoughtNodes } = thoughts.data.allMarkdownRemark
+  thoughtNodes.forEach(({ frontmatter }, idx) => {
     const { path: pagePath } = frontmatter
     if (!pagePath) return
 
-    const prev = getPrev(thoughtsEdges, idx)
-    const next = getNext(thoughtsEdges, idx)
+    const prev = getPrev(thoughtNodes, idx)
+    const next = getNext(thoughtNodes, idx)
 
     createPage({
       path: pagePath,
@@ -110,14 +105,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   })
 
-  const { edges: projectEdges } = projects.data.allMarkdownRemark
-  projectEdges.forEach(({ node }, idx) => {
-    const { frontmatter } = node
+  const { nodes: projectNodes } = projects.data.allMarkdownRemark
+  projectNodes.forEach(({ frontmatter }, idx) => {
     const { path: pagePath } = frontmatter
     if (!pagePath) return
 
-    const prev = getPrev(projectEdges, idx)
-    const next = getNext(projectEdges, idx)
+    const prev = getPrev(projectNodes, idx)
+    const next = getNext(projectNodes, idx)
 
     createPage({
       path: pagePath,

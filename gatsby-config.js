@@ -95,7 +95,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.edges.map(({ node: { frontmatter, html } }) =>
+              allMarkdownRemark.nodes.map(({ frontmatter, html }) =>
                 Object.assign({}, frontmatter, {
                   description: frontmatter.subtitle,
                   date: frontmatter.createdAt,
@@ -111,24 +111,22 @@ module.exports = {
                   filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
                   sort: { order: DESC, fields: [frontmatter___createdAt] }
                 ) {
-                  edges {
-                    node {
-                      html
-                      frontmatter {
-                        title
-                        createdAt
-                        path
-                        topics
-                        subtitle
-                        image {
-                          childImageSharp {
-                            fluid(maxWidth: 848) {
-                              base64
-                              aspectRatio
-                              src
-                              srcSet
-                              sizes
-                            }
+                  nodes {
+                    html
+                    frontmatter {
+                      title
+                      createdAt
+                      path
+                      topics
+                      subtitle
+                      image {
+                        childImageSharp {
+                          fluid(maxWidth: 848) {
+                            base64
+                            aspectRatio
+                            src
+                            srcSet
+                            sizes
                           }
                         }
                       }

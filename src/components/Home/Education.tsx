@@ -4,20 +4,18 @@ import { H3, InfoCard, HR } from '../shared'
 import { FluidObject } from 'gatsby-image'
 
 interface IEducationNode {
-  node: {
-    html: string
-    frontmatter: {
-      start: string
-      end: string
-      title: string
-      gpa: number
-      location: string
-      image: {
-        childImageSharp: {
-          fluid: FluidObject
-        }
-        publicURL?: string
+  html: string
+  frontmatter: {
+    start: string
+    end: string
+    title: string
+    gpa: number
+    location: string
+    image: {
+      childImageSharp: {
+        fluid: FluidObject
       }
+      publicURL?: string
     }
   }
 }
@@ -29,23 +27,21 @@ export const Education = (): React.ReactElement => {
         filter: { fileAbsolutePath: { regex: "/(education)/" } }
         sort: { order: ASC, fields: [frontmatter___order] }
       ) {
-        edges {
-          node {
-            html
-            frontmatter {
-              start
-              end
-              title
-              gpa
-              location
-              image {
-                childImageSharp {
-                  fluid(maxHeight: 96) {
-                    ...GatsbyImageSharpFluid
-                  }
+        nodes {
+          html
+          frontmatter {
+            start
+            end
+            title
+            gpa
+            location
+            image {
+              childImageSharp {
+                fluid(maxHeight: 96) {
+                  ...GatsbyImageSharpFluid
                 }
-                publicURL
               }
+              publicURL
             }
           }
         }
@@ -53,19 +49,17 @@ export const Education = (): React.ReactElement => {
     }
   `)
 
-  const edges = data.allMarkdownRemark.edges as IEducationNode[]
+  const { nodes } = data.allMarkdownRemark
   return (
     <>
       <H3 mb4 mt4>
         Education
       </H3>
       <HR />
-      {edges.map(
+      {(nodes as IEducationNode[]).map(
         ({
-          node: {
-            html,
-            frontmatter: { start, end, title, gpa, image, location },
-          },
+          html,
+          frontmatter: { start, end, title, gpa, image, location },
         }) => {
           const { childImageSharp, publicURL } = image || {}
           const fluid = (childImageSharp && childImageSharp.fluid) || undefined
