@@ -4,6 +4,9 @@
   "description": "Driven learner, developer, and product builder",
   "version": "0.1.0",
   "author": "Cameron Cabo <cameroncabo@gmail.com>",
+  "engines": {
+    "node": ">=12"
+  },
   "dependencies": {
     "@types/react-helmet": "^5.0.14",
     "babel-plugin-styled-components": "^1.10.6",
@@ -22,6 +25,7 @@
     "gatsby-source-filesystem": "^2.1.11",
     "gatsby-transformer-remark": "^2.6.44",
     "gatsby-transformer-sharp": "^2.2.7",
+    "get-notion-contents": "^2.4.1",
     "intersection-observer": "^0.7.0",
     "prettier": "^2.0.2",
     "react": "^16.9.0",
@@ -31,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@types/jsdom": "^16.2.3",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
@@ -43,6 +48,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "gatsby-transformer-json": "^2.2.22",
+    "jsdom": "^16.2.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.7.3"
   },
   "keywords": [
@@ -57,13 +64,14 @@
   ],
   "license": "MIT",
   "scripts": {
+    "source-notion": "ts-node scripts/source-notion.ts",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "yarn develop",
     "dev": "yarn develop",
     "serve": "gatsby serve",
     "format": "prettier --write 'src/**/*.{js,jsx,json,md,ts,tsx}'",
-    "lint": "eslint 'src/**/*.{ts,tsx}'"
+    "lint": "eslint '{src,scripts}/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",

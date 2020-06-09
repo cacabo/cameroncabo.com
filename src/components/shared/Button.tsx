@@ -1,6 +1,6 @@
 import s, { css } from 'styled-components'
 import { Link } from 'gatsby'
-import { BLUE, SNOW, SKY, TEAL, BORDER } from '../../constants/colors'
+import { BLUE, SNOW, TEAL, LIGHT_TEAL, BORDER } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 import { BORDER_RADIUS } from '../../constants/measurements'
 import { CSSProperties } from 'react'
@@ -48,7 +48,7 @@ export const Button = s(Link)<IButton>(
     &:hover,
     &:focus,
     &:active {
-      background: ${hoverbackground || background || SKY};
+      background: ${hoverbackground || background || LIGHT_TEAL};
     }
 
     &:focus {

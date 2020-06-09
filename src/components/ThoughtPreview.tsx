@@ -5,7 +5,7 @@ import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
 
 import { IThoughtPreview } from '../types'
-import { P, Tag, Row, Col } from './shared'
+import { P, Tag, Tags, Row, Col } from './shared'
 import { Timestamp } from './Timestamp'
 import {
   M2,
@@ -104,14 +104,17 @@ export const ThoughtPreview = ({
             <P mb4 lighter>
               {subtitle}
             </P>
-            <div style={{ marginBottom: M1 }}>
-              {topics &&
-                topics.map((t: string) => (
-                  <Tag sm key={t}>
-                    {t}
-                  </Tag>
-                ))}
-            </div>
+            {topics && (
+              <div style={{ marginBottom: M1 }}>
+                <Tags>
+                  {topics.map((t: string) => (
+                    <Tag sm key={t}>
+                      {t}
+                    </Tag>
+                  ))}
+                </Tags>
+              </div>
+            )}
             <Timestamp
               updatedAt={updatedAt}
               createdAt={createdAt}

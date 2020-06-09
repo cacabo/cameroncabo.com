@@ -13,8 +13,8 @@ import {
   Tag,
   HR,
   Buttons,
-  H3,
   BR,
+  Tags,
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
 import { BORDER } from '../constants/colors'
@@ -199,7 +199,7 @@ const ProjectTemplate = ({
                 </td>
               </tr>
             )}
-            {tags && (
+            {tags && tags.length && (
               <tr>
                 <td>
                   <P sm bold mb0>
@@ -207,13 +207,15 @@ const ProjectTemplate = ({
                   </P>
                 </td>
                 <td>
-                  {tags.map(
-                    (t: string): React.ReactElement => (
-                      <Tag key={t} {...colorProps} sm>
-                        {t}
-                      </Tag>
-                    ),
-                  )}
+                  <Tags>
+                    {tags.map(
+                      (t: string): React.ReactElement => (
+                        <Tag key={t} {...colorProps} sm>
+                          {t}
+                        </Tag>
+                      ),
+                    )}
+                  </Tags>
                 </td>
               </tr>
             )}

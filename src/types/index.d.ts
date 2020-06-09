@@ -88,3 +88,21 @@ export interface IProjectFrontmatter {
     }
   }
 }
+
+/**
+ * Books
+ */
+
+interface IBook {
+  id: NotionID
+  title: string
+  subtitle: string
+  author: string
+  originallyPublished: string
+  tags: string[]
+  startDate: string
+  endDate: string
+  link: string
+  rating: number
+  html?: string
+}

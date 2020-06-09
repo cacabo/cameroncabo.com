@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Card,
-  H3,
   P,
   H2,
   Masonry,
@@ -89,20 +88,16 @@ const DesignPage = (): React.ReactElement => {
   )
 
   const artData: IArt[] = (allArtJson.nodes as IArtNode[]).map(
-    (node): IArt => ({
-      title: node.title,
-      medium: node.medium,
-      fluid: node.image.childImageSharp.fluid,
-      date: node.date,
+    ({ image, ...rest }): IArt => ({
+      fluid: image.childImageSharp.fluid,
+      ...rest,
     }),
   )
 
   const designData: IDesign[] = (allDesignJson.nodes as IDesignNode[]).map(
-    (node): IDesign => ({
-      title: node.title,
-      description: node.description,
-      fluid: node.image.childImageSharp.fluid,
-      date: node.date,
+    ({ image, ...rest }): IDesign => ({
+      fluid: image.childImageSharp.fluid,
+      ...rest,
     }),
   )
 

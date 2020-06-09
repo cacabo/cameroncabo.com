@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { Button, H1, HR, P, Callout, Tag, BR, H3 } from '../components/shared'
+import { Button, H1, HR, P, Callout, Tag, BR, Tags } from '../components/shared'
 import { THOUGHTS_ROUTE } from '../constants/routes'
 import { Timestamp } from '../components/Timestamp'
 import { ThoughtPreview } from '../components/ThoughtPreview'
@@ -16,6 +16,7 @@ import {
   PHONE,
   TABLET,
   DESKTOP,
+  M2,
 } from '../constants/measurements'
 import { IThoughtPreviewFrontmatter, IThought } from '../types'
 import { GRAY_2 } from '../constants/colors'
@@ -117,11 +118,15 @@ const ThoughtTemplate = ({
         )}
 
         {topics && (
-          <P sm mb2>
-            {topics.map((t: string) => (
-              <Tag key={t}>{t}</Tag>
-            ))}
-          </P>
+          <div style={{ marginBottom: M2 }}>
+            <Tags>
+              {topics.map((t: string) => (
+                <Tag sm key={t}>
+                  {t}
+                </Tag>
+              ))}
+            </Tags>
+          </div>
         )}
 
         <Timestamp

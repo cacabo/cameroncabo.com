@@ -10,8 +10,9 @@ import {
   PHONE,
   HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
+  M2,
 } from '../constants/measurements'
-import { WideContainer } from './shared'
+import { WideContainer, ContainerFluid } from './shared'
 
 import './Layout.css'
 import { OUTLINE_STYLES } from '../constants/misc'
@@ -76,8 +77,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Body = s.div`
-  padding-top: 1rem;
+const Body = s.div<{ mt0: boolean }>`
+  padding-top: ${(props): string => (props.mt0 ? '0' : M2)};
   width: 100vw;
   overflow-x: hidden;
 
@@ -91,19 +92,26 @@ const Content = s.main`
   min-height: calc(100vh - ${HEADER_HEIGHT});
 `
 
-const Layout = ({ children }: { children: Children }): React.ReactElement => {
+interface ILayoutProps {
+  wide?: boolean
+  mt0?: boolean
+  children: Children
+}
+
+const Layout = ({ wide, mt0, children }: ILayoutProps): React.ReactElement => {
   const [shouldHideBody, setShouldHideBody] = useState<boolean>(false)
+  const ContainerComponent = wide ? ContainerFluid : WideContainer
 
   return (
     <>
       <GlobalStyle />
       <Nav setShouldHideBody={setShouldHideBody} />
       <Nav setShouldHideBody={setShouldHideBody} fixed />
-      <Body id="top" aria-hidden={shouldHideBody}>
-        <WideContainer>
+      <Body id="top" aria-hidden={shouldHideBody} mt0={mt0}>
+        <ContainerComponent>
           <Content>{children}</Content>
           <Footer />
-        </WideContainer>
+        </ContainerComponent>
       </Body>
     </>
   )

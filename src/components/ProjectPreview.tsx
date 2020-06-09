@@ -3,7 +3,17 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import s from 'styled-components'
 
-import { Row, Col, Card, H3, P, Button, Tag, UnstyledLink } from './shared'
+import {
+  Row,
+  Col,
+  Card,
+  H3,
+  P,
+  Button,
+  Tag,
+  UnstyledLink,
+  Tags,
+} from './shared'
 import {
   M1,
   M2,
@@ -91,11 +101,13 @@ export const ProjectPreview = ({
           </P>
           {tags && (
             <div style={{ marginBottom: M2 }}>
-              {tags.map((t: string) => (
-                <Tag key={t} {...colorProps}>
-                  {t}
-                </Tag>
-              ))}
+              <Tags>
+                {tags.map((t: string) => (
+                  <Tag key={t} {...colorProps}>
+                    {t}
+                  </Tag>
+                ))}
+              </Tags>
             </div>
           )}
           <Button {...colorProps} to={path} style={{ marginBottom: 0 }}>

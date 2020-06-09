@@ -21,10 +21,10 @@ const FreelancePage = (): React.ReactElement => (
         work and take the time to reach out—it can go a long way.`}
       </P>
       <Buttons>
-        <Button mb0 to={PROJECTS_ROUTE}>
+        <Button to={PROJECTS_ROUTE} style={{ marginBottom: 0 }}>
           View my work
         </Button>
-        <Button mb0 to={CONTACT_ROUTE}>
+        <Button as="a" href={CONTACT_ROUTE} style={{ marginBottom: 0 }}>
           Contact me
         </Button>
       </Buttons>

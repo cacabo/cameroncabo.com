@@ -18,30 +18,48 @@ interface IContainerTagProps {
 }
 
 export const Container = s.div<IContainerTagProps>`
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  padding-right: ${M2};
+  padding-left: ${M2};
   width: 100%;
   display: block;
   background: ${({ background }): string => background || 'transparent'};
 
   ${minWidth(PHONE)} {
-    padding-right: calc(0.5rem + 1.25%);
-    padding-left: calc(0.5rem + 1.25%);
+    padding-right: calc(${M2} + 1.25%);
+    padding-left: calc(${M2} + 1.25%);
   }
 
   ${minWidth(TABLET)} {
-    padding-right: calc(0.5rem + 2.5%);
-    padding-left: calc(0.5rem + 2.5%);
+    padding-right: calc(${M2} + 2.5%);
+    padding-left: calc(${M2} + 2.5%);
   }
 
   ${minWidth(DESKTOP)} {
-    padding-right: calc(0.5rem + 5%);
-    padding-left: calc(0.5rem + 5%);
+    padding-right: calc(${M2} + 5%);
+    padding-left: calc(${M2} + 5%);
   }
 
   ${minWidth(WIDESCREEN)} {
-    padding-right: calc(0.5rem + 10%);
-    padding-left: calc(0.5rem + 10%);
+    padding-right: calc(${M2} + 10%);
+    padding-left: calc(${M2} + 10%);
+  }
+`
+
+export const ContainerFluid = s.div<IContainerTagProps>`
+  padding-right: ${M2};
+  padding-left: ${M2};
+  width: 100%;
+  display: block;
+  background: ${({ background }): string => background || 'transparent'};
+
+  ${minWidth(DESKTOP)} {
+    padding-right: calc(${M2} + 5%);
+    padding-left: calc(${M2} + 5%);
+  }
+
+  ${minWidth(WIDESCREEN)} {
+    padding-right: calc(${M2} + 10%);
+    padding-left: calc(${M2} + 10%);
   }
 `
 
