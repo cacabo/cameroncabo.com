@@ -15,7 +15,7 @@ import {
 import { WideContainer, ContainerFluid } from './shared'
 
 import './Layout.css'
-import { OUTLINE_STYLES } from '../constants/misc'
+import { OUTLINE_STYLES, LINK_STYLES } from '../constants/misc'
 import { BOLD_FONT_WEIGHT, FONT } from '../constants/fonts'
 
 const GlobalStyle = createGlobalStyle`
@@ -48,25 +48,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${FONT};
 
     a {
-      color: ${BLACK};
-      text-decoration: none !important;
-      overflow-wrap: break-word;
-      word-break: break-word;
-      word-wrap: break-word;
-
-      background: ${SKY};
-      border-bottom: 1px solid ${BLUE};
-      transition: background ${SHORT_ANIMATION_DURATION}ms ease;
-  
-      &:active,
-      &:focus,
-      &:hover {
-        background: ${TEAL};
-      }
-
-      &:focus {
-        ${OUTLINE_STYLES}
-      }
+      ${LINK_STYLES}
     }
   }
 

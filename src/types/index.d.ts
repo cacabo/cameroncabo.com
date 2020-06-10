@@ -105,4 +105,5 @@ interface IBook {
   link: string
   rating: number
   html?: string
+  slug: string
 }

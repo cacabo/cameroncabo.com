@@ -64,7 +64,7 @@ export const Stars = ({ rating }: { rating: number }): React.ReactElement => {
     return 0
   })
   return (
-    <div style={{ width: 120 }}>
+    <div style={{ width: 120, height: 24 }}>
       {starsAsNums.map((num, idx) => {
         const StarComponent =
           num === 1 ? FullStarIcon : num === 0.5 ? HalfStarIcon : EmptyStarIcon

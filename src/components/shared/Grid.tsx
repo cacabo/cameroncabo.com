@@ -9,6 +9,7 @@ import {
   DESKTOP,
   M2,
   WIDESCREEN,
+  M4,
 } from '../../constants/measurements'
 
 const percent = (numCols: number): string => (numCols / 12) * 100 + '%'
@@ -268,7 +269,9 @@ export const Masonry = s.div<{}>`
 
 export const BR = s.br<{ hiddenOnMobile?: boolean }>`
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding: 0;
+  height: ${M4};
   display: block;
 
   ${(props): string =>

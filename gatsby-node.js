@@ -1,16 +1,47 @@
 const path = require('path')
 
+// TODO use typescript here
+// TODO add slug field to books
+
+const projectTemplate = path.resolve(`src/templates/ProjectTemplate.tsx`)
+const thoughtTemplate = path.resolve(`src/templates/ThoughtTemplate.tsx`)
+const bookTemplate = path.resolve(`src/templates/BookTemplate.tsx`)
+
 const getPrev = (arr, idx) => (idx === 0 ? undefined : arr[idx - 1])
 const getNext = (arr, idx) =>
   idx === arr.length - 1 ? undefined : arr[idx + 1]
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createFieldExtension, createTypes } = actions
+
+  createFieldExtension({
+    name: 'slug',
+    extend: () => ({
+      resolve: (source) => {
+        const { title } = source
+        const slug = title.trim().toLowerCase().split(' ').join('-')
+        return slug
+      },
+    }),
+  })
+
+  createTypes(`
+    type BooksJson implements Node {
+      slug: String @slug
+    }
+  `)
+}
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
-  const projectTemplate = path.resolve(`src/templates/ProjectTemplate.tsx`)
-  const thoughtTemplate = path.resolve(`src/templates/ThoughtTemplate.tsx`)
 
   // NOTE this has duplicate code: https://github.com/gatsbyjs/gatsby/issues/12155
-  const thoughts = await graphql(`
+  const {
+    data: {
+      allMarkdownRemark: { nodes: thoughtNodes },
+    },
+    errors: thoughtErrors,
+  } = await graphql(`
     fragment PartialThought on MarkdownRemark {
       timeToRead
       frontmatter {
@@ -46,7 +77,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  const projects = await graphql(`
+  const {
+    data: {
+      allMarkdownRemark: { nodes: projectNodes },
+    },
+    errors: projectErrors,
+  } = await graphql(`
     fragment PartialProject on MarkdownRemark {
       frontmatter {
         title
@@ -81,16 +117,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  // Handle errors
-  if (thoughts.errors) {
+  const {
+    data: {
+      allBooksJson: { nodes: bookNodes },
+      errors: bookErrors,
+    },
+  } = await graphql(`
+    query {
+      allBooksJson {
+        nodes {
+          id
+          slug
+        }
+      }
+    }
+  `)
+
+  if (thoughtErrors) {
     reporter.panicOnBuild('Error while running thoughts GraphQL query.')
     return
-  } else if (projects.errors) {
+  } else if (projectErrors) {
     reporter.panicOnBuild('Error while running projects GraphQL query.')
+    return
+  } else if (bookErrors) {
+    reporter.panicOnBuild('Error while running books GraphQL query.')
     return
   }
 
-  const { nodes: thoughtNodes } = thoughts.data.allMarkdownRemark
   thoughtNodes.forEach(({ frontmatter }, idx) => {
     const { path: pagePath } = frontmatter
     if (!pagePath) return
@@ -105,7 +158,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   })
 
-  const { nodes: projectNodes } = projects.data.allMarkdownRemark
   projectNodes.forEach(({ frontmatter }, idx) => {
     const { path: pagePath } = frontmatter
     if (!pagePath) return
@@ -117,6 +169,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: pagePath,
       component: projectTemplate,
       context: { prev, next },
+    })
+  })
+
+  bookNodes.forEach(({ id, slug }) => {
+    const path = `/books/${slug}`
+
+    createPage({
+      path,
+      component: bookTemplate,
+      context: { id },
     })
   })
 }

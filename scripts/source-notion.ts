@@ -84,8 +84,8 @@ const getPageHTML = async (notionPageID: NotionID): Promise<string> => {
     if (elt.style.maxWidth) {
       elt.style.maxWidth = 'none'
     }
-    if (elt.style.whiteSpace !== 'nowrap') {
-      elt.style.whiteSpace = 'nowrap'
+    if (elt.style.whiteSpace !== 'normal') {
+      elt.style.whiteSpace = 'normal'
     }
     if (elt.style.fontFamily) {
       elt.style.fontFamily = 'inherit'

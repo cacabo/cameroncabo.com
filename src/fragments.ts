@@ -93,6 +93,22 @@ export const Thought = graphql`
   }
 `
 
+export const BookPreview = graphql`
+  fragment BookPreview on BooksJson {
+    title
+    subtitle
+    endDate(formatString: "MMM D, YYYY")
+    startDate(formatString: "MMM D, YYYY")
+    originallyPublished
+    link
+    tags
+    author
+    id
+    rating
+    slug
+  }
+`
+
 export const Book = graphql`
   fragment Book on BooksJson {
     title
@@ -105,5 +121,6 @@ export const Book = graphql`
     author
     id
     rating
+    html
   }
 `

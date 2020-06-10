@@ -15,9 +15,9 @@ import {
   Buttons,
   BR,
   Tags,
+  TableList,
 } from '../components/shared'
 import { PROJECTS_ROUTE } from '../constants/routes'
-import { BORDER } from '../constants/colors'
 import {
   BORDER_RADIUS_LG,
   PHONE,
@@ -133,94 +133,38 @@ const ProjectTemplate = ({
       <Overview background={colorBg}>
         <H1 mb4>{title}</H1>
         <P mb4>{description}</P>
-        <table
-          style={{
-            borderTop: `1px solid ${BORDER}`,
-            marginBottom: '1rem',
-          }}
-        >
-          <tbody>
-            <tr>
-              <td>
-                <P sm bold mb0>
-                  Timespan
-                </P>
-              </td>
-              <td>
-                <P sm mb0>
-                  {start === end ? start : `${start} - ${end}`}
-                </P>
-              </td>
-            </tr>
-            {status && (
-              <tr>
-                <td>
-                  <P sm bold mb0>
-                    Status
-                  </P>
-                </td>
-                <td>
-                  <P sm mb0>
-                    {status}
-                  </P>
-                </td>
-              </tr>
-            )}
-            {technologies && technologies.length && (
-              <tr>
-                <td>
-                  <P sm bold mb0>
-                    Technologies
-                  </P>
-                </td>
-                <td>
-                  <P sm mb0>
-                    {technologies.join(', ')}
-                  </P>
-                </td>
-              </tr>
-            )}
-            {collaborators && (
-              <tr>
-                <td>
-                  <P sm bold mb0>
-                    Collaborators
-                  </P>
-                </td>
-                <td>
-                  <P mb0 sm>
-                    {collaborators.map((c: string, idx: number) => (
-                      <React.Fragment key={c}>
-                        <span dangerouslySetInnerHTML={{ __html: c }} />
-                        {idx !== collaborators.length - 1 && ', '}
-                      </React.Fragment>
-                    ))}
-                  </P>
-                </td>
-              </tr>
-            )}
-            {tags && tags.length && (
-              <tr>
-                <td>
-                  <P sm bold mb0>
-                    Tags
-                  </P>
-                </td>
-                <td>
-                  <Tags>
-                    {tags.map(
-                      (t: string): React.ReactElement => (
-                        <Tag key={t} {...colorProps} sm>
-                          {t}
-                        </Tag>
-                      ),
-                    )}
-                  </Tags>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <TableList
+          labels={[
+            'Timespan',
+            'Status',
+            'Technologies',
+            'Collaborators',
+            'Tags',
+          ]}
+          content={[
+            start === end ? start : `${start} - ${end}`,
+            status,
+            technologies ? technologies.join(', ') : '',
+            <P sm mb0 key="collaborators">
+              {collaborators.map((c: string, idx: number) => (
+                <React.Fragment key={c}>
+                  <span dangerouslySetInnerHTML={{ __html: c }} />
+                  {idx !== collaborators.length - 1 && ', '}
+                </React.Fragment>
+              ))}
+            </P>,
+            <Tags key="tags">
+              {tags.map(
+                (t: string): React.ReactElement => (
+                  <Tag key={t} {...colorProps} sm>
+                    {t}
+                  </Tag>
+                ),
+              )}
+            </Tags>,
+          ]}
+        />
+
         <Buttons>
           {link && (
             <Button as="a" href={link} target="_BLANK" {...colorProps}>

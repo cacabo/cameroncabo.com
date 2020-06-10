@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 import { P, Tag, Tags, Stars } from '../components/shared'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { graphql, useStaticQuery } from 'gatsby'
 import { IBook } from '../types'
 import { TABLET, maxWidth, M2, DESKTOP } from '../constants/measurements'
+import { BOOK_ROUTE } from '../constants/routes'
 
 const TableWrapper = styled.div`
   overflow-y: visible;
@@ -53,7 +54,7 @@ const BooksPage = (): React.ReactElement => {
           }
         ) {
           nodes {
-            ...Book
+            ...BookPreview
           }
         }
       }
@@ -105,11 +106,12 @@ const BooksPage = (): React.ReactElement => {
                 endDate,
                 tags,
                 rating,
+                slug,
               }) => (
                 <tr key={id}>
                   <td style={{ minWidth: '338px' }}>
                     <P mb1 medium>
-                      {title}
+                      <Link to={BOOK_ROUTE(slug)}>{title}</Link>
                     </P>
                     {subtitle && (
                       <P mb1 sm lighter>
