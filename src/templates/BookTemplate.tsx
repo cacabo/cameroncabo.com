@@ -75,9 +75,11 @@ const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
           rating && <Stars rating={rating} />,
           // Strip off "Jan 1," because this means that only the published year
           // is known
-          originallyPublished.startsWith('Jan 1,')
-            ? originallyPublished.substring(7)
-            : originallyPublished,
+          originallyPublished
+            ? originallyPublished.startsWith('Jan 1,')
+              ? originallyPublished.substring(7)
+              : originallyPublished
+            : '',
           tags && tags.length && (
             <Tags>
               {tags.map(

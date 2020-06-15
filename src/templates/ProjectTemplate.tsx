@@ -145,14 +145,18 @@ const ProjectTemplate = ({
             start === end ? start : `${start} - ${end}`,
             status,
             technologies ? technologies.join(', ') : '',
-            <P sm mb0 key="collaborators">
-              {collaborators.map((c: string, idx: number) => (
-                <React.Fragment key={c}>
-                  <span dangerouslySetInnerHTML={{ __html: c }} />
-                  {idx !== collaborators.length - 1 && ', '}
-                </React.Fragment>
-              ))}
-            </P>,
+            collaborators ? (
+              <P sm mb0 key="collaborators">
+                {collaborators.map((c: string, idx: number) => (
+                  <React.Fragment key={c}>
+                    <span dangerouslySetInnerHTML={{ __html: c }} />
+                    {idx !== collaborators.length - 1 && ', '}
+                  </React.Fragment>
+                ))}
+              </P>
+            ) : (
+              ''
+            ),
             <Tags key="tags">
               {tags.map(
                 (t: string): React.ReactElement => (
