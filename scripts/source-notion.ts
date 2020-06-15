@@ -4,13 +4,21 @@ import moment = require('moment')
 import fs = require('fs')
 import { IBook } from '../src/types'
 
+// TODO parse, link to, and fetch sub-pages (recursively)
+
+/**
+ * Types
+ */
+
 type NotionID = string
 type RawTableRow = Record<string, string | string[]> & { id: NotionID }
 type TableRow = Record<string, string | string[] | number> & { id: NotionID }
 type ColType = 'String' | 'String[]' | 'Number' | 'Date'
 type TableRowInterface = Record<string, ColType>
 
-// TODO document better
+/**
+ * Constants
+ */
 
 const BELL = '\u0007'
 const BOOKS_NOTION_ID: NotionID = '92ece565f3fb4c78ac32c7e9af7fc281'
@@ -22,6 +30,15 @@ const Node = {
   ELEMENT_NODE: 1,
   DOCUMENT_NODE: 9,
   DOCUMENT_FRAGMENT_NODE: 11,
+}
+
+/**
+ * Helper functions
+ */
+
+const ringBell = (): void => {
+  // eslint-disable-next-line no-console
+  console.log(BELL)
 }
 
 const writeJsonFile = (name: string, obj: object): Promise<void> =>
@@ -39,6 +56,13 @@ const writeJsonFile = (name: string, obj: object): Promise<void> =>
     )
   })
 
+/**
+ * Recursive function to get a list of all text from all text node descendents
+ * of the provided element
+ *
+ * @param   {Element | ChildNode} elem DOM element
+ * @returns {string[]}                 list of text nodes
+ */
 const getTextNodesIn = (elem: Element | ChildNode): string[] => {
   let textNodes: string[] = []
 
@@ -201,6 +225,8 @@ const getTableContents = (
     },
   )
 
+// Schema for data from books table in notion
+// This interface describes how to parse the data we get from Notion
 const bookRowInterface: TableRowInterface = {
   id: 'String',
   title: 'String',
@@ -247,7 +273,6 @@ getRawTableContents(BOOKS_NOTION_ID).then(
     // eslint-disable-next-line no-console
     console.log('Done.')
 
-    // eslint-disable-next-line no-console
-    console.log(BELL)
+    ringBell()
   },
 )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { IThoughtPreviewFrontmatter } from '../../types'
-import { H3, Button, HR } from '../shared'
+import { Button } from '../shared'
 import { THOUGHTS_ROUTE } from '../../constants/routes'
 import { ThoughtPreview } from '../ThoughtPreview'
 
@@ -28,11 +28,6 @@ export const RecentThoughts = (): React.ReactElement => {
 
   return (
     <>
-      <H3 mt4 mb4>
-        Recent Thoughts
-      </H3>
-      <HR />
-
       {(nodes as IThoughtPreviewNode[]).map(({ frontmatter, timeToRead }) => (
         <ThoughtPreview
           {...frontmatter}

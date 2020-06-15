@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-
-import { H3, InfoCard, Button, HR } from '../shared'
+import { InfoCard, Button } from '../shared'
 import { RESUME_ROUTE } from '../../constants/routes'
 import { IWorkFrontmatter } from '../../types'
 
@@ -45,10 +44,6 @@ export const Work = (): React.ReactElement => {
 
   return (
     <>
-      <H3 mb4 mt4>
-        Work
-      </H3>
-      <HR />
       {(nodes as IWorkNode[]).map(
         ({
           html,

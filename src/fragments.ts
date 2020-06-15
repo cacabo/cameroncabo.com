@@ -99,7 +99,6 @@ export const BookPreview = graphql`
     subtitle
     endDate(formatString: "MMM D, YYYY")
     startDate(formatString: "MMM D, YYYY")
-    originallyPublished
     link
     tags
     author
@@ -115,7 +114,7 @@ export const Book = graphql`
     subtitle
     endDate(formatString: "MMM D, YYYY")
     startDate(formatString: "MMM D, YYYY")
-    originallyPublished
+    originallyPublished(formatString: "MMM D, YYYY")
     link
     tags
     author

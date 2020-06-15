@@ -8,8 +8,11 @@ import { Technologies } from './Technologies'
 import { RecentProjects } from './RecentProjects'
 import { RecentThoughts } from './RecentThoughts'
 import { M1, minWidth, TABLET } from '../../constants/measurements'
+import { Children } from '../../types'
+import { H3, HR } from '../shared'
+import { Reading } from './Reading'
 
-const Section = s.section`
+const SectionWrapper = s.section`
   padding: ${M1} 0;
 
   ${minWidth(TABLET)} {
@@ -17,23 +20,42 @@ const Section = s.section`
   }
 `
 
+const Section = ({
+  title,
+  children,
+}: {
+  title: string
+  children: Children
+}): React.ReactElement => (
+  <SectionWrapper>
+    <H3 mb4 mt4>
+      {title}
+    </H3>
+    <HR />
+    {children}
+  </SectionWrapper>
+)
+
 const HomePage = (): React.ReactElement => (
   <>
     <Hero />
-    <Section>
+    <Section title="Education">
       <Education />
     </Section>
-    <Section>
+    <Section title="Work">
       <Work />
     </Section>
-    <Section>
+    <Section title="Technologies">
       <Technologies />
     </Section>
-    <Section>
+    <Section title="Recent Projects">
       <RecentProjects />
     </Section>
-    <Section>
+    <Section title="Recent Thoughts">
       <RecentThoughts />
+    </Section>
+    <Section title="Reading">
+      <Reading />
     </Section>
   </>
 )

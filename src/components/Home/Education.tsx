@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { H3, InfoCard, HR } from '../shared'
 import { FluidObject } from 'gatsby-image'
+import { InfoCard } from '../shared'
 
 interface IEducationNode {
   html: string
@@ -52,10 +52,6 @@ export const Education = (): React.ReactElement => {
   const { nodes } = data.allMarkdownRemark
   return (
     <>
-      <H3 mb4 mt4>
-        Education
-      </H3>
-      <HR />
       {(nodes as IEducationNode[]).map(
         ({
           html,

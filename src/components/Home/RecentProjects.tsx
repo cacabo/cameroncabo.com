@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-
-import { H3, Button, HR } from '../shared'
+import { Button } from '../shared'
 import { PROJECTS_ROUTE } from '../../constants/routes'
 import { ProjectPreview } from '../ProjectPreview'
 import { IProjectPreview } from '../../types'
@@ -30,11 +29,6 @@ export const RecentProjects = (): React.ReactElement => {
   const { nodes } = data.allMarkdownRemark
   return (
     <>
-      <H3 mb4 mt4>
-        Recent Projects
-      </H3>
-      <HR />
-
       {(nodes as IProjectNode[]).map(({ frontmatter }) => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />

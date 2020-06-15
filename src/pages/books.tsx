@@ -41,7 +41,7 @@ const Table = styled.table`
   }
 `
 
-// TODO fixed table header
+// TODO fixed position table header
 
 const BooksPage = (): React.ReactElement => {
   const { allBooksJson } = useStaticQuery(
