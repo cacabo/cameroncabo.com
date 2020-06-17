@@ -7,6 +7,7 @@ export interface IThought {
   html: string
   timeToRead: number
   frontmatter: {
+    path: string
     createdAt: string
     updatedAt: string
     title: string
@@ -71,6 +72,7 @@ export interface IProjectPreview {
 }
 
 export interface IProjectFrontmatter {
+  path: string
   title: string
   description: string
   link: string
@@ -87,6 +89,10 @@ export interface IProjectFrontmatter {
       fluid: FluidObject
     }
   }
+}
+
+export interface IProject {
+  frontmatter: IProjectFrontmatter
 }
 
 /**
