@@ -1,7 +1,7 @@
 ---
 createdAt: '2019-04-21T18:00-08:00'
 updatedAt: '2019-04-21T18:00-08:00'
-title: 'The Ethics and Macroeconomics of Automation'
+title: 'The ethics and macroeconomics of automation'
 path: '/thoughts/the-ethics-and-macroeconomics-of-automation'
 subtitle: 'Finding purpose, work, and flow with our machine friends'
 image: '../../images/thoughts/automation.jpg'

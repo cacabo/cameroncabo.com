@@ -105,6 +105,9 @@ const getPageHTML = async (notionPageID: NotionID): Promise<string> => {
     if (!elt.style) {
       return
     }
+    if (elt.style.lineHeight) {
+      elt.style.lineHeight = ''
+    }
     if (elt.style.maxWidth) {
       elt.style.maxWidth = 'none'
     }
@@ -113,6 +116,17 @@ const getPageHTML = async (notionPageID: NotionID): Promise<string> => {
     }
     if (elt.style.fontFamily) {
       elt.style.fontFamily = 'inherit'
+    }
+
+    if (elt.style.fontSize) {
+      elt.style.fontSize = ''
+    }
+
+    // Customize styling for headings via CSS classes
+    const placeholder = elt.getAttribute('placeholder')
+    if (placeholder?.startsWith('Heading')) {
+      const type = placeholder.split(' ')[1]
+      elt.classList.add(`h${type}`)
     }
   })
 
@@ -248,6 +262,8 @@ console.log('Fetching books...')
 
 getRawTableContents(BOOKS_NOTION_ID).then(
   async (rawTableContents): Promise<void> => {
+    // Get the list of all books
+    // Ignore any rows which are empty (book has no title)
     const books: IBook[] = ((getTableContents(
       rawTableContents,
       bookRowInterface,

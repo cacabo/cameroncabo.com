@@ -2,7 +2,7 @@ import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
 import { HOME_ROUTE } from '../../constants/routes'
-import { maxWidth, M2, M1, M6, M4, TABLET } from '../../constants/measurements'
+import { maxWidth, M2, M1, M6, M4, DESKTOP } from '../../constants/measurements'
 import { OUTLINE, BLACK } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 
@@ -26,7 +26,7 @@ const StyledLink = s(Link)`
     box-shadow: 0 0 0 4px ${OUTLINE};
   }
 
-  ${maxWidth(TABLET)} {
+  ${maxWidth(DESKTOP)} {
     margin-top: ${M1};
     display: inline-block;
     width: auto;

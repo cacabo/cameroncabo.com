@@ -1,7 +1,7 @@
 ---
 createdAt: '2020-05-30T22:27-00:00'
 updatedAt: '2020-05-30T22:27-00:00'
-title: 'It Worked'
+title: 'It worked'
 path: '/thoughts/it-worked'
 image: '../../images/thoughts/love-statue-alice-dom.jpg'
 caption: 'Me and my friends Alice and Dom (two of my quarantine compatriots) atop the beloved love statue'

@@ -1,7 +1,7 @@
 ---
 createdAt: '2019-12-28T14:45-08:00'
 updatedAt: '2019-12-28T14:45-08:00'
-title: 'Classism in the Gig Economy'
+title: 'Classism in the gig economy'
 subtitle: "Rideshare companies aren't dropping us off where we want"
 path: '/thoughts/classism-in-the-gig-economy'
 image: '../../images/thoughts/gig.jpg'

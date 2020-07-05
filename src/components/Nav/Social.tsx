@@ -23,7 +23,7 @@ import {
   maxWidth,
   SHORT_ANIMATION_DURATION,
   M2,
-  TABLET,
+  DESKTOP,
 } from '../../constants/measurements'
 import { OUTLINE_STYLES } from '../../constants/misc'
 
@@ -61,7 +61,7 @@ const Wrapper = s.div<{ active: boolean }>`
     }
   }
 
-  ${maxWidth(TABLET)} {
+  ${maxWidth(DESKTOP)} {
     left: 0;
     position: relative;
     margin: 4vh 0 ${M2} 0;

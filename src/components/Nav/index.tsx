@@ -12,7 +12,7 @@ import {
   HEADER_Z_INDEX,
   M1,
   M2,
-  TABLET,
+  DESKTOP,
 } from '../../constants/measurements'
 import { Bars } from './Bars'
 import { Shade } from '../shared'
@@ -53,7 +53,7 @@ const Wrapper = s.header<IWrapperProps>(
     height: ${HEADER_HEIGHT};
     outline: 0 !important;
 
-    ${maxWidth(TABLET)} {
+    ${maxWidth(DESKTOP)} {
       height: auto;
       max-height: 100vh;
       width: 100vw;

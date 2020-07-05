@@ -14,13 +14,19 @@ export const M6 = '2.4rem'
 
 type TScreenWidth = string
 
-export const WIDESCREEN: TScreenWidth = '1440px'
-export const DESKTOP: TScreenWidth = '1024px'
-export const TABLET_WIDTH = 848
-export const TABLET: TScreenWidth = '848px'
-export const PHONE: TScreenWidth = '584px'
+export const WIDESCREEN_WIDTH = 1440
+export const WIDESCREEN: TScreenWidth = `${WIDESCREEN_WIDTH}px`
 
-export const MOBILE_HEADER_HEIGHT = '58px'
+export const DESKTOP_WIDTH = 1024
+export const DESKTOP: TScreenWidth = `${DESKTOP_WIDTH}px`
+
+export const TABLET_WIDTH = 848
+export const TABLET: TScreenWidth = `${TABLET_WIDTH}px`
+
+export const PHONE_WIDTH = 584
+export const PHONE: TScreenWidth = `${PHONE_WIDTH}px`
+
+export const MOBILE_HEADER_HEIGHT = '61.43px'
 export const HEADER_HEIGHT = '3.2rem'
 export const HEADER_Z_INDEX = 1000
 

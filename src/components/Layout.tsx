@@ -4,18 +4,11 @@ import s, { createGlobalStyle } from 'styled-components'
 import { Children } from '../types'
 import { Nav } from './Nav'
 import { Footer } from './Footer'
-import { BLACK, BLUE, SKY, TEAL } from '../constants/colors'
-import {
-  maxWidth,
-  PHONE,
-  HEADER_HEIGHT,
-  SHORT_ANIMATION_DURATION,
-  M2,
-} from '../constants/measurements'
+import { maxWidth, PHONE, HEADER_HEIGHT, M2 } from '../constants/measurements'
 import { WideContainer, ContainerFluid } from './shared'
 
 import './Layout.css'
-import { OUTLINE_STYLES, LINK_STYLES } from '../constants/misc'
+import { LINK_STYLES } from '../constants/misc'
 import { BOLD_FONT_WEIGHT, FONT } from '../constants/fonts'
 
 const GlobalStyle = createGlobalStyle`
@@ -23,7 +16,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${FONT};
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: ${BOLD_FONT_WEIGHT};
     text-rendering: optimizeLegibility;
   }
@@ -56,6 +50,11 @@ const GlobalStyle = createGlobalStyle`
     html {
       font-size: 100%;
     }
+  }
+
+  div {
+    line-height: 1.45;
+    font-size: 1rem;
   }
 `
 

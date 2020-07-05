@@ -92,18 +92,20 @@ export const ProjectPreview = ({
           <H3 key={title} mb2>
             <UnstyledLink to={path}>{title}</UnstyledLink>
           </H3>
-          <P sm mb4 lighter>
+          <P mb4 lightest>
             {start === end ? start : `${start} - ${end}`}
           </P>
-          <P mb2>{description}</P>
-          <P mb2>
+          <P mb2 lighter>
+            {description}
+          </P>
+          <P mb2 lighter>
             <strong>Tech:</strong> {technologies.join(', ')}
           </P>
           {tags && (
             <div style={{ marginBottom: M2 }}>
               <Tags>
                 {tags.map((t: string) => (
-                  <Tag key={t} {...colorProps}>
+                  <Tag sm key={t} {...colorProps}>
                     {t}
                   </Tag>
                 ))}

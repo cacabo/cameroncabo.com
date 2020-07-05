@@ -3,11 +3,10 @@ import s from 'styled-components'
 
 import { MenuIcon } from '../shared'
 import {
-  minWidth,
-  TABLET,
   MOBILE_HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
   maxWidth,
+  DESKTOP,
 } from '../../constants/measurements'
 import {
   SPACE_KEY_CODE,
@@ -15,29 +14,36 @@ import {
   OUTLINE_STYLES,
 } from '../../constants/misc'
 
-const Wrapper = s.div`
-  margin-right: 1rem;
-  height: 24px;
+const ICON_HEIGHT = 24
+const PADDING = 8
+
+const Wrapper = s.button`
+  margin-right: 0.8rem;
   cursor: pointer;
   position: absolute;
-  right: 0;
+  right: -${PADDING}px;
   top: calc(${MOBILE_HEADER_HEIGHT} / 2);
   transform: translateY(-50%);
   transition: opacity ${SHORT_ANIMATION_DURATION}ms ease;
+  display: none;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: ${PADDING}px;
+  height: ${ICON_HEIGHT + PADDING * 2}px;
 
   &:hover {
     opacity: 0.5;
   }
 
-  ${maxWidth(TABLET)} {
+  ${maxWidth(DESKTOP)} {
+    display: block;
     top: calc(${MOBILE_HEADER_HEIGHT} / 2 - 1px);
   }
 
-  ${minWidth(TABLET)} {
-    display: none;
-  }
-
   svg {
+    height: ${ICON_HEIGHT}px;
     padding: 0;
     margin: 0;
     display: inline-block;

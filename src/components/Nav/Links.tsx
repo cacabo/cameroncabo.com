@@ -15,12 +15,12 @@ import {
   SHORT_ANIMATION_DURATION,
   M2,
   M1,
-  TABLET,
+  DESKTOP,
 } from '../../constants/measurements'
 import { OUTLINE_STYLES } from '../../constants/misc'
 
 const Wrapper = s.div<{ active?: boolean }>`
-  ${maxWidth(TABLET)} {
+  ${maxWidth(DESKTOP)} {
     margin: ${M2} 0;
     transition: opacity ${SHORT_ANIMATION_DURATION + 100}ms ease;
     opacity: ${(props): number => (props.active ? 1 : 0)};
@@ -41,7 +41,7 @@ const StyledLink = s(Link)<{}>`
     opacity: 1;
   }
 
-  ${maxWidth(TABLET)} {
+  ${maxWidth(DESKTOP)} {
     margin: 1vh 0;
     font-size: 125%;
     width: 100%;
