@@ -57,8 +57,7 @@ export const Education = (): React.ReactElement => {
           html,
           frontmatter: { start, end, title, gpa, image, location },
         }) => {
-          const { childImageSharp, publicURL } = image || {}
-          const fluid = (childImageSharp && childImageSharp.fluid) || undefined
+          const fluid = image?.childImageSharp?.fluid
 
           // Allow certain fields to be missing
           const subtitle = [
@@ -75,7 +74,6 @@ export const Education = (): React.ReactElement => {
               title={title}
               subtitle={subtitle}
               fluidImage={fluid}
-              imageUrl={publicURL}
               body={html}
             />
           )

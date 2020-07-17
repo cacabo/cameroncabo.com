@@ -1,8 +1,17 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { InfoCard, Button } from '../shared'
-import { RESUME_ROUTE } from '../../constants/routes'
-import { IWorkFrontmatter } from '../../types'
+import { InfoCard, Button } from '../../shared'
+import { RESUME_ROUTE } from '../../../constants/routes'
+import { IWorkFrontmatter } from '../../../types'
+import Zest from './svg/Zest'
+import Honey from './svg/Honey'
+import Riplo from './svg/Riplo'
+
+const svgs: Record<string, React.FC> = {
+  Honey,
+  Riplo,
+  Zest,
+}
 
 interface IWorkNode {
   frontmatter: IWorkFrontmatter
@@ -25,13 +34,13 @@ export const Work = (): React.ReactElement => {
               location
               start
               end
+              svg
               image {
                 childImageSharp {
                   fluid(maxHeight: 96) {
                     ...GatsbyImageSharpFluid
                   }
                 }
-                publicURL
               }
             }
           }
@@ -47,17 +56,16 @@ export const Work = (): React.ReactElement => {
       {(nodes as IWorkNode[]).map(
         ({
           html,
-          frontmatter: { company, title, location, start, end, image },
+          frontmatter: { company, title, location, start, end, image, svg },
         }) => {
-          const { childImageSharp, publicURL } = image || {}
-          const fluid = (childImageSharp && childImageSharp.fluid) || undefined
+          const fluid = image?.childImageSharp?.fluid
           return (
             <InfoCard
               key={`${title}-${company}`}
               title={`${title}, ${company}`}
               subtitle={`${start} - ${end} • ${location}`}
               fluidImage={fluid}
-              imageUrl={publicURL}
+              Svg={svgs[svg || '']}
               body={html}
             />
           )

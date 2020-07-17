@@ -102,8 +102,8 @@ const ThoughtTemplate = ({
     } = {},
   } = pageContext
 
-  const { fluid } = (image && image.childImageSharp) || {}
-  const src: string | undefined = (fluid && fluid.src) || undefined
+  const fluid = image?.childImageSharp?.fluid
+  const src = fluid?.src
 
   return (
     <Layout>

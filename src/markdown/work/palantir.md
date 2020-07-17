@@ -1,13 +1,9 @@
 ---
-start: 'June 2019'
-end: 'August 2019'
+start: 'July 2020'
+end: 'Present'
 company: 'Palantir'
-title: 'Forward Deployed Software Engineer Intern'
-location: 'London, UK'
+title: 'Forward Deployed Software Engineer'
+location: 'New York, NY'
 image: '../../images/work/palantir.jpg'
-order: 0
+order: -1
 ---
-
-- Developed pipelines for running containerized optimizations on client software and analyzing results.
-- Developed frontend framework for visualizing and tracking status of client supply chains.
-- **Tech:** React, TypeScript, JavaScript, Python, Spark, Pandas, SVG, Java.

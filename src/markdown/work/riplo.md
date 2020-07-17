@@ -4,7 +4,7 @@ end: 'Present'
 company: 'Riplo'
 title: 'Co-Founder, Developer'
 location: 'Philadelphia, PA'
-image: '../../images/work/riplo.svg'
+svg: 'Riplo'
 order: 7
 ---
 

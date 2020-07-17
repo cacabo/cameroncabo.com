@@ -4,7 +4,7 @@ end: 'August 2017'
 company: 'Honey'
 title: 'Software Engineer Intern'
 location: 'Los Angeles, CA'
-image: '../../images/work/honey.svg'
+svg: 'Honey'
 order: 3
 ---
 

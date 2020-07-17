@@ -4,7 +4,7 @@ end: 'June 2019'
 company: 'ZestMoney'
 title: 'Growth Intern'
 location: 'Bangalore, India'
-image: '../../images/work/zest.svg'
+svg: 'Zest'
 order: 1
 ---
 

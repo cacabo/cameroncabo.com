@@ -139,7 +139,7 @@ interface IInfoCard {
   subtitle?: string
   fluidImage?: FluidObject
   body: string
-  imageUrl?: string
+  Svg?: React.FC<{ style?: React.CSSProperties }>
 }
 
 const InfoCardWrapper = s.div<{}>`
@@ -179,17 +179,17 @@ export const InfoCard = ({
   fluidImage,
   subtitle,
   body,
-  imageUrl,
+  Svg,
 }: IInfoCard): React.ReactElement => (
   <InfoCardWrapper>
     <FlexRow>
-      {(fluidImage || imageUrl) && (
+      {(fluidImage || Svg) && (
         <InfoCardImageWrapper>
           {fluidImage ? (
             <InfoCardImage as={Img} fluid={fluidImage} />
-          ) : (
-            <InfoCardImage src={imageUrl} alt={title} />
-          )}
+          ) : Svg ? (
+            <Svg style={{ width: '100%', height: 'auto' }} />
+          ) : null}
         </InfoCardImageWrapper>
       )}
       <Flex>

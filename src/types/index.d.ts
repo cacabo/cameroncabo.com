@@ -46,11 +46,11 @@ export interface IWorkFrontmatter {
   location: string
   start: string
   end: string
-  image: {
+  svg?: string
+  image?: {
     childImageSharp: {
       fluid: FluidObject
     }
-    publicURL: string
   }
 }
 
