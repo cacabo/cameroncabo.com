@@ -10,3 +10,4 @@ order: 1
 
 - Graduated Cum Laude (Highest Honors), top three in the class.
 - Leader in entrepreneurship, ethics, and current events clubs on campus.
+- Academics, visual arts, soccer, basketball (lots of training and practice, admittedly not many minutes).

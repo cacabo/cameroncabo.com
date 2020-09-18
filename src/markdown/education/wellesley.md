@@ -1,6 +1,6 @@
 ---
-start: '2013'
-end: '2016'
+start: '2003'
+end: '2013'
 title: 'Wellesley Public Schools'
 gpa: 3.95
 image: '../../images/education/whs.png'
