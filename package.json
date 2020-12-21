@@ -1,6 +1,6 @@
 {
   "name": "cameroncabo.com",
-  "private": true,
+  "private": false,
   "description": "Driven learner, developer, and product builder",
   "version": "0.1.0",
   "author": "Cameron Cabo <cameroncabo@gmail.com>",

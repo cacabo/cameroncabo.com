@@ -1,8 +1,8 @@
 import Notion from 'get-notion-contents'
 import { JSDOM } from 'jsdom'
-import moment = require('moment')
-import fs = require('fs')
 import { IBook } from '../src/types'
+import moment from 'moment'
+import fs = require('fs')
 
 // TODO parse, link to, and fetch sub-pages (recursively)
 
@@ -273,10 +273,7 @@ getRawTableContents(BOOKS_NOTION_ID).then(
     console.log('Fetching notes for each book...')
 
     const htmlPromises: Promise<string>[] = books.map(
-      async (book): Promise<string> => {
-        const html = await getPageHTML(book.id)
-        return html
-      },
+      (book): Promise<string> => getPageHTML(book.id),
     )
 
     const htmls: string[] = await Promise.all(htmlPromises)
