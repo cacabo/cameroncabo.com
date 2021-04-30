@@ -98,9 +98,9 @@ const getPageHTML = async (notionPageID: NotionID): Promise<string> => {
   const page = await notion.getPageById(notionPageID)
   const html: string = page.content
   const { document } = new JSDOM(html).window
-  const elts = (Array.from(document.querySelectorAll('*')) as unknown) as Array<
-    HTMLElement
-  >
+  const elts = (Array.from(
+    document.querySelectorAll('*'),
+  ) as unknown) as Array<HTMLElement>
   elts.forEach((elt): void => {
     if (!elt.style) {
       return
@@ -268,6 +268,10 @@ getRawTableContents(BOOKS_NOTION_ID).then(
       rawTableContents,
       bookRowInterface,
     ) as unknown) as IBook[]).filter(({ title }) => Boolean(title))
+
+    if (!books.length) {
+      throw new Error('Failed to find any books!')
+    }
 
     // eslint-disable-next-line no-console
     console.log('Fetching notes for each book...')
