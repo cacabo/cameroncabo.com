@@ -2,8 +2,6 @@ import * as path from 'path'
 import { GatsbyCreatePages } from './types'
 import { IBook, IThought, IProject } from '../src/types'
 
-// TODO add slug field to books which doesn't assume unique titles
-
 const projectTemplate = path.resolve('./src/templates/ProjectTemplate.tsx')
 const thoughtTemplate = path.resolve('./src/templates/ThoughtTemplate.tsx')
 const bookTemplate = path.resolve('./src/templates/BookTemplate.tsx')

@@ -2,7 +2,8 @@ import Notion from 'get-notion-contents'
 import { JSDOM } from 'jsdom'
 import { IBook } from '../src/types'
 import moment from 'moment'
-import fs = require('fs')
+import { Environment } from './utils/environment'
+import { writeJsonFileAsync } from './utils/writeJSONFileAsync'
 
 // TODO parse, link to, and fetch sub-pages (recursively)
 
@@ -20,9 +21,6 @@ type TableRowInterface = Record<string, ColType>
  * Constants
  */
 
-const BELL = '\u0007'
-const BOOKS_NOTION_ID: NotionID = '92ece565f3fb4c78ac32c7e9af7fc281'
-
 // This is the same as you would get in the browser, but we need to mimic it
 // since we are in a node context here
 const Node = {
@@ -37,24 +35,11 @@ const Node = {
  */
 
 const ringBell = (): void => {
+  const BELL_CHAR = '\u0007'
+
   // eslint-disable-next-line no-console
-  console.log(BELL)
+  console.log(BELL_CHAR)
 }
-
-const writeJsonFile = (name: string, obj: object): Promise<void> =>
-  new Promise((resolve, reject) => {
-    fs.writeFile(
-      `./src/json/${name}/${name}.json`,
-      JSON.stringify(obj),
-      (err): void => {
-        if (err) {
-          return reject(err)
-        }
-
-        return resolve()
-      },
-    )
-  })
 
 /**
  * Recursive function to get a list of all text from all text node descendents
@@ -90,13 +75,25 @@ const getTextNodesIn = (elem: Element | ChildNode): string[] => {
 }
 
 const getPageHTML = async (notionPageID: NotionID): Promise<string> => {
+  // eslint-disable-next-line no-console
+  console.log(`Getting page HTML for ${notionPageID}...`)
+
   const notion = new Notion('', {
     prefix: '',
     removeStyle: false,
   })
 
   const page = await notion.getPageById(notionPageID)
+
+  // eslint-disable-next-line no-console
+  console.log('PAGE', page)
+
   const html: string = page.content
+
+  if (!html) {
+    throw new Error('Failed to find HTML content for page')
+  }
+
   const { document } = new JSDOM(html).window
   const elts = (Array.from(
     document.querySelectorAll('*'),
@@ -260,36 +257,45 @@ console.log('Sourcing data from Notion...')
 // eslint-disable-next-line no-console
 console.log('Fetching books...')
 
-getRawTableContents(BOOKS_NOTION_ID).then(
-  async (rawTableContents): Promise<void> => {
-    // Get the list of all books
-    // Ignore any rows which are empty (book has no title)
-    const books: IBook[] = ((getTableContents(
-      rawTableContents,
-      bookRowInterface,
-    ) as unknown) as IBook[]).filter(({ title }) => Boolean(title))
+// getRawTableContents(Environment.notionBooksDatabaseID()).then(
+//   async (rawTableContents): Promise<void> => {
+//     // Get the list of all books
+//     // Ignore any rows which are empty (book has no title)
+//     const books: IBook[] = ((getTableContents(
+//       rawTableContents,
+//       bookRowInterface,
+//     ) as unknown) as IBook[]).filter(({ title }) => Boolean(title))
 
-    if (!books.length) {
-      throw new Error('Failed to find any books!')
-    }
+//     if (!books.length) {
+//       throw new Error('Failed to find any books!')
+//     }
 
-    // eslint-disable-next-line no-console
-    console.log('Fetching notes for each book...')
+//     // eslint-disable-next-line no-console
+//     console.log('Fetching notes for each book...')
 
-    const htmlPromises: Promise<string>[] = books.map(
-      (book): Promise<string> => getPageHTML(book.id),
-    )
+//     const htmlPromises: Promise<string>[] = books.map(
+//       (book): Promise<string> => getPageHTML(book.id),
+//     )
 
-    const htmls: string[] = await Promise.all(htmlPromises)
-    htmls.forEach((html, idx) => {
-      books[idx].html = html
-    })
+//     const htmls: string[] = await Promise.all(htmlPromises)
+//     htmls.forEach((html, idx) => {
+//       books[idx].html = html
+//     })
 
-    writeJsonFile('books', books)
+//     await writeJsonFileAsync('books', books)
 
-    // eslint-disable-next-line no-console
-    console.log('Done.')
+//     // eslint-disable-next-line no-console
+//     console.log('Done.')
 
-    ringBell()
-  },
-)
+//     ringBell()
+//   },
+// )
+
+const main = async (): Promise<void> => {
+  const res = await getPageHTML('ea48962b-d6ef-4df1-b9e9-d58ade893a7c')
+
+  // eslint-disable-next-line no-console
+  console.log('RESPONSE', res)
+}
+
+main()

@@ -8,6 +8,7 @@ export const createSchemaCustomization: GatsbyCreateSchemaCustomization = ({
 
   createFieldExtension({
     name: 'slug',
+    // TODO add slug field to books which doesn't assume unique titles (2022.02.12)
     extend: () => ({
       resolve: (source: IBook): string => {
         const { title } = source
