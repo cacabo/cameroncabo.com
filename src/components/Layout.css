@@ -590,3 +590,13 @@ pre tt:after {
     line-height: 1.45;
   }
 }
+
+/* Notion-specific styles for bullet-points in lists */
+.pseudoBefore {
+  line-height: 1;
+
+  margin-top: -3px;
+}
+.pseudoBefore::before {
+  content: '•';
+}

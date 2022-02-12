@@ -105,6 +105,8 @@ const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
         </Button>
       )}
 
+      <BR />
+
       {html && <Content dangerouslySetInnerHTML={{ __html: html }} />}
 
       <BR />
