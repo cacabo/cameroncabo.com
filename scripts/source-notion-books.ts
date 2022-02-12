@@ -1,6 +1,141 @@
 import { Client } from '@notionhq/client'
 import { IBook } from '../src/types'
 import { Environment } from './utils/environment'
+import puppeteer from 'puppeteer'
+import { writeJsonFileAsync } from './utils/writeJSONFileAsync'
+
+// TODO parse, link to, and fetch sub-pages (recursively)
+
+/**
+ * Replace any of
+ *
+ * "http://www.notion.so"
+ * "https://www.notion.so"
+ * "http://.notion.so"
+ * "https://.notion.so"
+ * "notion.so"
+ * "www.notion.so"
+ *
+ * With the Notion site URL from the environment
+ */
+const reviseNotionURL = (url: string): string =>
+  url.replace(
+    /(https?:\/\/)?(www\.)?notion\.so/,
+    Environment.notionSiteBaseURL(),
+  )
+
+/**
+ * Fetch via the URL directly
+ *
+ * If you fetch via the page ID, if you are logged in, Notion will re-direct
+ * you, but if you are not logged in (as is the case with puppeteer) you are
+ * shown a button to click to redirect (@cacabo 2022.02.12)
+ */
+const fetchNotionPageContentsByURL = async (url: string): Promise<string> => {
+  // eslint-disable-next-line no-console
+  console.log(`Sending request to ${url}...`)
+
+  process.setMaxListeners(0)
+  const browser = await puppeteer.launch()
+
+  const page = await browser.newPage()
+  await page.goto(url)
+  await page.waitForSelector('#notion-app .notion-page-content', {
+    timeout: 1000 * 10,
+  })
+
+  const result = await page.evaluate(evaluatePageHandler)
+  browser.close()
+
+  const { error, content } = result
+
+  if (error != null || content == null) {
+    throw new Error(error)
+  }
+
+  return content
+}
+
+/**
+ * Helper functions
+ */
+
+const ringBell = (): void => {
+  const BELL_CHAR = '\u0007'
+
+  // eslint-disable-next-line no-console
+  console.log(BELL_CHAR)
+}
+
+/**
+ * To be executed by Puppeteer within the headless browser
+ */
+const evaluatePageHandler = ():
+  | Readonly<{ content: string; error?: undefined }>
+  | Readonly<{ content?: undefined; error: string }> => {
+  const ATTRS_TO_REMOVE = [
+    'contenteditable',
+    'spellcheck',
+    'data-content-editable-leaf',
+    'data-content-editable-void',
+    // 'placeholder',
+    'data-content-editable',
+  ]
+
+  /**
+   * Remove a subset of styles that Notion applies to elements that we do not
+   * want applied in the website
+   */
+  const sanitizeStyles = (elt: HTMLElement): void => {
+    // Customize styling for headings via CSS classes
+    // Notion uses the "placeholder" attribute to store what kind of block this
+    // is. The HTML element type is always a "div". Regardless of the block
+    // type. For example, for what on a normal web page would be an <h3> tag,
+    // Notion sets the "placeholder" to be "Heading 3"
+    // In this case, we want to add the class "h3"
+    const placeholder = elt.getAttribute('placeholder')
+    if (placeholder?.startsWith('Heading')) {
+      const type = placeholder.split(' ')[1]
+      elt.classList.add(`h${type}`)
+    }
+
+    ATTRS_TO_REMOVE.forEach((attr): void => elt.removeAttribute(attr))
+
+    const styles = elt.style
+    if (!styles) return
+
+    styles.removeProperty('line-height')
+    styles.removeProperty('max-width')
+    if (styles.whiteSpace != null && styles.whiteSpace !== 'normal') {
+      styles.whiteSpace = 'normal'
+    }
+    if (styles.fontFamily) {
+      styles.fontFamily = 'inherit'
+    }
+    styles.removeProperty('font-size')
+  }
+
+  // const node = document.querySelector('#notion-app .notion-page-content')
+  const node = document.querySelector('#notion-app .notion-page-content')
+
+  if (node == null) {
+    return { error: 'Failed to find node' }
+  }
+
+  const elts = (Array.from(
+    document.querySelectorAll('*'),
+  ) as unknown) as Array<HTMLElement>
+
+  elts.forEach(sanitizeStyles)
+
+  const content = node?.innerHTML ?? ''
+
+  if (!content) {
+    return { error: 'Failed to find inner HTML for node' }
+  }
+
+  return { content }
+}
 
 type IBookWithoutHTMLAndSlug = Omit<IBook, 'html' | 'slug'>
 
@@ -155,14 +290,20 @@ class PropertyParser {
   }
 }
 
-const parseBookProperties = (
-  id: string,
-  properties: Record<BooksDatabaseProperty, INotionDBProperty>,
-): IBookWithoutHTMLAndSlug => {
+const parseBookProperties = ({
+  id,
+  properties,
+  url,
+}: {
+  id: string
+  url: string
+  properties: Record<BooksDatabaseProperty, INotionDBProperty>
+}): IBookWithoutHTMLAndSlug => {
   const parser = new PropertyParser(properties)
 
   return {
     id,
+    notionURL: reviseNotionURL(url),
     title: parser.parse(BooksDatabaseProperty.TITLE) as string,
     subtitle: parser.parse(BooksDatabaseProperty.SUBTITLE) as string,
     author: parser.parse(BooksDatabaseProperty.AUTHOR) as string,
@@ -218,7 +359,13 @@ const fetchBooksDatabase = async (): Promise<IBookWithoutHTMLAndSlug[]> => {
             INotionDBProperty
           >
 
-          return parseBookProperties(row.id, properties)
+          const url = (row as any).url
+
+          if (!isString(url)) {
+            throw new Error(`Failed to find URL for row ${row}`)
+          }
+
+          return parseBookProperties({ id: row.id, url, properties })
         },
       )
       // Filter to rows with non-empty titles
@@ -227,6 +374,12 @@ const fetchBooksDatabase = async (): Promise<IBookWithoutHTMLAndSlug[]> => {
 }
 
 const main = async (): Promise<void> => {
+  // eslint-disable-next-line no-console
+  console.log('Sourcing data from Notion!\n')
+
+  // eslint-disable-next-line no-console
+  console.log('Fetching database of books...')
+
   const res = await fetchBooksDatabase()
 
   if (res.length === 0) {
@@ -234,7 +387,22 @@ const main = async (): Promise<void> => {
   }
 
   // eslint-disable-next-line no-console
-  console.log(res)
+  console.log('Fetching data for each book...')
+
+  // TODO put everything together
+
+  const url = reviseNotionURL(
+    'https://www.notion.so/ccabo/Why-We-Sleep-5b06b5f8305948699f940f9ce7534ea2',
+  )
+
+  const contents = await fetchNotionPageContentsByURL(url)
+
+  // eslint-disable-next-line no-console
+  console.log(contents)
+
+  // eslint-disable-next-line no-console
+  console.log('✨ Done!')
+  ringBell()
 }
 
 main()

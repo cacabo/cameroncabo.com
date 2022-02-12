@@ -112,4 +112,5 @@ interface IBook {
   rating: number
   html?: string
   slug: string
+  notionURL: string
 }

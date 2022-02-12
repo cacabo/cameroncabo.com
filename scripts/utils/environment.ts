@@ -7,6 +7,10 @@ export class Environment {
     return value
   }
 
+  public static notionSiteBaseURL(): string {
+    return Environment.get('NOTION_SITE_BASE_URL')
+  }
+
   public static notionAPISecret(): string {
     return Environment.get('NOTION_API_SECRET')
   }
