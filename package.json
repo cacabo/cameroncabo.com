@@ -72,8 +72,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "scripts:source-notion": "source env.sh && ts-node scripts/source-notion.ts",
-    "scripts:source-books-database": "source env.sh && ts-node scripts/source-books-database.ts",
+    "scripts:source-notion-books": "source env.sh && ts-node scripts/source-notion-books.ts",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "yarn develop",

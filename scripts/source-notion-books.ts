@@ -4,6 +4,8 @@ import { Environment } from './utils/environment'
 import puppeteer from 'puppeteer'
 import { writeJsonFileAsync } from './utils/writeJSONFileAsync'
 
+const BOOKS_JSON_FILE_NAME = 'books'
+
 // TODO parse, link to, and fetch sub-pages (recursively)
 
 /**
@@ -31,13 +33,10 @@ const reviseNotionURL = (url: string): string =>
  * you, but if you are not logged in (as is the case with puppeteer) you are
  * shown a button to click to redirect (@cacabo 2022.02.12)
  */
-const fetchNotionPageContentsByURL = async (url: string): Promise<string> => {
-  // eslint-disable-next-line no-console
-  console.log(`Sending request to ${url}...`)
-
-  process.setMaxListeners(0)
-  const browser = await puppeteer.launch()
-
+const fetchNotionPageContents = async (
+  url: string,
+  browser: puppeteer.Browser,
+): Promise<string> => {
   const page = await browser.newPage()
   await page.goto(url)
   await page.waitForSelector('#notion-app .notion-page-content', {
@@ -45,15 +44,36 @@ const fetchNotionPageContentsByURL = async (url: string): Promise<string> => {
   })
 
   const result = await page.evaluate(evaluatePageHandler)
-  browser.close()
 
   const { error, content } = result
 
   if (error != null || content == null) {
-    throw new Error(error)
+    throw new Error(`${error} for URL ${url}`)
   }
 
   return content
+}
+
+/**
+ * Return a map from page ID to string HTML contents
+ */
+const bulkFetchNotionPagesContents = async (
+  pages: { id: string; url: string }[],
+): Promise<{ [id: string]: string }> => {
+  const browser = await puppeteer.launch()
+
+  const contents = await Promise.all(
+    pages.map(({ url }) => fetchNotionPageContents(url, browser)),
+  )
+
+  const map = contents.reduce((acc, pageContents, idx) => {
+    const id = pages[idx].id
+    acc[id] = pageContents
+    return acc
+  }, {} as { [id: string]: string })
+
+  await browser.close()
+  return map
 }
 
 /**
@@ -128,15 +148,10 @@ const evaluatePageHandler = ():
 
   elts.forEach(sanitizeStyles)
 
-  const content = node?.innerHTML ?? ''
-
-  if (!content) {
-    return { error: 'Failed to find inner HTML for node' }
-  }
-
-  return { content }
+  return { content: node?.innerHTML ?? '' }
 }
 
+type IBookWithoutSlug = Omit<IBook, 'slug'>
 type IBookWithoutHTMLAndSlug = Omit<IBook, 'html' | 'slug'>
 
 // TODO slug
@@ -375,33 +390,41 @@ const fetchBooksDatabase = async (): Promise<IBookWithoutHTMLAndSlug[]> => {
 
 const main = async (): Promise<void> => {
   // eslint-disable-next-line no-console
-  console.log('Sourcing data from Notion!\n')
+  console.log('🔗  Sourcing data from Notion!\n')
 
   // eslint-disable-next-line no-console
-  console.log('Fetching database of books...')
+  console.log('\tFetching database of books...')
 
-  const res = await fetchBooksDatabase()
+  const books = await fetchBooksDatabase()
 
-  if (res.length === 0) {
-    throw new Error('Failed to find any books!')
+  if (books.length === 0) {
+    throw new Error('😰  Failed to find any books!')
   }
 
   // eslint-disable-next-line no-console
-  console.log('Fetching data for each book...')
+  console.log('\tFetching data for each book...')
 
-  // TODO put everything together
-
-  const url = reviseNotionURL(
-    'https://www.notion.so/ccabo/Why-We-Sleep-5b06b5f8305948699f940f9ce7534ea2',
+  const idToContentMap = await bulkFetchNotionPagesContents(
+    books.map(({ id, notionURL }) => ({
+      id,
+      url: notionURL,
+    })),
   )
 
-  const contents = await fetchNotionPageContentsByURL(url)
+  const booksWithHTML = books.map(
+    (book): IBookWithoutSlug => ({
+      ...book,
+      html: idToContentMap[book.id],
+    }),
+  )
 
   // eslint-disable-next-line no-console
-  console.log(contents)
+  console.log('\tWritting results to file...')
+
+  await writeJsonFileAsync(BOOKS_JSON_FILE_NAME, booksWithHTML)
 
   // eslint-disable-next-line no-console
-  console.log('✨ Done!')
+  console.log('\n✨  Done!')
   ringBell()
 }
 
