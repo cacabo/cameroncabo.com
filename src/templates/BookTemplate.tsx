@@ -16,7 +16,7 @@ import {
   ExternalLinkIcon,
   HR,
 } from '../components/shared'
-import { BOOKS_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import { IBook } from '../types'
 import { LINK_STYLES } from '../constants/misc'
 
@@ -105,11 +105,13 @@ const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
         </Button>
       )}
 
+      <BR />
+
       {html && <Content dangerouslySetInnerHTML={{ __html: html }} />}
 
       <BR />
       <HR />
-      <Button to={BOOKS_ROUTE}>&larr; Back to all books</Button>
+      <Button to={Route.BOOKS}>&larr; Back to all books</Button>
     </Layout>
   )
 }

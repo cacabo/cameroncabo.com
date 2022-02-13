@@ -39,11 +39,11 @@ const Section = ({
 const HomePage = (): React.ReactElement => (
   <>
     <Hero />
-    <Section title="Education">
-      <Education />
-    </Section>
     <Section title="Work">
       <Work />
+    </Section>
+    <Section title="Education">
+      <Education />
     </Section>
     <Section title="Technologies">
       <Technologies />

@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { Button, H1, HR, P, Callout, Tag, BR, Tags } from '../components/shared'
-import { THOUGHTS_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import { Timestamp } from '../components/Timestamp'
 import { ThoughtPreview } from '../components/ThoughtPreview'
 import {
@@ -171,7 +171,7 @@ const ThoughtTemplate = ({
         </>
       )}
 
-      <Button to={THOUGHTS_ROUTE}>&larr; Back to all thoughts</Button>
+      <Button to={Route.THOUGHTS}>&larr; Back to all thoughts</Button>
     </Layout>
   )
 }

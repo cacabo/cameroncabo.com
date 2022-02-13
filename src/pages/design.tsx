@@ -13,7 +13,7 @@ import { FluidObject } from 'gatsby-image'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { graphql, useStaticQuery } from 'gatsby'
-import { HOME_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 
 interface IArtNode {
   title: string
@@ -156,7 +156,7 @@ const DesignPage = (): React.ReactElement => {
 
       <BR />
 
-      <Button to={HOME_ROUTE}>&larr; Back to home</Button>
+      <Button to={Route.HOME}>&larr; Back to home</Button>
     </Layout>
   )
 }

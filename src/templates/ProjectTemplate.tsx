@@ -17,7 +17,7 @@ import {
   Tags,
   TableList,
 } from '../components/shared'
-import { PROJECTS_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import {
   BORDER_RADIUS_LG,
   PHONE,
@@ -204,7 +204,7 @@ const ProjectTemplate = ({
       {nextData && <ProjectPreview {...nextData} />}
 
       <BR />
-      <Button {...colorProps} to={PROJECTS_ROUTE}>
+      <Button {...colorProps} to={Route.PROJECTS}>
         &larr; Back to all projects
       </Button>
     </Layout>

@@ -1,20 +1,39 @@
-// Internal routes
-export const HOME_ROUTE = '/'
-export const FREELANCE_ROUTE = '/freelance'
-export const PROJECTS_ROUTE = '/projects'
-export const THOUGHTS_ROUTE = '/thoughts'
-export const BOOKS_ROUTE = '/books'
-export const BOOK_ROUTE = (slug: string): string => `/books/${slug}`
-export const DESIGN_ROUTE = '/design'
-export const RSS_ROUTE = '/rss.xml'
+export class Route {
+  /* ------------------------------------------------------------------------ *
+   * Internal routes
+   * ------------------------------------------------------------------------ */
 
-// File routes
-export const RESUME_ROUTE = '/resume.pdf'
+  static HOME = '/'
+  static FREELANCE = '/freelance'
+  static PROJECTS = '/projects'
+  static THOUGHTS = '/thoughts'
 
-// External routes
-export const CONTACT_ROUTE = 'mailto:cameroncabo@gmail.com'
-export const INSTAGRAM_ROUTE = 'https://www.instagram.com/cameroncabo'
-export const GITHUB_ROUTE = 'https://www.github.com/cacabo'
-export const FACEBOOK_ROUTE = 'https://www.facebook.com/cam.cabo'
-export const LINKEDIN_ROUTE = 'https://www.linkedin.com/in/cameroncabo'
-export const TWITTER_ROUTE = 'https://www.twitter.com/cameroncabo'
+  /**
+   * Path to the page for all books
+   */
+  static BOOKS = '/books'
+
+  /**
+   * Path to the page for a book
+   */
+  static BOOK = (slug: string): string => `/books/${slug}`
+  static DESIGN = '/design'
+  static RSS = '/rss.xml'
+
+  /* ------------------------------------------------------------------------ *
+   * File routes
+   * ------------------------------------------------------------------------ */
+
+  static RESUME = '/resume.pdf'
+
+  /* ------------------------------------------------------------------------ *
+   * External routes
+   * ------------------------------------------------------------------------ */
+
+  static CONTACT = 'mailto:cameroncabo@gmail.com'
+  static INSTAGRAM = 'https://www.instagram.com/cameroncabo'
+  static GITHUB = 'https://www.github.com/cacabo'
+  static FACEBOOK = 'https://www.facebook.com/cam.cabo'
+  static LINKEDIN = 'https://www.linkedin.com/in/cameroncabo'
+  static TWITTER = 'https://www.twitter.com/cameroncabo'
+}

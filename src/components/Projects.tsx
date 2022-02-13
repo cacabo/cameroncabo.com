@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { Button, HR, BR } from './shared'
-import { HOME_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import { ProjectPreview } from './ProjectPreview'
 import { IProjectPreview } from '../types'
 
@@ -33,7 +33,7 @@ const Projects = (): React.ReactElement => {
         return <ProjectPreview key={title} {...frontmatter} />
       })}
       <HR />
-      <Button to={HOME_ROUTE}>&larr; Back to home</Button>
+      <Button to={Route.HOME}>&larr; Back to home</Button>
     </>
   )
 }

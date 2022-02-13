@@ -1,14 +1,6 @@
 import React from 'react'
 import s from 'styled-components'
-import {
-  FACEBOOK_ROUTE,
-  INSTAGRAM_ROUTE,
-  LINKEDIN_ROUTE,
-  GITHUB_ROUTE,
-  TWITTER_ROUTE,
-  CONTACT_ROUTE,
-  RSS_ROUTE,
-} from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import {
   FacebookIcon,
   LinkedInIcon,
@@ -79,6 +71,29 @@ const Wrapper = s.div<{ active: boolean }>`
   }
 `
 
+const ExternalLink = ({
+  tabIndex,
+  children,
+  label,
+  route,
+}: {
+  tabIndex?: number
+  children: React.ReactChild
+  label: string
+  route: string
+}): React.ReactElement => (
+  <a
+    href={route}
+    target="_BLANK"
+    rel="noopener noreferrer"
+    tabIndex={tabIndex}
+    role="menuitem"
+    aria-label={label}
+  >
+    {children}
+  </a>
+)
+
 interface ISocialProps {
   active: boolean
   tabIndex?: number
@@ -89,59 +104,25 @@ export const Social = ({
   active,
 }: ISocialProps): React.ReactElement => (
   <Wrapper active={active} role="menu">
-    <a
-      href={FACEBOOK_ROUTE}
-      target="_BLANK"
-      rel="noopener noreferrer"
-      tabIndex={tabIndex}
-      role="menuitem"
-      aria-label="Facebook"
-    >
+    <ExternalLink route={Route.FACEBOOK} label="Facebook" tabIndex={tabIndex}>
       <FacebookIcon />
-    </a>
-    <a
-      href={LINKEDIN_ROUTE}
-      target="_BLANK"
-      rel="noopener noreferrer"
-      tabIndex={tabIndex}
-      role="menuitem"
-      aria-label="LinkedIn"
-    >
+    </ExternalLink>
+    <ExternalLink route={Route.LINKEDIN} label="LinkedIn" tabIndex={tabIndex}>
       <LinkedInIcon />
-    </a>
-    <a
-      href={GITHUB_ROUTE}
-      target="_BLANK"
-      rel="noopener noreferrer"
-      tabIndex={tabIndex}
-      role="menuitem"
-      aria-label="GitHub"
-    >
+    </ExternalLink>
+    <ExternalLink route={Route.GITHUB} label="GitHub" tabIndex={tabIndex}>
       <GitHubIcon />
-    </a>
-    <a
-      href={TWITTER_ROUTE}
-      target="_BLANK"
-      rel="noopener noreferrer"
-      tabIndex={tabIndex}
-      role="menuitem"
-      aria-label="Twitter"
-    >
+    </ExternalLink>
+    <ExternalLink route={Route.TWITTER} label="Twitter" tabIndex={tabIndex}>
       <TwitterIcon />
-    </a>
-    <a
-      href={INSTAGRAM_ROUTE}
-      target="_BLANK"
-      rel="noopener noreferrer"
-      tabIndex={tabIndex}
-      aria-label="Instagram"
-    >
+    </ExternalLink>
+    <ExternalLink route={Route.INSTAGRAM} label="Instagram" tabIndex={tabIndex}>
       <InstagramIcon />
-    </a>
-    <a href={CONTACT_ROUTE} tabIndex={tabIndex}>
+    </ExternalLink>
+    <a href={Route.CONTACT} tabIndex={tabIndex}>
       <MailIcon />
     </a>
-    <a href={RSS_ROUTE} tabIndex={tabIndex}>
+    <a href={Route.RSS} tabIndex={tabIndex}>
       <RSSIcon />
     </a>
   </Wrapper>

@@ -1,14 +1,7 @@
 import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
-import {
-  HOME_ROUTE,
-  FREELANCE_ROUTE,
-  PROJECTS_ROUTE,
-  THOUGHTS_ROUTE,
-  DESIGN_ROUTE,
-  CONTACT_ROUTE,
-} from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import { BLACK } from '../../constants/colors'
 import {
   maxWidth,
@@ -41,6 +34,10 @@ const StyledLink = s(Link)<{}>`
     opacity: 1;
   }
 
+  ${maxWidth('1148px')} {
+    margin: 0 calc(${M1} / 2);
+  }
+
   ${maxWidth(DESKTOP)} {
     margin: 1vh 0;
     font-size: 125%;
@@ -54,13 +51,14 @@ const StyledLink = s(Link)<{}>`
   }
 `
 
-const map: Record<string, string> = {
-  Home: HOME_ROUTE,
-  Freelance: FREELANCE_ROUTE,
-  Projects: PROJECTS_ROUTE,
-  Thoughts: THOUGHTS_ROUTE,
-  Design: DESIGN_ROUTE,
-}
+const routes: [string, string][] = [
+  ['Home', Route.HOME],
+  ['Freelance', Route.FREELANCE],
+  ['Projects', Route.PROJECTS],
+  ['Books', Route.BOOKS],
+  ['Thoughts', Route.THOUGHTS],
+  ['Design', Route.DESIGN],
+]
 
 interface ILinksProps {
   active: boolean
@@ -72,9 +70,8 @@ export const Links = ({
   active,
 }: ILinksProps): React.ReactElement => (
   <Wrapper active={active} role="menu">
-    {Object.keys(map).map(
-      (name): React.ReactElement => {
-        const route = map[name]
+    {routes.map(
+      ([name, route]): React.ReactElement => {
         return (
           <StyledLink
             to={route}
@@ -87,7 +84,7 @@ export const Links = ({
         )
       },
     )}
-    <StyledLink as="a" href={CONTACT_ROUTE} tabIndex={tabIndex} role="menuitem">
+    <StyledLink as="a" href={Route.CONTACT} tabIndex={tabIndex} role="menuitem">
       Contact
     </StyledLink>
   </Wrapper>

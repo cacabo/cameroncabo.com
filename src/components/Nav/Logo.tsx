@@ -1,7 +1,7 @@
 import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
-import { HOME_ROUTE } from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import { maxWidth, M2, M1, M6, M4, DESKTOP } from '../../constants/measurements'
 import { OUTLINE, BLACK } from '../../constants/colors'
 import { MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
@@ -43,7 +43,7 @@ interface ILogoProps {
 }
 
 export const Logo = ({ tabIndex }: ILogoProps): React.ReactElement => (
-  <StyledLink to={HOME_ROUTE} tabIndex={tabIndex} aria-label="Home">
+  <StyledLink to={Route.HOME} tabIndex={tabIndex} aria-label="Home">
     Cameron Cabo
   </StyledLink>
 )

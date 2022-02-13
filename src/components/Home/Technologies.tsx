@@ -1,7 +1,7 @@
 import React from 'react'
 import { P, Row, Col, Button } from '../shared'
 import { M1 } from '../../constants/measurements'
-import { PROJECTS_ROUTE } from '../../constants/routes'
+import { Route } from '../../constants/routes'
 
 export const Technologies = (): React.ReactElement => (
   <>
@@ -15,7 +15,7 @@ export const Technologies = (): React.ReactElement => (
           Web
         </P>
         <P>
-          React (Gatsby, Next), Redux, HTML, CSS (SCSS, styled-components), ERB,
+          React (Next, Gatsby), Redux, HTML, CSS (SCSS, styled-components), ERB,
           Handlebars, Angular, EJS, jQuery.
         </P>
         <P bold mb2>
@@ -45,6 +45,6 @@ export const Technologies = (): React.ReactElement => (
         <P>Map Reduce, SQL, Spark, Jupyter Notebook, Pandas, Numpy, Storm.</P>
       </Col>
     </Row>
-    <Button to={PROJECTS_ROUTE}>See my projects &rarr;</Button>
+    <Button to={Route.PROJECTS}>See my projects &rarr;</Button>
   </>
 )

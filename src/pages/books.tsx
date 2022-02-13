@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { IBook } from '../types'
 import { TABLET, maxWidth, M2, DESKTOP } from '../constants/measurements'
-import { BOOK_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 
 const TableWrapper = styled.div`
   overflow-y: visible;
@@ -111,7 +111,7 @@ const BooksPage = (): React.ReactElement => {
                 <tr key={id}>
                   <td style={{ minWidth: '338px' }}>
                     <P mb1 medium>
-                      <Link to={BOOK_ROUTE(slug)}>{title}</Link>
+                      <Link to={Route.BOOK(slug)}>{title}</Link>
                     </P>
                     {subtitle && (
                       <P mb1 sm lighter>

@@ -8,6 +8,6 @@ image: '../../images/work/palantir.jpg'
 order: 0
 ---
 
-- Developed pipelines for running containerized optimizations on client software and analyzing results.
-- Developed frontend framework for visualizing and tracking status of client systems.
+- Developed data pipeline for running and analyzing simulations on digital twin of value chain for client.
+- Developed frontend framework for visualizing and tracking status of supply chain operations for client.
 - **Tech:** React, TypeScript, JavaScript, Python, Spark, Pandas, SVG, Java.

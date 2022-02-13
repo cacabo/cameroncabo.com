@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/**/*", "./scripts/*", "./config/*"],
+  "include": ["./src/**/*", "./scripts/**/*", "./config/*"],
   "compilerOptions": {
     "target": "es2018",
     "module": "commonjs",

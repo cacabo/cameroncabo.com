@@ -3,7 +3,7 @@ import { navigate } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { HOME_ROUTE, CONTACT_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import { Button, H1, P, BR, Center } from '../components/shared'
 
 const NotFoundPage = (): React.ReactElement => {
@@ -27,9 +27,9 @@ const NotFoundPage = (): React.ReactElement => {
         </P>
         <P>
           If you think this is a mistake, please{' '}
-          <a href={CONTACT_ROUTE}>contact me.</a>
+          <a href={Route.CONTACT}>contact me.</a>
         </P>
-        <Button to={HOME_ROUTE}>Back to home</Button>
+        <Button to={Route.HOME}>Back to home</Button>
       </Center>
     </Layout>
   )

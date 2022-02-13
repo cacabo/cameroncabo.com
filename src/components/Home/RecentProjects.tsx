@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Button } from '../shared'
-import { PROJECTS_ROUTE } from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import { ProjectPreview } from '../ProjectPreview'
 import { IProjectPreview } from '../../types'
 
@@ -33,7 +33,7 @@ export const RecentProjects = (): React.ReactElement => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />
       })}
-      <Button to={PROJECTS_ROUTE}>View all projects &rarr;</Button>
+      <Button to={Route.PROJECTS}>View all projects &rarr;</Button>
     </>
   )
 }
