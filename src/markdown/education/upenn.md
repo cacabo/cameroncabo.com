@@ -8,6 +8,6 @@ location: 'Philadelphia, PA'
 order: 0
 ---
 
-- BSE, MSE in Computer Science from the School of Engineering and Applied Sciences (SEAS). Concentration in Data Science.
-- BS in Economics from the Wharton School of Business. Concentration in Management of Entrepreneurship.
-- Graduated Summa Cum Laude.
+- BSE, MSE in Computer Science from the School of Engineering and Applied Sciences (SEAS). Masters concentration in Data Science.
+- BS in Economics from the Wharton School of Business. Concentration in Entrepreneurship & Innovation.
+- Summa Cum Laude.
