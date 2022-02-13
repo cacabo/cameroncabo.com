@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { P, Button } from '../shared'
-import { BOOK_ROUTE, BOOKS_ROUTE } from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import { IBook } from '../../types'
 
 const getTextList = (list: React.ReactNode[]): React.ReactNode[] => {
@@ -31,7 +31,7 @@ const getBookText = ({
   author,
 }: IBookTextProps): React.ReactElement => (
   <React.Fragment key={id}>
-    <Link to={BOOK_ROUTE(slug)}>{title}</Link> by {author}
+    <Link to={Route.BOOK(slug)}>{title}</Link> by {author}
   </React.Fragment>
 )
 
@@ -96,7 +96,7 @@ export const Reading = (): React.ReactElement => {
     <>
       {inProgressText}
       {recentlyFinishedText}
-      <Button to={BOOKS_ROUTE}>View books &rarr;</Button>
+      <Button to={Route.BOOKS}>View books &rarr;</Button>
     </>
   )
 }

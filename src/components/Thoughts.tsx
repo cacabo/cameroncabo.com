@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { BR, Button, HR, P } from './shared'
 import { ThoughtPreview } from './ThoughtPreview'
-import { HOME_ROUTE, RSS_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import { IThoughtPreviewFrontmatter } from '../types'
 
 interface IThoughtPreviewNode {
@@ -37,9 +37,9 @@ export const Thoughts = (): React.ReactElement => {
       ))}
       <HR />
       <P>
-        Subscribe via <a href={RSS_ROUTE}>RSS.</a>
+        Subscribe via <a href={Route.RSS}>RSS.</a>
       </P>
-      <Button to={HOME_ROUTE}>&larr; Back to home</Button>
+      <Button to={Route.HOME}>&larr; Back to home</Button>
     </>
   )
 }

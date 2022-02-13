@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { InfoCard, Button } from '../../shared'
-import { RESUME_ROUTE } from '../../../constants/routes'
+import { Route } from '../../../constants/routes'
 import { IWorkFrontmatter } from '../../../types'
 import Zest from './svg/Zest'
 import Honey from './svg/Honey'
@@ -71,7 +71,7 @@ export const Work = (): React.ReactElement => {
           )
         },
       )}
-      <Button as="a" href={RESUME_ROUTE} target="_BLANK">
+      <Button as="a" href={Route.RESUME} target="_BLANK">
         View my resume &rarr;
       </Button>
     </>

@@ -4,12 +4,7 @@ import Img from 'gatsby-image'
 import s from 'styled-components'
 
 import { H1, P, FlexRow, Flex, Button, Buttons, BR } from '../shared'
-import {
-  GITHUB_ROUTE,
-  INSTAGRAM_ROUTE,
-  PROJECTS_ROUTE,
-  THOUGHTS_ROUTE,
-} from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import {
   minWidth,
   DESKTOP,
@@ -78,7 +73,7 @@ export const Hero = (): React.ReactElement => {
               target="_BLANK"
               rel="noopener noreferrer"
             >
-              M&T program at UPenn.
+              {'M&T program at UPenn.'}
             </a>{' '}
             I spend my free time{' '}
             <a
@@ -88,16 +83,16 @@ export const Hero = (): React.ReactElement => {
             >
               developing websites,
             </a>{' '}
-            <a href={GITHUB_ROUTE} target="_BLANK" rel="noopener noreferrer">
+            <a href={Route.GITHUB} target="_BLANK" rel="noopener noreferrer">
               learning new things,
             </a>{' '}
-            <a href={INSTAGRAM_ROUTE} target="_BLANK" rel="noopener noreferrer">
+            <a href={Route.INSTAGRAM} target="_BLANK" rel="noopener noreferrer">
               and going to new places.
             </a>
           </P>
           <Buttons>
-            <Button to={PROJECTS_ROUTE}>Projects</Button>
-            <Button to={THOUGHTS_ROUTE}>Thoughts</Button>
+            <Button to={Route.PROJECTS}>Projects</Button>
+            <Button to={Route.THOUGHTS}>Thoughts</Button>
           </Buttons>
         </Flex>
       </FlexRow>

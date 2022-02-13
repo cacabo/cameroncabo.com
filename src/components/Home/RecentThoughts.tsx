@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { IThoughtPreviewFrontmatter } from '../../types'
 import { Button } from '../shared'
-import { THOUGHTS_ROUTE } from '../../constants/routes'
+import { Route } from '../../constants/routes'
 import { ThoughtPreview } from '../ThoughtPreview'
 
 interface IThoughtPreviewNode {
@@ -36,7 +36,7 @@ export const RecentThoughts = (): React.ReactElement => {
         />
       ))}
 
-      <Button to={THOUGHTS_ROUTE}>View thoughts &rarr;</Button>
+      <Button to={Route.THOUGHTS}>View thoughts &rarr;</Button>
     </>
   )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import { H1, H3, P, Buttons, Button, BR, Callout } from '../components/shared'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { PROJECTS_ROUTE, CONTACT_ROUTE, HOME_ROUTE } from '../constants/routes'
+import { Route } from '../constants/routes'
 import { BORDER } from '../constants/colors'
 import { BORDER_RADIUS_LG } from '../constants/measurements'
 
@@ -21,10 +21,10 @@ const FreelancePage = (): React.ReactElement => (
         work and take the time to reach out—it can go a long way.`}
       </P>
       <Buttons>
-        <Button to={PROJECTS_ROUTE} style={{ marginBottom: 0 }}>
+        <Button to={Route.PROJECTS} style={{ marginBottom: 0 }}>
           View my work
         </Button>
-        <Button as="a" href={CONTACT_ROUTE} style={{ marginBottom: 0 }}>
+        <Button as="a" href={Route.CONTACT} style={{ marginBottom: 0 }}>
           Contact me
         </Button>
       </Buttons>
@@ -85,8 +85,8 @@ const FreelancePage = (): React.ReactElement => (
     </P>
 
     <Buttons>
-      <Button to={HOME_ROUTE}>&larr; Back to home</Button>
-      <Button as="a" href={CONTACT_ROUTE}>
+      <Button to={Route.HOME}>&larr; Back to home</Button>
+      <Button as="a" href={Route.CONTACT}>
         Contact me
       </Button>
     </Buttons>
