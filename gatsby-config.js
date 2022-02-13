@@ -18,19 +18,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `cameroncabo.com`,
-        short_name: `cameroncabo.com`,
-        start_url: `/`,
-        background_color: `#FFFFFF`,
-        theme_color: `#17718f`,
-        display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
-      },
-    },
-    `gatsby-plugin-remove-serviceworker`,
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown`,
@@ -39,16 +26,19 @@ module.exports = {
     },
     {
       resolve: `gatsby-transformer-remark`,
+      // options: {
+      //   // Footnotes mode (default: true)
+      //   footnotes: true,
+      //   // GitHub Flavored Markdown mode (default: true)
+      //   gfm: true,
+      //   // Plugins configs
+      //   plugins: [],
+      // },
       options: {
-        // CommonMark mode (default: true)
-        commonmark: true,
         // Footnotes mode (default: true)
         footnotes: true,
-        // Pedantic mode (default: true)
-        pedantic: true,
         // GitHub Flavored Markdown mode (default: true)
         gfm: true,
-        // Plugins configs
         plugins: [
           {
             resolve: `gatsby-remark-images`,
