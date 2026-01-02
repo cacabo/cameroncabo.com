@@ -53,7 +53,7 @@
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^17.0.0",
     "prettier": "^3.7.4",
-    "puppeteer": "^13.3.1",
+    "puppeteer": "^24.34.0",
     "ts-node": "^10.5.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.51.0"
