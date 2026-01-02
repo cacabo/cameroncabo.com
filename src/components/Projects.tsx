@@ -15,7 +15,7 @@ const Projects = (): React.ReactElement => {
     query AllProjectsQuery {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
-        sort: { order: ASC, fields: [frontmatter___order] }
+        sort: { frontmatter: { order: ASC } }
       ) {
         nodes {
           ...PartialProject

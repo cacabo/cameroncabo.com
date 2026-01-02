@@ -1,22 +1,20 @@
-import React, { ReactElement } from 'react'
 import { Link } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import React, { ReactElement } from 'react'
 import s from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
-import Img from 'gatsby-image'
-
-import { IThoughtPreview } from '../types'
-import { P, Tag, Tags, Row, Col } from './shared'
-import { Timestamp } from './Timestamp'
 import {
-  M2,
   BORDER_RADIUS_LG,
-  maxWidth,
-  TABLET,
-  minWidth,
   M1,
-  PHONE,
+  M2,
   M4,
+  maxWidth,
+  minWidth,
+  PHONE,
+  TABLET,
 } from '../constants/measurements'
+import { IThoughtPreview } from '../types'
+import { Col, P, Row, Tag, Tags } from './shared'
+import { Timestamp } from './Timestamp'
 
 const Content = s.div<{ hasImage: boolean }>`
   ${(props): string =>
@@ -37,7 +35,7 @@ const Content = s.div<{ hasImage: boolean }>`
       : ''}
 `
 
-const StyledLink = s(Link)<{}>`
+const StyledLink = s(Link)`
   width: 100%;
   display: block;
   text-decoration: none;
@@ -52,18 +50,24 @@ const StyledLink = s(Link)<{}>`
   }
 `
 
-const StyledBackgroundImg = s(BackgroundImage)`
+const StyledBackgroundDiv = s.div<{ backgroundImage?: string }>`
   width: 12rem;
   max-width: 50%;
+  height: 8rem;
   border-radius: ${BORDER_RADIUS_LG};
   overflow: hidden;
+  background-image: ${(props) =>
+    props.backgroundImage ? `url(${props.backgroundImage})` : 'none'};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   ${maxWidth(TABLET)} {
     display: none;
   }
 `
 
-const StyledImg = s(Img)`
+const StyledImg = s(GatsbyImage)`
   display: none;
 
   ${maxWidth(TABLET)} {
@@ -86,18 +90,20 @@ export const ThoughtPreview = ({
   updatedAt,
   createdAt,
 }: IThoughtPreview): ReactElement => {
-  const fluid = image && image.childImageSharp.fluid
+  const gatsbyImage = image ? getImage(image) : null
+  const imageSrc = gatsbyImage?.images?.fallback?.src
+
   return (
     <StyledLink to={path}>
       <Row>
-        {fluid && (
+        {gatsbyImage && (
           <>
-            <StyledImg fluid={fluid} />
-            <StyledBackgroundImg fluid={fluid} />
+            <StyledImg image={gatsbyImage} alt={title} />
+            <StyledBackgroundDiv backgroundImage={imageSrc} />
           </>
         )}
         <Col>
-          <Content hasImage={Boolean(fluid)}>
+          <Content hasImage={Boolean(gatsbyImage)}>
             <P mb1 bold black>
               {title}
             </P>

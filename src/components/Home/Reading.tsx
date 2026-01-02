@@ -51,7 +51,7 @@ export const Reading = (): React.ReactElement => {
 
       recentlyFinishedBooks: allBooksJson(
         filter: { startDate: { ne: null }, endDate: { ne: null } }
-        sort: { fields: endDate, order: DESC }
+        sort: { endDate: DESC }
         limit: 2
       ) {
         nodes {
@@ -79,9 +79,9 @@ export const Reading = (): React.ReactElement => {
     )
 
   const numRecentlyFinished = recentlyFinishedBooks.nodes.length
-  const recentlyFinishedBooksTexts = (recentlyFinishedBooks.nodes as IBookTextProps[]).map(
-    getBookText,
-  )
+  const recentlyFinishedBooksTexts = (
+    recentlyFinishedBooks.nodes as IBookTextProps[]
+  ).map(getBookText)
   const recentlyFinishedText =
     numRecentlyFinished === 0 ? (
       <React.Fragment />

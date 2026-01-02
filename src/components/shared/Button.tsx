@@ -42,7 +42,9 @@ export const Button = s(Link)<IButton>(
     padding-right: 0.8rem;
     background: ${background || SNOW} none repeat scroll 0% 0%;
     font-weight: ${MEDIUM_FONT_WEIGHT};
-    box-shadow: ${BORDER} 0px 1px 2px, ${border || TEAL} 0px 0px 0px 1px inset;
+    box-shadow:
+      ${BORDER} 0px 1px 2px,
+      ${border || TEAL} 0px 0px 0px 1px inset;
     margin-bottom: ${mb0 ? '0' : '1rem'};
 
     &:hover,

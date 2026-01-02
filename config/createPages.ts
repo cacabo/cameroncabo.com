@@ -42,66 +42,46 @@ export const createPages: GatsbyCreatePages = async ({
     },
     errors,
   }: ICreatePagesData = await graphql(`
-    fragment PartialThought on MarkdownRemark {
-      timeToRead
-      frontmatter {
-        title
-        createdAt(fromNow: true)
-        updatedAt(fromNow: true)
-        path
-        topics
-        subtitle
-        image {
-          childImageSharp {
-            fluid(maxWidth: 848) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
-        }
-      }
-    }
-
-    fragment PartialProject on MarkdownRemark {
-      frontmatter {
-        title
-        description
-        path
-        tags
-        technologies
-        color
-        image {
-          childImageSharp {
-            fluid(maxWidth: 720) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
-        }
-      }
-    }
-
     query {
       allThoughtsMarkdown: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
-        sort: { order: DESC, fields: [frontmatter___createdAt] }
+        sort: { frontmatter: { createdAt: DESC } }
       ) {
         nodes {
-          ...PartialThought
+          timeToRead
+          frontmatter {
+            title
+            createdAt(formatString: "MMM D, YYYY")
+            updatedAt(formatString: "MMM D, YYYY")
+            path
+            topics
+            subtitle
+            image {
+              childImageSharp {
+                gatsbyImageData(width: 848)
+              }
+            }
+          }
         }
       }
       allProjectsMarkdown: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
-        sort: { order: DESC, fields: [frontmatter___order] }
+        sort: { frontmatter: { order: DESC } }
       ) {
         nodes {
-          ...PartialProject
+          frontmatter {
+            title
+            description
+            path
+            tags
+            technologies
+            color
+            image {
+              childImageSharp {
+                gatsbyImageData(width: 720)
+              }
+            }
+          }
         }
       }
       allBooksJson {
@@ -128,7 +108,7 @@ export const createPages: GatsbyCreatePages = async ({
     createPage({
       path: pagePath,
       component: thoughtTemplate,
-      context: { prev, next },
+      context: { pagePath, prev, next },
     })
   })
 
@@ -142,7 +122,7 @@ export const createPages: GatsbyCreatePages = async ({
     createPage({
       path: pagePath,
       component: projectTemplate,
-      context: { prev, next },
+      context: { pagePath, prev, next },
     })
   })
 

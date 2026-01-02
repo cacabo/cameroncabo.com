@@ -61,7 +61,9 @@ interface IBars {
 }
 
 export const Bars = ({ tabIndex, handleClick }: IBars): ReactElement => {
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ): void => {
     if (event.keyCode === SPACE_KEY_CODE || event.keyCode === ENTER_KEY_CODE) {
       event.preventDefault()
       handleClick()

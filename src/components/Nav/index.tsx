@@ -25,9 +25,11 @@ import {
 const getScrollTop = (): number =>
   window.pageYOffset !== undefined
     ? window.pageYOffset
-    : (((document.documentElement ||
-        document.body.parentNode ||
-        document.body) as unknown) as { scrollTop: number }).scrollTop || 0
+    : (
+        (document.documentElement ||
+          document.body.parentNode ||
+          document.body) as unknown as { scrollTop: number }
+      ).scrollTop || 0
 
 interface IWrapperProps {
   active?: boolean
@@ -97,12 +99,11 @@ export const Nav = ({
   setShouldHideBody,
 }: IHeaderProps): React.ReactElement => {
   const [onMobile, setOnMobile] = useState<boolean>(isOnMobile())
-  const [{ prevScrollTop, shouldShowFixed }, setFixedState] = useState<
-    IFixedState
-  >({
-    prevScrollTop: 0,
-    shouldShowFixed: false,
-  })
+  const [{ prevScrollTop, shouldShowFixed }, setFixedState] =
+    useState<IFixedState>({
+      prevScrollTop: 0,
+      shouldShowFixed: false,
+    })
   const [{ isActive, isNewlyMounted }, setActiveState] = useState<IActiveState>(
     {
       isNewlyMounted: true,
@@ -199,13 +200,13 @@ export const Nav = ({
   const barsTabIndex: number | undefined = fixed
     ? -1
     : !onMobile
-    ? -1
-    : undefined
+      ? -1
+      : undefined
   const tabIndex: number | undefined = fixed
     ? -1
     : onMobile && !isActive
-    ? -1
-    : undefined
+      ? -1
+      : undefined
 
   const shadeId = `shade-${fixed ? 'fixed' : 'relative'}`
 

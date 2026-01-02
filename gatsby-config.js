@@ -17,6 +17,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -111,13 +112,7 @@ module.exports = {
                       subtitle
                       image {
                         childImageSharp {
-                          fluid(maxWidth: 848) {
-                            base64
-                            aspectRatio
-                            src
-                            srcSet
-                            sizes
-                          }
+                          gatsbyImageData(width: 848)
                         }
                       }
                     }
@@ -131,6 +126,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-preact`,
+    // `gatsby-plugin-preact`, // Disabled for Gatsby v5 compatibility
   ],
 }

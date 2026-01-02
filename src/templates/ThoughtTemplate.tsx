@@ -1,27 +1,26 @@
-import React from 'react'
 import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import React from 'react'
 import s from 'styled-components'
-import Img from 'gatsby-image'
-
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { Button, H1, HR, P, Callout, Tag, BR, Tags } from '../components/shared'
-import { Route } from '../constants/routes'
-import { Timestamp } from '../components/Timestamp'
+import { BR, Button, Callout, H1, HR, P, Tag, Tags } from '../components/shared'
 import { ThoughtPreview } from '../components/ThoughtPreview'
+import { Timestamp } from '../components/Timestamp'
+import { GRAY_2 } from '../constants/colors'
 import {
+  DESKTOP,
   M1,
+  M2,
   M3,
   minWidth,
   PHONE,
   TABLET,
-  DESKTOP,
-  M2,
 } from '../constants/measurements'
-import { IThoughtPreviewFrontmatter, IThought } from '../types'
-import { GRAY_2 } from '../constants/colors'
+import { Route } from '../constants/routes'
+import { IThought, IThoughtPreviewFrontmatter } from '../types'
 
-const Wrapper = s.div<{}>`
+const Wrapper = s.div`
   width: 100%;
   overflow-x: hidden !important;
 
@@ -38,7 +37,7 @@ const Wrapper = s.div<{}>`
   }
 `
 
-const Content = s.div<{}>`
+const Content = s.div`
   .caption {
     font-size: 80%;
     margin-top: -1.05rem;
@@ -82,15 +81,8 @@ const ThoughtTemplate = ({
 }: IThoughtTemplateProps): React.ReactElement => {
   const { markdownRemark } = data
   const { frontmatter, html, timeToRead } = markdownRemark
-  const {
-    createdAt,
-    updatedAt,
-    title,
-    subtitle,
-    topics,
-    caption,
-    image,
-  } = frontmatter
+  const { createdAt, updatedAt, title, subtitle, topics, caption, image } =
+    frontmatter
 
   // Use default params in case there is no prev or next post
   const {
@@ -102,8 +94,9 @@ const ThoughtTemplate = ({
     } = {},
   } = pageContext
 
-  const fluid = image?.childImageSharp?.fluid
-  const src = fluid?.src
+  const imageData = image?.childImageSharp?.gatsbyImageData
+  const gatsbyImage = image ? getImage(image) : null
+  const src = imageData?.images?.fallback?.src
 
   return (
     <Layout>
@@ -136,9 +129,13 @@ const ThoughtTemplate = ({
         />
       </Wrapper>
 
-      {fluid && (
+      {gatsbyImage && (
         <Callout style={{ padding: 0 }}>
-          <Img style={{ marginBottom: caption ? M1 : M3 }} fluid={fluid} />
+          <GatsbyImage
+            style={{ marginBottom: caption ? M1 : M3 }}
+            image={gatsbyImage}
+            alt={title}
+          />
         </Callout>
       )}
 
@@ -177,8 +174,8 @@ const ThoughtTemplate = ({
 }
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query ($pagePath: String!) {
+    markdownRemark(frontmatter: { path: { eq: $pagePath } }) {
       ...Thought
     }
   }

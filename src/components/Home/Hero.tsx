@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import s from 'styled-components'
 
 import { H1, P, FlexRow, Flex, Button, Buttons, BR } from '../shared'
@@ -13,7 +13,7 @@ import {
   PHONE,
 } from '../../constants/measurements'
 
-const Wrapper = s.div<{}>`
+const Wrapper = s.div`
   ${minWidth(DESKTOP)} {
     padding: 5vh 0;
   }
@@ -25,7 +25,7 @@ const Wrapper = s.div<{}>`
 
 const IMG_SIZE = '10rem'
 
-const ImgWrapper = s.div<{}>`
+const ImgWrapper = s.div`
   border-radius: 50%;
   height: auto;
   margin-bottom: 1.5rem;
@@ -40,28 +40,28 @@ const ImgWrapper = s.div<{}>`
 `
 
 export const Hero = (): React.ReactElement => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        file(relativePath: { eq: "me.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 256) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "me.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(width: 256)
         }
       }
-    `,
-  )
+    }
+  `)
 
-  const { fluid } = data.file.childImageSharp
+  const image = getImage(data.file.childImageSharp.gatsbyImageData)
 
   return (
     <Wrapper>
       <BR />
       <FlexRow centerOnMobile>
         <ImgWrapper>
-          <Img fluid={fluid} style={{ width: IMG_SIZE, height: IMG_SIZE }} />
+          <GatsbyImage
+            image={image!}
+            alt="Cameron"
+            style={{ width: IMG_SIZE, height: IMG_SIZE }}
+          />
         </ImgWrapper>
         <Flex>
           <H1 mb4>Hi, I&apos;m Cameron</H1>

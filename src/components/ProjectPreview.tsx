@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import s from 'styled-components'
 
 import {
@@ -27,7 +27,7 @@ import {
 import ColorGenerator from '../helpers/ColorGenerator'
 import { IProjectPreview } from '../types'
 
-const StyledImg = s(Img)`
+const StyledImg = s(GatsbyImage)`
   img {
     margin-bottom: 0;
   }
@@ -84,7 +84,12 @@ export const ProjectPreview = ({
         <Col sm={12} lg={5} margin={M1}>
           <ImgCard pad0 shade3 color={color} mb0>
             <Link to={path} aria-label={`View ${title} project`}>
-              {image && <StyledImg fluid={image.childImageSharp.fluid} />}
+              {(() => {
+                const gatsbyImage = image && getImage(image)
+                return gatsbyImage ? (
+                  <StyledImg image={gatsbyImage} alt={title} />
+                ) : null
+              })()}
             </Link>
           </ImgCard>
         </Col>

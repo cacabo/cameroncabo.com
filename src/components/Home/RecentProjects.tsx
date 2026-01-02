@@ -10,21 +10,19 @@ interface IProjectNode {
 }
 
 export const RecentProjects = (): React.ReactElement => {
-  const data = useStaticQuery(
-    graphql`
-      query ProjectsQuery {
-        allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
-          sort: { order: ASC, fields: [frontmatter___order] }
-          limit: 2
-        ) {
-          nodes {
-            ...PartialProject
-          }
+  const data = useStaticQuery(graphql`
+    query ProjectsQuery {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
+        sort: { frontmatter: { order: ASC } }
+        limit: 2
+      ) {
+        nodes {
+          ...PartialProject
         }
       }
-    `,
-  )
+    }
+  `)
 
   const { nodes } = data.allMarkdownRemark
   return (

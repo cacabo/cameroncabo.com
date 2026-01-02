@@ -19,35 +19,31 @@ interface IWorkNode {
 }
 
 export const Work = (): React.ReactElement => {
-  const data = useStaticQuery(
-    graphql`
-      query WorkQuery {
-        allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/(work/)/" } }
-          sort: { order: ASC, fields: [frontmatter___order] }
-        ) {
-          nodes {
-            html
-            frontmatter {
-              company
-              title
-              location
-              start
-              end
-              svg
-              image {
-                childImageSharp {
-                  fluid(maxHeight: 96) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
+  const data = useStaticQuery(graphql`
+    query WorkQuery {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(work/)/" } }
+        sort: { frontmatter: { order: ASC } }
+      ) {
+        nodes {
+          html
+          frontmatter {
+            company
+            title
+            location
+            start
+            end
+            svg
+            image {
+              childImageSharp {
+                gatsbyImageData(height: 96)
               }
             }
           }
         }
       }
-    `,
-  )
+    }
+  `)
 
   const { nodes } = data.allMarkdownRemark
 
@@ -58,13 +54,13 @@ export const Work = (): React.ReactElement => {
           html,
           frontmatter: { company, title, location, start, end, image, svg },
         }) => {
-          const fluid = image?.childImageSharp?.fluid
+          const gatsbyImageData = image?.childImageSharp?.gatsbyImageData
           return (
             <InfoCard
               key={`${title}-${company}`}
               title={`${title}, ${company}`}
               subtitle={`${start} - ${end} • ${location}`}
-              fluidImage={fluid}
+              fluidImage={gatsbyImageData}
               Svg={svgs[svg || '']}
               body={html}
             />

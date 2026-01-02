@@ -1,5 +1,5 @@
 import React from 'react'
-import { FluidObject } from 'gatsby-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 export type Children = React.ReactNode | React.ReactNodeArray
 
@@ -16,7 +16,7 @@ export interface IThought {
     caption: string
     image?: {
       childImageSharp: {
-        fluid: FluidObject
+        gatsbyImageData: IGatsbyImageData
       }
     }
   }
@@ -31,7 +31,7 @@ export interface IThoughtPreviewFrontmatter {
   createdAt?: string
   image?: {
     childImageSharp: {
-      fluid: FluidObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }
@@ -49,7 +49,7 @@ export interface IWorkFrontmatter {
   svg?: string
   image?: {
     childImageSharp: {
-      fluid: FluidObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }
@@ -59,7 +59,7 @@ export interface IProjectPreview {
   src?: string
   image?: {
     childImageSharp: {
-      fluid: FluidObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
   color: string
@@ -86,7 +86,7 @@ export interface IProjectFrontmatter {
   status?: string
   image: {
     childImageSharp: {
-      fluid: FluidObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }

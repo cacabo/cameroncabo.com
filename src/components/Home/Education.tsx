@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { InfoCard } from '../shared'
 
 interface IEducationNode {
@@ -13,7 +13,7 @@ interface IEducationNode {
     location: string
     image: {
       childImageSharp: {
-        fluid: FluidObject
+        gatsbyImageData: IGatsbyImageData
       }
       publicURL?: string
     }
@@ -25,7 +25,7 @@ export const Education = (): React.ReactElement => {
     query EducationQuery {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(education)/" } }
-        sort: { order: ASC, fields: [frontmatter___order] }
+        sort: { frontmatter: { order: ASC } }
       ) {
         nodes {
           html
@@ -37,9 +37,7 @@ export const Education = (): React.ReactElement => {
             location
             image {
               childImageSharp {
-                fluid(maxHeight: 96) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(height: 96)
               }
               publicURL
             }
@@ -57,7 +55,7 @@ export const Education = (): React.ReactElement => {
           html,
           frontmatter: { start, end, title, gpa, image, location },
         }) => {
-          const fluid = image?.childImageSharp?.fluid
+          const gatsbyImageData = image?.childImageSharp?.gatsbyImageData
 
           // Allow certain fields to be missing
           const subtitle = [
@@ -73,7 +71,7 @@ export const Education = (): React.ReactElement => {
               key={title}
               title={title}
               subtitle={subtitle}
-              fluidImage={fluid}
+              fluidImage={gatsbyImageData}
               body={html}
             />
           )

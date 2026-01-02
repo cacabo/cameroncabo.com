@@ -44,22 +44,17 @@ const Table = styled.table`
 // TODO fixed position table header
 
 const BooksPage = (): React.ReactElement => {
-  const { allBooksJson } = useStaticQuery(
-    graphql`
-      {
-        allBooksJson(
-          sort: {
-            fields: [endDate, startDate, title]
-            order: [DESC, DESC, ASC]
-          }
-        ) {
-          nodes {
-            ...BookPreview
-          }
+  const { allBooksJson } = useStaticQuery(graphql`
+    {
+      allBooksJson(
+        sort: [{ endDate: DESC }, { startDate: DESC }, { title: ASC }]
+      ) {
+        nodes {
+          ...BookPreview
         }
       }
-    `,
-  )
+    }
+  `)
 
   const partiallyOrderedBooks = allBooksJson.nodes as IBook[]
   const undatedBooks: IBook[] = []

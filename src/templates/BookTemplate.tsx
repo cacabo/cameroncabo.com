@@ -117,7 +117,7 @@ const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
 }
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     booksJson(id: { eq: $id }) {
       ...Book
     }

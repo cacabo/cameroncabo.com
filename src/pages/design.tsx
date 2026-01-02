@@ -9,7 +9,7 @@ import {
   Button,
   Callout,
 } from '../components/shared'
-import { FluidObject } from 'gatsby-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { graphql, useStaticQuery } from 'gatsby'
@@ -21,7 +21,7 @@ interface IArtNode {
   date: string
   image: {
     childImageSharp: {
-      fluid: FluidObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }
@@ -30,7 +30,7 @@ interface IArt {
   title: string
   medium: string
   date: string
-  fluid: FluidObject
+  gatsbyImageData: IGatsbyImageData
 }
 
 interface IDesignNode {
@@ -39,7 +39,7 @@ interface IDesignNode {
   date: string
   image: {
     childImageSharp: {
-      fluid: FluidObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }
@@ -48,55 +48,49 @@ interface IDesign {
   title: string
   description: string
   date: string
-  fluid: FluidObject
+  gatsbyImageData: IGatsbyImageData
 }
 
 const DesignPage = (): React.ReactElement => {
-  const { allArtJson, allDesignJson } = useStaticQuery(
-    graphql`
-      {
-        allArtJson {
-          nodes {
-            medium
-            title
-            date
-            image {
-              childImageSharp {
-                fluid(maxWidth: 848) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-        allDesignJson {
-          nodes {
-            description
-            title
-            date
-            image {
-              childImageSharp {
-                fluid(maxWidth: 848) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+  const { allArtJson, allDesignJson } = useStaticQuery(graphql`
+    {
+      allArtJson {
+        nodes {
+          medium
+          title
+          date
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 848)
             }
           }
         }
       }
-    `,
-  )
+      allDesignJson {
+        nodes {
+          description
+          title
+          date
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 848)
+            }
+          }
+        }
+      }
+    }
+  `)
 
   const artData: IArt[] = (allArtJson.nodes as IArtNode[]).map(
     ({ image, ...rest }): IArt => ({
-      fluid: image.childImageSharp.fluid,
+      gatsbyImageData: image.childImageSharp.gatsbyImageData,
       ...rest,
     }),
   )
 
   const designData: IDesign[] = (allDesignJson.nodes as IDesignNode[]).map(
     ({ image, ...rest }): IDesign => ({
-      fluid: image.childImageSharp.fluid,
+      gatsbyImageData: image.childImageSharp.gatsbyImageData,
       ...rest,
     }),
   )
@@ -120,8 +114,8 @@ const DesignPage = (): React.ReactElement => {
 
       <H2>Artwork</H2>
       <Masonry>
-        {artData.map(({ title, medium, fluid, date }) => (
-          <Card key={title} fluid={fluid}>
+        {artData.map(({ title, medium, gatsbyImageData, date }) => (
+          <Card key={title} fluid={gatsbyImageData}>
             <P black bold mb1>
               {title}
             </P>
@@ -136,8 +130,8 @@ const DesignPage = (): React.ReactElement => {
 
       <H2>Design</H2>
       <Masonry>
-        {designData.map(({ title, description, fluid, date }) => (
-          <Card key={title} fluid={fluid}>
+        {designData.map(({ title, description, gatsbyImageData, date }) => (
+          <Card key={title} fluid={gatsbyImageData}>
             <P bold black mb1>
               {title}
             </P>

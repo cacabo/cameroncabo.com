@@ -20,7 +20,7 @@ const Wrapper = s.div<{ active?: boolean }>`
   }
 `
 
-const StyledLink = s(Link)<{}>`
+const StyledLink = s(Link)`
   display: inline-block;
   text-decoration: none !important;
   color: ${BLACK};
@@ -70,20 +70,13 @@ export const Links = ({
   active,
 }: ILinksProps): React.ReactElement => (
   <Wrapper active={active} role="menu">
-    {routes.map(
-      ([name, route]): React.ReactElement => {
-        return (
-          <StyledLink
-            to={route}
-            key={route}
-            tabIndex={tabIndex}
-            role="menuitem"
-          >
-            {name}
-          </StyledLink>
-        )
-      },
-    )}
+    {routes.map(([name, route]): React.ReactElement => {
+      return (
+        <StyledLink to={route} key={route} tabIndex={tabIndex} role="menuitem">
+          {name}
+        </StyledLink>
+      )
+    })}
     <StyledLink as="a" href={Route.CONTACT} tabIndex={tabIndex} role="menuitem">
       Contact
     </StyledLink>

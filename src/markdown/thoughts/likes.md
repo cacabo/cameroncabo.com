@@ -14,16 +14,13 @@ topics: ['reference']
 For life in general:
 
 - [Privacy.com](https://privacy.com) virtual debit cards.
-
   - Never worry about cancelling a "free" trial or spending money at a small business that you want to support but are afraid is at a higher risk of getting hacked
 
 - [Strava](https://strava.com) cardio tracking and social-fitness.
-
   - What if more online communities were like this?
   - What if there were a Strava-for-cooking app?
 
 - [Down Dog](https://www.downdogapp.com/) workout (HIIT) and yoga apps.\
-
   - A workout app which actually works, keeps things interesting (variety), and does not barrage you with ads
 
 - Corners of YouTube where learning is fun and fast.

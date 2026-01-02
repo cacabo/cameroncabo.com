@@ -1,9 +1,9 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { BR, Button, HR, P } from './shared'
-import { ThoughtPreview } from './ThoughtPreview'
 import { Route } from '../constants/routes'
 import { IThoughtPreviewFrontmatter } from '../types'
+import { BR, Button, HR, P } from './shared'
+import { ThoughtPreview } from './ThoughtPreview'
 
 interface IThoughtPreviewNode {
   frontmatter: IThoughtPreviewFrontmatter
@@ -11,11 +11,15 @@ interface IThoughtPreviewNode {
 }
 
 export const Thoughts = (): React.ReactElement => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<{
+    allMarkdownRemark: {
+      nodes: IThoughtPreviewNode[]
+    }
+  }>(graphql`
     query {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
-        sort: { order: DESC, fields: [frontmatter___createdAt] }
+        sort: { frontmatter: { createdAt: DESC } }
       ) {
         nodes {
           ...PartialThought
@@ -24,11 +28,10 @@ export const Thoughts = (): React.ReactElement => {
     }
   `)
 
-  const { nodes } = data.allMarkdownRemark
   return (
     <>
       <BR />
-      {(nodes as IThoughtPreviewNode[]).map(({ frontmatter, timeToRead }) => (
+      {data.allMarkdownRemark.nodes.map(({ frontmatter, timeToRead }) => (
         <ThoughtPreview
           key={frontmatter.title}
           timeToRead={timeToRead}

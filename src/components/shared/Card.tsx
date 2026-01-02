@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
-import Img, { FluidObject } from 'gatsby-image'
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import { P } from './Typography'
 import { FlexRow, Flex } from './Grid'
@@ -41,34 +41,31 @@ const getBoxShadow = ({
   shade0
     ? `${BLACK_ALPHA(0)} 0 0 0`
     : shade1
-    ? `${BLACK_ALPHA(0.1)} 0 1px 2px;`
-    : shade2
-    ? `${BLACK_ALPHA(0.2)} 0 1px 4px`
-    : shade3
-    ? `${BLACK_ALPHA(0.3)} 0 2px 6px`
-    : shade4
-    ? `${BLACK_ALPHA(0.4)} 0 3px 8px`
-    : `${BLACK_ALPHA(0)} 0 0 0`
+      ? `${BLACK_ALPHA(0.1)} 0 1px 2px;`
+      : shade2
+        ? `${BLACK_ALPHA(0.2)} 0 1px 4px`
+        : shade3
+          ? `${BLACK_ALPHA(0.3)} 0 2px 6px`
+          : shade4
+            ? `${BLACK_ALPHA(0.4)} 0 3px 8px`
+            : `${BLACK_ALPHA(0)} 0 0 0`
 
 const CardWrapper = s.div<ICard>(
   ({ backgroundImage, hoverable, mb0, ...shades }) => css`
     border: 1px solid ${BORDER};
     border-radius: ${BORDER_RADIUS};
     margin-bottom: ${mb0 ? '0' : '1rem'};
-    ${
-      backgroundImage &&
-      `
+    ${backgroundImage &&
+    `
       background-image: ${backgroundImage};
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-    `
-    }
+    `}
     box-shadow: ${getBoxShadow({ ...shades })};
 
-    ${
-      hoverable &&
-      `
+    ${hoverable &&
+    `
       transition: box-shadow ${SHORT_ANIMATION_DURATION}ms ease,
                   transform ${LONG_ANIMATION_DURATION}ms ease;
 
@@ -76,8 +73,7 @@ const CardWrapper = s.div<ICard>(
         box-shadow: ${BLACK_ALPHA(0.4)} 0 2px 24px;
         transform: translateY(-2px);
       }
-    `
-    }
+    `}
   `,
 )
 
@@ -94,7 +90,7 @@ const CardBody = s.div<{ pad0?: boolean }>`
 interface ICardContent {
   children: Children
   src?: string
-  fluid?: FluidObject
+  fluid?: IGatsbyImageData
 }
 
 export const Card = ({
@@ -106,7 +102,7 @@ export const Card = ({
   ...rest
 }: ICardContent & ICard): React.ReactElement => (
   <CardWrapper {...rest} mb0={mb0}>
-    {fluid && <CardImg fluid={fluid} />}
+    {fluid && <CardImg image={fluid} alt="" />}
     {src && <CardImg as="img" src={src} />}
     <CardBody pad0={pad0}>{children}</CardBody>
   </CardWrapper>
@@ -127,7 +123,7 @@ const Content = s.div`
   }
 `
 
-const CardImg = s(Img)<{}>`
+const CardImg = s(GatsbyImage)`
   border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
 `
 
@@ -137,12 +133,12 @@ const MOBILE_SIZE = '42px'
 interface IInfoCard {
   title: string
   subtitle?: string
-  fluidImage?: FluidObject
+  fluidImage?: IGatsbyImageData
   body: string
   Svg?: React.FC<{ style?: React.CSSProperties }>
 }
 
-const InfoCardWrapper = s.div<{}>`
+const InfoCardWrapper = s.div`
   margin-bottom: ${M4};
 
   ${minWidth(TABLET)} {
@@ -150,7 +146,7 @@ const InfoCardWrapper = s.div<{}>`
   }
 `
 
-const InfoCardImageWrapper = s.div<{}>`
+const InfoCardImageWrapper = s.div`
   width: ${SIZE};
   height: auto;
   margin-right: ${M4};
@@ -164,7 +160,7 @@ const InfoCardImageWrapper = s.div<{}>`
   }
 `
 
-const InfoCardImage = s.img<{}>`
+const InfoCardImage = s.img`
   width: ${SIZE};
   height: auto;
   margin-bottom: 0;
@@ -186,7 +182,7 @@ export const InfoCard = ({
       {(fluidImage || Svg) && (
         <InfoCardImageWrapper>
           {fluidImage ? (
-            <InfoCardImage as={Img} fluid={fluidImage} />
+            <InfoCardImage as={GatsbyImage} image={fluidImage} alt={title} />
           ) : Svg ? (
             <Svg style={{ width: '100%', height: 'auto' }} />
           ) : null}

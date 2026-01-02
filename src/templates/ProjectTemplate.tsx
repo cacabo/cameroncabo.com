@@ -1,35 +1,34 @@
+import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
 import s from 'styled-components'
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-
 import Layout from '../components/Layout'
+import { ProjectPreview } from '../components/ProjectPreview'
 import SEO from '../components/SEO'
 import {
-  Button,
-  P,
-  H1,
-  ExternalLinkIcon,
-  Tag,
-  HR,
-  Buttons,
   BR,
-  Tags,
+  Button,
+  Buttons,
+  ExternalLinkIcon,
+  H1,
+  HR,
+  P,
   TableList,
+  Tag,
+  Tags,
 } from '../components/shared'
-import { Route } from '../constants/routes'
 import {
   BORDER_RADIUS_LG,
-  PHONE,
-  maxWidth,
-  minWidth,
   DESKTOP,
   M2,
+  PHONE,
   WIDESCREEN,
+  maxWidth,
+  minWidth,
 } from '../constants/measurements'
+import { Route } from '../constants/routes'
 import ColorGenerator from '../helpers/ColorGenerator'
-import { ProjectPreview } from '../components/ProjectPreview'
-import { IProjectPreview, IProjectFrontmatter } from '../types'
+import { IProjectFrontmatter, IProjectPreview } from '../types'
 
 const Overview = s.div<{ background: string }>`
   background: ${(props): string => props.background};
@@ -95,11 +94,11 @@ interface IProjectTemplateProps {
 }
 
 const ProjectTemplate = ({
-  data,
+  data: {
+    markdownRemark: { frontmatter, html },
+  },
   pageContext,
 }: IProjectTemplateProps): React.ReactElement => {
-  const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
   const {
     title,
     description,
@@ -113,7 +112,7 @@ const ProjectTemplate = ({
     tags,
     status,
     image: {
-      childImageSharp: { fluid },
+      childImageSharp: { gatsbyImageData },
     },
   } = frontmatter
   const {
@@ -121,7 +120,8 @@ const ProjectTemplate = ({
     next: { node: { frontmatter: nextData } = {} } = {},
   } = pageContext
 
-  const { src } = fluid
+  const image = getImage(gatsbyImageData)
+  const imageSrc = gatsbyImageData?.images?.fallback?.src
 
   const cg = new ColorGenerator(color)
   const colorProps = cg.getColorProps()
@@ -129,7 +129,7 @@ const ProjectTemplate = ({
 
   return (
     <Layout>
-      <SEO title={title} image={src} />
+      <SEO title={title} image={imageSrc} />
       <Overview background={colorBg}>
         <H1 mb4>{title}</H1>
         <P mb4>{description}</P>
@@ -189,7 +189,7 @@ const ProjectTemplate = ({
         </Buttons>
 
         <ImgWrapper color={color}>
-          <Img fluid={fluid} />
+          <GatsbyImage image={image!} alt={title} />
         </ImgWrapper>
       </Overview>
       <div
@@ -212,8 +212,8 @@ const ProjectTemplate = ({
 }
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query ($pagePath: String!) {
+    markdownRemark(frontmatter: { path: { eq: $pagePath } }) {
       ...Project
     }
   }

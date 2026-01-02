@@ -15,7 +15,7 @@ export const RecentThoughts = (): React.ReactElement => {
     query {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/thoughts)/" } }
-        sort: { order: DESC, fields: [frontmatter___createdAt] }
+        sort: { frontmatter: { createdAt: DESC } }
         limit: 2
       ) {
         nodes {

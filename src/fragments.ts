@@ -13,9 +13,7 @@ export const PartialProject = graphql`
       end
       image {
         childImageSharp {
-          fluid(maxWidth: 720) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 720)
         }
       }
     }
@@ -40,10 +38,7 @@ export const Project = graphql`
       status
       image {
         childImageSharp {
-          fluid(maxWidth: 1248) {
-            src
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 1248)
         }
       }
     }
@@ -56,14 +51,13 @@ export const PartialThought = graphql`
     frontmatter {
       title
       createdAt(formatString: "MMM D, YYYY")
+      updatedAt(formatString: "MMM D, YYYY")
       path
       topics
       subtitle
       image {
         childImageSharp {
-          fluid(maxWidth: 848) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 848)
         }
       }
     }
@@ -83,10 +77,7 @@ export const Thought = graphql`
       caption
       image {
         childImageSharp {
-          fluid(maxWidth: 1248) {
-            src
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 1248)
         }
       }
     }

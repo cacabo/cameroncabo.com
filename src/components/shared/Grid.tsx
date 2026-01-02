@@ -2,14 +2,14 @@ import React, { ReactElement, ReactNode } from 'react'
 import s from 'styled-components'
 
 import {
-  minWidth,
-  maxWidth,
-  PHONE,
-  TABLET,
   DESKTOP,
   M2,
-  WIDESCREEN,
   M4,
+  maxWidth,
+  minWidth,
+  PHONE,
+  TABLET,
+  WIDESCREEN,
 } from '../../constants/measurements'
 
 const percent = (numCols: number): string => (numCols / 12) * 100 + '%'
@@ -245,11 +245,11 @@ export const FlexRow = s.div<{ centerOnMobile?: boolean }>`
       : ''}
 `
 
-export const Flex = s.div<{}>`
+export const Flex = s.div`
   flex: 1;
 `
 
-export const Masonry = s.div<{}>`
+export const Masonry = s.div`
   column-count: 2;
   column-gap: ${M2};
 
@@ -278,7 +278,7 @@ export const BR = s.br<{ hiddenOnMobile?: boolean }>`
     props.hiddenOnMobile ? `${maxWidth(PHONE)} { display: none; }` : ''}
 `
 
-export const Center = s.div<{}>`
+export const Center = s.div`
   text-align: center;
   width: 100%;
 `
