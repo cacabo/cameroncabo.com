@@ -24,12 +24,7 @@ const getTextList = (list: React.ReactNode[]): React.ReactNode[] => {
 
 type IBookTextProps = Pick<IBook, 'id' | 'slug' | 'title' | 'author'>
 
-const getBookText = ({
-  id,
-  slug,
-  title,
-  author,
-}: IBookTextProps): React.ReactElement => (
+const getBookText = ({ id, slug, title, author }: IBookTextProps): React.ReactElement => (
   <React.Fragment key={id}>
     <Link to={Route.BOOK(slug)}>{title}</Link> by {author}
   </React.Fragment>
@@ -38,9 +33,7 @@ const getBookText = ({
 export const Reading = (): React.ReactElement => {
   const { inProgressBooks, recentlyFinishedBooks } = useStaticQuery(graphql`
     {
-      inProgressBooks: allBooksJson(
-        filter: { startDate: { ne: null }, endDate: { eq: null } }
-      ) {
+      inProgressBooks: allBooksJson(filter: { startDate: { ne: null }, endDate: { eq: null } }) {
         nodes {
           id
           slug
@@ -65,31 +58,23 @@ export const Reading = (): React.ReactElement => {
   `)
 
   const numInProgress = inProgressBooks.nodes.length
-  const inProgressBooksTexts = (inProgressBooks.nodes as IBookTextProps[]).map(
-    getBookText,
-  )
+  const inProgressBooksTexts = (inProgressBooks.nodes as IBookTextProps[]).map(getBookText)
   const inProgressText =
     numInProgress === 0 ? (
-      <P>
-        I&apos;m not currently reading any books, please send over some
-        recommendations!
-      </P>
+      <P>I&apos;m not currently reading any books, please send over some recommendations!</P>
     ) : (
       <P>I&apos;m currently reading {getTextList(inProgressBooksTexts)}.</P>
     )
 
   const numRecentlyFinished = recentlyFinishedBooks.nodes.length
-  const recentlyFinishedBooksTexts = (
-    recentlyFinishedBooks.nodes as IBookTextProps[]
-  ).map(getBookText)
+  const recentlyFinishedBooksTexts = (recentlyFinishedBooks.nodes as IBookTextProps[]).map(
+    getBookText,
+  )
   const recentlyFinishedText =
     numRecentlyFinished === 0 ? (
       <React.Fragment />
     ) : (
-      <P>
-        I most recently finished reading{' '}
-        {getTextList(recentlyFinishedBooksTexts)}.
-      </P>
+      <P>I most recently finished reading {getTextList(recentlyFinishedBooksTexts)}.</P>
     )
 
   return (

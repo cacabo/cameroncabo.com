@@ -93,8 +93,7 @@ export const Row = s.div<IRowProps>`
   width: 100%;
   flex-wrap: wrap;
 
-  ${({ alwaysFlex }): string =>
-    alwaysFlex ? '' : `${maxWidth(PHONE)} { display: block; }`}
+  ${({ alwaysFlex }): string => (alwaysFlex ? '' : `${maxWidth(PHONE)} { display: block; }`)}
 
   ${({ margin }): string =>
     margin
@@ -151,16 +150,10 @@ const ColContainer = s.div<IColProps>`
   overflow-x: visible;
   position: relative;
 
-  ${({ margin }): string =>
-    margin ? `margin-left: ${margin}; margin-right: ${margin};` : ''}
+  ${({ margin }): string => (margin ? `margin-left: ${margin}; margin-right: ${margin};` : '')}
 `
 
-export const Col = ({
-  margin,
-  children,
-  background,
-  ...other
-}: IColProps): React.ReactElement => (
+export const Col = ({ margin, children, background, ...other }: IColProps): React.ReactElement => (
   <ColWrapper {...other}>
     <ColContainer margin={margin} background={background}>
       {children}
@@ -187,10 +180,7 @@ interface IContainerProps {
   foreground?: string
 }
 
-export const WideContainer = ({
-  children,
-  ...props
-}: IContainerProps): ReactElement => (
+export const WideContainer = ({ children, ...props }: IContainerProps): ReactElement => (
   <Container {...props}>
     <Row>
       <Col sm={12} md={10} offsetMd={1} lg={8} offsetLg={2}>
@@ -200,10 +190,7 @@ export const WideContainer = ({
   </Container>
 )
 
-export const MediumContainer = ({
-  children,
-  ...props
-}: IContainerProps): ReactElement => (
+export const MediumContainer = ({ children, ...props }: IContainerProps): ReactElement => (
   <Container {...props}>
     <Row>
       <Col sm={12} md={8} offsetMd={2} lg={6} offsetLg={3}>
@@ -213,10 +200,7 @@ export const MediumContainer = ({
   </Container>
 )
 
-export const ThinContainer = ({
-  children,
-  ...props
-}: IContainerProps): ReactElement => (
+export const ThinContainer = ({ children, ...props }: IContainerProps): ReactElement => (
   <Container {...props}>
     <Row>
       <Col sm={12} md={8} offsetMd={2} lg={5} offsetLg={3.5}>
@@ -274,8 +258,7 @@ export const BR = s.br<{ hiddenOnMobile?: boolean }>`
   height: ${M4};
   display: block;
 
-  ${(props): string =>
-    props.hiddenOnMobile ? `${maxWidth(PHONE)} { display: none; }` : ''}
+  ${(props): string => (props.hiddenOnMobile ? `${maxWidth(PHONE)} { display: none; }` : '')}
 `
 
 export const Center = s.div`

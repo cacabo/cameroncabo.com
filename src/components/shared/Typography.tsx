@@ -81,15 +81,14 @@ const Text = s.p<IText>(
   `,
 )
 
-type TextType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
-
-const textGenerator =
-  (type: TextType) =>
-  ({ children, ...props }: IText): React.ReactElement => (
-    <Text as={type} {...props}>
-      {children}
-    </Text>
-  )
+const textGenerator = (type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p') =>
+  function component({ children, ...props }: IText): React.ReactElement {
+    return (
+      <Text as={type} {...props}>
+        {children}
+      </Text>
+    )
+  }
 
 export const P = textGenerator('p')
 export const H1 = textGenerator('h1')

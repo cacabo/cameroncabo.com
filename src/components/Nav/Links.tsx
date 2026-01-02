@@ -3,13 +3,7 @@ import s from 'styled-components'
 import { Link } from 'gatsby'
 import { Route } from '../../constants/routes'
 import { BLACK } from '../../constants/colors'
-import {
-  maxWidth,
-  SHORT_ANIMATION_DURATION,
-  M2,
-  M1,
-  DESKTOP,
-} from '../../constants/measurements'
+import { maxWidth, SHORT_ANIMATION_DURATION, M2, M1, DESKTOP } from '../../constants/measurements'
 import { OUTLINE_STYLES } from '../../constants/misc'
 
 const Wrapper = s.div<{ active?: boolean }>`
@@ -65,18 +59,15 @@ interface ILinksProps {
   tabIndex?: number
 }
 
-export const Links = ({
-  tabIndex,
-  active,
-}: ILinksProps): React.ReactElement => (
+export const Links = ({ tabIndex, active }: ILinksProps): React.ReactElement => (
   <Wrapper active={active} role="menu">
-    {routes.map(([name, route]): React.ReactElement => {
-      return (
+    {routes.map(
+      ([name, route]): React.ReactElement => (
         <StyledLink to={route} key={route} tabIndex={tabIndex} role="menuitem">
           {name}
         </StyledLink>
-      )
-    })}
+      ),
+    )}
     <StyledLink as="a" href={Route.CONTACT} tabIndex={tabIndex} role="menuitem">
       Contact
     </StyledLink>

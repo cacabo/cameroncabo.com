@@ -8,11 +8,7 @@ import {
   maxWidth,
   DESKTOP,
 } from '../../constants/measurements'
-import {
-  SPACE_KEY_CODE,
-  ENTER_KEY_CODE,
-  OUTLINE_STYLES,
-} from '../../constants/misc'
+import { SPACE_KEY_CODE, ENTER_KEY_CODE, OUTLINE_STYLES } from '../../constants/misc'
 
 const ICON_HEIGHT = 24
 const PADDING = 8
@@ -61,9 +57,7 @@ interface IBars {
 }
 
 export const Bars = ({ tabIndex, handleClick }: IBars): ReactElement => {
-  const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
-  ): void => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>): void => {
     if (event.keyCode === SPACE_KEY_CODE || event.keyCode === ENTER_KEY_CODE) {
       event.preventDefault()
       handleClick()
@@ -71,12 +65,7 @@ export const Bars = ({ tabIndex, handleClick }: IBars): ReactElement => {
   }
 
   return (
-    <Wrapper
-      tabIndex={tabIndex || 0}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      role="button"
-    >
+    <Wrapper tabIndex={tabIndex || 0} onClick={handleClick} onKeyDown={handleKeyDown} role="button">
       <MenuIcon />
     </Wrapper>
   )

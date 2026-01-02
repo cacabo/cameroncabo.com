@@ -12,6 +12,5 @@ Personal website built with Gatsby and TypeScript.
 - Update end dates on projects to not be active
 - Where is `export type Children = React.ReactNode | React.ReactNodeArray` used?
 - Bump ESLint
-- Re-deploy to Netlify
 - Figure out migration plan away from Gatsby
 - Dark mode

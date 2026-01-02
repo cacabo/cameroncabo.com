@@ -16,9 +16,7 @@ export const Timestamp = ({
 }: ITimestamp): ReactElement | null => {
   if (!createdAt) return null
   const text: string =
-    !updatedAt || createdAt === updatedAt
-      ? createdAt
-      : `${createdAt}, updated ${updatedAt}`
+    !updatedAt || createdAt === updatedAt ? createdAt : `${createdAt}, updated ${updatedAt}`
   return (
     <P sm lightest style={style}>
       {text}

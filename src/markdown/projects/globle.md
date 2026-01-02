@@ -2,8 +2,7 @@
 title: 'Globle'
 description: 'Search engine implementation for CIS 555: Internet and Web Systems. Set of services to crawl, index, rank, query, and visualize assets across the web.'
 path: '/projects/globle'
-technologies:
-  ['Java', 'jQuery', 'AWS', 'S3', 'Apache Spark', 'MySQL', 'DynamoDB']
+technologies: ['Java', 'jQuery', 'AWS', 'S3', 'Apache Spark', 'MySQL', 'DynamoDB']
 start: 'April 2018'
 end: 'April 2018'
 image: '../../images/projects/globle.png'

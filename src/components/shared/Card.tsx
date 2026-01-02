@@ -1,22 +1,21 @@
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React, { CSSProperties } from 'react'
 import s, { css } from 'styled-components'
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
-
-import { P } from './Typography'
-import { FlexRow, Flex } from './Grid'
-import { BORDER, BLACK_ALPHA } from '../../constants/colors'
+import { BLACK_ALPHA, BORDER } from '../../constants/colors'
 import {
   BORDER_RADIUS,
-  PHONE,
-  maxWidth,
-  SHORT_ANIMATION_DURATION,
   LONG_ANIMATION_DURATION,
-  M4,
   M2,
-  TABLET,
+  M4,
+  maxWidth,
   minWidth,
+  PHONE,
+  SHORT_ANIMATION_DURATION,
+  TABLET,
 } from '../../constants/measurements'
 import { Children } from '../../types'
+import { Flex, FlexRow } from './Grid'
+import { P } from './Typography'
 
 interface ICard {
   shade0?: boolean
@@ -31,13 +30,7 @@ interface ICard {
   style?: CSSProperties
 }
 
-const getBoxShadow = ({
-  shade0,
-  shade1,
-  shade2,
-  shade3,
-  shade4,
-}: Partial<ICard>): string =>
+const getBoxShadow = ({ shade0, shade1, shade2, shade3, shade4 }: Partial<ICard>): string =>
   shade0
     ? `${BLACK_ALPHA(0)} 0 0 0`
     : shade1

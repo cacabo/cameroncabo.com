@@ -5,15 +5,10 @@ import { P } from './Typography'
 
 interface ITableListProps {
   labels: string[]
-  content: Array<
-    React.ReactNodeArray | React.ReactNode | string | null | undefined
-  >
+  content: Array<React.ReactNodeArray | React.ReactNode | string | null | undefined>
 }
 
-export const TableList = ({
-  labels,
-  content,
-}: ITableListProps): React.ReactElement => {
+export const TableList = ({ labels, content }: ITableListProps): React.ReactElement => {
   if (!labels || !content) {
     throw Error('Labels and content are required')
   }

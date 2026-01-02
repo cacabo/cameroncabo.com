@@ -8,15 +8,7 @@ import { BR, Button, Callout, H1, HR, P, Tag, Tags } from '../components/shared'
 import { ThoughtPreview } from '../components/ThoughtPreview'
 import { Timestamp } from '../components/Timestamp'
 import { GRAY_2 } from '../constants/colors'
-import {
-  DESKTOP,
-  M1,
-  M2,
-  M3,
-  minWidth,
-  PHONE,
-  TABLET,
-} from '../constants/measurements'
+import { DESKTOP, M1, M2, M3, minWidth, PHONE, TABLET } from '../constants/measurements'
 import { Route } from '../constants/routes'
 import { IThought, IThoughtPreviewFrontmatter } from '../types'
 
@@ -75,23 +67,15 @@ interface IThoughtTemplateProps {
   }
 }
 
-const ThoughtTemplate = ({
-  data,
-  pageContext,
-}: IThoughtTemplateProps): React.ReactElement => {
+const ThoughtTemplate = ({ data, pageContext }: IThoughtTemplateProps): React.ReactElement => {
   const { markdownRemark } = data
   const { frontmatter, html, timeToRead } = markdownRemark
-  const { createdAt, updatedAt, title, subtitle, topics, caption, image } =
-    frontmatter
+  const { createdAt, updatedAt, title, subtitle, topics, caption, image } = frontmatter
 
   // Use default params in case there is no prev or next post
   const {
-    prev: {
-      node: { frontmatter: prevData, timeToRead: prevTimeToRead } = {},
-    } = {},
-    next: {
-      node: { frontmatter: nextData, timeToRead: nextTimeToRead } = {},
-    } = {},
+    prev: { node: { frontmatter: prevData, timeToRead: prevTimeToRead } = {} } = {},
+    next: { node: { frontmatter: nextData, timeToRead: nextTimeToRead } = {} } = {},
   } = pageContext
 
   const imageData = image?.childImageSharp?.gatsbyImageData
@@ -122,11 +106,7 @@ const ThoughtTemplate = ({
           </div>
         )}
 
-        <Timestamp
-          createdAt={createdAt}
-          updatedAt={updatedAt}
-          timeToRead={timeToRead}
-        />
+        <Timestamp createdAt={createdAt} updatedAt={updatedAt} timeToRead={timeToRead} />
       </Wrapper>
 
       {gatsbyImage && (
@@ -145,10 +125,7 @@ const ThoughtTemplate = ({
             {caption}
           </P>
         )}
-        <Content
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <Content className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
       </Wrapper>
 
       <BR />
@@ -157,12 +134,8 @@ const ThoughtTemplate = ({
         <>
           <HR />
 
-          {prevData && (
-            <ThoughtPreview {...prevData} timeToRead={prevTimeToRead} />
-          )}
-          {nextData && (
-            <ThoughtPreview {...nextData} timeToRead={nextTimeToRead} />
-          )}
+          {prevData && <ThoughtPreview {...prevData} timeToRead={prevTimeToRead} />}
+          {nextData && <ThoughtPreview {...nextData} timeToRead={nextTimeToRead} />}
 
           <BR />
         </>

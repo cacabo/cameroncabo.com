@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react'
 
 const HoneySvg = (props: any): React.ReactElement => (

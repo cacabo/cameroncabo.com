@@ -5,14 +5,7 @@ path: '/projects/insuricane'
 link: null
 repo: 'https://devpost.com/software/insuricane'
 technologies:
-  [
-    'React',
-    'Redux',
-    'Google Maps API',
-    'Python',
-    'Google Cloud Platform',
-    'DocuSign API',
-  ]
+  ['React', 'Redux', 'Google Maps API', 'Python', 'Google Cloud Platform', 'DocuSign API']
 start: 'September 2018'
 end: 'September 2018'
 image: '../../images/projects/insuricane.png'

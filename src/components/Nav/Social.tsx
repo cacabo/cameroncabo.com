@@ -11,12 +11,7 @@ import {
   RSSIcon,
 } from '../shared'
 import { BLACK } from '../../constants/colors'
-import {
-  maxWidth,
-  SHORT_ANIMATION_DURATION,
-  M2,
-  DESKTOP,
-} from '../../constants/measurements'
+import { maxWidth, SHORT_ANIMATION_DURATION, M2, DESKTOP } from '../../constants/measurements'
 import { OUTLINE_STYLES } from '../../constants/misc'
 
 const Wrapper = s.div<{ active: boolean }>`
@@ -99,10 +94,7 @@ interface ISocialProps {
   tabIndex?: number
 }
 
-export const Social = ({
-  tabIndex,
-  active,
-}: ISocialProps): React.ReactElement => (
+export const Social = ({ tabIndex, active }: ISocialProps): React.ReactElement => (
   <Wrapper active={active} role="menu">
     <ExternalLink route={Route.FACEBOOK} label="Facebook" tabIndex={tabIndex}>
       <FacebookIcon />

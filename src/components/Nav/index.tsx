@@ -16,19 +16,15 @@ import {
 } from '../../constants/measurements'
 import { Bars } from './Bars'
 import { Shade } from '../shared'
-import {
-  isOnMobile,
-  disableBodyScroll,
-  enableBodyScroll,
-} from '../../helpers/misc'
+import { isOnMobile, disableBodyScroll, enableBodyScroll } from '../../helpers/misc'
 
 const getScrollTop = (): number =>
   window.pageYOffset !== undefined
     ? window.pageYOffset
     : (
-        (document.documentElement ||
-          document.body.parentNode ||
-          document.body) as unknown as { scrollTop: number }
+        (document.documentElement || document.body.parentNode || document.body) as unknown as {
+          scrollTop: number
+        }
       ).scrollTop || 0
 
 interface IWrapperProps {
@@ -94,22 +90,16 @@ interface IActiveState {
   isActive: boolean
 }
 
-export const Nav = ({
-  fixed,
-  setShouldHideBody,
-}: IHeaderProps): React.ReactElement => {
+export const Nav = ({ fixed, setShouldHideBody }: IHeaderProps): React.ReactElement => {
   const [onMobile, setOnMobile] = useState<boolean>(isOnMobile())
-  const [{ prevScrollTop, shouldShowFixed }, setFixedState] =
-    useState<IFixedState>({
-      prevScrollTop: 0,
-      shouldShowFixed: false,
-    })
-  const [{ isActive, isNewlyMounted }, setActiveState] = useState<IActiveState>(
-    {
-      isNewlyMounted: true,
-      isActive: false,
-    },
-  )
+  const [{ prevScrollTop, shouldShowFixed }, setFixedState] = useState<IFixedState>({
+    prevScrollTop: 0,
+    shouldShowFixed: false,
+  })
+  const [{ isActive, isNewlyMounted }, setActiveState] = useState<IActiveState>({
+    isNewlyMounted: true,
+    isActive: false,
+  })
 
   useEffect(() => {
     // Check that tab indices are correct even if the screen is resized
@@ -197,16 +187,8 @@ export const Nav = ({
   }
 
   const logoTabIndex: number | undefined = fixed ? -1 : undefined
-  const barsTabIndex: number | undefined = fixed
-    ? -1
-    : !onMobile
-      ? -1
-      : undefined
-  const tabIndex: number | undefined = fixed
-    ? -1
-    : onMobile && !isActive
-      ? -1
-      : undefined
+  const barsTabIndex: number | undefined = fixed ? -1 : !onMobile ? -1 : undefined
+  const tabIndex: number | undefined = fixed ? -1 : onMobile && !isActive ? -1 : undefined
 
   const shadeId = `shade-${fixed ? 'fixed' : 'relative'}`
 

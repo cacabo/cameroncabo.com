@@ -1,15 +1,7 @@
-/* eslint-disable max-len */
 import React from 'react'
 
 const RiploSvg = (props: any): React.ReactElement => (
-  <svg
-    id="prefix__Layer_1"
-    x={0}
-    y={0}
-    viewBox="0 0 820 820"
-    xmlSpace="preserve"
-    {...props}
-  >
+  <svg id="prefix__Layer_1" x={0} y={0} viewBox="0 0 820 820" xmlSpace="preserve" {...props}>
     <style>{'.prefix__st0{clip-path:url(#prefix__SVGID_2_)}'}</style>
     <defs>
       <circle id="prefix__SVGID_1_" cx={410} cy={410} r={410} />
@@ -39,11 +31,7 @@ const RiploSvg = (props: any): React.ReactElement => (
         <stop offset={0} stopColor="#ff3871" />
         <stop offset={1} stopColor="#ff4c7c" />
       </linearGradient>
-      <path
-        clipPath="url(#prefix__SVGID_4_)"
-        fill="url(#prefix__SVGID_5_)"
-        d="M0 0h820v820H0z"
-      />
+      <path clipPath="url(#prefix__SVGID_4_)" fill="url(#prefix__SVGID_5_)" d="M0 0h820v820H0z" />
     </g>
     <g className="prefix__st0">
       <defs>

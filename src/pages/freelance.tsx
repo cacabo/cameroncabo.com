@@ -36,30 +36,23 @@ const FreelancePage = (): React.ReactElement => (
     <H3>What I do best</H3>
 
     <P>
-      I build sleek, user-centric websites. All of my work keeps to similar
-      practices allowing for rapid prototyping.
+      I build sleek, user-centric websites. All of my work keeps to similar practices allowing for
+      rapid prototyping.
     </P>
 
     <P>
-      Each website is completely personalized in content, structure, and design
-      in order to best accomplish what the site sets out to.
+      Each website is completely personalized in content, structure, and design in order to best
+      accomplish what the site sets out to.
     </P>
 
     <BR />
 
-    <Callout
-      style={{ border: `2px solid ${BORDER}`, borderRadius: BORDER_RADIUS_LG }}
-    >
+    <Callout style={{ border: `2px solid ${BORDER}`, borderRadius: BORDER_RADIUS_LG }}>
       <H3 mb2>Your timeline, your vision</H3>
-      <P lighter>
-        Every project is personalized to your budget, timeframe, and
-        specifications.
-      </P>
+      <P lighter>Every project is personalized to your budget, timeframe, and specifications.</P>
 
       <H3 mb2>Full-stack, full-process</H3>
-      <P lighter>
-        I develop, test, and maintain projects of all scales and at all stages.
-      </P>
+      <P lighter>I develop, test, and maintain projects of all scales and at all stages.</P>
 
       <H3 mb2>Flexible, modern tech</H3>
       <P lighter mb0>
@@ -72,16 +65,15 @@ const FreelancePage = (): React.ReactElement => (
     <H3>Compensation</H3>
 
     <P>
-      Set projects where we can come up with a well-scoped set of requirements
-      are paid based on completion of milestones. More fluid projects are paid
-      hourly so we have flexibility in terms of what we build to meet your
-      needs. Further, you only pay for the work that I put directly into
-      product: hours spent on learning and preliminary research are on me.
+      Set projects where we can come up with a well-scoped set of requirements are paid based on
+      completion of milestones. More fluid projects are paid hourly so we have flexibility in terms
+      of what we build to meet your needs. Further, you only pay for the work that I put directly
+      into product: hours spent on learning and preliminary research are on me.
     </P>
 
     <P>
-      If you work for a non-profit or a similarly mission-driven organization,
-      send me an email and we can go from there.
+      If you work for a non-profit or a similarly mission-driven organization, send me an email and
+      we can go from there.
     </P>
 
     <Buttons>

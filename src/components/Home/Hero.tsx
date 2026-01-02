@@ -1,17 +1,11 @@
-import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import React from 'react'
 import s from 'styled-components'
 
-import { H1, P, FlexRow, Flex, Button, Buttons, BR } from '../shared'
+import { DESKTOP, maxWidth, minWidth, PHONE, WIDESCREEN } from '../../constants/measurements'
 import { Route } from '../../constants/routes'
-import {
-  minWidth,
-  DESKTOP,
-  WIDESCREEN,
-  maxWidth,
-  PHONE,
-} from '../../constants/measurements'
+import { BR, Button, Buttons, Flex, FlexRow, H1, P } from '../shared'
 
 const Wrapper = s.div`
   ${minWidth(DESKTOP)} {
@@ -40,7 +34,9 @@ const ImgWrapper = s.div`
 `
 
 export const Hero = (): React.ReactElement => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<{
+    file: { childImageSharp: { gatsbyImageData: IGatsbyImageData } }
+  }>(graphql`
     query {
       file(relativePath: { eq: "me.jpg" }) {
         childImageSharp {
@@ -57,30 +53,18 @@ export const Hero = (): React.ReactElement => {
       <BR />
       <FlexRow centerOnMobile>
         <ImgWrapper>
-          <GatsbyImage
-            image={image!}
-            alt="Cameron"
-            style={{ width: IMG_SIZE, height: IMG_SIZE }}
-          />
+          <GatsbyImage image={image!} alt="Cameron" style={{ width: IMG_SIZE, height: IMG_SIZE }} />
         </ImgWrapper>
         <Flex>
           <H1 mb4>Hi, I&apos;m Cameron</H1>
           <P>
-            I want to leverage tech to help people learn more and live better. I
-            studied computer science and management in the{' '}
-            <a
-              href="https://fisher.wharton.upenn.edu/"
-              target="_BLANK"
-              rel="noopener noreferrer"
-            >
+            I want to leverage tech to help people learn more and live better. I studied computer
+            science and management in the{' '}
+            <a href="https://fisher.wharton.upenn.edu/" target="_BLANK" rel="noopener noreferrer">
               {'M&T program at UPenn.'}
             </a>{' '}
             I spend my free time{' '}
-            <a
-              href="https://www.riplo.io"
-              target="_BLANK"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.riplo.io" target="_BLANK" rel="noopener noreferrer">
               developing websites,
             </a>{' '}
             <a href={Route.GITHUB} target="_BLANK" rel="noopener noreferrer">

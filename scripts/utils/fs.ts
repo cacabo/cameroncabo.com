@@ -1,9 +1,6 @@
-import fs = require('fs')
+import * as fs from 'fs'
 
-export const writeJsonFileAsync = (
-  name: string,
-  obj: object,
-): Promise<void> => {
+export const writeJsonFileAsync = (name: string, obj: object): Promise<void> => {
   let cleanedName: string = name
 
   if (name.toLowerCase().endsWith('.json')) {

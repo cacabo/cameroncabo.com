@@ -15,8 +15,8 @@ export const Technologies = (): React.ReactElement => (
           Web
         </P>
         <P>
-          React (Next, Gatsby), Redux, HTML, CSS (SCSS, styled-components), ERB,
-          Handlebars, Angular, EJS, jQuery.
+          React (Next, Gatsby), Redux, HTML, CSS (SCSS, styled-components), ERB, Handlebars,
+          Angular, EJS, jQuery.
         </P>
         <P bold mb2>
           Mobile
@@ -29,16 +29,12 @@ export const Technologies = (): React.ReactElement => (
           APIs
         </P>
         <P>
-          Node, Express, Passport, Ruby on Rails, GraphQL (TypeGraphQL), Java
-          Spark, Serverless.
+          Node, Express, Passport, Ruby on Rails, GraphQL (TypeGraphQL), Java Spark, Serverless.
         </P>
         <P bold mb2>
           Databases & Deployment
         </P>
-        <P>
-          Postgres, MongoDB, AWS (DynamoDB), Google Cloud Platform, Firebase,
-          Heroku, Netlify.
-        </P>
+        <P>Postgres, MongoDB, AWS (DynamoDB), Google Cloud Platform, Firebase, Heroku, Netlify.</P>
         <P bold mb2>
           Data
         </P>

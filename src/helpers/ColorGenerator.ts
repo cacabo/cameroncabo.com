@@ -8,8 +8,7 @@ interface IColorProps {
 export default class ColorGenerator {
   private static isHex = (c: string): boolean => c.startsWith('#')
 
-  private static hexToDecimal = (hex: string): number =>
-    Number.parseInt(hex, 16)
+  private static hexToDecimal = (hex: string): number => Number.parseInt(hex, 16)
 
   private static hexStrToRgb = (c: string): number[] => {
     const cleaned = c.toLowerCase().trim()
@@ -22,18 +21,11 @@ export default class ColorGenerator {
   private static rgbStrToRgb = (c: string): number[] => {
     const cleaned = c.toLowerCase().trim()
     const contents = cleaned.split('(')[1].split(')')[0]
-    const components = contents
-      .split(',')
-      .map((component: string) => component.trim())
+    const components = contents.split(',').map((component: string) => component.trim())
     return components.map((numString): number => Number.parseInt(numString, 10))
   }
 
-  private static colorToString = (
-    r: number,
-    g: number,
-    b: number,
-    a?: number,
-  ): string => {
+  private static colorToString = (r: number, g: number, b: number, a?: number): string => {
     if (!a) {
       return `rgb(${r}, ${g}, ${b})`
     }

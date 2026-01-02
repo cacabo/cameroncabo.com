@@ -50,10 +50,7 @@ export const Work = (): React.ReactElement => {
   return (
     <>
       {(nodes as IWorkNode[]).map(
-        ({
-          html,
-          frontmatter: { company, title, location, start, end, image, svg },
-        }) => {
+        ({ html, frontmatter: { company, title, location, start, end, image, svg } }) => {
           const gatsbyImageData = image?.childImageSharp?.gatsbyImageData
           return (
             <InfoCard

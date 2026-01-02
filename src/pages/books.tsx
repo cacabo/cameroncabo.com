@@ -46,9 +46,7 @@ const Table = styled.table`
 const BooksPage = (): React.ReactElement => {
   const { allBooksJson } = useStaticQuery(graphql`
     {
-      allBooksJson(
-        sort: [{ endDate: DESC }, { startDate: DESC }, { title: ASC }]
-      ) {
+      allBooksJson(sort: [{ endDate: DESC }, { startDate: DESC }, { title: ASC }]) {
         nodes {
           ...BookPreview
         }
@@ -71,10 +69,7 @@ const BooksPage = (): React.ReactElement => {
 
   return (
     <Layout wide mt0>
-      <SEO
-        title="Books"
-        description="A database of books I've read over time"
-      />
+      <SEO title="Books" description="A database of books I've read over time" />
       <TableWrapper>
         <Table>
           <thead>
@@ -92,17 +87,7 @@ const BooksPage = (): React.ReactElement => {
           </thead>
           <tbody>
             {books.map(
-              ({
-                title,
-                subtitle,
-                author,
-                id,
-                startDate,
-                endDate,
-                tags,
-                rating,
-                slug,
-              }) => (
+              ({ title, subtitle, author, id, startDate, endDate, tags, rating, slug }) => (
                 <tr key={id}>
                   <td style={{ minWidth: '338px' }}>
                     <P mb1 medium>
@@ -143,11 +128,9 @@ const BooksPage = (): React.ReactElement => {
                     </div>
                   </td>
                   <td>
-                    {!(
-                      rating === null ||
-                      rating === undefined ||
-                      Number.isNaN(rating)
-                    ) && <Stars rating={rating} />}
+                    {!(rating === null || rating === undefined || Number.isNaN(rating)) && (
+                      <Stars rating={rating} />
+                    )}
                   </td>
                 </tr>
               ),

@@ -1,14 +1,5 @@
 import React from 'react'
-import {
-  Card,
-  P,
-  H2,
-  Masonry,
-  H1,
-  BR,
-  Button,
-  Callout,
-} from '../components/shared'
+import { Card, P, H2, Masonry, H1, BR, Button, Callout } from '../components/shared'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -103,9 +94,8 @@ const DesignPage = (): React.ReactElement => {
         <BR />
         <H1 mb4>Design and creativity are in everything</H1>
         <P mb0>
-          I have always loved to make things. Though I don&apos;t draw and paint
-          as much as I used to, I try to bring a creative and design-driven
-          mindset to all the work I do.
+          I have always loved to make things. Though I don&apos;t draw and paint as much as I used
+          to, I try to bring a creative and design-driven mindset to all the work I do.
         </P>
         <BR />
       </Callout>
@@ -135,12 +125,7 @@ const DesignPage = (): React.ReactElement => {
             <P bold black mb1>
               {title}
             </P>
-            <P
-              sm
-              mb4
-              lighter
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
+            <P sm mb4 lighter dangerouslySetInnerHTML={{ __html: description }} />
             <P mb0 sm lightest>
               {date}
             </P>

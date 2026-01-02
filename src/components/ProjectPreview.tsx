@@ -3,17 +3,7 @@ import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import s from 'styled-components'
 
-import {
-  Row,
-  Col,
-  Card,
-  H3,
-  P,
-  Button,
-  Tag,
-  UnstyledLink,
-  Tags,
-} from './shared'
+import { Row, Col, Card, H3, P, Button, Tag, UnstyledLink, Tags } from './shared'
 import {
   M1,
   M2,
@@ -86,9 +76,7 @@ export const ProjectPreview = ({
             <Link to={path} aria-label={`View ${title} project`}>
               {(() => {
                 const gatsbyImage = image && getImage(image)
-                return gatsbyImage ? (
-                  <StyledImg image={gatsbyImage} alt={title} />
-                ) : null
+                return gatsbyImage ? <StyledImg image={gatsbyImage} alt={title} /> : null
               })()}
             </Link>
           </ImgCard>

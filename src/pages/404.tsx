@@ -22,12 +22,9 @@ const NotFoundPage = (): React.ReactElement => {
       <BR />
       <Center>
         <H1 mb4>404: Not Found</H1>
-        <P mb2>
-          The page you are looking for was either moved or does not exist.
-        </P>
+        <P mb2>The page you are looking for was either moved or does not exist.</P>
         <P>
-          If you think this is a mistake, please{' '}
-          <a href={Route.CONTACT}>contact me.</a>
+          If you think this is a mistake, please <a href={Route.CONTACT}>contact me.</a>
         </P>
         <Button to={Route.HOME}>Back to home</Button>
       </Center>

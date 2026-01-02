@@ -10,9 +10,7 @@ image: '../../images/projects/orthly.png'
 color: '#6fdbbb'
 tags: ['freelance', 'web']
 collaborators:
-  [
-    '<a href="https://www.linkedin.com/in/danielmhanover/" target="_BLANK">Daniel Hanover</a>',
-  ]
+  ['<a href="https://www.linkedin.com/in/danielmhanover/" target="_BLANK">Daniel Hanover</a>']
 order: 0
 status: "Active, I'm not involved"
 ---

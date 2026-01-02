@@ -32,11 +32,7 @@ export const Thoughts = (): React.ReactElement => {
     <>
       <BR />
       {data.allMarkdownRemark.nodes.map(({ frontmatter, timeToRead }) => (
-        <ThoughtPreview
-          key={frontmatter.title}
-          timeToRead={timeToRead}
-          {...frontmatter}
-        />
+        <ThoughtPreview key={frontmatter.title} timeToRead={timeToRead} {...frontmatter} />
       ))}
       <HR />
       <P>

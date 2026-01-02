@@ -64,13 +64,7 @@ const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
       )}
 
       <TableList
-        labels={[
-          'Rating',
-          'Originally published',
-          'Tags',
-          'Started',
-          'Finished',
-        ]}
+        labels={['Rating', 'Originally published', 'Tags', 'Started', 'Finished']}
         content={[
           rating && <Stars rating={rating} />,
           // Strip off "Jan 1," because this means that only the published year
@@ -99,9 +93,7 @@ const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
       {link && (
         <Button as="a" href={link} target="_BLANK" rel="noopener noreferrer">
           Purchase
-          <ExternalLinkIcon
-            style={{ marginLeft: '6px', transform: 'scale(0.8)' }}
-          />
+          <ExternalLinkIcon style={{ marginLeft: '6px', transform: 'scale(0.8)' }} />
         </Button>
       )}
 

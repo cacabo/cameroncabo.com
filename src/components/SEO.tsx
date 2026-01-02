@@ -51,9 +51,7 @@ const SEO = ({
       htmlAttributes={{
         lang,
       }}
-      title={
-        !showSiteTitle ? title : title ? `${title} | ${siteTitle}` : siteTitle
-      }
+      title={!showSiteTitle ? title : title ? `${title} | ${siteTitle}` : siteTitle}
       meta={[
         {
           name: 'description',

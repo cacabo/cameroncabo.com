@@ -32,7 +32,5 @@ export const HEADER_Z_INDEX = 1000
 
 type TMediaQuery = string
 
-export const minWidth = (w: TScreenWidth): TMediaQuery =>
-  `@media screen and (min-width: ${w})`
-export const maxWidth = (w: TScreenWidth): TMediaQuery =>
-  `@media screen and (max-width: ${w})`
+export const minWidth = (w: TScreenWidth): TMediaQuery => `@media screen and (min-width: ${w})`
+export const maxWidth = (w: TScreenWidth): TMediaQuery => `@media screen and (max-width: ${w})`

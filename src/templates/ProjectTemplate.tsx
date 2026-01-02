@@ -134,13 +134,7 @@ const ProjectTemplate = ({
         <H1 mb4>{title}</H1>
         <P mb4>{description}</P>
         <TableList
-          labels={[
-            'Timespan',
-            'Status',
-            'Technologies',
-            'Collaborators',
-            'Tags',
-          ]}
+          labels={['Timespan', 'Status', 'Technologies', 'Collaborators', 'Tags']}
           content={[
             start === end ? start : `${start} - ${end}`,
             status,
@@ -173,17 +167,13 @@ const ProjectTemplate = ({
           {link && (
             <Button as="a" href={link} target="_BLANK" {...colorProps}>
               View project
-              <ExternalLinkIcon
-                style={{ marginLeft: '6px', transform: 'scale(0.8)' }}
-              />
+              <ExternalLinkIcon style={{ marginLeft: '6px', transform: 'scale(0.8)' }} />
             </Button>
           )}
           {repo && (
             <Button as="a" href={repo} target="_BLANK" {...colorProps}>
               View repo
-              <ExternalLinkIcon
-                style={{ marginLeft: '6px', transform: 'scale(0.8)' }}
-              />
+              <ExternalLinkIcon style={{ marginLeft: '6px', transform: 'scale(0.8)' }} />
             </Button>
           )}
         </Buttons>
@@ -192,10 +182,7 @@ const ProjectTemplate = ({
           <GatsbyImage image={image!} alt={title} />
         </ImgWrapper>
       </Overview>
-      <div
-        className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
 
       <BR />
       <HR />

@@ -51,18 +51,11 @@ export const Education = (): React.ReactElement => {
   return (
     <>
       {(nodes as IEducationNode[]).map(
-        ({
-          html,
-          frontmatter: { start, end, title, gpa, image, location },
-        }) => {
+        ({ html, frontmatter: { start, end, title, gpa, image, location } }) => {
           const gatsbyImageData = image?.childImageSharp?.gatsbyImageData
 
           // Allow certain fields to be missing
-          const subtitle = [
-            start && end && `${start} - ${end}`,
-            location,
-            gpa && `${gpa} GPA`,
-          ]
+          const subtitle = [start && end && `${start} - ${end}`, location, gpa && `${gpa} GPA`]
             .filter(Boolean)
             .join(' • ')
 

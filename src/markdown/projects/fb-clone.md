@@ -2,8 +2,7 @@
 title: 'Facebook Clone'
 description: 'Final project for NETS 212: Scalable Cloud Computing. Social media platform.'
 path: '/projects/facebook-clone'
-technologies:
-  ['Node', 'React', 'CSS', 'JavaScript', 'Amazon DynamoDB', 'Map Reduce']
+technologies: ['Node', 'React', 'CSS', 'JavaScript', 'Amazon DynamoDB', 'Map Reduce']
 start: 'November 2017'
 end: 'December 2017'
 image: '../../images/projects/facebook-clone.png'

@@ -29,11 +29,7 @@ export const RecentThoughts = (): React.ReactElement => {
   return (
     <>
       {(nodes as IThoughtPreviewNode[]).map(({ frontmatter, timeToRead }) => (
-        <ThoughtPreview
-          {...frontmatter}
-          timeToRead={timeToRead}
-          key={frontmatter.title}
-        />
+        <ThoughtPreview {...frontmatter} timeToRead={timeToRead} key={frontmatter.title} />
       ))}
 
       <Button to={Route.THOUGHTS}>View thoughts &rarr;</Button>

@@ -11,9 +11,7 @@ image: '../../images/projects/love-sylvie.png'
 color: '#aca0bb'
 tags: ['freelance', 'web']
 collaborators:
-  [
-    '<a href="https://www.linkedin.com/in/kristendumbeck/" target="_BLANK">Kristen Dumbeck</a>',
-  ]
+  ['<a href="https://www.linkedin.com/in/kristendumbeck/" target="_BLANK">Kristen Dumbeck</a>']
 order: 6
 status: "Active, I'm not involved"
 ---

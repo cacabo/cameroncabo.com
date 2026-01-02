@@ -1,8 +1,9 @@
 import { Client } from '@notionhq/client'
+import puppeteer from 'puppeteer'
+import { invariant } from '../src/helpers/invariant'
 import { IBook } from '../src/types'
 import { Environment } from './utils/environment'
-import puppeteer from 'puppeteer'
-import { writeJsonFileAsync } from './utils/writeJSONFileAsync'
+import { writeJsonFileAsync } from './utils/fs'
 
 const BOOKS_JSON_FILE_NAME = 'books'
 
@@ -21,10 +22,7 @@ const BOOKS_JSON_FILE_NAME = 'books'
  * With the Notion site URL from the environment
  */
 const reviseNotionURL = (url: string): string =>
-  url.replace(
-    /(https?:\/\/)?(www\.)?notion\.so/,
-    Environment.notionSiteBaseURL(),
-  )
+  url.replace(/(https?:\/\/)?(www\.)?notion\.so/, Environment.notionSiteBaseURL())
 
 /**
  * Fetch via the URL directly
@@ -62,15 +60,16 @@ const bulkFetchNotionPagesContents = async (
 ): Promise<{ [id: string]: string }> => {
   const browser = await puppeteer.launch()
 
-  const contents = await Promise.all(
-    pages.map(({ url }) => fetchNotionPageContents(url, browser)),
-  )
+  const contents = await Promise.all(pages.map(({ url }) => fetchNotionPageContents(url, browser)))
 
-  const map = contents.reduce((acc, pageContents, idx) => {
-    const id = pages[idx].id
-    acc[id] = pageContents
-    return acc
-  }, {} as { [id: string]: string })
+  const map = contents.reduce(
+    (acc, pageContents, idx) => {
+      const id = pages[idx].id
+      acc[id] = pageContents
+      return acc
+    },
+    {} as { [id: string]: string },
+  )
 
   await browser.close()
   return map
@@ -87,21 +86,21 @@ const ringBell = (): void => {
   console.log(BELL_CHAR)
 }
 
+const ATTRS_TO_REMOVE = [
+  'contenteditable',
+  'spellcheck',
+  'data-content-editable-leaf',
+  'data-content-editable-void',
+  // 'placeholder',
+  'data-content-editable',
+] as const
+
 /**
  * To be executed by Puppeteer within the headless browser
  */
 const evaluatePageHandler = ():
   | Readonly<{ content: string; error?: undefined }>
   | Readonly<{ content?: undefined; error: string }> => {
-  const ATTRS_TO_REMOVE = [
-    'contenteditable',
-    'spellcheck',
-    'data-content-editable-leaf',
-    'data-content-editable-void',
-    // 'placeholder',
-    'data-content-editable',
-  ]
-
   /**
    * Remove a subset of styles that Notion applies to elements that we do not
    * want applied in the website
@@ -142,9 +141,7 @@ const evaluatePageHandler = ():
     return { error: 'Failed to find node' }
   }
 
-  const elts = (Array.from(
-    document.querySelectorAll('*'),
-  ) as unknown) as Array<HTMLElement>
+  const elts = Array.from(document.querySelectorAll('*')) as unknown as Array<HTMLElement>
 
   elts.forEach(sanitizeStyles)
 
@@ -179,32 +176,26 @@ type INotionDBProperty = {
 const isString = (value: any): value is string => typeof value === 'string'
 const isNumber = (value: any): value is number => typeof value === 'number'
 
-const parseProperty = (
-  property: INotionDBProperty,
-): string | string[] | number | null => {
-  if (typeof property !== 'object') {
-    throw new Error(`Expected property to be an object but got ${property}`)
-  }
+const parseProperty = (prop: INotionDBProperty): string | string[] | number | null => {
+  invariant(
+    typeof prop === 'object',
+    () => `Expected property to be an object but got ${JSON.stringify(prop)}`,
+  )
 
-  const type = property.type
+  const type = prop.type
 
-  if (type == null) {
-    throw new Error(
-      `Expected propert to have type, but found none in ${property}`,
-    )
-  }
+  invariant(type != null, () => `Expected property to have a type but got ${JSON.stringify(prop)}`)
 
   if (type === 'title') {
-    // eslint-disable-next-line camelcase
-    const title = property.title[0].plain_text
-    if (!isString(title)) {
-      throw new Error(`Failed to parse title from property ${property}`)
-    }
+    const title = prop.title[0].plain_text
+
+    invariant(isString(title), () => `Failed to parse title from property ${JSON.stringify(prop)}`)
+
     return title
   }
 
   if (type === 'url') {
-    const url = property.url
+    const url = prop.url
     if (url == null) {
       return null
     }
@@ -216,7 +207,7 @@ const parseProperty = (
   }
 
   if (type === 'number') {
-    const num = property.number
+    const num = prop.number
     if (num == null) {
       return null
     }
@@ -228,45 +219,43 @@ const parseProperty = (
   }
 
   if (type === 'rich_text') {
-    // eslint-disable-next-line camelcase
-    const richText = property.rich_text[0]?.plain_text
+    const richText = prop.rich_text[0]?.plain_text
 
     if (richText == null) {
       return null
     }
 
-    if (!isString(richText)) {
-      throw new Error(`Failed to parse rich_text from property ${property}`)
-    }
+    invariant(
+      isString(richText),
+      () => `Failed to parse rich_text from property ${JSON.stringify(prop)}`,
+    )
+
     return richText
   }
 
   if (type === 'date') {
-    const dateString = property.date?.start
+    const dateString = prop.date?.start
     if (dateString == null) {
       return null
     }
 
-    if (!isString(dateString)) {
-      throw new Error(`Failed to parse date from property ${property}`)
-    }
+    invariant(
+      isString(dateString),
+      () => `Failed to parse date from property ${JSON.stringify(prop)}`,
+    )
 
     if (/\d{4}-\d{2}-\d{2}/.exec(dateString) == null) {
-      throw new Error(
-        `Date string "${dateString}" does not match expected yyyy-MM-dd format`,
-      )
+      throw new Error(`Date string "${dateString}" does not match expected yyyy-MM-dd format`)
     }
     // ISO-formatted string
     return dateString
   }
 
   if (type === 'multi_select') {
-    const rawMultiSelectValues = property.multi_select
+    const rawMultiSelectValues = prop.multi_select
 
     if (!Array.isArray(rawMultiSelectValues)) {
-      throw new Error(
-        `Expected muti_select to be an array, but got ${rawMultiSelectValues}`,
-      )
+      throw new Error(`Expected muti_select to be an array, but got ${rawMultiSelectValues}`)
     }
 
     const mutliSelectValues = rawMultiSelectValues as Readonly<
@@ -280,7 +269,7 @@ const parseProperty = (
     return mutliSelectValues.map((x): string => x.name)
   }
 
-  throw new Error(`Unhandled type "${type}" for property ${property}`)
+  throw new Error(`Unhandled type "${type}" for property ${JSON.stringify(prop)}`)
 }
 
 class PropertyParser {
@@ -290,16 +279,13 @@ class PropertyParser {
     this.properties = properties
   }
 
-  public parse(
-    propertyName: BooksDatabaseProperty,
-  ): string | string[] | number | null {
+  public parse(propertyName: BooksDatabaseProperty): string | string[] | number | null {
     const property: INotionDBProperty = this.properties[propertyName]
 
-    if (property == null) {
-      throw new Error(
-        `Failed to find property ${propertyName} in ${this.properties}`,
-      )
-    }
+    invariant(
+      property != null,
+      () => `Failed to find property ${propertyName} in ${JSON.stringify(this.properties)}`,
+    )
 
     return parseProperty(property)
   }
@@ -322,9 +308,7 @@ const parseBookProperties = ({
     title: parser.parse(BooksDatabaseProperty.TITLE) as string,
     subtitle: parser.parse(BooksDatabaseProperty.SUBTITLE) as string,
     author: parser.parse(BooksDatabaseProperty.AUTHOR) as string,
-    originallyPublished: parser.parse(
-      BooksDatabaseProperty.ORIGINALLY_PUBLISHED,
-    ) as string,
+    originallyPublished: parser.parse(BooksDatabaseProperty.ORIGINALLY_PUBLISHED) as string,
     tags: parser.parse(BooksDatabaseProperty.TAGS) as string[],
     startDate: parser.parse(BooksDatabaseProperty.START_DATE) as string,
     endDate: parser.parse(BooksDatabaseProperty.END_DATE) as string,
@@ -335,7 +319,6 @@ const parseBookProperties = ({
 
 const fetchBooksDatabase = async (): Promise<IBookWithoutHTMLAndSlug[]> => {
   const res = await notion.databases.query({
-    // eslint-disable-next-line camelcase
     database_id: Environment.notionBooksDatabaseID(),
     sorts: [
       {
@@ -350,39 +333,33 @@ const fetchBooksDatabase = async (): Promise<IBookWithoutHTMLAndSlug[]> => {
   })
 
   if (res.object !== 'list') {
-    throw new Error(
-      'Error fetching books database: response object is not a list',
-    )
+    throw new Error('Error fetching books database: response object is not a list')
   }
 
   if (res.has_more) {
-    throw new Error(
-      'has_more is not false, which is not currently supported by this script',
-    )
+    throw new Error('has_more is not false, which is not currently supported by this script')
   }
 
   return (
     res.results
-      .map(
-        (row): IBookWithoutHTMLAndSlug => {
-          if (row.object !== 'page') {
-            throw new Error('Object within books database is not a page')
-          }
+      .map((row): IBookWithoutHTMLAndSlug => {
+        if (row.object !== 'page') {
+          throw new Error('Object within books database is not a page')
+        }
 
-          const properties = (row as any).properties as Record<
-            BooksDatabaseProperty,
-            INotionDBProperty
-          >
+        const properties = (row as any).properties as Record<
+          BooksDatabaseProperty,
+          INotionDBProperty
+        >
 
-          const url = (row as any).url
+        const url = (row as any).url
 
-          if (!isString(url)) {
-            throw new Error(`Failed to find URL for row ${row}`)
-          }
+        if (!isString(url)) {
+          throw new Error(`Failed to find URL for row ${JSON.stringify(row)}`)
+        }
 
-          return parseBookProperties({ id: row.id, url, properties })
-        },
-      )
+        return parseBookProperties({ id: row.id, url, properties })
+      })
       // Filter to rows with non-empty titles
       .filter((book): boolean => Boolean(book.title))
   )
@@ -428,4 +405,4 @@ const main = async (): Promise<void> => {
   ringBell()
 }
 
-main()
+void main()
