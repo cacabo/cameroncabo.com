@@ -1,8 +1,7 @@
 import React from 'react'
 import s from 'styled-components'
-
-import { P } from './shared'
 import { M2 } from '../constants/measurements'
+import { P } from './shared'
 
 const FooterTag = s.footer`
   width: 100%;

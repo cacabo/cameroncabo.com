@@ -1,7 +1,6 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import s, { css } from 'styled-components'
-import { Children } from '../../types'
-import { BORDER, GRAY_1, GRAY_2, WHITE, BLACK } from '../../constants/colors'
+import { BLACK, BORDER, GRAY_1, GRAY_2, WHITE } from '../../constants/colors'
 import { BOLD_FONT_WEIGHT, MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
 
 /**
@@ -11,29 +10,28 @@ import { BOLD_FONT_WEIGHT, MEDIUM_FONT_WEIGHT } from '../../constants/fonts'
  * should be done in the `Layout.css` file)
  */
 
-interface IText {
-  mb0?: boolean
-  mb1?: boolean
-  mb2?: boolean
-  mb3?: boolean
-  mb4?: boolean
-  mt0?: boolean
-  mt1?: boolean
-  mt2?: boolean
-  mt3?: boolean
-  mt4?: boolean
-  sm?: boolean
-  bold?: boolean
-  medium?: boolean
-  color?: string
-  lighter?: boolean
-  lightest?: boolean
-  dangerouslySetInnerHTML?: any
-  children?: Children
-  style?: CSSProperties
-  black?: boolean
-  white?: boolean
-}
+type IText = React.PropsWithChildren<
+  {
+    mb0?: boolean
+    mb1?: boolean
+    mb2?: boolean
+    mb3?: boolean
+    mb4?: boolean
+    mt0?: boolean
+    mt1?: boolean
+    mt2?: boolean
+    mt3?: boolean
+    mt4?: boolean
+    sm?: boolean
+    bold?: boolean
+    medium?: boolean
+    color?: string
+    lighter?: boolean
+    lightest?: boolean
+    black?: boolean
+    white?: boolean
+  } & Pick<React.HTMLAttributes<HTMLParagraphElement>, 'dangerouslySetInnerHTML' | 'style'>
+>
 
 const Text = s.p<IText>(
   ({

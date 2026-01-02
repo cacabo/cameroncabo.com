@@ -1,17 +1,17 @@
-import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { InfoCard, Button } from '../../shared'
+import React from 'react'
 import { Route } from '../../../constants/routes'
 import { IWorkFrontmatter } from '../../../types'
-import Zest from './svg/Zest'
-import Honey from './svg/Honey'
-import Riplo from './svg/Riplo'
+import { Button, InfoCard } from '../../shared'
+import { HoneySvg } from './svg/Honey'
+import { RiploSvg } from './svg/Riplo'
+import { ZestSvg } from './svg/Zest'
 
 const svgs: Record<string, React.FC> = {
-  Honey,
-  Riplo,
-  Zest,
-}
+  Honey: HoneySvg,
+  Riplo: RiploSvg,
+  Zest: ZestSvg,
+} as const
 
 interface IWorkNode {
   frontmatter: IWorkFrontmatter
@@ -19,7 +19,11 @@ interface IWorkNode {
 }
 
 export const Work = (): React.ReactElement => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<{
+    allMarkdownRemark: {
+      nodes: IWorkNode[]
+    }
+  }>(graphql`
     query WorkQuery {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(work/)/" } }
@@ -45,11 +49,9 @@ export const Work = (): React.ReactElement => {
     }
   `)
 
-  const { nodes } = data.allMarkdownRemark
-
   return (
     <>
-      {(nodes as IWorkNode[]).map(
+      {data.allMarkdownRemark.nodes.map(
         ({ html, frontmatter: { company, title, location, start, end, image, svg } }) => {
           const gatsbyImageData = image?.childImageSharp?.gatsbyImageData
           return (

@@ -2,9 +2,9 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
 import s from 'styled-components'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 import { ProjectPreview } from '../components/ProjectPreview'
-import SEO from '../components/SEO'
+import { SEO } from '../components/SEO'
 import {
   BR,
   Button,
@@ -27,7 +27,7 @@ import {
   minWidth,
 } from '../constants/measurements'
 import { Route } from '../constants/routes'
-import ColorGenerator from '../helpers/ColorGenerator'
+import { getColorProps } from '../helpers/getColorProps'
 import { IProjectFrontmatter, IProjectPreview } from '../types'
 
 const Overview = s.div<{ background: string }>`
@@ -123,14 +123,12 @@ const ProjectTemplate = ({
   const image = getImage(gatsbyImageData)
   const imageSrc = gatsbyImageData?.images?.fallback?.src
 
-  const cg = new ColorGenerator(color)
-  const colorProps = cg.getColorProps()
-  const colorBg = cg.getBackgroundColor()
+  const colorProps = getColorProps(color)
 
   return (
     <Layout>
       <SEO title={title} image={imageSrc} />
-      <Overview background={colorBg}>
+      <Overview background={colorProps.backgroundColor}>
         <H1 mb4>{title}</H1>
         <P mb4>{description}</P>
         <TableList

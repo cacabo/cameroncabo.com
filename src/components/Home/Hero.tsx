@@ -2,7 +2,6 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 import s from 'styled-components'
-
 import { DESKTOP, maxWidth, minWidth, PHONE, WIDESCREEN } from '../../constants/measurements'
 import { Route } from '../../constants/routes'
 import { BR, Button, Buttons, Flex, FlexRow, H1, P } from '../shared'

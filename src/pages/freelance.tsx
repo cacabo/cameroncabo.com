@@ -1,11 +1,10 @@
 import React from 'react'
-
-import { H1, H3, P, Buttons, Button, BR, Callout } from '../components/shared'
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
-import { Route } from '../constants/routes'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/SEO'
+import { BR, Button, Buttons, Callout, H1, H3, P } from '../components/shared'
 import { BORDER } from '../constants/colors'
 import { BORDER_RADIUS_LG } from '../constants/measurements'
+import { Route } from '../constants/routes'
 
 const FreelancePage = (): React.ReactElement => (
   <Layout>

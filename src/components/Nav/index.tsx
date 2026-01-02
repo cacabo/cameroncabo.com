@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import s, { css } from 'styled-components'
-
-import { BORDER, WHITE, BLACK_ALPHA } from '../../constants/colors'
-import { Logo } from './Logo'
-import { Links } from './Links'
-import { Social } from './Social'
+import { BLACK_ALPHA, BORDER, WHITE } from '../../constants/colors'
 import {
-  maxWidth,
-  SHORT_ANIMATION_DURATION,
+  DESKTOP,
   HEADER_HEIGHT,
   HEADER_Z_INDEX,
   M1,
   M2,
-  DESKTOP,
+  maxWidth,
+  SHORT_ANIMATION_DURATION,
 } from '../../constants/measurements'
-import { Bars } from './Bars'
+import { disableBodyScroll, enableBodyScroll, isOnMobile } from '../../helpers/misc'
 import { Shade } from '../shared'
-import { isOnMobile, disableBodyScroll, enableBodyScroll } from '../../helpers/misc'
+import { Bars } from './Bars'
+import { Links } from './Links'
+import { Logo } from './Logo'
+import { Social } from './Social'
 
 const getScrollTop = (): number =>
   window.pageYOffset !== undefined

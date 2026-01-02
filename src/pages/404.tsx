@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
 import { navigate } from 'gatsby'
-
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import React, { useEffect } from 'react'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/SEO'
+import { BR, Button, Center, H1, P } from '../components/shared'
 import { Route } from '../constants/routes'
-import { Button, H1, P, BR, Center } from '../components/shared'
 
 const NotFoundPage = (): React.ReactElement => {
   useEffect(() => {

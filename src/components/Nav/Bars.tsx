@@ -1,14 +1,13 @@
 import React, { ReactElement } from 'react'
 import s from 'styled-components'
-
-import { MenuIcon } from '../shared'
 import {
+  DESKTOP,
   MOBILE_HEADER_HEIGHT,
   SHORT_ANIMATION_DURATION,
   maxWidth,
-  DESKTOP,
 } from '../../constants/measurements'
-import { SPACE_KEY_CODE, ENTER_KEY_CODE, OUTLINE_STYLES } from '../../constants/misc'
+import { ENTER_KEY_CODE, OUTLINE_STYLES, SPACE_KEY_CODE } from '../../constants/misc'
+import { MenuIcon } from '../shared'
 
 const ICON_HEIGHT = 24
 const PADDING = 8

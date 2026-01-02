@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RiploSvg = (props: any): React.ReactElement => (
+export const RiploSvg: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg id="prefix__Layer_1" x={0} y={0} viewBox="0 0 820 820" xmlSpace="preserve" {...props}>
     <style>{'.prefix__st0{clip-path:url(#prefix__SVGID_2_)}'}</style>
     <defs>
@@ -64,5 +64,3 @@ const RiploSvg = (props: any): React.ReactElement => (
     </g>
   </svg>
 )
-
-export default RiploSvg

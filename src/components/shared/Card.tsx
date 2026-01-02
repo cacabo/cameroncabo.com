@@ -13,7 +13,6 @@ import {
   SHORT_ANIMATION_DURATION,
   TABLET,
 } from '../../constants/measurements'
-import { Children } from '../../types'
 import { Flex, FlexRow } from './Grid'
 import { P } from './Typography'
 
@@ -80,20 +79,14 @@ const CardBody = s.div<{ pad0?: boolean }>`
   ${(props): string => (props.pad0 ? 'padding: 0 !important;' : '')}
 `
 
-interface ICardContent {
-  children: Children
-  src?: string
-  fluid?: IGatsbyImageData
-}
-
-export const Card = ({
-  fluid,
-  src,
-  children,
-  pad0,
-  mb0,
-  ...rest
-}: ICardContent & ICard): React.ReactElement => (
+export const Card: React.FC<
+  React.PropsWithChildren<
+    {
+      src?: string
+      fluid?: IGatsbyImageData
+    } & ICard
+  >
+> = ({ fluid, src, children, pad0, mb0, ...rest }) => (
   <CardWrapper {...rest} mb0={mb0}>
     {fluid && <CardImg image={fluid} alt="" />}
     {src && <CardImg as="img" src={src} />}

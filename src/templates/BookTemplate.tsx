@@ -1,24 +1,23 @@
+import { graphql } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import { graphql } from 'gatsby'
-
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/SEO'
 import {
-  Button,
-  P,
   BR,
-  H1,
-  TableList,
-  Stars,
-  Tags,
-  Tag,
+  Button,
   ExternalLinkIcon,
+  H1,
   HR,
+  P,
+  Stars,
+  TableList,
+  Tag,
+  Tags,
 } from '../components/shared'
+import { LINK_STYLES } from '../constants/misc'
 import { Route } from '../constants/routes'
 import { IBook } from '../types'
-import { LINK_STYLES } from '../constants/misc'
 
 // TODO render other information
 // TODO style HR tags / line components
@@ -38,7 +37,7 @@ const Content = styled.div`
   }
 `
 
-const ProjectTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
+export const BookTemplate = ({ data }: IBookTemplateProps): React.ReactElement => {
   const {
     title,
     html,
@@ -116,4 +115,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default ProjectTemplate
+export default BookTemplate

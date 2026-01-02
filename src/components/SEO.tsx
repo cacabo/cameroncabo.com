@@ -1,16 +1,16 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
 
 const URL = 'https://www.cameroncabo.com'
 const SITE = 'cameroncabo.com'
 const IMAGE = '/images/cover.png'
 
 type Meta =
-  | { name: string; content: any; property?: undefined }
-  | { property: string; content: any; name?: undefined }
+  | { name: string; content: unknown; property?: undefined }
+  | { property: string; content: unknown; name?: undefined }
 
-export interface ISEOProps {
+export const SEO: React.FC<{
   description?: string
   lang?: string
   meta?: Meta[]
@@ -18,9 +18,7 @@ export interface ISEOProps {
   caption?: string
   image?: string
   showSiteTitle?: boolean
-}
-
-const SEO = ({
+}> = ({
   description = '',
   lang = 'en',
   meta = [],
@@ -28,7 +26,7 @@ const SEO = ({
   caption = '',
   title = '',
   showSiteTitle = true,
-}: ISEOProps): React.ReactElement => {
+}) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -117,5 +115,3 @@ const SEO = ({
     />
   )
 }
-
-export default SEO

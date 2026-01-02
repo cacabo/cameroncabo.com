@@ -1,16 +1,14 @@
 import React from 'react'
 import s from 'styled-components'
-
-import { Hero } from './Hero'
+import { M1, minWidth, TABLET } from '../../constants/measurements'
+import { H3, HR } from '../shared'
 import { Education } from './Education'
-import { Work } from './Work'
-import { Technologies } from './Technologies'
+import { Hero } from './Hero'
+import { Reading } from './Reading'
 import { RecentProjects } from './RecentProjects'
 import { RecentThoughts } from './RecentThoughts'
-import { M1, minWidth, TABLET } from '../../constants/measurements'
-import { Children } from '../../types'
-import { H3, HR } from '../shared'
-import { Reading } from './Reading'
+import { Technologies } from './Technologies'
+import { Work } from './Work'
 
 const SectionWrapper = s.section`
   padding: ${M1} 0;
@@ -20,13 +18,11 @@ const SectionWrapper = s.section`
   }
 `
 
-const Section = ({
-  title,
-  children,
-}: {
-  title: string
-  children: Children
-}): React.ReactElement => (
+const Section: React.FC<
+  React.PropsWithChildren<{
+    title: string
+  }>
+> = ({ title, children }) => (
   <SectionWrapper>
     <H3 mb4 mt4>
       {title}
@@ -36,7 +32,7 @@ const Section = ({
   </SectionWrapper>
 )
 
-const HomePage = (): React.ReactElement => (
+export const Home: React.FC = () => (
   <>
     <Hero />
     <Section title="Work">
@@ -59,5 +55,3 @@ const HomePage = (): React.ReactElement => (
     </Section>
   </>
 )
-
-export default HomePage

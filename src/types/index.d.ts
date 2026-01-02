@@ -1,7 +1,4 @@
-import React from 'react'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
-
-export type Children = React.ReactNode | React.ReactNodeArray
 
 export interface IThought {
   html: string

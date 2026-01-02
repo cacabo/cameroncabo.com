@@ -1,21 +1,20 @@
-import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import React from 'react'
 import s from 'styled-components'
-
-import { Row, Col, Card, H3, P, Button, Tag, UnstyledLink, Tags } from './shared'
 import {
+  BORDER_RADIUS_LG,
+  DESKTOP,
   M1,
   M2,
-  BORDER_RADIUS_LG,
   PHONE,
+  TABLET,
   maxWidth,
   minWidth,
-  DESKTOP,
-  TABLET,
 } from '../constants/measurements'
-import ColorGenerator from '../helpers/ColorGenerator'
+import { getColorProps } from '../helpers/getColorProps'
 import { IProjectPreview } from '../types'
+import { Button, Card, Col, H3, P, Row, Tag, Tags, UnstyledLink } from './shared'
 
 const StyledImg = s(GatsbyImage)`
   img {
@@ -64,12 +63,10 @@ export const ProjectPreview = ({
   start,
   end,
 }: IProjectPreview): React.ReactElement => {
-  const cg = new ColorGenerator(color)
-  const colorProps = cg.getColorProps()
-  const colorBg = cg.getBackgroundColor()
+  const colorProps = getColorProps(color)
 
   return (
-    <Wrapper background={colorBg}>
+    <Wrapper background={colorProps.backgroundColor}>
       <Row margin={M1}>
         <Col sm={12} lg={5} margin={M1}>
           <ImgCard pad0 shade3 color={color} mb0>

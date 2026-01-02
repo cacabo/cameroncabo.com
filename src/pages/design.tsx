@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, P, H2, Masonry, H1, BR, Button, Callout } from '../components/shared'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/SEO'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Route } from '../constants/routes'
 

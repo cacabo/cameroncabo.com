@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import s, { createGlobalStyle } from 'styled-components'
-
-import { Children } from '../types'
-import { Nav } from './Nav'
-import { Footer } from './Footer'
-import { maxWidth, PHONE, HEADER_HEIGHT, M2 } from '../constants/measurements'
-import { WideContainer, ContainerFluid } from './shared'
-
-import './Layout.css'
-import { LINK_STYLES } from '../constants/misc'
 import { BOLD_FONT_WEIGHT, FONT } from '../constants/fonts'
+import { HEADER_HEIGHT, M2, maxWidth, PHONE } from '../constants/measurements'
+import { LINK_STYLES } from '../constants/misc'
+import { Footer } from './Footer'
+import './Layout.css'
+import { Nav } from './Nav'
+import { ContainerFluid, WideContainer } from './shared'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -73,13 +70,12 @@ const Content = s.main`
   min-height: calc(100vh - ${HEADER_HEIGHT});
 `
 
-interface ILayoutProps {
-  wide?: boolean
-  mt0?: boolean
-  children: Children
-}
-
-const Layout = ({ wide, mt0, children }: ILayoutProps): React.ReactElement => {
+export const Layout: React.FC<
+  React.PropsWithChildren<{
+    wide?: boolean
+    mt0?: boolean
+  }>
+> = ({ wide, mt0, children }): React.ReactElement => {
   const [shouldHideBody, setShouldHideBody] = useState<boolean>(false)
   const ContainerComponent = wide ? ContainerFluid : WideContainer
 
@@ -97,5 +93,3 @@ const Layout = ({ wide, mt0, children }: ILayoutProps): React.ReactElement => {
     </>
   )
 }
-
-export default Layout

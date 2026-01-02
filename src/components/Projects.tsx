@@ -1,17 +1,16 @@
-import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-
-import { Button, HR, BR } from './shared'
+import React from 'react'
 import { Route } from '../constants/routes'
-import { ProjectPreview } from './ProjectPreview'
 import { IProjectPreview } from '../types'
+import { ProjectPreview } from './ProjectPreview'
+import { BR, Button, HR } from './shared'
 
-interface IProjectNode {
-  frontmatter: IProjectPreview
-}
-
-const Projects = (): React.ReactElement => {
-  const data = useStaticQuery(graphql`
+export const Projects: React.FC = (): React.ReactElement => {
+  const data = useStaticQuery<{
+    allMarkdownRemark: {
+      nodes: { frontmatter: IProjectPreview }[]
+    }
+  }>(graphql`
     query AllProjectsQuery {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(markdown/projects)/" } }
@@ -24,11 +23,10 @@ const Projects = (): React.ReactElement => {
     }
   `)
 
-  const { nodes } = data.allMarkdownRemark
   return (
     <>
       <BR />
-      {(nodes as IProjectNode[]).map(({ frontmatter }) => {
+      {data.allMarkdownRemark.nodes.map(({ frontmatter }) => {
         const { title } = frontmatter
         return <ProjectPreview key={title} {...frontmatter} />
       })}
@@ -37,5 +35,3 @@ const Projects = (): React.ReactElement => {
     </>
   )
 }
-
-export default Projects

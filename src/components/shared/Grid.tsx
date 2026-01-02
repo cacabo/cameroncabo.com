@@ -1,6 +1,5 @@
 import React, { ReactElement, ReactNode } from 'react'
 import s from 'styled-components'
-
 import {
   DESKTOP,
   M2,

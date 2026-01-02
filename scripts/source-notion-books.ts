@@ -57,19 +57,16 @@ const fetchNotionPageContents = async (
  */
 const bulkFetchNotionPagesContents = async (
   pages: { id: string; url: string }[],
-): Promise<{ [id: string]: string }> => {
+): Promise<Record<string, string>> => {
   const browser = await puppeteer.launch()
 
   const contents = await Promise.all(pages.map(({ url }) => fetchNotionPageContents(url, browser)))
 
-  const map = contents.reduce(
-    (acc, pageContents, idx) => {
-      const id = pages[idx].id
-      acc[id] = pageContents
-      return acc
-    },
-    {} as { [id: string]: string },
-  )
+  const map = contents.reduce<Record<string, string>>((acc, pageContents, idx) => {
+    const id = pages[idx].id
+    acc[id] = pageContents
+    return acc
+  }, {})
 
   await browser.close()
   return map
@@ -141,7 +138,7 @@ const evaluatePageHandler = ():
     return { error: 'Failed to find node' }
   }
 
-  const elts = Array.from(document.querySelectorAll('*')) as unknown as Array<HTMLElement>
+  const elts = Array.from(document.querySelectorAll('*')) as HTMLElement[]
 
   elts.forEach(sanitizeStyles)
 
@@ -171,10 +168,10 @@ const notion = new Client({ auth: Environment.notionAPISecret() })
 type INotionDBProperty = {
   id: string
   type: string
-} & Record<string, any>
+} & Record<string, unknown>
 
-const isString = (value: any): value is string => typeof value === 'string'
-const isNumber = (value: any): value is number => typeof value === 'number'
+const isString = (value: unknown): value is string => typeof value === 'string'
+const isNumber = (value: unknown): value is number => typeof value === 'number'
 
 const parseProperty = (prop: INotionDBProperty): string | string[] | number | null => {
   invariant(
@@ -187,6 +184,10 @@ const parseProperty = (prop: INotionDBProperty): string | string[] | number | nu
   invariant(type != null, () => `Expected property to have a type but got ${JSON.stringify(prop)}`)
 
   if (type === 'title') {
+    invariant(
+      Array.isArray(prop.title),
+      () => `Expected title property to be an array but got ${JSON.stringify(prop)}`,
+    )
     const title = prop.title[0].plain_text
 
     invariant(isString(title), () => `Failed to parse title from property ${JSON.stringify(prop)}`)
@@ -219,6 +220,11 @@ const parseProperty = (prop: INotionDBProperty): string | string[] | number | nu
   }
 
   if (type === 'rich_text') {
+    invariant(
+      Array.isArray(prop.rich_text),
+      () => `Expected rich_text property to be an array but got ${JSON.stringify(prop)}`,
+    )
+
     const richText = prop.rich_text[0]?.plain_text
 
     if (richText == null) {
@@ -234,7 +240,11 @@ const parseProperty = (prop: INotionDBProperty): string | string[] | number | nu
   }
 
   if (type === 'date') {
-    const dateString = prop.date?.start
+    invariant(
+      prop.date != null && typeof prop.date === 'object',
+      () => `Expected date property to be an object but got ${JSON.stringify(prop)}`,
+    )
+    const dateString = (prop.date as { start?: string })?.start
     if (dateString == null) {
       return null
     }
@@ -258,13 +268,11 @@ const parseProperty = (prop: INotionDBProperty): string | string[] | number | nu
       throw new Error(`Expected muti_select to be an array, but got ${rawMultiSelectValues}`)
     }
 
-    const mutliSelectValues = rawMultiSelectValues as Readonly<
-      Array<{
-        id: string
-        name: string
-        color: string
-      }>
-    >
+    const mutliSelectValues = rawMultiSelectValues as readonly {
+      id: string
+      name: string
+      color: string
+    }[]
 
     return mutliSelectValues.map((x): string => x.name)
   }
@@ -347,16 +355,12 @@ const fetchBooksDatabase = async (): Promise<IBookWithoutHTMLAndSlug[]> => {
           throw new Error('Object within books database is not a page')
         }
 
-        const properties = (row as any).properties as Record<
-          BooksDatabaseProperty,
-          INotionDBProperty
-        >
+        const properties = (row as { properties: Record<BooksDatabaseProperty, INotionDBProperty> })
+          .properties
 
-        const url = (row as any).url
+        const url = (row as { url: string }).url
 
-        if (!isString(url)) {
-          throw new Error(`Failed to find URL for row ${JSON.stringify(row)}`)
-        }
+        invariant(isString(url), () => `Failed to find URL for row ${JSON.stringify(row)}`)
 
         return parseBookProperties({ id: row.id, url, properties })
       })

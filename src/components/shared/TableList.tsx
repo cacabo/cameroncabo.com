@@ -5,7 +5,7 @@ import { P } from './Typography'
 
 interface ITableListProps {
   labels: string[]
-  content: Array<React.ReactNodeArray | React.ReactNode | string | null | undefined>
+  content: (React.ReactNode | string | null | undefined)[]
 }
 
 export const TableList = ({ labels, content }: ITableListProps): React.ReactElement => {

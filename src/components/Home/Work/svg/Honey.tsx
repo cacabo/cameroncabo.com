@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HoneySvg = (props: any): React.ReactElement => (
+export const HoneySvg: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 26 28" {...props}>
     <defs>
       <path
@@ -19,5 +19,3 @@ const HoneySvg = (props: any): React.ReactElement => (
     </g>
   </svg>
 )
-
-export default HoneySvg
